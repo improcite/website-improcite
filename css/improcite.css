@@ -1,0 +1,600 @@
+/*
+Rouge Cible			#CB0810
+Rouge Cible Foncé		#9F0D13
+Fond Gris			#7F7F7F
+Jaune				#FDD913
+Orange				#FF6E02
+ */
+
+body {
+	margin:	0px;
+	padding: 0px;
+	height: 100%;
+	background: #000 url("../images/background.png");
+	color: #fff;
+	font-size: 14pt;
+	font-family: cursive;
+}
+
+img {
+	border: 0px;
+}
+
+.smalltext {
+	display: inline;
+	font-size: 75%;
+}
+
+.small {
+	font-size: 7pt;
+	display: inline;
+}
+
+.hidden {
+	display: none;
+}
+
+div#header {
+	height: 200px;
+	padding: 50px;
+	margin: 0;
+	background: url("../images/banner.png") no-repeat 0 0;
+}
+
+div#welcome {
+	text-align: center;
+	margin: 10px 100px 10px 300px;
+	padding: 50px;
+	display: none;
+	background: #000;
+	border-radius: 10px;
+	opacity: 0.95;
+}
+
+div#welcome a {
+	color: #fff;
+}
+
+#side_bar {
+	float:right;
+	width:200px;
+	min-height:500px;
+}
+
+#corps_content {
+	width:100%;
+}
+
+
+div#page {
+	margin: 20px auto;
+	width: 1040px;
+	padding: 20px;
+	background: #000;
+	opacity: 0.95;
+	border-radius: 50px;
+}
+
+div#corps_content {
+}
+
+div#menu {
+	text-align: center;
+}
+
+div#pagemembres {
+	background:#000;
+	margin:20px;
+	padding: 10px 20px;
+	opacity:0.95;
+	border-radius: 50px;
+}
+
+div#menumembres {
+	margin:10px;
+	padding:10px;
+}
+
+div#footer {
+	text-align: center;
+}
+
+div#footer p.membres {
+	font-size: 10pt;
+}
+
+table.layertable {
+	border-spacing:	0px;
+	border-style: none;
+	padding: 0px;
+	margin:	0px;
+	border-width: 0px;
+	border-collapse: collapse;
+}
+
+table.layertable th td {
+	border-width: 0px;
+	padding: 0px;
+	border-style: none;
+}
+
+input {
+	background-color: #CCCCCC;
+	border:	1px solid #CB0810;
+}
+
+input[type=submit], input[type=button] {
+	background-color: #FDD913;
+	border:	1px solid #CB0810;
+	cursor:pointer;
+}
+
+h1 {
+	margin-top: 15px;
+	color: #CB0810;
+	font-size: 160%;
+	border-bottom: 2px solid #CB0810;
+	text-align: center;
+	/*letter-spacing: 10px;*/
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 100%;
+	margin-left: 10px;
+	padding-left: 22px;
+	background-image: url(../images/pt.gif);
+	background-repeat: no-repeat;
+	color: #EE8800;
+	border-bottom: 1px solid #FF9900;
+}
+
+h3 {
+	font-size: 100%;
+	margin-left: 10px;
+	padding-left: 22px;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:link {
+	color: #CB0810;
+	background-color: transparent;
+}
+
+a:visited {
+	color: #CB0810;
+	background-color: transparent;
+}
+
+a:hover {
+	color: #FFFFFF;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+table.grid
+{
+	border:				1px solid white;
+	border-collapse:	collapse;
+}
+
+table.grid td
+{
+	border:				1px solid white;
+	border-collapse:	collapse;
+}
+
+#img_jour_frame  {
+	background-image:url('../images/img_jour.jpg');
+	width:191px;
+	height:172px;
+}
+
+#img_jour_pic  {
+	position:relative;
+	left:23px;
+	top:45px;
+}
+
+
+/* ### Boite d'alerte ### */
+#alerte {
+	position: static;
+	margin: 20px;
+	padding: 20px;
+	border: solid 1px red;
+	color: white;
+	text-align: center;
+}
+
+
+/* Fiche du comedien */
+
+#comedien {
+	margin:20px;
+	background:#222;
+	padding:10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+
+}
+
+#corps img.logo_fiche {
+	border: 0;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#corps img.photo_fiche {
+	border: solid 5px #fff;
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#corps img.plan {
+	border: dashed 1px white;
+	margin: 10px;
+	padding: 5px;
+}
+
+
+/* COMEDIENS */
+/* http://www.zurb.com/playground/css3-polaroids */
+
+ul.comediens {
+	list-style:none outside none;
+}
+ul.comediens li {
+	display:inline;
+}
+
+ul.comediens a {
+	background: #fff;
+	color: #000;
+	display:inline;
+	float:left;
+	font-size:12pt;
+	margin:0 0 27px 30px;
+	padding:10px 10px 15px;
+	text-align:center;
+	text-decoration:none;
+	width:auto;
+	-webkit-transition: -webkit-transform .15s linear;
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}
+
+ul.comediens img.photo_comedien {
+	height: 90px ;
+	width: 120px ;
+	display:block;
+	margin-bottom:12px;
+}
+
+ul.comediens a:after {
+	content: attr(title);
+}
+
+/* By default, we tilt all our images -2 degrees */
+ul.comediens a {
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+}
+
+/* Rotate all even images 2 degrees */
+ul.comediens li:nth-child(even) a {
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+}
+
+/* Don't rotate every third image, but offset its position */
+ul.comediens li:nth-child(3n) a {
+	-webkit-transform: none;
+	-moz-transform: none;
+	position: relative;
+	top: -5px;
+}
+
+/* Rotate every fifth image by 5 degrees and offset it */
+ul.comediens li:nth-child(5n) a {
+	-webkit-transform: rotate(5deg);
+	-moz-transform: rotate(5deg);
+	position: relative;
+	right: 5px;
+}
+
+/* Keep default rotate for every eighth, but offset it */
+ul.comediens li:nth-child(8n) a {
+	position: relative;
+	top: 8px;
+	right: 5px;
+}
+
+/* Keep default rotate for every eleventh, but offset it */
+ul.comediens li:nth-child(11n) a {
+	position: relative;
+	top: 3px;
+	left: -5px;
+}
+
+ul.comediens-small img.photo_comedien {
+	height: 60px ;
+	width: 80px ;
+	display:block;
+	margin-bottom:2px;
+}
+
+ul.comediens-small a:after {
+	content: attr(title);
+	font-weight:normal;
+	font-size:12px;
+	margin:0px;
+}
+
+ul.comediens-small a {
+	margin:0 0 10px 10px;
+	padding:5px 5px 10px;
+}
+
+/* Scale the images on hover, add transitions for smoothing things out, and ensure the hover appears on top */
+/*ul.comediens a:hover {
+-webkit-transform: scale(1.25);
+-moz-transform: scale(1.25);
+position: relative;
+z-index: 5;
+}*/
+
+/* Add drop shadows and smooth out the transition (Safari only) */
+/*ul.comediens a {
+-webkit-transition: -webkit-transform .15s linear;
+-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}*/
+
+/* On hover, darken the shadows a bit */
+/*ul.comediens a {
+-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+-moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+}*/
+
+
+/*** === Cadres (<div>) dans la page === ***/
+
+/* ### Maitre ### 
+ * Il contient tous les autres cadres
+ */
+#maitre {
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0;
+	/*width: 780px;*/
+	border: 0;
+}
+
+/* ### Le corps de la page ### */
+#corps {
+	position: static;
+	clear: both;
+	border: 0;
+	/* force la hauteur à 500px */
+	/* hyper important sinon la cible se décale sur les pages trop petites sous IE
+	/* http://blog.alsacreations.com/2004/08/17/54-min-height-sur-internet-explorer */
+	/*height: auto !important;height: 500px;min-height: 500px;*/
+
+}
+
+/* ### Le pied de page ### */
+#pied {
+	position: static;
+	clear: both;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+/* ### Boite de News ### */
+#news {
+	position: static;
+	margin: 0 0 0 210px;
+	padding: 2px;
+	border: dashed 1px white;
+}
+
+/* ### Boite d'alerte ### */
+#alerte {
+	position: static;
+	margin: 20px;
+	padding: 20px;
+	border: solid 1px red;
+	color: white;
+	text-align: center;
+}
+
+/*** === Styles pour les textes === ***/
+
+/* ### News  ### */
+#news p.tete {
+	color: #CC0000;
+	margin: 0;
+	font-weight: bold;
+	text-align: center;
+	font-size: 10pt;
+}
+
+#news p.texte {
+	color: #FF9900;
+	margin: 0;
+	font-size: 10pt;
+}
+
+#news p.date {
+	color: gray;
+	font-size: 8pt;
+	text-align: right;
+	margin-right: 5px;
+}
+
+/* ### Corps ### */
+/* Titre */
+#corps p.titre {
+	color: #CC0000;
+	font-size: 16pt;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	letter-spacing: 10px;
+}
+
+/* Intitules */
+#corps span.intitules {
+	font-weight: bold;
+}
+
+/* Titre2 */
+#corps p.titre2 {
+	color: #FF9900;
+	font-size: 14pt;
+}
+
+/* Titre3 */
+#corps p.titre3 {
+	color: #FF9900;
+	font-size: 14pt;
+	border-bottom: solid 2px #CC0000;
+}
+
+/* ### Pied ### */
+#pied p {
+	color: #CC0000;
+	font-weight: bold;
+	margin: 10px;
+	text-align: center;
+}
+
+/* Hymne */
+p.couplet {
+
+}
+
+p.refrain {
+	font-weight: bold;
+}
+
+/*** === Styles pour les tableaux === ***/
+
+table.autres {
+	border: dashed 1px #CC0000;
+	margin-top: 10px ;
+	margin-bottom: 10px ;
+	border-collapse: collapse;
+	overflow: visible;
+}
+
+table.autres td
+{
+	border: dashed 1px #CC0000;
+}
+
+table.msie {
+	border: dashed 1px #CC0000;
+	margin-top: 10px ;
+	margin-bottom: 10px ;
+	width: 800px;
+}
+
+/** Membres / Dispos **/
+
+table tr.outdated {
+	background-color: #888;
+}
+
+p.toggleOutdated {
+	cursor: pointer;
+}
+
+#choixdate {
+	text-align:center;
+	font-size: 12pt;
+	background: #bbb;
+	margin:5px 50px;
+	padding:10px;
+	color:#000;
+}
+
+
+/* Liste des spectacles */
+
+div.spectacle img.affiche {
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+div.spectacle hr {
+	clear: both;
+	margin: 10px 0;
+	color: #CB0810;
+	border: 1px solid;
+	height: 1px;
+}
+
+/* OMERTA */
+
+div#presentation_omerta img.logo {
+	float: left;
+	margin-right: 10px;
+}
+
+/* Stats */
+table.stats {
+	margin: 5px auto;
+	width: 80%;
+	text-align: center;
+	border-collapse:collapse;
+	caption-side:bottom;
+}
+table.stats th {
+	color: #000;
+	background: #ccc;
+}
+table.stats tbody td {
+	border: 1px #fff solid;
+}
+
+/*  Recrutement */
+form#recrutement {
+	text-align: center;
+}
+
+form#recrutement label {
+	display: block;
+	margin: 30px 5px 5px 5px;
+	font-weight: bold;
+}
+
+form#recrutement fieldset {
+	padding: 10px 40px;
+	margin: 20px 0;
+	border: 2px dotted red;
+	border-radius: 20px;
+}
+
+form#recrutement input, form#recrutement textarea {
+	width:100%;
+	border: 1px dotted white;
+	background: #ccc;
+	padding: 5px;
+	font-weight: bold;
+}
+
+form#recrutement button {
+	border: 1px solid red;
+	padding: 5px;
+}
