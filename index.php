@@ -14,7 +14,6 @@ if($debug) error_reporting(E_ALL);
 fix_magic_quotes();
 
 $promo_mode = false;
-$newVersion = true; // isset($_GET["new"]);
 
 $sMailTo = "document.location='mai'+'lto:'+'contact'+'@'+'improcit'+'e.c'+'om';";
 
@@ -75,19 +74,7 @@ else
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/improcite.js"></script>
 	
-	<? if ($newVersion) { ?>
-		<link href="css/improcite.css" rel="stylesheet" type="text/css" />
-	<? } else { ?>
-		<script type="text/javascript" src="js/jquery.validate.min.js"></script> 	
-		<script type="text/javascript" src="js/jsnow.js"></script>
-		<script type="text/javascript" src="js/jquery.lavalamp.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-		<link href="css/improcite.css" rel="stylesheet" type="text/css" />
-		<link href="css/lavalamp.css" rel="stylesheet" type="text/css" />
-	<? } ?>
-	
-	
-	
+	<link href="css/improcite.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="page">
@@ -96,8 +83,6 @@ else
 			<div id="welcome">Bienvenue sur le site d'<a href=?p=improcite>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
 	</div> <!-- header -->
 	
-	<? if ($newVersion) { ?>
-				
 	<?
 	$aCaroussel = array(1, 2, 3, 4, 5, 6);
 	//$aCaroussel = array("Bandeau-ImpRhone-1", "Bandeau-ImpRhone-2", "1");// "6", "3");
@@ -126,12 +111,6 @@ else
         </a>
       </div>
     </div>
-	<script>
-	 //$("#home-carousel").carousel('cycle');
-	 </script>
-	
-	<? } ?>
-	
 	
 	<div id="menu">
 		<a name="apage" name="apage"></a>	
@@ -146,8 +125,6 @@ else
 			, "contact" => "Contact"
 		); ?>
 	
-		<? if ($newVersion) { ?>
-		
 		<div class="menubar">
 		  <ul class="nav nav-pills">
 			<? foreach($aMenuItems as $k => $v) { ?>
@@ -156,24 +133,11 @@ else
 		  </ul> <!-- /tabs -->
 		</div> <!-- /example -->		
 		
-		<? } else { ?>
-		
-		<ul class="lavaLamp">
-		<? foreach($aMenuItems as $k => $v) { ?>
-			<li><a href="?p=<?=$k?>"><?=(($k==$p)?"<u>$v</u>":"$v")?></a></li>
-		<? } ?>
-		</ul>		
-		
-		<? } ?>
-		
-		
-		
   </div>  <!-- menu -->
   <? } // promo_mode ?>
   
   
 	<div id="corps">
-		<? if (!$newVersion) { ?>
 		<? if (!$promo_mode) { ?>
 		<div id="side_bar">
 
@@ -196,7 +160,6 @@ else
 		</div><!-- side_bar -->
 		
 		<? } // $promo_mode ?>
-		<? } // $newVersion ?>
 	
 		<div id="corps_content">
 			<?php
@@ -215,11 +178,6 @@ else
 </div> <!-- page -->
 
 	<div id="footer">
-		<!--
-		<a href="?p=improcite"><img src="http://perso0.free.fr/cgi-bin/wwwcount.cgi?df=[improcite].dat&amp;dd=caligra&amp;display=counter&amp;ft=0&amp;pad=N" alt="Compteur" /></a>
-		-->
-		<!--<a id="btnEspaceMembres" href="membres/">Espace Membres</a>-->
-		
 		<form action="membres/" method="get"><input type=submit name="sub" value="Espace Membres"></form>		
 	</div> <!-- footer -->
 
