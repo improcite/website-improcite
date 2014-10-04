@@ -9,11 +9,13 @@ Orange				#FF6E02
 body {
 	margin:	0px;
 	padding: 0px;
-	height: 100%;
-	background: #000 url("../images/background.png");
-	color: #fff;
-	font-size: 14pt;
-	font-family: cursive;
+	/*background: #000 url("../images2/background.png");*/
+	background: #ccc;
+	color: #000;
+	font-size: 13pt; 
+	/*font-family: courier;*/
+	/*font-family: cursive;*/
+	font-family:sans-serif;
 }
 
 img {
@@ -34,26 +36,74 @@ img {
 	display: none;
 }
 
+.photo_comedien2
+{
+	border:1px solid black;
+}
+
 div#header {
-	height: 200px;
-	padding: 50px;
+	height: 227px;
+	width: 1000px;
+	/*padding: 20px;*/
 	margin: 0;
-	background: url("../images/banner.png") no-repeat 0 0;
+	background: url("../images2/banner.png") no-repeat 0 0;
+	background-position:center; 
 }
 
 div#welcome {
 	text-align: center;
-	margin: 10px 100px 10px 300px;
-	padding: 50px;
+	
+	padding: 60px 200px 0px 550px;
 	display: none;
-	background: #000;
 	border-radius: 10px;
-	opacity: 0.95;
+	opacity: 1.0;
+	color:black;
+	
+	/* Fallback for web browsers that don't support RGBa */
+	background-color: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background-color: rgba(0, 0, 0, 0.0);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF000000, endColorstr=#FF000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF000000, endColorstr=#FF000000)";
 }
 
-div#welcome a {
-	color: #fff;
+#home-carousel
+{
+	width:1000px;
 }
+
+.carousel-img
+{
+	width:1000px;
+}
+
+/*div#welcome a {
+	color: #ddd;
+}*/
+
+.menubar
+{
+	background-color:black;
+	width:1000px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus
+{
+	background-color:red;
+}
+
+.nav > li > a
+{
+	font-weight: bold;	
+}
+
+.nav > li > a:hover
+{
+	color:black;
+}
+
 
 #side_bar {
 	float:right;
@@ -67,36 +117,58 @@ div#welcome a {
 
 
 div#page {
+	/*margin: 20px auto;*/
+	
+	margin: 0px auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom:20px;
+	
+	width: 1040px;
+	/*padding: 20px;*/
+	/*background: #000;*/
+	/*border:5px solid black;*/
+	/*border-radius: 5px;*/
+	background-color: #DDD;
+}
+
+
+
+div#page_archive_alpha {
 	margin: 20px auto;
 	width: 1040px;
 	padding: 20px;
 	background: #000;
-	opacity: 0.95;
-	border-radius: 50px;
+	
+	border:5px solid black;
+	border-radius: 5px;
+	
+	/* Fallback for web browsers that don't support RGBa */
+	background-color: rgb(60,60, 60);
+	/* RGBa with 0.6 opacity */
+	background-color: rgba(60, 60, 60, 1.0);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF444444, endColorstr=#FF444444);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF444444, endColorstr=#FF444444)";
 }
 
 div#corps_content {
 }
 
+
 div#menu {
 	text-align: center;
 }
 
-div#pagemembres {
-	background:#000;
-	margin:20px;
-	padding: 10px 20px;
-	opacity:0.95;
-	border-radius: 50px;
-}
-
-div#menumembres {
-	margin:10px;
-	padding:10px;
-}
-
 div#footer {
+	background-color: black;
 	text-align: center;
+	margin:auto;
+	margin-top:5px;
+	margin-bottom:5px;
+	width: 1040px;
+	
 }
 
 div#footer p.membres {
@@ -124,10 +196,21 @@ input {
 }
 
 input[type=submit], input[type=button] {
-	background-color: #FDD913;
-	border:	1px solid #CB0810;
+	border:	1px solid #000000;
 	cursor:pointer;
+	font-size: 100%;
+	border-bottom: 2px solid #CB0810;
+	text-align: center;
+	font-weight: bold;	
 }
+
+input[type=submit]:hover , input[type=button]:hover  {
+
+
+color: #CB0810;
+border:	1px solid #CB0810;
+
+	}
 
 h1 {
 	margin-top: 15px;
@@ -142,39 +225,37 @@ h1 {
 h2 {
 	font-size: 100%;
 	margin-left: 10px;
-	padding-left: 22px;
-	background-image: url(../images/pt.gif);
+	padding-left: 30px;
+	background-image: url(../images2/pt.png);
 	background-repeat: no-repeat;
-	color: #EE8800;
-	border-bottom: 1px solid #FF9900;
+	color: #CB0810;
+	border-bottom: 1px solid #000000;
+	font-weight: bold;
 }
 
 h3 {
 	font-size: 100%;
 	margin-left: 10px;
 	padding-left: 22px;
-	color: white;
+	color: black;
 }
 
 a {
-	text-decoration: none;
-	font-weight: bold;
+	background-color: transparent;
+	color: #CB0810;
 }
 
 a:link {
 	color: #CB0810;
-	background-color: transparent;
 }
 
 a:visited {
 	color: #CB0810;
-	background-color: transparent;
 }
 
 a:hover {
-	color: #FFFFFF;
-	background-color: transparent;
-	text-decoration: none;
+	color: #CB0810;
+	text-decoration: underline;
 }
 
 table.grid
@@ -190,15 +271,16 @@ table.grid td
 }
 
 #img_jour_frame  {
-	background-image:url('../images/img_jour.jpg');
+	background-image:url('../images2/img_jour.png');
 	width:191px;
-	height:172px;
+	height:234px;
 }
 
 #img_jour_pic  {
 	position:relative;
-	left:23px;
-	top:45px;
+	left:16px;
+	top:26px;
+	transform: rotate(-2deg);
 }
 
 
@@ -217,7 +299,7 @@ table.grid td
 
 #comedien {
 	margin:20px;
-	background:#222;
+	//background:#222;
 	padding:10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -244,7 +326,6 @@ table.grid td
 	padding: 5px;
 }
 
-
 /* COMEDIENS */
 /* http://www.zurb.com/playground/css3-polaroids */
 
@@ -252,7 +333,8 @@ ul.comediens {
 	list-style:none outside none;
 }
 ul.comediens li {
-	display:inline;
+	/*display:inline;*/
+	display: inline-block;
 }
 
 ul.comediens a {
@@ -260,12 +342,13 @@ ul.comediens a {
 	color: #000;
 	display:inline;
 	float:left;
-	font-size:12pt;
+	/*font-size:12pt;*/
 	margin:0 0 27px 30px;
 	padding:10px 10px 15px;
 	text-align:center;
 	text-decoration:none;
 	width:auto;
+	border:1px solid gray;
 	-webkit-transition: -webkit-transform .15s linear;
 	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
 	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
@@ -276,10 +359,13 @@ ul.comediens img.photo_comedien {
 	width: 120px ;
 	display:block;
 	margin-bottom:12px;
+	border:1px solid gray;
 }
 
 ul.comediens a:after {
 	content: attr(title);
+	font-weight:normal;
+	
 }
 
 /* By default, we tilt all our images -2 degrees */
@@ -324,6 +410,11 @@ ul.comediens li:nth-child(11n) a {
 	left: -5px;
 }
 
+/* - Small version - */
+
+ul.comediens-small  {
+}
+
 ul.comediens-small img.photo_comedien {
 	height: 60px ;
 	width: 80px ;
@@ -342,6 +433,8 @@ ul.comediens-small a {
 	margin:0 0 10px 10px;
 	padding:5px 5px 10px;
 }
+
+
 
 /* Scale the images on hover, add transitions for smoothing things out, and ensure the hover appears on top */
 /*ul.comediens a:hover {
@@ -529,20 +622,49 @@ p.toggleOutdated {
 }
 
 
-/* Liste des spectacles */
+/* Description impro */
 
-div.spectacle img.affiche {
-	float: left;
-	margin-right: 20px;
-	margin-bottom: 10px;
+img.float_picture  {
+	border:1px solid black;
+	transform: rotate(-1deg);
 }
 
-div.spectacle hr {
+/* Liste des spectacles */
+
+
+img.affiche {
+        margin-bottom: 10px;
+        margin-left: 15px;
+        border:1px solid black;
+        transform: rotate(-1deg);
+}
+
+div.affiche {
+        float:left;
+        /*display:inline-block;
+        width:45%;*/
+}
+
+div.description {
+        /*display:inline-block;
+        width:45%;*/
+}
+
+div.spectacle img.affiche {
+        margin-right: 30px;
+}
+
+
+/*div.spectacle*/
+ hr {
 	clear: both;
-	margin: 10px 0;
-	color: #CB0810;
-	border: 1px solid;
-	height: 1px;
+	margin: 0px -20px 10px;
+	border-top:1px solid gray;
+	/*color: #CB0810;
+	border: 1px solid;*/
+	height: 5px;
+	background-color:white;
+	margin-top:10px;
 }
 
 /* OMERTA */
@@ -598,3 +720,66 @@ form#recrutement button {
 	border: 1px solid red;
 	padding: 5px;
 }
+
+
+/* Membres */ 
+#pagemembres {
+margin-top: 60px;
+font-size: 11pt;
+}
+
+#menumembres {
+font-size:10pt;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-left:  15px;
+    padding-right: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-left:  0;
+    padding-right: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  #pagemembres {
+    margin-top:80px;
+  }
+
+}
+

@@ -76,7 +76,7 @@ else
 	<script type="text/javascript" src="js/improcite.js"></script>
 	
 	<? if ($newVersion) { ?>
-		<link href="css/improcite2.css" rel="stylesheet" type="text/css" />
+		<link href="css/improcite.css" rel="stylesheet" type="text/css" />
 	<? } else { ?>
 		<script type="text/javascript" src="js/jquery.validate.min.js"></script> 	
 		<script type="text/javascript" src="js/jsnow.js"></script>
