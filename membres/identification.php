@@ -36,7 +36,7 @@ echo "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"fr\">\n";
 echo "<head>\n";
 echo "<title>Improcite - Espace membres</title>\n";
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n";
-echo "<link rel=\"stylesheet\" href=\"../css/improcite.css\" type=\"text/css\" />\n";
+echo "<link rel=\"stylesheet\" href=\"../css/improcite2.css\" type=\"text/css\" />\n";
 echo "<meta name=\"author\" content=\"Clement OUDOT\" />\n";
 
 # Javascripts

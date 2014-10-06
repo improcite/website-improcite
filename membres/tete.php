@@ -28,10 +28,6 @@ if($debug) error_reporting(E_ALL);
 require_once ("../fonctions.inc.php") ;
 require_once ("../Mobile_Detect.php");
 
-$detect = new Mobile_Detect;
-$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
-
-
 # Lancement de la connexion MySQL
 include ( "../connexion_mysql.php" ) ;
 
@@ -42,6 +38,8 @@ include ( "../fxDB.php" );
 <head>
 	<title>Improcite - Espace membres</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/improcite.js"></script>

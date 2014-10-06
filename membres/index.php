@@ -13,9 +13,9 @@ $idMe = $_SESSION['id_impro_membre'];
 ?>
 <div class="row">
 	<div class="col-md-6">
+	<h1>Calendrier</h1>
+		<div class="table-responsive">
 <?php
-//-----------------------
-/*?><h1>Calendrier</h1><br /><?*/
 
 $annee = date("Y");
 $date_debut_saison = date("YmdHis", mktime(0, 0, 0, 8, 1, 2004+$iCurrentSaisonNumber)) ;
@@ -25,8 +25,6 @@ $sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TI
 		." WHERE e.categorie=c.id AND e.date>$date_debut_saison AND e.lieu=l.id"
 		." ORDER BY date ASC";
 $requete_prochains = fxQuery($sSQL) ;
-
-//echo "<table border=0 cellspacing=0 cellpadding=1>";
 
 $aAllEvents = array();
 
@@ -48,8 +46,6 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 	$aEntriesCate[$year.$month.$day] = $aRow['categorie'];
 	$aEntriesDesc[$year.$month.$day] = $aRow['ecommentaire'];
 	$aAllSpecatclesId[] = $aRow['id'];
-	
-	//print_r($aRow);
 }
 
 $aDispoForAllSpectacles = array();
@@ -58,8 +54,6 @@ if (sizeof($aAllSpecatclesId) > 0)
 	$aDispoForAllSpectacles = fxQueryIndexed("SELECT id_spectacle, dispo_pourcent FROM impro_dispo WHERE id_spectacle IN (".implode(",", $aAllSpecatclesId).") AND id_personne = $idMe");
 }
 
-if($deviceType != 'phone')
-{
 	echo "<br/><table border=0 cellspacing=0 cellpadding=0 width=100%><tr>";
 
 	echo "<td valign=top><table border=0 cellspacing=0 cellpadding=0 width=100%><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>";
@@ -150,19 +144,16 @@ if($deviceType != 'phone')
 	}
 	echo "</tr></table>\n";
 
-
 	?>
+		</div>
 	</div>
-	<div class="col-md-6"><?
-}
-
-//-----------------------
-?><h1>Sélections</h1><?
+	<div class="col-md-6">
+	<h1>Sélections</h1>
+<?
 
 $iCountSelect = 0;
 $date_actuelle = date("YmdHis") ;
 $date_max = date("YmdHis", time()+3600*24*31*3) ;// trois mois
-//echo "<table border=0 cellspacing=0 cellpadding=1>";
 
 foreach($aAllEvents as $aRow)
 {
