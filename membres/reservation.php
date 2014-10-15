@@ -102,14 +102,14 @@ else {
 	$nb_stats_resas = @mysql_num_rows( $requete_stats_resas );
 
 	if ( $nb_stats_resas > 0 ) {
-		echo "<table class='stats'>\n";
+		echo "<table class='table table-striped'>\n";
 		echo "<caption>Statistiques des r&eacute;servations pour chaque spectacle</caption>\n";
 		echo "<thead>\n";
 		echo "<tr>\n";
 		echo "<td></td>\n";
-		echo "<th scope='col'>Places disponibles</th>\n";
-		echo "<th scope='col'>Places r&eacute;serv&eacute;es</th>\n";
-		echo "<th scope='col'>Places restantes</th>\n";
+		echo "<th>Places disponibles</th>\n";
+		echo "<th>Places r&eacute;serv&eacute;es</th>\n";
+		echo "<th>Remplissage</th>\n";
 		echo "</tr>\n";
 		echo "</thead>\n";
 		echo "<tbody>\n";
@@ -126,13 +126,19 @@ else {
 				$places_res = $resultat_places["places"] ;
 				$places_tot += $places_res ;
 			}
-			$places_restantes = $places - $places_tot ;
+			$percent = floor($places/$places_tot);
 
 			echo "<tr>\n";
-			echo "<th scope='row'>$nom - $date</th>\n";
+			echo "<th>$nom - $date</th>\n";
 			echo "<td>$places</td>\n";
 			echo "<td>$places_tot</td>\n";
-			echo "<td>$places_restantes</td>\n";
+			echo "<td>\n";
+			echo "<div class=\"progress\">\n";
+			echo "<div class=\"progress-bar progress-bar-success progress-bar-striped\" role=\"progressbar\" aria-valuenow=\"$places_tot\" aria-valuemin=\"0\" aria-valuemax=\"$places\" style=\"width: $percent%\">\n";
+			echo "<span>$percent%</span>\n";
+			echo "</div>\n";
+			echo "</div>\n";
+			echo "</td>\n";
 			echo "</tr>\n";
 
 		}
