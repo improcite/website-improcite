@@ -149,20 +149,20 @@ if ( strlen( $month_before ) == 1) { $month_before = "0" . $month_before; }
 if ( strlen( $month_after ) == 1) { $month_after = "0" . $month_after; } 
 
 # Liens pour avant et apres
-echo "<div id='choixdate'>";
-echo '<a href="dispos.php?train='.$bDisplayTrain.'&month='.$month_before.'&year='.$year_before.'"> < Mois pr&eacute;c&eacute;dent</a>';
-echo " - $month/$year - ";
-echo '<a href="dispos.php?train='.$bDisplayTrain.'&month='.$month_after.'&year='.$year_after.'">Mois suivant > </a>';
+echo "<div id='choixdate' class='text-center'>";
+echo "<div class='btn-group'>";
+echo '<a class="btn btn-default" href="dispos.php?train='.$bDisplayTrain.'&month='.$month_before.'&year='.$year_before.'"><i class="glyphicon glyphicon-chevron-left"></i> <span class="hidden-xs">Mois pr&eacute;c&eacute;dent</span></a>';
+echo "<div class='btn btn-default'>$month/$year</div>";
+echo '<a class="btn btn-default" href="dispos.php?train='.$bDisplayTrain.'&month='.$month_after.'&year='.$year_after.'"><span class="hidden-xs">Mois suivant</span> <i class="glyphicon glyphicon-chevron-right"></i></a>';
+echo "</div>";
 echo "</div>";
 
-?>
-<p class="toggleOutdated">Afficher/masquer les anciennes dates</p>
-<?
+echo "<hr />\n";
 
 # Proprietes du tableau
 $iFontSize = 9;
 $sStyl = " valign=\"top\" style=\"text-align:center\"";
-$sTableHeader  .= "<table class=\"grid\" style=\"font-size:{$iFontSize}pt;\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\">";
+$sTableHeader  .= "<table class=\"grid table\" style=\"font-size:{$iFontSize}pt;\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\">";
 $sColumnHeader .= "<tr bgcolor=\"#888\" style=\"font-weight:bold\">";
 $sColumnHeader .= "<td {$sStyl} width=\"5%\">Quand</td><td {$sStyl} width=\"10%\">Quoi</td>";
 $sColumnHeader .= "<td {$sStyl} width=\"5%\">Dispo.</td>";
@@ -208,6 +208,7 @@ $sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TI
 $requete_prochains = fxQuery($sSQL) ;
 
 # En tete
+echo "<div class='table-responsive'>\n";
 echo $sTableHeader;
 echo $sColumnHeader;
 
@@ -355,6 +356,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 echo $sColumnHeader;
 
 echo "</table>";
+echo "</div>";
 
 # Options administrateur/selectionneur
 if (!isPrintMode()  &&  !$bDisplayTrain)
