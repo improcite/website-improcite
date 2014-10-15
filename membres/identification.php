@@ -21,40 +21,37 @@ session_save_path ('sessions');
 
 @include ( "../connexion_mysql.php" ) ;
 
-# XML
-echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" ;
+?>
 
-# Doctype 
-echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <title>Improcite - Espace membres</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-# Ouverture HTML
-echo "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"fr\">\n";
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/improcite.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/smoothness/jquery-ui.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<?php
+if (!isPrintMode()) {
+        echo "\t<link rel=\"stylesheet\" href=\"../css/improcite2.css\" type=\"text/css\" />\n";
+} else {
+        echo "\t<link rel=\"stylesheet\" href=\"../css/print.css\" type=\"text/css\" />\n";
+}
+?>
+        <meta name="author" content="Clement OUDOT & Mathieu FREMONT" />
+</head>
+<body>
+	<div class="container">
+	<div id="pagemembres" class="panel panel-body">
 
-# Ouverture HEAD
-
-
-echo "<head>\n";
-echo "<title>Improcite - Espace membres</title>\n";
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n";
-echo "<link rel=\"stylesheet\" href=\"../css/improcite2.css\" type=\"text/css\" />\n";
-echo "<meta name=\"author\" content=\"Clement OUDOT\" />\n";
-
-# Javascripts
-
-echo "<script type=\"text/javascript\" src=\"../js/scripts.js\"></script>\n" ;
-
-# Fermeture HEAD
-
-echo "</head>\n" ;
-
-# Ouverture BODY
-
-echo "<body>\n";
-
-# Ouverture Maitre
-
-echo "<div id=\"pagemembres\">\n" ;
-
+<?php
 # Ouverture du corps de la page
 
 $login = getp("login");
@@ -78,8 +75,8 @@ else if($login && $password)
 
 if($md5password)
 {
-	$requete_membre = mysql_query ( "SELECT * FROM $table_comediens WHERE login='$login' AND MD5(CONCAT('$salt', password))='$md5password'" ) ;
 	# Recherche du login dans la base
+	$requete_membre = mysql_query ( "SELECT * FROM $table_comediens WHERE login='$login' AND MD5(CONCAT('$salt', password))='$md5password'" ) ;
 
 	$nb = @mysql_num_rows ( $requete_membre ) ;
 	if ( $nb > 0 )
@@ -90,15 +87,14 @@ if($md5password)
 		$surnom = $resultat_membre[ "surnom" ] ;
 		$prenom = $resultat_membre[ "prenom" ] ;
 		
-		echo "<p class=\"titre3\">Bienvenue $surnom&nbsp;!</p>\n" ;
+		echo "<h1>Bienvenue $surnom&nbsp;!</h1>\n" ;
 		
 		$_SESSION[ "id_impro_membre" ] = $id ;
 		$_SESSION[ "prenom_impro_membre" ] = $prenom ;
 
-		echo "<br />\n" ;
-		
-		echo "<a href=\"index.php\" title=\"Espace membres\"><p class=\"titre\">Clique ici si tu n'entres pas automatiquement dans 1s</p></a>\n" ;
-		//echo "<p><span class=\"intitules\">Attention&nbsp;:</span> ton navigateur doit accepter les cookies&nbsp;!</p>\n" ;
+		echo "<div class=\"text-center\">\n";
+		echo "<a href=\"index.php\" class=\"btn btn-primary\" role=\"button\" title=\"Espace membres\">Clique ici si tu n'entres pas automatiquement dans 1s</a>\n" ;
+		echo "</div>\n";
 		
 		if (!$backURL)
 		{
@@ -124,10 +120,10 @@ if($md5password)
 		setcookie('login', '', time()+60*60*24*365);
 		setcookie('md5password', '', time()+60*60*24*365);
 	
-		echo "<p class=\"titre\">Identifiant ou mot de passe incorrect&nbsp;!</p>\n" ;
-		echo "<br />\n" ;
-		echo "<a href=\"identification.php\"><p class=\"titre2\">Recommencer l'identification</p></a>\n" ;
-		
+		echo "<div class=\"alert alert-danger\">Identifiant ou mot de passe incorrect&nbsp;!</div>\n" ;
+		echo "<div class=\"text-center\">\n";
+		echo "<a href=\"identification.php\" class=\"btn btn-primary\" role=\"button\">Recommencer l'identification</a>\n" ;
+		echo "</div>\n";
 	}
 }
 else
@@ -136,16 +132,41 @@ else
 
 	?>
 	<h1>Espace membres - Identification obligatoire</h1>
+
 	<form method="post" action="identification.php">
-	<table>
-	<tr><td>Identificant&nbsp;:</td><td><input name="login" type="text" /></td></tr>
-	<tr><td>Mot de passe&nbsp;:</td><td><input name="password" type="password" /></td></tr>
-	<tr><td>Se rappeler de moi</td><td><input type="checkbox" name="rememberme" value="1"></td></tr>
-	</table>
-	<input type="submit" value="M'identifier" />
+	
+	<div class="form-group input-group">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i> </span>
+	<input name="login" type="text" class="form-control" placeholder="Identifiant" required />
+	</div>
+
+	<div class="form-group input-group">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i> </span>
+	<input name="password" type="password" class="form-control" placeholder="Mot de passe" required />
+	</div>
+
+	<div class="checkbox">
+	<label for="rememberme">
+	<input type="checkbox" id="rememberme" name="rememberme" checked value="1" />
+	Se rappeler de moi
+	</label>
+	</div>
+
 	<input type="hidden" name="backURL" value="<?=$backURL?>" />
+
+	<div class="text-center">
+	<button type="submit" class="btn btn-success" >
+	M'identifier
+	</button>
+	</div>
+
+	<hr />
+
+	<div class="text-center">
+	<a href="../" title="Retour" class="btn btn-primary" role="button">Revenir au site public</a>
+	</div>
+
 	</form>
-	<p><a href="../" title="Retour">Revenir au site public</a></p>
 	<?
 
 }
@@ -153,6 +174,7 @@ else
 
 # Fermeture du cadre maitre
 
+echo "</div>\n" ;
 echo "</div>\n" ;
 
 # Fermeture BODY
