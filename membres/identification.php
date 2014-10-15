@@ -105,7 +105,7 @@ if($md5password)
 			$backURL = base64_decode($backURL);
 		}
 		
-		if (isset($rememberme) && isset($login) && isset($password))
+		if ($rememberme && isset($login) && isset($password))
 		{
 		
 			/* Set cookie to last 1 year */
