@@ -3,7 +3,7 @@ $aData = array(
 	array("membres", "membres.php", "Membres", "Liste des membres")
 	,array("infos", "infos.php", "Mes infos", "Modifier mes informations")
 	,array("reservation", "reservation.php", "R&eacute;servations", "")
-	,array("fichiers", "fichiers.php", "Fichiers", "")
+	//,array("fichiers", "fichiers.php", "Fichiers", "")
 	,array("dispos_s", "dispos.php", "Dispos spectacles", "")
 	,array("dispos_e", "dispos.php?train=1", "Dispos entrainements", "")
 	,array("dispos_st", "dispos_stats.php", "Statistiques", "")
