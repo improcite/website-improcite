@@ -51,13 +51,27 @@ else {
 			$tarif = @mysql_result( $requete_prochains , $i , "e.tarif" ) ;
 			$places = @mysql_result( $requete_prochains , $i , "e.places" ) ;
 
-		echo "<h2>$nom - $date - $places places maximum</h2>\n" ;
+			echo "<h2>$nom - $date - $places places maximum</h2>\n" ;
 
 			# Requete pour connaitre le nb de places deja reservees
 
 			$requete_places = @mysql_query( "SELECT * FROM $t_res WHERE evenement=$id ORDER BY nom ASC" ) ;
 
 			$places_tot = 0 ;
+
+			echo "<div class='table-responsive'>\n";
+			echo "<table class='table table-striped'>\n";
+			echo "<thead>\n";
+			echo "<tr>\n";
+			echo "<th>Nom</th>\n";
+			echo "<th>Places</th>\n";
+			echo "<th>Email</th>\n";
+			echo "<th>T&eacute;l&eacute;phone</th>\n";
+			echo "<th>Date</th>\n";
+			echo "<th>R&eacute;f&eacute;rence</th>\n";
+			echo "</tr>\n";
+			echo "</thead>\n";
+			echo "<tbody>\n";
 
 			while ( $resultat_places = @mysql_fetch_array( $requete_places ) ) {
 
@@ -71,18 +85,28 @@ else {
 				
 				$places_tot += $places_res ;
 
-				echo "<p>$places_res places r&eacute;serv&eacute;es pour $prenom_res $nom_res ($email_res - $tel_res)";
-				if ($date_res) { echo " le $date_res"; }
-				echo " (r&eacute;f&eacute;rence $ref)</p>\n";
-				
+				echo "<tr>\n";
+				echo "<td>$nom_res $prenom_res</td><td>$places_res</td><td>$email_res</td><td>$tel_res</td><td>$date_res</td><td>$ref</td>\n";
+				echo "</tr>\n";
 			}
 
+			echo "</tbody>\n";
+			echo "</table>\n";
+			echo "</div>\n";
+
 			$places_restantes = $places - $places_tot ;
+			$places_percent = floor($places_tot/$places*100);
 
-			echo "<p>$places_restantes places restantes pour ce spectacle</p>\n" ;
-		}
+			echo "<div class='progress'>\n";
+			echo "<div class='progress-bar progress-bar-striped active'  role='progressbar' aria-valuenow='$places_tot' aria-valuemin='0' aria-valuemax='$places' style='width: $places_percent%'>\n";
+			echo "<span>$places_percent%</span>";
+			echo "</div>\n";
+			echo "</div>\n";
+			echo "<p>$places_restantes places restantes pour ce spectacle</p>\n";
 
-			} else {
+			}
+
+		} else {
 
 			echo "<p>Pas de spectacles avec r&eacute;servations.</p>" ;
 		
@@ -126,7 +150,7 @@ else {
 				$places_res = $resultat_places["places"] ;
 				$places_tot += $places_res ;
 			}
-			$percent = floor($places/$places_tot);
+			$percent = floor($places_tot/$places*100);
 
 			echo "<tr>\n";
 			echo "<th>$nom - $date</th>\n";
