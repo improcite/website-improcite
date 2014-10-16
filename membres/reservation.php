@@ -102,8 +102,8 @@ else {
 	$nb_stats_resas = @mysql_num_rows( $requete_stats_resas );
 
 	if ( $nb_stats_resas > 0 ) {
+		echo "<div class='table-responsive'>\n";
 		echo "<table class='table table-striped'>\n";
-		echo "<caption>Statistiques des r&eacute;servations pour chaque spectacle</caption>\n";
 		echo "<thead>\n";
 		echo "<tr>\n";
 		echo "<td></td>\n";
@@ -145,6 +145,7 @@ else {
 
 		echo "</tbody>\n";
 		echo "</table>\n";
+		echo "</div>\n";
 	} else {
 		echo "<p>Pas de statistiques disponibles.</p>\n";
 	}
