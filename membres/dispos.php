@@ -161,7 +161,7 @@ echo "<hr />\n";
 # Proprietes du tableau
 $iFontSize = 9;
 $sStyl = " valign=\"top\" style=\"text-align:center\"";
-$sTableHeader  .= "<table class=\"grid table\">";
+$sTableHeader  .= "<table class=\"grid\" style=\"font-size:{$iFontSize}pt;\" border=\"1px\" cellspacing=\"0\" cellpadding=\"2px\">";
 $sColumnHeader .= "<tr bgcolor=\"#888\" style=\"font-weight:bold\">";
 $sColumnHeader .= "<td {$sStyl} width=\"5%\">Quand</td><td {$sStyl} width=\"10%\">Quoi</td>";
 $sColumnHeader .= "<td {$sStyl} width=\"5%\">Dispo.</td>";
