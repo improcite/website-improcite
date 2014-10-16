@@ -16,7 +16,6 @@ if ( ! $connexion || ! $db )
 	die();
 }
 
-DisplayPrintButton();
 
 
 # Traitement special pour les entrainements
@@ -191,6 +190,7 @@ echo '</div>';
 <?
 //-------------------------------- 
 
+DisplayPrintButton();
 # Affichage du pied de page
 @include ( "pied.php" ) ;
 

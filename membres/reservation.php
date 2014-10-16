@@ -150,6 +150,7 @@ else {
 	}
 
 
+	DisplayPrintButton();
 
 	# Fermeture du corps de la page
 

@@ -45,12 +45,12 @@ $iSaisonEnCours = 1 ;
 
 // Style de la page
 ?>
-<style>
+<!-- <style>
 	table { font-family: Tahoma; font-size: 10pt; }
 	h1 { text-align:center;background-color:#EEEEEE; color:black; font-size: 150%; border:1px solid #AAAAAA; }
 	input, textarea { color:black; background-color:#FFFFEE; border: 1px solid black; font-family: Tahoma; font-size: 10pt; }
 	input[type="submit"] { color:white; background-color:#888; }
-</style>
+</style> -->
 
 <?
 //---------------------------------------------------------------------------
@@ -72,7 +72,6 @@ if (!$tab) $tab = "SQL";
 
 
 
-DisplayPrintButton();
 
 //---------------------------------------------------------------------------
 // Définition des données
@@ -325,5 +324,6 @@ if (isset($aColumnData[$tab]))
 		fxDispTable($aData['table']);
 	}
 }
+DisplayPrintButton();
 ?>
 </div>

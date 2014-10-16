@@ -39,7 +39,7 @@ function DisplayPrintButton()
 	{
 		$sURI = $_SERVER['REQUEST_URI'];
 		if (strpos("?", $sURI)===false) $sURI .= "?"; else $sURI .= "&";
-		echo "<a style=\"float:right;margin:2px;text-align:center;display:block;width:200px;border:2px solid #AAAAAA;background-color:#888888;color:#FFFFFF;\" target=\"_new\" href=\"".$sURI."printmode=1\">Imprimer cette page</a>";
+		echo "<a style=\"float:right;\" class=\"btn btn-primary\" role=\"button\" target=\"_new\" href=\"".$sURI."printmode=1\"><i class=\"glyphicon glyphicon-print\"></i> Imprimer cette page</a>";
 	}
 }
 

@@ -147,6 +147,7 @@ else
 	echo "<p>Pas de membres</p>" ;
 }
 
+DisplayPrintButton();
 # Fermeture du corps de la page
 echo "</div>\n" ;
 
