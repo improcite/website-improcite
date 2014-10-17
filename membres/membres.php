@@ -103,7 +103,8 @@ if ( $nb_membres > 0 )
 
 		echo "<h2>$prenom $nom</h2>\n" ;
 		
-		$photo = "../photos/comediens/$id.jpg";
+		$photo = "../photos/comediens/$saison/$id.jpg";
+		if (!file_exists($photo)) { $photo = "../photos/comediens/$id.jpg"; }
 		if (!file_exists($photo)) { $photo = "../photos/comediens/defaut.jpg"; }
 		?><table><tr><td><?
 		echo "<img  class='img-thumbnail' style='width:150px;' src=\"$photo\">";

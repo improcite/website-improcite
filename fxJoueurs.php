@@ -2,7 +2,7 @@
 
 function fxDispJoueurArray($aJoueurs, $sStyle = "")
 {
-	global $table_comediens, $sPhotoRelDir;
+	global $table_comediens, $sPhotoRelDir, $currentSaisonBit;
 	$iPct = round(100 / sizeof($aJoueurs));
 	
 	echo '<ul class="comediens comediens-small">';
@@ -22,9 +22,9 @@ function fxDispJoueurArray($aJoueurs, $sStyle = "")
 		$afficherNom = @mysql_result($requete_joueur, 0, "affichernom");
 		$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");	// en fonction du désir de la personne, on l'affiche pas son nom
 	
-		$photo = "$sPhotoRelDir$id.jpg";
+		$photo = $sPhotoRelDir . $currentSaisonBit . "/" ."$id.jpg";
+		if (!file_exists($photo)) { $photo = $sPhotoRelDir."$id.jpg"; }
 		if (!file_exists($photo)) { $photo = $sPhotoRelDir."defaut.jpg"; }
-		
 		
 		echo "<li><a href=\"?p=comediens&id=$id#apage\" title=\"$sNomPrenom\">\n" ;
 		echo "<img class=\"photo_comedien\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" />\n";

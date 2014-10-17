@@ -35,7 +35,10 @@ if (isset ( $id )) {
 		$improcite = affiche_texte ( $rqComedien[ "improcite" ] ) ;
 			
 		# Photo du comedien
-		$photo = $sPhotoRelDir."$id.jpg" ;
+		$photo = $sPhotoRelDir.$currentSaisonBit."/"."$id.jpg" ;
+		if ( !file_exists( $photo ) ) {
+			$photo = $sPhotoRelDir."$id.jpg" ;
+		}
 
 		# En gros on affiche le prenom du comedien, et le surnom s'il est différent
 		echo "<h1>$prenom" ;
@@ -106,26 +109,20 @@ if (isset ( $id )) {
 	$iMaskLastYear = 1 << ($iCurrentSaisonNumber -1);
 	
 	$aCategories = array(
-		"Saison ".$aSaisonNames[$iCurrentSaisonNumber] => "saison &	".$iMaskCurrentYear." <> 0",
-		"Saison ".$aSaisonNames[$iCurrentSaisonNumber-1] => "saison & ".$iMaskLastYear." <> 0",
-	
-	//	"Saison 2011-2012" => "saison &	128 <> 0",
-	//	"Saison 2010-2011" => "saison &	64 <> 0",
-	//	"Saison 2009-2010" => "saison & 32 <> 0",
-	//	"Saison 2008-2009" => "saison & 16 <> 0",
-	//	"Saison 2007-2008" => "saison & 8 <> 0",
-        //	"Saison 2006-2007" => "saison & 4 <> 0",
-	//	"Saison 2005-2006" => "saison & 2 <> 0",
-	//	"Saison 2004-2005" => "saison & 1 <> 0"
+		"Saison ".$aSaisonNames[$iCurrentSaisonNumber] => $iCurrentSaisonNumber,
+		"Saison ".$aSaisonNames[$iCurrentSaisonNumber-1] => $iCurrentSaisonNumber-1,
 		);
 	
 	
-	foreach( $aCategories as $sTitre => $sConditionSQL )
+	foreach( $aCategories as $sTitre => $iSaisonNumber )
 	{
 		?>
 <h2 style="clear:both;"><?=$sTitre?></h2> 
 <ul class="comediens">
 		<?
+		$iMask = 1 << $iSaisonNumber;
+		$iSaisonBit = pow( 2, $iSaisonNumber );
+		$sConditionSQL = "saison & ". $iMask ." <> 0";
 		$rqComedien = @mysql_query ( "SELECT id,prenom,nom,surnom,affichernom FROM $table_comediens WHERE $sConditionSQL ORDER BY nom" );
 		$nb = @mysql_num_rows( $rqComedien ) ;
 		
@@ -139,7 +136,10 @@ if (isset ( $id )) {
 			$nom = $resultat_tous_comediens[ "nom" ] ;
 			$surnom = $resultat_tous_comediens[ "surnom" ] ;
 			$afficherNom = $resultat_tous_comediens[ "affichernom" ] ;
-			$photo = $sPhotoRelDir."$id.jpg" ;
+			$photo = $sPhotoRelDir.$iSaisonBit."/"."$id.jpg" ;
+			if ( !file_exists( $photo ) ) {
+				$photo = $sPhotoRelDir."$id.jpg" ;
+			}
 	
 			# Affichage de la photo si elle existe, sinon une image par defaut
 			if ( ! file_exists( $photo ) ) {

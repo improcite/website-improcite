@@ -49,7 +49,10 @@ else
 	if (file_exists($sPhotoRelDir. $sRandComedienId.".jpg"))
 	{
 		$sRandImage = $sPhotoRelDir. $sRandComedienId.".jpg";
-		
+	}
+	if (file_exists($sPhotoRelDir. $currentSaisonBit . "/" . $sRandComedienId.".jpg"))
+	{
+		$sRandImage = $sPhotoRelDir. $currentSaisonBit . "/" . $sRandComedienId.".jpg";
 	}
 }
 ?>
