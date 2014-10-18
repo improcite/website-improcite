@@ -49,37 +49,22 @@ echo "<div id=\"corps\">\n" ;
 echo "<h1>Liste des membres</h1>\n" ;
 
 # On determine la saison
-# 2004-2005 : 1
-# 2005-2006 : 2
-# 2006-2007 : 4
-# 2007-2008 : 8
-# 2008-2009 : 16
-# 2009-2010 : 32
-# 2010-2011 : 64
-# 2011-2012 : 128 
-# Par defaut : 2004-2005 (1)
-# La saison est aussi donnee par le parametre POST saison
 $saison = getp("saison", 1 << $iCurrentSaisonNumber);
 
 echo "<form method=\"get\">\n";
-
-echo "<p style=\"text-align: center\">\n";
-echo "<select name=\"saison\">\n";
+echo "<div class='text-center'>\n";
+echo "<select name=\"saison\" onChange=\"this.form.submit()\" class=\"form-control text-center\">\n";
 for($i=0;$i<=$iCurrentSaisonNumber;$i++)
 {
-		echo "<option value=\"".(1 << $i)."\"";
-			if ($saison == 1 << $i) {echo "selected ";}
-		echo ">Saison ".(2004+$i)."-".(2005+$i)."</option>\n";
+	echo "<option value=\"".(1 << $i)."\"";
+	if ($saison == 1 << $i) {echo "selected ";}
+	echo ">Saison ".(2004+$i)."-".(2005+$i)."</option>\n";
 }
 echo "</select>\n";
-
-echo "<input type=\"submit\" value=\"Afficher\" /></p>\n";
-
+echo "</div>\n";
 echo "</form>\n";
 
 # On determine le filtre de la requete SQL
-
-
 $filtresql = "saison & ".($saison)." <> 0";
 $requete_membres = mysql_query ( "SELECT * FROM $table_comediens WHERE $filtresql ORDER BY nom" ) ;
 
