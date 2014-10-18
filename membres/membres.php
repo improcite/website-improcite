@@ -87,6 +87,8 @@ $nb_membres = @mysql_num_rows( $requete_membres ) ;
 
 if ( $nb_membres > 0 )
 {
+	echo "<div class='row'>\n";
+
 	for ( $i = 0 ; $i < $nb_membres ; $i++ )
 	{
 		$id = @mysql_result( $requete_membres , $i , "id" ) ;
@@ -100,7 +102,7 @@ if ( $nb_membres > 0 )
 		$annee = @mysql_result( $requete_membres , $i , "annee" ) ;
 		$rights = @mysql_result( $requete_membres , $i , "rights" ) ;
 
-
+		echo "<div class='col-md-6'>\n";
 		echo "<h2>$prenom $nom</h2>\n" ;
 		
 		$photo = "../photos/comediens/$saison/$id.jpg";
@@ -141,7 +143,9 @@ if ( $nb_membres > 0 )
 
 		}
 		?></div></td></tr></table><?
+		echo "</div>\n";
 	}
+	echo "</div>\n";
 }
 else
 {
