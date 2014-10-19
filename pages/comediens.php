@@ -1,13 +1,13 @@
 <?
 
 # Recuperation de l'id par la methode GET
-$id = $_GET["id"];
+$id = getp("id");
 
 # Si un id de comedien a ete precise on affiche la fiche du comedien
 # Sinon c'est le tableau des comediens qu'on affiche
 
-
-if (isset ( $id )) {
+if ($id)
+{
 
 	# la variable $id est remplie. Recherche de la fiche du comedien.
 	$rqComedien = @mysql_fetch_array(mysql_query ( "SELECT * FROM $table_comediens WHERE id=$id" ));
@@ -59,7 +59,7 @@ if (isset ( $id )) {
 		//$nbOmerta = @mysql_num_rows( $rqOmerta );
 
 
-		if ($nbOmerta) {
+		if (isset($nbOmerta)) {
 			echo "<p><span class=\"intitules\">Ses personnages Omerta&nbsp;:</span>";
 			while ( $resOmerta = @mysql_fetch_array ( $rqOmerta ) ) {
 				echo " <a href=\"index.php?p=omerta&id=".$resOmerta['id']."\">".$resOmerta['nom']."</a>";

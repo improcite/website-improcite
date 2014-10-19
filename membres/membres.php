@@ -123,11 +123,18 @@ if ( $nb_membres > 0 )
 				<form style="display:inline" action="membres.php" method="post" role="form">
 				<input type="hidden" name="modright" value="<?=$sRightId?>">
 				<input type="hidden" name="user" value="<?=$id?>">
-				<?=$sRightLib?><input type="checkbox" <?=$bCheck?"CHECKED":""?> onClick="form.submit()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" <?=$bCheck?"CHECKED":""?> onClick="form.submit()"><?=$sRightLib?>
 				</form>
 				<?
 			}
-
+			
+			?>
+			<a href="infos?id=<?=$id?>"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Edit</a>
+			
+			<?
+			
+			
+			
 		}
 		echo "</div>\n";
 		echo "</div>\n";

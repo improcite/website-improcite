@@ -32,6 +32,10 @@ require_once ("../Mobile_Detect.php");
 include ( "../connexion_mysql.php" ) ;
 
 include ( "../fxDB.php" );
+
+// Fix warning
+if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -103,9 +107,8 @@ foreach(explode(";", $aUserInfos[1]) as $v)
 
 function fxGetExistingRights()
 {
-	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité artistique", "noselect"=>"Non sélectionnable");
+	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable");
 }
-
 
 function fxUserHasRight($sRight)
 {
