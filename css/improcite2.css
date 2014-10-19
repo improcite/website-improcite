@@ -34,6 +34,10 @@ h3 {
 	color: black;
 }
 
+.membres .infos {
+	height: 220px;
+        overflow: hidden;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */

@@ -18,29 +18,6 @@ if ( ! $connexion || ! $db )
 	die();
 }
 
-if (fxUserHasRight("admin"))
-{
-	$mr = getp("modright");
-	$usr = getp("user");
-	if ($mr  &&  $usr)
-	{
-		global $aUserRights;
-		$r = fxQuerySingleValue("SELECT rights FROM impro_comediens WHERE id = ?", array($usr));
-		if (strpos($r, $mr) !== false)
-		{
-			$r = str_replace($mr, "", $r);
-		}
-		else
-		{
-			$r .= ";".$mr;
-		}
-		$r = str_replace(";;", ";", $r);
-		$r = trim($r, ";");
-		fxQuery("UPDATE impro_comediens SET rights = ? WHERE id = ?", array($r, $usr));
-	}
-}	
-
-
 # MySQL est disponible, on continue !
 # Ouverture du corps de la page
 
@@ -72,7 +49,7 @@ $nb_membres = @mysql_num_rows( $requete_membres ) ;
 
 if ( $nb_membres > 0 )
 {
-	echo "<div class='row'>\n";
+	echo "<div class='row membres'>\n";
 
 	for ( $i = 0 ; $i < $nb_membres ; $i++ )
 	{
@@ -98,37 +75,13 @@ if ( $nb_membres > 0 )
 		echo "<div class='col-sm-4'>\n";
 		echo "<img  class='img-thumbnail center-block' src=\"$photo\" alt=\"$prenom $nom\">";
 		echo "</div>\n";
-		echo "<div class='col-sm-8'>\n";
+		echo "<div class='col-sm-8 infos'>\n";
 		echo "<ul class='list-group'>\n";
 		echo "<li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> ".@affiche_texte($email)."</li>\n";
 		echo "<li class='list-group-item'><i class='glyphicon glyphicon-user'></i> $jour/$mois/$annee</li>\n";
 		echo "<li class='list-group-item'><i class='glyphicon glyphicon-earphone'></i> $portable</li>\n";
 		echo "<li class='list-group-item'><i class='glyphicon glyphicon-home'></i> ".@affiche_texte($adresse)."</li>\n";
 		echo "</ul>\n";
-		
-		if (fxUserHasRight("admin"))
-		{
-			foreach(fxGetExistingRights() as $sRightId=>$sRightLib)
-			{
-				$bCheck = false;
-				foreach(explode(";", $rights) as $v)
-				{
-					if ($v == $sRightId)
-					{
-						$bCheck = true;
-						break;
-					}
-				}
-				?>
-				<form style="display:inline" action="membres.php" method="post" role="form">
-				<input type="hidden" name="modright" value="<?=$sRightId?>">
-				<input type="hidden" name="user" value="<?=$id?>">
-				<?=$sRightLib?><input type="checkbox" <?=$bCheck?"CHECKED":""?> onClick="form.submit()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</form>
-				<?
-			}
-
-		}
 		echo "</div>\n";
 		echo "</div>\n";
 		echo "</div>\n";
