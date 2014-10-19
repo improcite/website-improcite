@@ -51,7 +51,7 @@ echo "<h1>Liste des membres</h1>\n" ;
 # On determine la saison
 $saison = getp("saison", 1 << $iCurrentSaisonNumber);
 
-echo "<form method=\"get\">\n";
+echo "<form method=\"get\" role='form'>\n";
 echo "<div class='text-center'>\n";
 echo "<select name=\"saison\" onChange=\"this.form.submit()\" class=\"form-control text-center\">\n";
 for($i=0;$i<=$iCurrentSaisonNumber;$i++)
@@ -108,7 +108,6 @@ if ( $nb_membres > 0 )
 		
 		if (fxUserHasRight("admin"))
 		{
-			echo "<p>";		
 			foreach(fxGetExistingRights() as $sRightId=>$sRightLib)
 			{
 				$bCheck = false;
@@ -121,15 +120,13 @@ if ( $nb_membres > 0 )
 					}
 				}
 				?>
-				<form style="display:inline" action="membres.php" method="post">
+				<form style="display:inline" action="membres.php" method="post" role="form">
 				<input type="hidden" name="modright" value="<?=$sRightId?>">
 				<input type="hidden" name="user" value="<?=$id?>">
 				<?=$sRightLib?><input type="checkbox" <?=$bCheck?"CHECKED":""?> onClick="form.submit()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</form>
 				<?
 			}
-			//echo "<p><span class=\"intitules\">Adresse&nbsp;:</span> ".@affiche_texte($adresse)."</p>\n";
-			echo "</p>";
 
 		}
 		echo "</div>\n";
@@ -140,10 +137,11 @@ if ( $nb_membres > 0 )
 }
 else
 {
-	echo "<p>Pas de membres</p>" ;
+	echo "<div class='alert alert-warning'>Pas de membres</div>" ;
 }
 
 DisplayPrintButton();
+
 # Fermeture du corps de la page
 echo "</div>\n" ;
 
