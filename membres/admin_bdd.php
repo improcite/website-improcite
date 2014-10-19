@@ -267,7 +267,7 @@ if (!isPrintMode())
 	}*/
 }
 ?><div style="font-family: Tahoma; width: auto; font-size: 10pt;border:1px solid white;padding:2px;">
-<h1><?=$aTabs[$tab]?></h1>
+<h1><?=(isset($aTabs[$tab]) ? $aTabs[$tab] : '')?></h1>
 
 <?
 //---------------------------------------------------------------------------

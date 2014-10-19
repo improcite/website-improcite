@@ -7,6 +7,7 @@
 
 /* ### Traitement du texte ### */ 
 
+//error_reporting(E_ALL);
  
 function getp($sName, $sDefault = "")
 {
@@ -19,7 +20,7 @@ function getp($sName, $sDefault = "")
 
 function dateToUnix($date)
 {
-	ereg ( "([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})" , $date , $tableau );
+	preg_match( "~([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})~" , $date , $tableau );
 	return mktime($tableau[4], $tableau[5], $tableau[6], $tableau[2], $tableau[3], $tableau[1]);
 }
 
@@ -44,9 +45,84 @@ function DisplayPrintButton()
 }
 
 
+function get_photo_uri($id = 0)
+{
+	if($id == 0)
+	{
+		$id = $_SESSION['id_impro_membre'];
+	}
+	
+	global $sPhotoRelDir;
+	global $currentSaisonBit;
+	
+	$photo = $sPhotoRelDir.$currentSaisonBit."/"."$id.jpg" ;
+	if ( !file_exists( dirname(__FILE__)."/".$photo ) ) {
+		$photo = $sPhotoRelDir."$id.jpg" ;
+	}
+	
+	if ( !file_exists( dirname(__FILE__)."/".$photo ) ) {
+		$photo = $sPhotoRelDir."defaut.jpg";
+	}	
+	
+	return str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)."/".$photo);
+}
+
+
+
+function image_resize_crop($src, $dst, $width, $height, $crop=0){
+
+  if(!list($w, $h) = getimagesize($src)) return "Unsupported picture type!";
+
+  $type = strtolower(substr(strrchr($src,"."),1));
+  if($type == 'jpeg') $type = 'jpg';
+  switch($type){
+    case 'bmp': $img = imagecreatefromwbmp($src); break;
+    case 'gif': $img = imagecreatefromgif($src); break;
+    case 'jpg': $img = imagecreatefromjpeg($src); break;
+    case 'png': $img = imagecreatefrompng($src); break;
+    default : return "Unsupported picture type!";
+  }
+
+  // resize
+  if($crop){
+    if($w < $width or $h < $height) return "Picture is too small!";
+    $ratio = max($width/$w, $height/$h);
+    $h = $height / $ratio;
+    $x = ($w - $width / $ratio) / 2;
+    $w = $width / $ratio;
+  }
+  else{
+    if($w < $width and $h < $height) return "Picture is too small!";
+    $ratio = min($width/$w, $height/$h);
+    $width = $w * $ratio;
+    $height = $h * $ratio;
+    $x = 0;
+  }
+
+  $new = imagecreatetruecolor($width, $height);
+
+  // preserve transparency
+  if($type == "gif" or $type == "png"){
+    imagecolortransparent($new, imagecolorallocatealpha($new, 0, 0, 0, 127));
+    imagealphablending($new, false);
+    imagesavealpha($new, true);
+  }
+
+  imagecopyresampled($new, $img, 0, 0, $x, 0, $width, $height, $w, $h);
+
+  switch($type){
+    case 'bmp': imagewbmp($new, $dst); break;
+    case 'gif': imagegif($new, $dst); break;
+    case 'jpg': imagejpeg($new, $dst); break;
+    case 'png': imagepng($new, $dst); break;
+  }
+  return true;
+}
+
+
 function extract_month( $date)
 {
-	if ( ereg ( "([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})" , $date , $tableau )  )
+	if ( preg_match ( "~([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})~" , $date , $tableau )  )
 	{
 		return $tableau[2];
 	}
@@ -55,7 +131,7 @@ function extract_month( $date)
 
 function extract_year( $date)
 {
-	if ( ereg ( "([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})" , $date , $tableau )  )
+	if ( preg_match ( "~([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})~" , $date , $tableau )  )
 	{
 		return $tableau[1];
 	}
@@ -68,7 +144,7 @@ function affiche_date ( $date ) {
 
 	# La date doit etre de la forme AAAAMMJJhhmmss
 
-	if ( ereg ( "([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})" , $date , $tableau )  ) {
+	if ( preg_match( "~([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})~" , $date , $tableau )  ) {
 
 		$aMois = array(
 			'janvier',
@@ -107,7 +183,7 @@ function affiche_heure ( $date ) {
 
 	# La date doit etre de la forme AAAAMMJJhhmmss
 
-	if ( ereg ( "([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})" , $date , $tableau )  ) {
+	if ( preg_match ( "~([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})~" , $date , $tableau )  ) {
 	
 		$heure = number_format($tableau[4],0);
 		return "${heure}h$tableau[5]" ;
@@ -132,12 +208,12 @@ function affiche_texte ( $texte ) {
 	
 	while (list ($key, $line) = each ($lines)) {
 
-		$line = eregi_replace("([ \t]|^)www\.", " http://www.", $line);
-		$line = eregi_replace("([ \t]|^)ftp\.", " ftp://ftp.", $line);
-		$line = eregi_replace("[^\"'=](http://[^ )\r\n]+)", "<a target=\"_new\" href=\"\\1\" title=\"\\1\">\\1</a>", $line);
-		$line = eregi_replace("[^\"'=](https://[^ )\r\n]+)", "<a target=\"_new\" href=\"\\1\" title=\"\\1\">\\1</a>", $line);
-		$line = eregi_replace("[^=\"'](ftp://[^ )\r\n]+)", "<a target=\"_new\" href=\"\\1\" title=\"\\1\">\\1</a>", $line);
-		$line = eregi_replace("([-a-z0-9_]+(\.[_a-z0-9-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)+))", "<a href=\"mailto:\\1\">\\1</a>", $line);
+		$line = preg_replace("~([ \t]|^)www\.~i", " http://www.", $line);
+		$line = preg_replace("~([ \t]|^)ftp\.~i", " ftp://ftp.", $line);
+		$line = preg_replace("~[^\"'=](http://[^ )\r\n]+)~i", "<a target=\"_new\" href=\"\\1\" title=\"\\1\">\\1</a>", $line);
+		$line = preg_replace("~[^\"'=](https://[^ )\r\n]+)~i", "<a target=\"_new\" href=\"\\1\" title=\"\\1\">\\1</a>", $line);
+		$line = preg_replace("~[^=\"'](ftp://[^ )\r\n]+)~i", "<a target=\"_new\" href=\"\\1\" title=\"\\1\">\\1</a>", $line);
+		$line = preg_replace("~([-a-z0-9_]+(\.[_a-z0-9-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)+))~i", "<a href=\"mailto:\\1\">\\1</a>", $line);
 
 		if ( empty ( $newText ) ) {
 		
@@ -185,7 +261,7 @@ function msie ( ) {
 
 	$test = 0 ;
 
-	if ( ereg('MSIE', $_SERVER["HTTP_USER_AGENT"]) && !ereg('Opera', $_SERVER["HTTP_USER_AGENT"]) ) {
+	if ( preg_match('~MSIE~', $_SERVER["HTTP_USER_AGENT"]) && !preg_match('~Opera~', $_SERVER["HTTP_USER_AGENT"]) ) {
 
 		$test = 1 ;
 
