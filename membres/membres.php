@@ -93,13 +93,18 @@ if ( $nb_membres > 0 )
 		$photo = "../photos/comediens/$saison/$id.jpg";
 		if (!file_exists($photo)) { $photo = "../photos/comediens/$id.jpg"; }
 		if (!file_exists($photo)) { $photo = "../photos/comediens/defaut.jpg"; }
-		?><table><tr><td><?
-		echo "<img  class='img-thumbnail' style='width:150px;' src=\"$photo\">";
-		?></td><td><div style="margin-left:20px;"><?
-		echo "<span class=\"intitules\">Adresse mail&nbsp;:</span> ".@affiche_texte($email)."<br>\n";
-		echo "<span class=\"intitules\">Date de naissance&nbsp;:</span> $jour/$mois/$annee<br>\n";
-		echo "<span class=\"intitules\">Portable&nbsp;:</span> $portable<br>\n";
-		echo "<span class=\"intitules\">Adresse&nbsp;:</span> ".@affiche_texte($adresse)."<br>\n";
+
+		echo "<div class='row'>\n";
+		echo "<div class='col-sm-4'>\n";
+		echo "<img  class='img-thumbnail center-block' src=\"$photo\" alt=\"$prenom $nom\">";
+		echo "</div>\n";
+		echo "<div class='col-sm-8'>\n";
+		echo "<ul class='list-group'>\n";
+		echo "<li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> ".@affiche_texte($email)."</li>\n";
+		echo "<li class='list-group-item'><i class='glyphicon glyphicon-user'></i> $jour/$mois/$annee</li>\n";
+		echo "<li class='list-group-item'><i class='glyphicon glyphicon-earphone'></i> $portable</li>\n";
+		echo "<li class='list-group-item'><i class='glyphicon glyphicon-home'></i> ".@affiche_texte($adresse)."</li>\n";
+		echo "</ul>\n";
 		
 		if (fxUserHasRight("admin"))
 		{
@@ -127,7 +132,8 @@ if ( $nb_membres > 0 )
 			echo "</p>";
 
 		}
-		?></div></td></tr></table><?
+		echo "</div>\n";
+		echo "</div>\n";
 		echo "</div>\n";
 	}
 	echo "</div>\n";
