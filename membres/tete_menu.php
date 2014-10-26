@@ -1,3 +1,7 @@
+<?
+$baseUri = basename($_SERVER['REQUEST_URI']);
+?>
+
     <div id="menumembres" class="navbar-wrapper">
       <div class="container">
 
@@ -14,39 +18,39 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="<?=((basename($_SERVER['REQUEST_URI']) == "membres.php")?'active':'')?>">
+                <li class="<?=(($baseUri == "membres.php")?'active':'')?>">
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
-                <li class="<?=((basename($_SERVER['REQUEST_URI']) == "infos.php")?'active':'')?>">
+                <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
                   <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Mon compte</a>
                 </li>
-                <li class="<?=((basename($_SERVER['REQUEST_URI']) == "reservation.php")?'active':'')?>">
+                <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
                   <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
                 </li>
-                <li class="dropdown <?=( strstr( basename($_SERVER['REQUEST_URI']), "dispos") ?'active':'')?>">
+                <li class="dropdown <?=( strstr( $baseUri, "dispos") ?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Disponibilit&eacute;s <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li class="<?=((basename($_SERVER['REQUEST_URI']) == "dispos.php")?'active':'')?>">
+                    <li class="<?=(($baseUri == "dispos.php")?'active':'')?>">
                       <a href="dispos.php"><i class="glyphicon glyphicon-star"></i> Spectacles</a>
                     </li>
-                    <li class="<?=((basename($_SERVER['REQUEST_URI']) == "dispos.php?train=1")?'active':'')?>">
+                    <li class="<?=(($baseUri == "dispos.php?train=1")?'active':'')?>">
                       <a href="dispos.php?train=1"><i class="glyphicon glyphicon-star-empty"></i> Entra&icirc;nements</a>
                     </li>
                     <li class="divider"></li>
-                    <li class="<?=((basename($_SERVER['REQUEST_URI']) == "dispos_stats.php")?'active':'')?>">
+                    <li class="<?=(($baseUri == "dispos_stats.php")?'active':'')?>">
                       <a href="dispos_stats.php"><i class="glyphicon glyphicon-stats"></i> Statistiques</a>
                     </li>
                   </ul>
                 </li>
 				
-                <li class="dropdown <?=( strstr( basename($_SERVER['REQUEST_URI']), "dispos") ?'active':'')?>">
+                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php") ?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-wrench"></i> Admin <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-					<li class="<?=((basename($_SERVER['REQUEST_URI']) == "admin_bdd.php")?'active':'')?>">
+					<li class="<?=(($baseUri == "admin_bdd.php")?'active':'')?>">
 					  <a href="admin_bdd.php"><i class="glyphicon glyphicon-list-alt"></i> Donn&eacute;es</a>
 					</li>
-					<li class="<?=((basename($_SERVER['REQUEST_URI']) == "carousel.php")?'active':'')?>">
-					  <a href="carousel.php"><i class="glyphicon glyphicon-repeat"></i> Caroussel</a>
+					<li class="<?=(($baseUri == "carousel.php")?'active':'')?>">
+					  <a href="carousel.php"><i class="glyphicon glyphicon-film"></i> Caroussel</a>
 					</li>
                   </ul>
                 </li>				

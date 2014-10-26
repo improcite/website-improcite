@@ -102,7 +102,7 @@ if (sizeof($aAllSpecatclesId) > 0)
 				}
 				
 				$row = $aEntriesRow[$sDateEntry];
-				$tooltip = $row["nom"]."<br/>".$row["lnom"]."<br/>".htmlentities($aEntriesDesc[$sDateEntry]);
+				$tooltip = $row["nom"]."<br/>".$row["lnom"]."<br/>".htmlentities(cutIfWider($aEntriesDesc[$sDateEntry], 100));
 				$txt = '<a href="dispos.php?month='.$moisReel.'&year='.$anReel.'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img border="0" src="img/'.$icon.'"></a>';
 				
 				$sName = "";
@@ -202,7 +202,7 @@ foreach($aAllEvents as $aRow)
 	}
 	if($aRow['ecommentaire'])
 	{
-		?><div style="margin-left:60px;margin-bottom:0px;font-style: italic;"><?=$aRow['ecommentaire']?></div><?
+		?><div style="margin-left:60px;margin-bottom:0px;font-style: italic;"><?=cutIfWider($aRow['ecommentaire'], 100)?></div><?
 	}
 	?><div style="height:5px;"></div><?
 }

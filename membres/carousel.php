@@ -43,23 +43,25 @@ if($admin) {
 foreach($files as $file)
 {
 	if($file == "." || $file == "..") continue;
-	
-	?><li class='list-group-item'><?
-	
 	$fileWithoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file);
 	$bCheck = strstr($sPhpFile, '"'.$fileWithoutExt.'"');
 	
-	?><input type="checkbox" value="active_on" name="<?=$fileWithoutExt?>" <?=$bCheck?"CHECKED":""?> <?=$admin?"":"READONLY"?>>
+	?>
+	<div class="col-md-4">
+	<li class='list-group-item' style='<?=($bCheck?"background-color:#EEFFEE":"")?>'>
+	<input type="checkbox" value="active_on" name="<?=$fileWithoutExt?>" <?=$bCheck?"CHECKED":""?> <?=$admin?"":"READONLY"?>>
 	<img src="../photos/carousel/<?=$file?>" style="height:50px;" />
-	</li><?
+	</li>
+	</div>
+	<?
 }
 
+?><div class="clearfix"></div><?
 if($admin) {
-?><input class="btn btn-primary" type="submit" value="Valider les modifications"/></form><?
+	?><input class="btn btn-primary" type="submit" value="Valider les modifications"/></form><?
 }
 
-
-?><li class='list-group-item'><?
+?><br/><br/><li class='list-group-item'><?
 
 $newId = time();
 HandleAjaxFileUi("carousel.php", "image", $newId, "../photos/carousel/$newId", "Ajouter une image", "height:100px;", 800, 200, false);

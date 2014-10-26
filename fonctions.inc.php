@@ -516,6 +516,18 @@ function HandleAjaxFileUpload($field, $path)
 	}
 }
 
+function cutIfWider($t, $mx)
+{
+	if(strlen($t) > $mx)
+	{
+		return substr($t, 0, $mx)."...";
+	}
+	else
+	{
+		return $t;
+	}
+}
+
 
 
 

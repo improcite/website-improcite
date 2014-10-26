@@ -18,6 +18,7 @@ if ( ! $connexion || ! $db )
 
 
 
+
 # Traitement special pour les entrainements
 $bDisplayTrain = getp("train") ? 1 : 0;
 $CURRENT_MENU_ITEM = $bDisplayTrain ? "dispos_t" : "dispos";
@@ -230,7 +231,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 <td <?=$sStyl?> >
 	<u><?=$aRow["nom"]?></u><br />
 	<?=$aRow["lnom"]?><br />
-	<i><?=$aRow["ecommentaire"]?></i>
+	<i><?=cutIfWider($aRow["ecommentaire"], 40)?></i>
 	
 </td>
 
