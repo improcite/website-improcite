@@ -381,4 +381,150 @@ function afficher_inscription_newsletter($sEmail = "")
 	echo '</form>';
 }
 
+
+
+
+function HandleAjaxFileUi($thisPage, $field, $edited_id, $photoUri, $title, $previewStyle, $w, $h, $editMode)
+{
+?>
+	<script type='text/javascript' src='../js/cropbox.js'></script>
+	<div class="panel panel-default"><div class="panel-heading"><?=$title?></div><div class="panel-body">
+	<? if ($editMode) { ?>
+	<img id="photo_preview" src="<?=($photoUri."?".rand())?>" style="<?=$previewStyle?>"/>	
+	<input type="button" class="btn btn-primary" value="Modifier" id="ed_pic"/>
+	<? } else { ?>
+	<input type="button" class="btn btn-primary" value="Ajouter" id="ed_pic"/>
+	<? } ?>
+	
+	<style>
+        .action
+        {
+            width: <?=$w?>px;
+            height: 30px;
+            margin: 10px 0;
+        }
+        .cropped>img
+        {
+            margin-right: 10px;
+        }
+    </style>
+	<div id="crop_container" style="width:500px;height:<?=$w?>px;">
+    <div class="imageBox" style="float:left;">
+        <div class="thumbBox" style="float:left;width: <?=$w?>px;height:<?=$h?>px;border:1px solid black;" ></div>
+        <div class="spinner" style="display: none">Loading...</div>
+    </div>
+    <div class="action">
+        <input type="file" id="file" style="float:left; width: 250px">
+		<input type="submit" id="btnCrop" class="btn btn-primary"  style="float: right" value="Valider" />
+        <input type="button" class="btn btn-info" id="btnZoomIn" value="+" style="float: right">&nbsp;
+        <input type="button" class="btn btn-info" id="btnZoomOut" value="-" style="float: right">
+    </div>
+    <div class="cropped">
+    </div>
+	</div>
+	<script type="text/javascript">
+		$(window).load(function() {
+		$("#crop_container").hide();
+		
+		$("#ed_pic").click(function(){
+			$("#crop_container").show();
+		});
+			var options =
+			{
+				thumbBox: '.thumbBox',
+				spinner: '.spinner',
+				imgSrc: ''
+			}
+			var cropper = $('.imageBox').cropbox(options);
+			$('#file').on('change', function(){
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					options.imgSrc = e.target.result;
+					cropper = $('.imageBox').cropbox(options);
+				}
+				reader.readAsDataURL(this.files[0]);
+				this.files = [];
+			})
+			$('#btnCrop').on('click', function(){
+				var imgData = cropper.getDataURL();
+				
+				$.ajax({
+				  type: "POST",
+				  url: "<?=$thisPage?>",
+				  data: {<?=$field?>: imgData, id: <?=$edited_id?>, action: "AjaxUploadFile"}
+				}).done(function( respond ) {
+				  //console.log(respond);
+				
+					<?if ($editMode) { ?>
+					
+					// refresh				
+					d = new Date();
+					$("#photo_preview").attr("src", "<?=$photoUri?>"+"?"+d.getTime());
+					$('#crop_container').hide();
+					
+					<? } else { ?>
+					
+					location.reload();
+
+					<? } ?>
+				  
+				});
+				
+			})
+			$('#btnZoomIn').on('click', function(){
+				cropper.zoomIn();
+			})
+			$('#btnZoomOut').on('click', function(){
+				cropper.zoomOut();
+			})
+		});
+	</script>		
+	</div></div>
+<?
+}
+
+
+function HandleAjaxFileUpload($field, $path)
+{
+	if ((getp("action") == "AjaxUploadFile") && isset($_POST[$field]) && !empty($_POST[$field]) )
+	{    
+		// get the dataURL
+		$dataURL = $_POST[$field];  
+		
+		echo $dataURL;
+		
+
+		// the dataURL has a prefix (mimetype+datatype) 
+		// that we don't want, so strip that prefix off
+		$parts = explode(',', $dataURL);  
+		$data = $parts[1];  
+
+		// Decode base64 data, resulting in an image
+		$data = base64_decode($data);  
+		$target_dir = dirname($path);
+		@mkdir($target_dir);
+		$target_path_final = $path;
+		unlink($target_path_final);
+		
+		$success = file_put_contents($target_path_final, $data);
+		
+		echo $target_path_final;
+		
+		print $success ? $file : 'Unable to save this image.';
+		
+		die();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

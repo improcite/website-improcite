@@ -99,7 +99,7 @@ else {
 
 			echo "<div class='progress'>\n";
 			echo "<div class='progress-bar progress-bar-striped active'  role='progressbar' aria-valuenow='$places_tot' aria-valuemin='0' aria-valuemax='$places' style='width: $places_percent%'>\n";
-			echo "<span>$places_percent%</span>";
+			echo "<span>$places_tot/$places places ($places_percent%)</span>";
 			echo "</div>\n";
 			echo "</div>\n";
 			echo "<p>$places_restantes places restantes pour ce spectacle</p>\n";

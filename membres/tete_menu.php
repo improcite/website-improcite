@@ -38,9 +38,26 @@
                     </li>
                   </ul>
                 </li>
-                <li class="<?=((basename($_SERVER['REQUEST_URI']) == "admin_bdd.php")?'active':'')?>">
-                  <a href="admin_bdd.php"><i class="glyphicon glyphicon-wrench"></i> Donn&eacute;es</a>
-                </li>
+				
+                <li class="dropdown <?=( strstr( basename($_SERVER['REQUEST_URI']), "dispos") ?'active':'')?>">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-wrench"></i> Admin <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+					<li class="<?=((basename($_SERVER['REQUEST_URI']) == "admin_bdd.php")?'active':'')?>">
+					  <a href="admin_bdd.php"><i class="glyphicon glyphicon-list-alt"></i> Donn&eacute;es</a>
+					</li>
+					<li class="<?=((basename($_SERVER['REQUEST_URI']) == "carousel.php")?'active':'')?>">
+					  <a href="carousel.php"><i class="glyphicon glyphicon-repeat"></i> Caroussel</a>
+					</li>
+                  </ul>
+                </li>				
+				
+				
+				
+				
+				
+				
+				
+
               </ul>
               <ul class="nav navbar-nav">
                 <li><a href="sortie.php"><i class="glyphicon glyphicon-log-out"></i> Sortir</a></li> 

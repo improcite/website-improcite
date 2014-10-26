@@ -87,8 +87,7 @@ else
 	</div> <!-- header -->
 	
 	<?
-	$aCaroussel = array(1, 2, 3, 4, 5, 6);
-	//$aCaroussel = array("Bandeau-ImpRhone-1", "Bandeau-ImpRhone-2", "1");// "6", "3");
+	@require_once ( "carousel.inc.php" ) ;
 	shuffle($aCaroussel);
 	?>
     <div id="home-carousel">

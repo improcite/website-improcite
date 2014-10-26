@@ -28,9 +28,6 @@ if ( ! $connexion || ! $db ) {
 
 else {
 
-	?>
-	<script type='text/javascript' src='../js/cropbox.js'></script>
-	<?
 
 	# MySQL est disponible, on continue !
 
@@ -42,36 +39,8 @@ else {
 
 	if ($action == "AjaxUploadFile")
 	{
-		if ( isset($_POST["image"]) && !empty($_POST["image"]) )
-		{    
-
-			// get the dataURL
-			$dataURL = $_POST["image"];  
-			
-			echo $dataURL;
-			
-
-			// the dataURL has a prefix (mimetype+datatype) 
-			// that we don't want, so strip that prefix off
-			$parts = explode(',', $dataURL);  
-			$data = $parts[1];  
-
-			// Decode base64 data, resulting in an image
-			$data = base64_decode($data);  
-			
-			
-			$target_dir = dirname(__FILE__)."/../photos/comediens/".$currentSaisonBit."/";
-			@mkdir($target_dir);
-			$target_path_final = $target_dir . $edited_id.".jpg";
-			unlink($target_path_final);
-			
-			$success = file_put_contents($target_path_final, $data);
-			
-			echo $target_path_final;
-			
-			print $success ? $file : 'Unable to save this image.';
-		}
-		die();
+		$path = dirname(__FILE__)."/../photos/comediens/".$currentSaisonBit."/".$edited_id.".jpg";
+		HandleAjaxFileUpload("image", $path);
 	}
 	//--------------------------
 	if ($action == "Modifier")
@@ -180,105 +149,11 @@ else {
 	$defaut = $resultat[ "defaut" ];
 
 	$photoUri = get_photo_uri($edited_id);
+	
+	
+	HandleAjaxFileUi("infos.php", "image", $edited_id, $photoUri, "Image de l'année", "width:150px;", 400, 300, true);
+	
 	?>
-	
-	<div class="panel panel-default"><div class="panel-heading">Image de l'année</div><div class="panel-body">
-	<img id="photo_preview" src="<?=($photoUri."?".rand())?>" style="width:150px;"/>	
-	<input class="btn btn-primary" value="Modifier" id="ed_pic"/>
-	
-	
-	<style>
-        .action
-        {
-            width: 400px;
-            height: 30px;
-            margin: 10px 0;
-        }
-        .cropped>img
-        {
-            margin-right: 10px;
-        }
-    </style>
-	
-	<div id="crop_container" style="width:500px;height:400px;">
-    <div class="imageBox" style="float:left;">
-        <div class="thumbBox" style="float:left;width: 400px;height:300px;border:1px solid black;" ></div>
-        <div class="spinner" style="display: none">Loading...</div>
-    </div>
-    <div class="action">
-        <input type="file" id="file" style="float:left; width: 250px">
-		<input type="submit" id="btnCrop" class="btn btn-primary"  style="float: right" value="Valider" />
-        <input type="button" class="btn btn-info" id="btnZoomIn" value="+" style="float: right">&nbsp;
-        <input type="button" class="btn btn-info" id="btnZoomOut" value="-" style="float: right">
-    </div>
-    <div class="cropped">
-    </div>
-	</div>
-	<script type="text/javascript">
-		$(window).load(function() {
-		$("#crop_container").hide();
-		
-		$("#ed_pic").click(function(){
-			$("#crop_container").show();
-		});
-			var options =
-			{
-				thumbBox: '.thumbBox',
-				spinner: '.spinner',
-				imgSrc: ''
-			}
-			var cropper = $('.imageBox').cropbox(options);
-			$('#file').on('change', function(){
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					options.imgSrc = e.target.result;
-					cropper = $('.imageBox').cropbox(options);
-				}
-				reader.readAsDataURL(this.files[0]);
-				this.files = [];
-			})
-			$('#btnCrop').on('click', function(){
-				var imgData = cropper.getDataURL();
-				
-				$.ajax({
-				  type: "POST",
-				  url: "infos.php",
-				  data: {image: imgData, id: <?=$edited_id?>, action: "AjaxUploadFile"}
-				}).done(function( respond ) {
-				  //console.log(respond);
-				
-					// refresh				
-					d = new Date();
-					$("#photo_preview").attr("src", "<?=$photoUri?>"+"?"+d.getTime());
-					$('#crop_container').hide();
-				  
-				});
-				
-			})
-			$('#btnZoomIn').on('click', function(){
-				cropper.zoomIn();
-			})
-			$('#btnZoomOut').on('click', function(){
-				cropper.zoomOut();
-			})
-		});
-	</script>	
-	
-	<!--
-	<table><tr><td>
-	<img id="photo_preview" src="<?=$photoUri?>" style="width:150px;"/>
-	</td><td>
-	<div style="margin-left:30px;">
-	<form action="?" method="post" enctype="multipart/form-data">
-	  <input type="file" name="uploaded_file"><br>
-	  <input type="hidden" name="action" value="UploadFile">
-	  <input type="hidden" name="id" value="<?=$edited_id?>">
-	  <input type="submit" class="btn btn-primary" value="Modifier l'image" />
-	</form>
-	</div>
-	</td></tr></table>
-	-->
-	</div></div>		
 	
 	<div class="panel panel-default"><div class="panel-heading">Informations personnelles</div><div class="panel-body">
 	<form method="post" role="form">
