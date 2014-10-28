@@ -42,8 +42,7 @@ $baseUri = basename($_SERVER['REQUEST_URI']);
                     </li>
                   </ul>
                 </li>
-				
-                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php") ?'active':'')?>">
+                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php" || $baseUri == "fichiers.php") ?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-wrench"></i> Admin <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
 					<li class="<?=(($baseUri == "admin_bdd.php")?'active':'')?>">
@@ -52,16 +51,11 @@ $baseUri = basename($_SERVER['REQUEST_URI']);
 					<li class="<?=(($baseUri == "carousel.php")?'active':'')?>">
 					  <a href="carousel.php"><i class="glyphicon glyphicon-film"></i> Caroussel</a>
 					</li>
+					<li class="<?=(($baseUri == "fichiers.php")?'active':'')?>">
+					  <a href="fichiers.php"><i class="glyphicon glyphicon-file"></i> Fichiers</a>
+					</li>					
                   </ul>
                 </li>				
-				
-				
-				
-				
-				
-				
-				
-
               </ul>
               <ul class="nav navbar-nav">
                 <li><a href="sortie.php"><i class="glyphicon glyphicon-log-out"></i> Sortir</a></li> 
