@@ -28,6 +28,7 @@ $requete_prochains = fxQuery($sSQL) ;
 
 $aAllEvents = array();
 
+
 $aAllSpecatclesId = array();
 $aEntriesRow = array();
 $aEntriesName = array();
@@ -53,6 +54,8 @@ if (sizeof($aAllSpecatclesId) > 0)
 {
 	$aDispoForAllSpectacles = fxQueryIndexed("SELECT id_spectacle, dispo_pourcent FROM impro_dispo WHERE id_spectacle IN (".implode(",", $aAllSpecatclesId).") AND id_personne = $idMe");
 }
+
+//print_r( $aDispoForAllSpectacles);
 
 	echo "<br/><table border=0 cellspacing=0 cellpadding=0 width=100%><tr>";
 
@@ -96,14 +99,17 @@ if (sizeof($aAllSpecatclesId) > 0)
 			if (isset($aEntriesName[$sDateEntry]))
 			{
 				$icon = "calendar.gif";
+				$train = "";
 				if ($aEntriesCate[$sDateEntry] == $category_train)
 				{
 					$icon = "calendar_train.gif";
+					$train = "&train=1";
 				}
+				
 				
 				$row = $aEntriesRow[$sDateEntry];
 				$tooltip = $row["nom"]."<br/>".$row["lnom"]."<br/>".htmlentities(cutIfWider($aEntriesDesc[$sDateEntry], 100));
-				$txt = '<a href="dispos2.php?event='.$row["id"].'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img border="0" src="img/'.$icon.'">';
+				$txt = '<a href="dispos2.php?event='.$row["id"].$train.'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img border="0" src="img/'.$icon.'">';
 				
 				$sName = "";
 				
@@ -111,6 +117,7 @@ if (sizeof($aAllSpecatclesId) > 0)
 				{
 					$txt .= "<img border=0 src=img/star.gif>";
 				}
+				
 				if (isset($aDispoForAllSpectacles[$aEntriesId[$sDateEntry]]))
 				{
 					$dispo = ($aDispoForAllSpectacles[$aEntriesId[$sDateEntry]] == 100);
