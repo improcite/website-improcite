@@ -10,13 +10,6 @@
 include ( "tete.php" ) ;
 $idMe = $_SESSION['id_impro_membre'];
 
-?>
-<div class="row">
-	<div class="col-md-6">
-	<h1>Calendrier</h1>
-		<div class="table-responsive">
-<?php
-
 $annee = date("Y");
 $date_debut_saison = date("YmdHis", mktime(0, 0, 0, 8, 1, 2004+$iCurrentSaisonNumber)) ;
 $date_actuelle = date("YmdHis") ;
@@ -55,7 +48,81 @@ if (sizeof($aAllSpecatclesId) > 0)
 	$aDispoForAllSpectacles = fxQueryIndexed("SELECT id_spectacle, dispo_pourcent FROM impro_dispo WHERE id_spectacle IN (".implode(",", $aAllSpecatclesId).") AND id_personne = $idMe");
 }
 
-//print_r( $aDispoForAllSpectacles);
+
+
+?>
+<div class="row">
+	<div class="col-md-6">
+	
+	<h1>Sélections</h1>
+<?
+
+$iCountSelect = 0;
+$date_actuelle = date("YmdHis") ;
+$date_max = date("YmdHis", time()+3600*24*31*3) ;// trois mois
+
+foreach($aAllEvents as $aRow)
+{
+	if ($aRow['unixdate'] < time()) continue;
+	if ($aRow['unixdate'] > time()+3600*24*31*4) continue;// 4 mois
+
+	$sName = "";
+	if ($idMe == $aRow['mc']) $sName = "MC";
+	if ($idMe == $aRow['coach']) $sName = "Coach";
+	if ($idMe == $aRow['arbitre']) $sName = "Arbitre";
+	if ($idMe == $aRow['regisseur']) $sName = "Régisseur";
+	if ($idMe == $aRow['caisse']) $sName = "Caisse";
+	if ($idMe == $aRow['catering']) $sName = "Catering";
+	if (strstr(";".$aRow['joueurs'].";", ";".$idMe.";")) $sName = "Joueur";
+	$date = affiche_date($aRow["date"]);
+	$mois = extract_month($aRow["date"]);
+	$annee = extract_year($aRow["date"]);
+
+	$iPct = isset($aDispoForAllSpectacles[$aRow["id"]]) ? $aDispoForAllSpectacles[$aRow["id"]] : "";
+		
+	if ($aRow['categorie'] == $category_train  &&  $iPct != "0")
+	{
+		// skip entrainements non répondu / répondu oui
+		continue;
+	}
+
+	$tooltip = $aRow["nom"]."<br/>".$aRow["lnom"]."<br/>".htmlentities($aRow['ecommentaire']);
+	$link = '<a href="dispos2.php?event='.$aRow["id"].'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img src="img/calendar.gif"></a> ';
+
+	if($sName)
+	{
+		echo $link."<img src=img/star.gif> - <u>{$sName}</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]} <br/>";
+		$iCountSelect++;
+	}
+	else if ($sName==""  &&  $iPct == "")
+	{
+		echo $link."<img src=img/unk.gif> - <b><a href=dispos2.php?event=".$aRow["id"].">Veuillez répondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+	}
+	else if ($sName==""  &&  $iPct == "0")
+	{
+		echo $link."<img src=img/no.gif> - <u>Non dispo</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+	}
+	else if ($sName==""  &&  $iPct == "100")
+	{
+		echo $link."<img src=img/yes.gif> - <u>Dispo</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+	}
+	if($aRow['ecommentaire'])
+	{
+		?><div style="margin-left:60px;margin-bottom:0px;font-style: italic;"><?=cutIfWider($aRow['ecommentaire'], 100)?></div><?
+	}
+	?><div style="height:5px;"></div><?
+}
+?>	
+</div>
+
+<? // --------------------------------------------
+?>
+
+	<div class="col-md-6">
+	
+	<h1>Calendrier</h1>
+		<div class="table-responsive">
+<?php
 
 	echo "<br/><table border=0 cellspacing=0 cellpadding=0 width=100%><tr>";
 
@@ -156,72 +223,12 @@ if (sizeof($aAllSpecatclesId) > 0)
 	?>
 		</div>
 	</div>
-	<div class="col-md-6">
-	<h1>Sélections</h1>
-<?
+<?	
 
-$iCountSelect = 0;
-$date_actuelle = date("YmdHis") ;
-$date_max = date("YmdHis", time()+3600*24*31*3) ;// trois mois
-
-foreach($aAllEvents as $aRow)
-{
-	if ($aRow['unixdate'] < time()) continue;
-	if ($aRow['unixdate'] > time()+3600*24*31*4) continue;// 4 mois
-
-	$sName = "";
-	if ($idMe == $aRow['mc']) $sName = "MC";
-	if ($idMe == $aRow['coach']) $sName = "Coach";
-	if ($idMe == $aRow['arbitre']) $sName = "Arbitre";
-	if ($idMe == $aRow['regisseur']) $sName = "Régisseur";
-	if ($idMe == $aRow['caisse']) $sName = "Caisse";
-	if ($idMe == $aRow['catering']) $sName = "Catering";
-	if (strstr(";".$aRow['joueurs'].";", ";".$idMe.";")) $sName = "Joueur";
-	$date = affiche_date($aRow["date"]);
-	$mois = extract_month($aRow["date"]);
-	$annee = extract_year($aRow["date"]);
-
-	$iPct = isset($aDispoForAllSpectacles[$aRow["id"]]) ? $aDispoForAllSpectacles[$aRow["id"]] : "";
-		
-	if ($aRow['categorie'] == $category_train  &&  $iPct != "0")
-	{
-		// skip entrainements non répondu / répondu oui
-		continue;
-	}
-
-	$tooltip = $aRow["nom"]."<br/>".$aRow["lnom"]."<br/>".htmlentities($aRow['ecommentaire']);
-	$link = '<a href="dispos2.php?event='.$aRow["id"].'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img src="img/calendar.gif"></a> ';
-
-	if($sName)
-	{
-		echo $link."<img src=img/star.gif> - <u>{$sName}</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]} <br/>";
-		$iCountSelect++;
-	}
-	else if ($sName==""  &&  $iPct == "")
-	{
-		echo $link."<img src=img/unk.gif> - <b><a href=dispos2.php?event=".$aRow["id"].">Veuillez répondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
-	}
-	else if ($sName==""  &&  $iPct == "0")
-	{
-		echo $link."<img src=img/no.gif> - <u>Non dispo</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
-	}
-	else if ($sName==""  &&  $iPct == "100")
-	{
-		echo $link."<img src=img/yes.gif> - <u>Dispo</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
-	}
-	if($aRow['ecommentaire'])
-	{
-		?><div style="margin-left:60px;margin-bottom:0px;font-style: italic;"><?=cutIfWider($aRow['ecommentaire'], 100)?></div><?
-	}
-	?><div style="height:5px;"></div><?
-}
-
-flush();
 
 //-----------------------
 ?>
 	</div>
-</div>
 
 <hr />
 <div align="right" style="color:#aaa"> <?php
