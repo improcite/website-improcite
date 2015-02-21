@@ -22,13 +22,13 @@ $baseUri = basename($_SERVER['REQUEST_URI']);
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
                 <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
-                  <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Mon compte</a>
+                  <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Moi</a>
                 </li>
                 <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
                   <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
                 </li>
                 <li class="dropdown <?=( strstr( $baseUri, "dispos") ?'active':'')?>">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Disponibilit&eacute;s <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Dispos <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="<?=(($baseUri == "dispos.php")?'active':'')?>">
                       <a href="dispos.php"><i class="glyphicon glyphicon-star"></i> Spectacles</a>

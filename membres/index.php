@@ -103,7 +103,7 @@ if (sizeof($aAllSpecatclesId) > 0)
 				
 				$row = $aEntriesRow[$sDateEntry];
 				$tooltip = $row["nom"]."<br/>".$row["lnom"]."<br/>".htmlentities(cutIfWider($aEntriesDesc[$sDateEntry], 100));
-				$txt = '<a href="dispos.php?month='.$moisReel.'&year='.$anReel.'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img border="0" src="img/'.$icon.'"></a>';
+				$txt = '<a href="dispos2.php?event='.$row["id"].'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img border="0" src="img/'.$icon.'">';
 				
 				$sName = "";
 				
@@ -131,6 +131,8 @@ if (sizeof($aAllSpecatclesId) > 0)
 						$bgColor = '#F88';
 					}
 				}
+				
+				echo "</a>\n";
 			}
 			else
 			{
@@ -181,7 +183,7 @@ foreach($aAllEvents as $aRow)
 	}
 
 	$tooltip = $aRow["nom"]."<br/>".$aRow["lnom"]."<br/>".htmlentities($aRow['ecommentaire']);
-	$link = '<a href="dispos.php?month='.$mois.'&year='.$annee.'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img src="img/calendar.gif"></a> ';
+	$link = '<a href="dispos2.php?event='.$aRow["id"].'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img src="img/calendar.gif"></a> ';
 
 	if($sName)
 	{
@@ -190,7 +192,7 @@ foreach($aAllEvents as $aRow)
 	}
 	else if ($sName==""  &&  $iPct == "")
 	{
-		echo $link."<img src=img/unk.gif> - <b><a href=dispos.php?month=".$mois."&year=".$annee.">Veuillez répondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+		echo $link."<img src=img/unk.gif> - <b><a href=dispos2.php?event=".$aRow["id"].">Veuillez répondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
 	}
 	else if ($sName==""  &&  $iPct == "0")
 	{

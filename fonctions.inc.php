@@ -40,7 +40,7 @@ function DisplayPrintButton()
 	{
 		$sURI = $_SERVER['REQUEST_URI'];
 		if (strpos("?", $sURI)===false) $sURI .= "?"; else $sURI .= "&";
-		echo "<a style=\"float:right;\" class=\"btn btn-primary\" role=\"button\" target=\"_new\" href=\"".$sURI."printmode=1\"><i class=\"glyphicon glyphicon-print\"></i> Imprimer cette page</a>";
+		echo "<div class='hidden-xs'><a style=\"float:right;\" class=\"btn btn-primary\" role=\"button\" target=\"_new\" href=\"".$sURI."printmode=1\"><i class=\"glyphicon glyphicon-print\"></i> Imprimer cette page</a></div>";
 	}
 }
 
@@ -140,7 +140,7 @@ function extract_year( $date)
 
 
  
-function affiche_date ( $date ) {
+function affiche_date ( $date, $bshort = false ) {
 
 	# La date doit etre de la forme AAAAMMJJhhmmss
 
@@ -161,7 +161,9 @@ function affiche_date ( $date ) {
 			'd&eacute;cembre'
 		);
 		
-		$aJours = array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
+		$aJours = ($bshort) ?
+			array("Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam")
+			: array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
 		
 		$iJourSemaine =  date("w", mktime(12, 00, 00, $tableau[2], $tableau[3], $tableau[1]));
 		$sNomJour = $aJours[$iJourSemaine];
@@ -174,7 +176,17 @@ function affiche_date ( $date ) {
 		//echo $iJourSemaine;
 		//print_r( $tableau );
 		
-		return "$sNomJour $jour $sMois $sAnnee" ;
+		//$sAnnee = ($sAnnee[2] . $sAnnee[3]);
+		if($bshort)
+		{
+			return "$sNomJour $jour $sMois ";// $sAnnee" ;
+		}
+		else
+		{
+			return "$sNomJour $jour $sMois $sAnnee" ;
+		}
+		
+		
 	}
 
 }

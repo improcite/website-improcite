@@ -16,7 +16,34 @@ if ( ! $connexion || ! $db )
 	die();
 }
 
+?>
+<style>
+.dispo_comment
+{
+	border:1px solid #DDD;
+	font-size: 75%;
+	color:#888;
+	padding-top : 2px;
+	padding-bottom : 2px;
+	padding-left:10px;
+	padding-right:10px;
+	border-radius: 6px;
+	margin-left:30px;
+}
 
+.details_spectacle
+{
+	border:1px solid #DDD;
+	background:#EFEFEF;
+	padding-top : 2px;
+	padding-bottom : 2px;
+	padding-left:10px;
+	padding-right:10px;
+	border-radius: 6px;
+	margin-bottom:8px;
+}
+</style>
+<?
 
 
 # Traitement special pour les entrainements
@@ -101,71 +128,17 @@ if (getp("user")  &&  getp("event"))
 
 echo "<div id=\"corps\">\n" ;
 
-if ($bDisplayTrain)
-{
-	echo "<h1>Disponibilités <b>entrainements</b></h1>\n" ;
-}
-else
-{
-	echo "<h1>Disponibilités <b>spectacles</b></h1>\n" ;
-}
-
 # Mois et année
-$month = 0;
-$year = 0;
-if (getp("month") && getp("year")) {
-	$year = getp("year");
-       	$month = getp("month");
-} else {
-	# On recupere la date actuelle
-	$year = date("Y");
-	$month = date("m");
+$event = getp("event");
+if(!$event)
+{
+	die("No event requested");
 }
 
-
-$month_before = 0;
-$month_after = 0;
-$year_before = 0;
-$year_after = 0;
-
-if ($month === "01") {
-	$month_before = "12";
-	$month_after = "02";
-	$year_before = intval($year) - 1;
-	$year_after = intval($year);
-} elseif ($month === "12") {
-	$month_before = "11";
-	$month_after = "01";
-	$year_before = intval($year);
-	$year_after = intval($year) + 1;
-} else { 
-	$month_before = intval($month) -1;
-	$month_after = intval($month) + 1;
-	$year_before = intval($year);
-	$year_after = intval($year);
-}
-
-if ( strlen( $month_before ) == 1) { $month_before = "0" . $month_before; }
-if ( strlen( $month_after ) == 1) { $month_after = "0" . $month_after; } 
-
-# Liens pour avant et apres
-echo "<div id='choixdate' class='text-center'>";
-echo "<div class='btn-group'>";
-echo '<a class="btn btn-default" href="dispos.php?train='.$bDisplayTrain.'&month='.$month_before.'&year='.$year_before.'"><i class="glyphicon glyphicon-chevron-left"></i> <span class="hidden-xs">Mois pr&eacute;c&eacute;dent</span></a>';
-echo "<div class='btn btn-default'>$month/$year</div>";
-echo '<a class="btn btn-default" href="dispos.php?train='.$bDisplayTrain.'&month='.$month_after.'&year='.$year_after.'"><span class="hidden-xs">Mois suivant</span> <i class="glyphicon glyphicon-chevron-right"></i></a>';
-echo "</div>";
-echo "</div>";
-
-echo "<hr />\n";
 
 # Proprietes du tableau
 $iFontSize = 9;
 $sStyl = " valign=\"top\" style=\"text-align:center\"";
-$sTableHeader   = "<table class=\"grid\" style=\"font-size:{$iFontSize}pt;\" border=\"1px\" cellspacing=\"0\" cellpadding=\"2px\">";
-$sColumnHeader  = "<tr bgcolor=\"#888\" style=\"font-weight:bold\">";
-$sColumnHeader .= "<td {$sStyl} width=\"5%\">Quand</td><td {$sStyl} width=\"10%\">Quoi</td>";
-$sColumnHeader .= "<td {$sStyl} width=\"5%\">Dispo.</td>";
 
 # Filtre de recherche des comediens
 # -> Saison en cours
@@ -187,19 +160,12 @@ foreach($aMembres as $aRowJ)
 {
 	$sNom = str_replace("-", " - ", $aRowJ['prenom']);
 	$aMemberIdToName[$aRowJ['id']] = $sNom;
-	
-	$w = 80/$nbMembres;
-	$sColumnHeader .= "<td {$sStyl} width=\"{$w}%\">{$sNom}</td>";
-	
 	$aStats[$aRowJ['id']] = array('joueur' => 0, 'coach'=>0, 'mc'=>0, 'arbitre'=>0, 'regisseur'=>0, 'caisse'=>0, 'catering'=>0, 'ovs'=>0);
 }
-$sColumnHeader .= "</tr>";
 
 //-------------------------------- 
 
-# Affichage des evenements
-# Seulement pour le mois en cours
-$filtredate = "date>'".$year.$month."01000000' AND date<'".$year.$month."31235959'";
+$filtredate = "e.id = ".$event;
 $sWhereTrain = $bDisplayTrain ? " AND e.categorie = $category_train " : " AND e.categorie <> $category_train ";
 $sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.regisseur as regisseur, e.caisse as caisse, e.catering as catering, e.ovs as ovs "
 		."FROM $t_eve e, $t_cat c, $t_lieu l "
@@ -208,41 +174,56 @@ $sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TI
 $requete_prochains = fxQuery($sSQL) ;
 
 # En tete
-echo "<div class='table-responsive'>\n";
-echo $sTableHeader;
-echo $sColumnHeader;
-
 while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 {
+
+	list($eventNext, $eventNextDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date > '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date ASC LIMIT 1");
+	list($eventPrev, $eventPrevDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date < '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date DESC LIMIT 1");
+	
+	# Liens pour avant et apres
+	echo "<div id='choixdate' class='text-center'>";
+	echo "<div class='btn-group'>";
+	# <span class="hidden-xs">
+	if($eventPrev) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventPrev.'"><i class="glyphicon glyphicon-chevron-left"></i> '.affiche_date($eventPrevDate, true).'</a>';
+	//echo "<div class='btn btn-default'>$month/$year</div>";
+	if($eventNext) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventNext.'">'.affiche_date($eventNextDate, true).' <i class="glyphicon glyphicon-chevron-right"></i></a>';
+	echo "</div>";
+	echo "</div>";	
+	
 	$date = affiche_date($aRow["date"]);
-	
 	$sOutDated = ($aRow["unixdate"] < time()) ? "class=\"outdated\"":"";
-	echo "<tr $sOutDated>";
-	$nbMembresDispos = fxQuerySingleValue( "SELECT COUNT(*) FROM impro_dispo WHERE id_spectacle = ? AND dispo_pourcent = 100", $aRow['id'] ) ;
-?>
-
-<td  <?=$sStyl?>><?=$date?></td>
-
-<?
-//data-toggle="tooltip" title="'.$t
-//ecommentaire
-?>
-
-<td <?=$sStyl?> >
-	<u><?=$aRow["nom"]?></u><br />
-	<?=$aRow["lnom"]?><br />
-	<i><?=cutIfWider($aRow["ecommentaire"], 40)?></i>
 	
-</td>
+	echo "<h1>".$date."</h1>" ;
+?>
+<div class="details_spectacle">
+- <?=$aRow["nom"]?><br/>
+- <?=$aRow["lnom"]?><br/>
+<? if($aRow["ecommentaire"]) { ?><?=(" - ".$aRow["ecommentaire"])?><? } ?>
+</div>
 
-<td <?=$sStyl?>><?=$nbMembresDispos?></td>
-
+<table class="table table-condensed">
 <?
-	
 	foreach($aMembres as $aRowJ)
 	{
-		list($iDispo,$sComment) = fxQueryMultiValues("SELECT dispo_pourcent, commentaire FROM impro_dispo WHERE id_spectacle = ? AND id_personne = ?", array($aRow['id'], $aRowJ['id']));
+		$id = $aRowJ['id'];
 		
+		echo "<tr><td>";
+		
+		$photo = "../".$sPhotoRelDir . $currentSaisonBit . "/" ."$id.jpg";
+		if (!file_exists($photo)) { $photo = "../".$sPhotoRelDir."$id.jpg"; }
+		if (!file_exists($photo)) { $photo = "../".$sPhotoRelDir."defaut.jpg"; }
+		echo "<img style=\"height:30px;\" src=\"$photo\" />\n";
+		
+		echo "</td><td>";
+		
+		echo "<div style=\"line-height:30px;\">";
+		if ($aRowJ['id'] == $_SESSION['id_impro_membre']) echo "<b>";
+		echo $aMemberIdToName[$id];
+		if ($aRowJ['id'] == $_SESSION['id_impro_membre']) echo "</b>";
+		echo "</div>";
+		echo "</td><td>";
+	
+		list($iDispo,$sComment) = fxQueryMultiValues("SELECT dispo_pourcent, commentaire FROM impro_dispo WHERE id_spectacle = ? AND id_personne = ?", array($aRow['id'], $aRowJ['id']));
 		
 		$sClrOui = "#BBFFBB"; $sClrNon = "#FFBBBB"; $sClrSel = "#FFFFBB";
 		//$sClrOui = ""; $sClrNon = ""; $sClrSel = "";
@@ -250,7 +231,6 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 		$sImgNon = "<img src=img/no.gif>";
 		$sImgSel = "<img src=img/star.gif>";
 		$sImgUnk = "<img src=img/unk.gif>";
-
 		
 		if (isPrintMode())
 		{
@@ -265,7 +245,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 					  )
 			{
 				?>
-				<td $sStyl width="<?=(100/$nbMembres)?>%"><form action="dispos.php" method="get">
+				<form action="dispos2.php" method="get">
 				<input type="hidden" name="user" value="<?=$aRowJ['id']?>">
 				<input type="hidden" name="event" value="<?=$aRow['id']?>">
 				<small><u>Dispo:</u></small><br>
@@ -276,7 +256,6 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 				<small><u>Commentaire:</u></small><br>
 				<input style="font-size:<?=$iFontSize?>pt;" name="commentaire" value="<?=$sComment?>" size="10" maxsize="100">
 				<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
-				<input type="hidden" name="month" value="<?=$month?>">
 				<input type="hidden" name="year" value="<?=$year?>">
 				</form>
 				
@@ -285,13 +264,18 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			else
 			{
 				$sCancel = "";
-				if ($aRowJ['id'] == $_SESSION['id_impro_membre']) $sCancel = "&nbsp;<a href=dispos.php?user={$aRowJ['id']}&event={$aRow['id']}&train={$bDisplayTrain}&month={$month}&year={$year}&dispo=><small>[x]</small></a>";
+				if ($aRowJ['id'] == $_SESSION['id_impro_membre'])
+				{
+					$sCancel = "&nbsp;<a href=dispos2.php?user={$aRowJ['id']}&event={$aRow['id']}&train={$bDisplayTrain}&dispo=>"
+								."<span style=\"font-size:20px;line-height:30px;\">"
+								."<i class=\"glyphicon glyphicon-remove\"></i></span></a>";
+				}
 				if ($sComment)
 				{
-					$sComment = "<br><font size=-2>".
-								"<div data-html=\"true\" data-toggle=\"tooltip\" title=\"".$sComment."\" style=\"cursor:help\">".
-								cutIfWider($sComment, 10).
-								"</div></font>";
+					//$sComment = "<br><font size=-2>".
+					//			"<div data-html=\"true\" data-toggle=\"tooltip\" title=\"".$sComment."\" style=\"cursor:help\">".
+					//			cutIfWider($sComment, 10).
+					//			"</div></font>";
 				}
 				
 				$bSelection = strstr(";".$aRow['joueurs'].";", ";".$aRowJ['id'].";")
@@ -313,20 +297,16 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 					if ($aRow['catering'] == $aRowJ['id']) $sName = "Catering";
 					if ($aRow['ovs'] == $aRowJ['id']) $sName = "OVS";
 				
-					echo "<td $sStyl bgcolor=\"$sClrSel\" align=\"center\">{$sImgSel}";
-					
 					if (!$bSelectionDispoFeatures)
 					{
-						echo "<small><br><font color=#3FB1BF>$sName</font></small>";
+						echo "<span style=\"line-height:30px;\">".$sImgSel . $sName . $sCancel."</span>";
 					}
-					
-					echo "{$sComment}";
 				}
 				else
 				{
-					if ($iDispo == "") echo "<td $sStyl align=center>{$sImgUnk}{$sComment}";
-					if ($iDispo == "0") echo "<td $sStyl bgcolor=\"$sClrNon\" align=\"center\">{$sImgNon}{$sCancel}{$sComment}";
-					if ($iDispo == "100") echo "<td $sStyl bgcolor=\"$sClrOui\" align=\"center\">{$sImgOui}{$sCancel}{$sComment}";
+					if ($iDispo == "") echo "{$sImgUnk}";
+					if ($iDispo == "0") echo "{$sImgNon}{$sCancel}";
+					if ($iDispo == "100") echo "{$sImgOui}{$sCancel}";
 				}
 			}
 		
@@ -334,7 +314,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 		{
 			?>
 			<br />
-			<form action="dispos.php" method="get">
+			<form action="dispos2.php" method="get">
 			<input type="hidden" name="user" value="<?=$aRowJ['id']?>">
 			<input type="hidden" name="event" value="<?=$aRow['id']?>">
 			<select style="font-size:<?=$iFontSize?>pt;border:0px;background-color:#000;color:#AAA;" name="selection" onChange='form.submit()'>
@@ -349,19 +329,19 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			<OPTION value="ovs" <?=($aRow['ovs'] == $aRowJ['id'])?"SELECTED":""?>>OVS</OPTION>
 			</select>
 			<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
-			<input type="hidden" name="month" value="<?=$month?>">
-			<input type="hidden" name="year" value="<?=$year?>">
 			</form>
 			<?
 		}
 		
-		echo "</td>";
+		echo "</td></tr>";
+		
+		if($sComment)
+		{
+			?><tr><td style="border-top:none;padding-top:0px;" colspan="3"><div class="dispo_comment"><?=$sComment?></div></td></tr><?
+		}
 	}
-	echo "</tr>";
+	break;
 }
-
-# Pied
-echo $sColumnHeader;
 
 echo "</table>";
 echo "</div>";
@@ -372,30 +352,26 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 	if ($bIsAdmin)
 	{
 		?>
-		<p>Activation des fonctionnalités <b>administrateur</b> sur cette page:
-		<form style="display:inline;" action="dispos.php" method="get">
+		<form style="display:inline;" action="dispos2.php" method="get">
 		<select name="adminfeatures" onChange="form.submit()">
-		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>Activé</OPTION>
-		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>Désactivé</OPTION>
+		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>Mode admin activé</OPTION>
+		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>Mode admin désactivé</OPTION>
 		</select>
 		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
-		<input type="hidden" name="month" value="<?=$month?>">
-		<input type="hidden" name="year" value="<?=$year?>">
+		<input type="hidden" name="event" value="<?=$event?>">
 		</form></p>
 		<?
 	}
 	if ($bIsSelectionneur)
 	{
 		?>
-		<p>Activation des fonctionnalités <b>sélectionneur</b> sur cette page:
-		<form style="display:inline;" action="dispos.php" method="get">
+		<form style="display:inline;" action="dispos2.php" method="get">
 		<select name="selectfeatures" onChange="form.submit()">
-		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>Activé</OPTION>
-		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>Désactivé</OPTION>
+		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>Mode sélectionneur activé</OPTION>
+		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>Mode sélectionneur désactivé</OPTION>
 		</select>
 		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
-		<input type="hidden" name="month" value="<?=$month?>">
-		<input type="hidden" name="year" value="<?=$year?>">
+		<input type="hidden" name="event" value="<?=$event?>">
 		</form></p>
 		<?
 	}
