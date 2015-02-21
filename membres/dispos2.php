@@ -177,18 +177,21 @@ $requete_prochains = fxQuery($sSQL) ;
 while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 {
 
-	list($eventNext, $eventNextDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date > '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date ASC LIMIT 1");
-	list($eventPrev, $eventPrevDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date < '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date DESC LIMIT 1");
-	
-	# Liens pour avant et apres
-	echo "<div id='choixdate' class='text-center'>";
-	echo "<div class='btn-group'>";
-	# <span class="hidden-xs">
-	if($eventPrev) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventPrev.'"><i class="glyphicon glyphicon-chevron-left"></i> '.affiche_date($eventPrevDate, true).'</a>';
-	//echo "<div class='btn btn-default'>$month/$year</div>";
-	if($eventNext) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventNext.'">'.affiche_date($eventNextDate, true).' <i class="glyphicon glyphicon-chevron-right"></i></a>';
-	echo "</div>";
-	echo "</div>";	
+	if(isPrintMode() == false)
+	{
+		list($eventNext, $eventNextDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date > '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date ASC LIMIT 1");
+		list($eventPrev, $eventPrevDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date < '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date DESC LIMIT 1");
+		
+		# Liens pour avant et apres
+		echo "<div id='choixdate' class='text-center'>";
+		echo "<div class='btn-group'>";
+		# <span class="hidden-xs">
+		if($eventPrev) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventPrev.'"><i class="glyphicon glyphicon-chevron-left"></i> '.affiche_date($eventPrevDate, true).'</a>';
+		//echo "<div class='btn btn-default'>$month/$year</div>";
+		if($eventNext) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventNext.'">'.affiche_date($eventNextDate, true).' <i class="glyphicon glyphicon-chevron-right"></i></a>';
+		echo "</div>";
+		echo "</div>";	
+	}
 	
 	$date = affiche_date($aRow["date"]);
 	$sOutDated = ($aRow["unixdate"] < time()) ? "class=\"outdated\"":"";
@@ -264,7 +267,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			else
 			{
 				$sCancel = "";
-				if ($aRowJ['id'] == $_SESSION['id_impro_membre'])
+				if (($aRowJ['id'] == $_SESSION['id_impro_membre']) && (isPrintMode() == false))
 				{
 					$sCancel = "&nbsp;<a href=dispos2.php?user={$aRowJ['id']}&event={$aRow['id']}&train={$bDisplayTrain}&dispo=>"
 								."<span style=\"font-size:20px;line-height:30px;\">"

@@ -43,4 +43,13 @@ if ( $connexion ) {
 
 }
 
+if(isPrintMode())
+{
+	?>
+	<script>
+	window.print();
+	</script>
+	<?
+}
+
 ?>

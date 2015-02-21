@@ -39,7 +39,7 @@ function DisplayPrintButton()
 	if (! isPrintMode())
 	{
 		$sURI = $_SERVER['REQUEST_URI'];
-		if (strpos("?", $sURI)===false) $sURI .= "?"; else $sURI .= "&";
+		if (strpos($sURI, "?")===false) $sURI .= "?"; else $sURI .= "&";
 		echo "<div class='hidden-xs'><a style=\"float:right;\" class=\"btn btn-primary\" role=\"button\" target=\"_new\" href=\"".$sURI."printmode=1\"><i class=\"glyphicon glyphicon-print\"></i> Imprimer cette page</a></div>";
 	}
 }
