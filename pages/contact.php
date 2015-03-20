@@ -3,7 +3,7 @@
 <h2>Press kit</h2>
 - <a href="http://improcite.com/images2/improcite-logo-med.png">Notre logo</a><br/>
 - <a href="http://improcite.com/images2/mascotte-transparent.png">Notre mascotte</a><br/>
-- <a href="http://improcite.com/work/wip_mat/?p=comediens#apage">Les joueurs</a><br/>
+- <a href="http://improcite.com/?p=comediens#apage">Les joueurs</a><br/>
 
 <h2>Facebook</h2>
 
