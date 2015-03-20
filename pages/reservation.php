@@ -136,11 +136,15 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	// Affiche la photo de l'evenement ou de la categorie
 	$photoEvenement = $sPhotoEvenement.$infos["id"].".jpg";
 	$photoCategorie = $sPhotoCategorie.$infos["categorie"].".jpg";
+	$photoLieu = $sPhotoLieuRelDir.$infos["lieu"].".jpg";
 	if ( file_exists($photoEvenement) ) {
-		echo "<img src=\"$photoEvenement\" alt=\"$infos[nom]\" style=\"float:left;margin-right:20px;\"/>\n";
+		echo "<img src=\"$photoEvenement\" class=\"affiche\" style=\"float:left;margin-right:20px;\"/>\n";
 	}
+	if ( file_exists($photoLieu) ) {
+		echo "<img src=\"$photoLieu\" class=\"affiche\" style=\"float:left;margin-right:20px;\"/>\n";
+	}	
 	elseif( file_exists($photoCategorie) ) {
-		echo "<img src=\"$photoCategorie\" alt=\"$infos[nom]\" style=\"float:left;margin-right: 20px;\"/>\n";
+		echo "<img src=\"$photoCategorie\" class=\"affiche\" style=\"float:left;margin-right: 20px;\"/>\n";
 	}
 	
 	echo "<p>";

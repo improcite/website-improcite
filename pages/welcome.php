@@ -17,7 +17,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 		$date_actuelle = date("YmdHis") ;
 		$requete_prochains = fxQuery( 	"SELECT e.id as eid, c.id as cid, l.id as lid, e.commentaire as ecommentaire,"
 									.	"c.description as cdescription, l.nom as lnom, c.nom as nom, e.date as date, e.joueurs as joueurs, e.mc as mc,"
-									.	"e.arbitre as abitre,e.coach as coach , e.places as places FROM $t_eve e, $t_cat c, $t_lieu l WHERE "
+									.	"e.arbitre as arbitre, e.coach as coach , e.places as places FROM $t_eve e, $t_cat c, $t_lieu l WHERE "
 									.	"c.publique=1 AND e.categorie=c.id AND e.date>$date_actuelle AND e.lieu=l.id ORDER BY date ASC LIMIT 0,$nb_spectacles_welcome" );
 		while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 		{
@@ -34,10 +34,14 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 				<? // Affiche la photo de l'evenement ou de la categorie
 
 					$photoEvenement = $sPhotoEvenement.$aRow["eid"].".jpg";
+					$photoLieu = $sPhotoLieuRelDir.$aRow["lid"].".jpg";
 					$photoCategorie = $sPhotoCategorie.$aRow["cid"].".jpg";
 					if ( file_exists($photoEvenement) ) {
 						echo "<img src=\"$photoEvenement\" alt=\"$aRow[nom]\" class=\"affiche\"/>\n";
 					}
+					elseif ( file_exists($photoLieu) ) {
+						echo "<img src=\"$photoLieu\" alt=\"$aRow[nom]\" class=\"affiche\"/>\n";
+					}					
 					elseif ( file_exists($photoCategorie) ) {
 						echo "<img src=\"$photoCategorie\" alt=\"$aRow[nom]\" class=\"affiche\"/>\n";
 					}

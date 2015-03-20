@@ -329,7 +329,7 @@ function fix_magic_quotes ($var = NULL, $sybase = NULL)
     }
 
     // désactive magic_quotes_runtime
-    set_magic_quotes_runtime (0);
+    @set_magic_quotes_runtime (0);
     return TRUE;
   }
 
