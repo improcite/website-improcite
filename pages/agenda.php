@@ -1,4 +1,4 @@
-<h1>L'agenda de nos spectacles</h1>
+<h1>Nos spectacles</h1>
 <?
 include(dirname(__FILE__)."/../fxJoueurs.php");
 
@@ -40,11 +40,15 @@ if ($nb_prochains == 0)
 		// Affiche la photo de l'evenement ou de la categorie
 		$photoEvenement = $sPhotoEvenement.$id.".jpg";
 		$photoCategorie = $sPhotoCategorie.$cid.".jpg";
+		$photoLieu = $sPhotoLieuRelDir.$id_lieu.".jpg";
 		if ( file_exists($photoEvenement) ) {
-			echo "<img src=\"$photoEvenement\" class=\"affiche\" style=\"float:left;width:300px;\" alt=\"$aRow[nom]\" />\n";
+			echo "<img src=\"$photoEvenement\" class=\"affiche\" style=\"float:left;\" />\n";
 		}
+		else if ( file_exists($photoLieu) ) {
+			echo "<img src=\"$photoLieu\" class=\"affiche\" style=\"float:left;\" />\n";
+		}		
 		elseif( file_exists($photoCategorie) ) {
-			echo "<img src=\"$photoCategorie\" class=\"affiche\" style=\"float:left;width:300px;\" alt=\"$aRow[nom]\" />\n";
+			echo "<img src=\"$photoCategorie\" class=\"affiche\" style=\"float:left;\" />\n";
 		}
 		//echo "</td><td>";
 		echo "<div>";
@@ -101,7 +105,7 @@ if ($nb_prochains == 0)
 		if (trim(str_replace(";", "", $joueurs)) != "")
 		{
 			echo "Avec&nbsp;:";
-			fxDispJoueurArray(split(";", $joueurs),"width:80px;height:60px;");
+			fxDispJoueurArray(explode(";", $joueurs), "width:80px;height:60px;");
 		}
 
 

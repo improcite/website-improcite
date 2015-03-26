@@ -26,7 +26,10 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 			if ($bFirst)
 			{
 				$bFirst = false;
-				?><h1>Prochain spectacle</h1><?
+				?><!--<h1>Prochain spectacle</h1>-->
+				<br>
+				<?
+				
 			}
 			?>
 			<div class="spectacle">
@@ -48,18 +51,10 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 				?>
 				</div>
 				<div class="description">
-					<div class="titrespectacle"><a href="?p=agenda" title="<?=$aRow["cdescription"]?>"><?=$aRow["nom"]?></a></div>
+					<div class="lieuspectacle"><a href="?p=lieux&id=<?=$aRow["lid"]?>"><?=$aRow["lnom"]?></a></div>
 					<div class="datespectacle"><?=$date?></div>
-					Lieu: <a href="?p=lieux&id=<?=$aRow["lid"]?>"><?=$aRow["lnom"]?></a>
-					&nbsp;&nbsp;
+					<div class="titrespectacle"><a href="?p=agenda" title="<?=$aRow["cdescription"]?>"><?=$aRow["nom"]?></a></div>
 					
-					<div style="display:block">
-					<?php
-					$selectionnes = $aRow['joueurs'] .";" . $aRow['mc'] . ";" . $aRow['arbitre'] . ";" . $aRow['coach']; 
-					fxDispJoueurArray(explode(";", $selectionnes), "width:100px;");
-					?>
-					</div>
-						
 					<? if ($aRow["ecommentaire"])
 					{
 						//echo "<div style=\"padding:2px;\">";
@@ -72,7 +67,14 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 						echo affiche_texte($aRow['cdescription']);
 						//echo "</div>";
 					}
+					?>					
+					
+					<div style="display:block">
+					<?php
+					$selectionnes = $aRow['joueurs'] .";" . $aRow['mc'] . ";" . $aRow['arbitre'] . ";" . $aRow['coach']; 
+					fxDispJoueurArray(explode(";", $selectionnes), "width:100px;");
 					?>
+					</div>
 					<? if ($aRow["places"]) { ?>
 						<br/><br/>
 						<input type="button" style="float:right" value="Cliquer ici pour réserver votre place" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>'">
@@ -90,6 +92,8 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 			<p>A bientôt !</p>
 		-->
 		<? } ?>
+		
+
 		
 		
 		<h1>Inscrivez-vous à la newsletter</h1>

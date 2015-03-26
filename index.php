@@ -71,6 +71,8 @@ else
 	<meta name="Robots" content="index,follow">
 	<meta name="Revisit-after" content="15 days">
 	<meta name="Rating" content="general">
+	<meta name="viewport" content="width=device-width">
+	<!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">-->
 	
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 	
 	<script src="bootstrap/js/bootstrap.min.js"></script>
@@ -119,11 +121,11 @@ else
 	
 		<? $aMenuItems = array(
 			 "welcome" => "Accueil"
-			, "impro" => "L'impro & nous"
+			, "impro" => "L'impro"
 			, "agenda" => "L'agenda"
 			, "comediens" => "Comédiens"
 			//, "photos" => "Photos"
-			, "liens" => "Liens"
+			//, "liens" => "Liens"
 			, "contact" => "Contact"
 		); ?>
 	

@@ -42,16 +42,23 @@ if ($id)
 
 		# En gros on affiche le prenom du comedien, et le surnom s'il est différent
 		echo "<h1>$prenom" ;
-		if ( $surnom ) {
-			echo " (alias $surnom)" ;
-		}
+
 		echo "</h1>\n" ;
 		echo "<div id=\"comedien\">\n";
 		// en fonction du désir de la personne, on l'affiche pas son nom
 		$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");
 
-		echo "<p><span class=\"intitules\">Matricule&nbsp;:</span> $sNomPrenom</p>\n" ;
+		if ( file_exists( $photo ) ) {
+			# Si la photo existe on l'affiche
+			echo "<img class=\"photo_fiche\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" title=\"$sNomPrenom\" />\n" ;
+		}
+
+		//echo "<p><span class=\"intitules\">Matricule&nbsp;:</span> $sNomPrenom</p>\n" ;
 		//echo "<p><span class=\"intitules\">Venue au monde&nbsp;:</span> $jour / $mois / $annee</p>\n" ;
+		
+		if ( $surnom ) {
+			echo "<p><span class=\"intitules\">Alias&nbsp;:</span> $surnom</p>\n" ;
+		}
 
 
 		// Personnages OMERTA
@@ -68,11 +75,6 @@ if ($id)
 		}
 
 		if ($debut) echo "<p><span class=\"intitules\">D&eacute;but dans l'improvisation&nbsp;:</span> $debut</p>\n" ;
-
-		if ( file_exists( $photo ) ) {
-			# Si la photo existe on l'affiche
-			echo "<img class=\"photo_fiche\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" title=\"$sNomPrenom\" />\n" ;
-		}
 
 		if ($envie) echo "<p><span class=\"intitules\">Comment as-tu eu envie de faire de l'improvisation&nbsp;?</span> $envie</p>\n" ;
 		if ($apport) echo "<p><span class=\"intitules\">Que t'apporte l'improvisation ?</span> $apport</p>\n" ;
