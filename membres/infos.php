@@ -49,6 +49,7 @@ else {
 		$prenom = getp("prenom");
 		$nom = getp("nom");
 		$afficherNom = getp("affichernom");
+		$notif_email = getp("notif_email");
 		$surnom = getp("surnom");
 		$jour = getp("jour");
 		$mois = getp("mois");
@@ -70,6 +71,7 @@ else {
 			prenom='$prenom',
 			nom='$nom',
 			affichernom='$afficherNom',
+			notif_email='$notif_email',
 			surnom='$surnom',
 			jour='$jour',
 			mois='$mois',
@@ -132,6 +134,7 @@ else {
 	$password = $resultat[ "password" ];
 	$prenom = $resultat[ "prenom" ];
 	$nom = $resultat[ "nom" ];
+	$notif_email = $resultat[ "notif_email" ];
 	$afficherNom = $resultat[ "affichernom" ];
 	$surnom = $resultat[ "surnom" ];
 	$jour = $resultat[ "jour" ];
@@ -150,24 +153,23 @@ else {
 
 	$photoUri = get_photo_uri($edited_id);
 	
-	
 	HandleAjaxFileUi("infos.php", "image", $edited_id, $photoUri, "Image de l'année", "width:150px;", 400, 300, true);
 	
 	?>
-	
+
 	<div class="panel panel-default"><div class="panel-heading">Informations personnelles</div><div class="panel-body">
 	<form method="post" role="form">
 	<h2>Acc&egrave;s &agrave; l'espace membres</h2>
 	<?
 	echo "<p><span class=\"intitules\">Identifiant (non modifiable)&nbsp;:</span> $login</p>\n";
 	echo "<p><span class=\"intitules\">Mot de passe&nbsp;:</span> <input type=\"password\" name=\"password\" value=\"$password\" /></p>\n";
-
+	echo "<p><input type=\"checkbox\" name=\"notif_email\" value=\"1\" ".($notif_email?"CHECKED":"")." /> Activer les notifications email</p>\n";
+	
 	echo "<h2>Identit&eacute;</h2>\n";
 	
 	echo "<p><span class=\"intitules\">Pr&eacute;nom&nbsp;*&nbsp;:</span> <input type=\"text\" name=\"prenom\" value=\"$prenom\" /></p>\n";
 	echo "<p><span class=\"intitules\">Nom&nbsp;:</span> <input type=\"text\" name=\"nom\" value=\"$nom\" />\n";
 	echo "   <input type=\"checkbox\" name=\"afficherNom\" value=\"1\" ".($afficherNom?"CHECKED":"")." /> Nom affiché sur le site</p>\n";
-	
 	echo "<p><span class=\"intitules\">Surnom&nbsp;*&nbsp;:</span> <input type=\"text\" name=\"surnom\" value=\"$surnom\" /></p>\n";
 	echo "<p><span class=\"intitules\">Date de naissance&nbsp;*&nbsp;:</span> ";
 	echo "<input type=\"text\" name=\"jour\" value=\"$jour\" size=\"2\"/>";
@@ -198,6 +200,7 @@ else {
 	echo "<textarea name=\"qualite\" cols=\"80\">$qualite</textarea></p>\n";
 	echo "<p><span class=\"intitules\">D&eacute;faut&nbsp;:</span><br />\n";
 	echo "<textarea name=\"defaut\" cols=\"80\">$defaut</textarea></p>\n";
+	
 
 	?>
 
