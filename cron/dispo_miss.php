@@ -1,15 +1,19 @@
+#!/usr/local/bin/php
 <?
+
+// ! SET FILE PERMISSIONS TO 700
+
 @require_once ( "../config.inc.php" ) ;
 @require_once ( "../fonctions.inc.php" ) ;
 @require_once ( "../connexion_mysql.php" ) ;
 @require_once ( "../fxDB.php" );
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 // http://improcite.com/work/wip_mat
 $urlbase =  str_replace("/cron/dispo_miss.php", "", $_SERVER['SCRIPT_URI']);
 
-$nbmois = 3;
+$nbmois = 2;
 $date_debut = date("YmdHis");
 $date_fin = unixToDate(time() + 3600*24*30*$nbmois);
 
@@ -25,7 +29,7 @@ $sql = "SELECT c.id as cid, c.email, e.Date as edate, e.id as eid, ce.nom as cen
 				. " AND c.notif_email = 1"
 				. " AND ce.publique = 1"
 				. " AND e.date > '".$date_debut."'"
-			//	. " AND e.date < '".$date_fin."'"
+				. " AND e.date < '".$date_fin."'"
 				. " AND c.saison & ". (1 << $iCurrentSaisonNumber) ." <> 0"
 				. " ORDER BY c.email"
 				;
@@ -40,7 +44,7 @@ function sendml($email, $ml)
 {
 	global $urlbase;
 	
-	if($email != "matfrem@gmail.com") return;
+	//if($email != "matfrem@gmail.com") return;
 	
 	$ml = "Yop !<br/>"
 		. "Tu as des spectacles dans les deux mois à venir dont tu n'as pas rempli les dispos.<br/>"
