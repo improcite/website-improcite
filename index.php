@@ -56,8 +56,8 @@ else
 	}
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 	<title>ImproCité : La Troupe d'Improvisation Théâtrale de Lyon et Villeurbanne </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -71,8 +71,7 @@ else
 	<meta name="Robots" content="index,follow">
 	<meta name="Revisit-after" content="15 days">
 	<meta name="Rating" content="general">
-	<meta name="viewport" content="width=device-width">
-	<!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 	
 	<script src="bootstrap/js/bootstrap.min.js"></script>
