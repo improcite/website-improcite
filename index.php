@@ -81,6 +81,7 @@ else
 	<link href="css/improcite.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div class="container">
 <div id="page">
 	<? if (!$promo_mode) { ?>
 	<div id="header" style="cursor:pointer" onClick="window.location.href='?';">
@@ -161,6 +162,8 @@ else
 	<div id="footer">
 		<form action="membres/" method="get"><input type=submit name="sub" value="Espace Membres"></form>		
 	</div> <!-- footer -->
+
+</div>
 
 <script type="text/javascript">
 
