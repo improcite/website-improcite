@@ -799,36 +799,3 @@ font-size:10pt;
 
 }
 
-@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-   body {
-	font-size: 4em;
-}
-
-h1 {
-	font-size: 200%;
-}
-
-h2 {
-	font-size: 150%;
-	background-image: none;
-	padding-left: 0px;
-}
-
-ul.comediens a:after {
-	font-size: 0.8em;
-	
-}
-
-ul.comediens-small img.photo_comedien {
-	height: 120px ;
-	width: 160px ;
-}
-
-
-img.affiche {
-        width:500px;
-}
-
-
-}
-
