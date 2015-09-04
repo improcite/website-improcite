@@ -9,15 +9,10 @@ Orange				#FF6E02
 body {
 	margin:	0px;
 	padding: 0px;
-	/*background: #000 url("../images2/background.png");*/
-	background: #ccc;
+	background: #ccc url("../images/ciel.jpg") no-repeat center fixed;
+	background-size: cover;
 	color: #000;
-	/*font-size: 13pt; */
-	/*font-size: medium; */
 	font-size: 2em;
-	
-	/*font-family: courier;*/
-	/*font-family: cursive;*/
 	font-family:sans-serif;
 }
 
@@ -134,19 +129,14 @@ div#welcome {
 
 
 div#page {
-	/*margin: 20px auto;*/
-	
 	margin: 0px auto;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-bottom:20px;
 	
 	width: 1040px;
-	/*padding: 20px;*/
-	/*background: #000;*/
-	/*border:5px solid black;*/
-	/*border-radius: 5px;*/
-	background-color: #DDD;
+	background-color: rgb(255,255,255);
+	background-color: rgba(255,255,255,0.4);
 }
 
 
