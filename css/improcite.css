@@ -43,12 +43,7 @@ img {
 {
 	color: #ccc;
 	background: #CB0810;
-	margin-left: 30px;
-	/*font-size:130%;*/
-}
-
-.titrespectacle .lieuspectacle
-{
+	padding: 5px;
 }
 
 div#header {
@@ -90,10 +85,6 @@ div#welcome {
 {
 	width:1000px;
 }
-
-/*div#welcome a {
-	color: #ddd;
-}*/
 
 .menubar
 {
@@ -159,10 +150,6 @@ div#page_archive_alpha {
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF444444, endColorstr=#FF444444)";
 }
-
-div#corps_content {
-}
-
 
 div#menu {
 	text-align: center;
@@ -344,6 +331,7 @@ table.grid td
 
 ul.comediens {
 	list-style:none outside none;
+	margin: 10px 0;
 }
 ul.comediens li {
 	/*display:inline;*/
@@ -488,14 +476,7 @@ z-index: 5;
 
 /* ### Le corps de la page ### */
 #corps {
-	position: static;
-	clear: both;
-	border: 0;
-	/* force la hauteur à 500px */
-	/* hyper important sinon la cible se décale sur les pages trop petites sous IE
-	/* http://blog.alsacreations.com/2004/08/17/54-min-height-sur-internet-explorer */
-	/*height: auto !important;height: 500px;min-height: 500px;*/
-
+	margin-top: 10px;
 }
 
 /* ### Le pied de page ### */
@@ -669,18 +650,6 @@ div.spectacle img.affiche {
         margin-right: 30px;
 }
 
-
-/*div.spectacle*/
- hr {
-	clear: both;
-	margin: 0px -20px 10px;
-	border-top:1px solid gray;
-	/*color: #CB0810;
-	border: 1px solid;*/
-	height: 5px;
-	background-color:white;
-	margin-top:10px;
-}
 
 /* OMERTA */
 

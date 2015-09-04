@@ -12,7 +12,6 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 			?></div><?
 		}
 		
-		$bFirst = true;
 		$iCount = 0;
 		$date_actuelle = date("YmdHis") ;
 		$requete_prochains = fxQuery( 	"SELECT e.id as eid, c.id as cid, l.id as lid, e.commentaire as ecommentaire,"
@@ -23,17 +22,10 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 		{
 			$iCount++;
 			$date = affiche_date($aRow["date"]);
-			if ($bFirst)
-			{
-				$bFirst = false;
-				?><!--<h1>Prochain spectacle</h1>-->
-				<br>
-				<?
-				
-			}
+			$heure = affiche_heure($aRow["date"]);
 			?>
-			<div class="spectacle">
-				<div class="affiche">
+			<div class="spectacle row">
+				<div class="col-md-4">
 				<? // Affiche la photo de l'evenement ou de la categorie
 
 					$photoEvenement = $sPhotoEvenement.$aRow["eid"].".jpg";
@@ -50,39 +42,35 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					}
 				?>
 				</div>
-				<div class="description">
+				<div class="col-md-8">
 					<div class="lieuspectacle"><a href="?p=lieux&id=<?=$aRow["lid"]?>"><?=$aRow["lnom"]?></a></div>
-					<div class="datespectacle"><?=$date?></div>
+					<div class="datespectacle"><?=$date?> - <?=$heure?></div>
 					<div class="titrespectacle"><a href="?p=agenda" title="<?=$aRow["cdescription"]?>"><?=$aRow["nom"]?></a></div>
 					
 					<? if ($aRow["ecommentaire"])
 					{
-						//echo "<div style=\"padding:2px;\">";
 						echo affiche_texte($aRow['ecommentaire']);
-						//echo "</div>";
 					}
 					elseif ($aRow["cdescription"])
 					{
-						//echo "<div style=\"padding:2px;\">";
 						echo affiche_texte($aRow['cdescription']);
-						//echo "</div>";
 					}
 					?>					
 					
-					<div style="display:block">
+					<div class="row">
 					<?php
 					$selectionnes = $aRow['joueurs'] .";" . $aRow['mc'] . ";" . $aRow['arbitre'] . ";" . $aRow['coach']; 
 					fxDispJoueurArray(explode(";", $selectionnes), "width:100px;");
 					?>
 					</div>
 					<? if ($aRow["places"]) { ?>
-						<br/><br/>
-						<input type="button" style="float:right" value="Cliquer ici pour réserver votre place" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>'">
+					<div class="text-center">
+						<input type="button" class="btn" value="Cliquer ici pour réserver votre place" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>'">
+					</div>
 					<? }?>
-					<br/>
-					<hr/>
 				</div>
 			</div>
+			<hr />
 			
 		<? } ?>
 		
