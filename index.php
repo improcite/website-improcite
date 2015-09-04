@@ -130,7 +130,7 @@ else
 		); ?>
 	
 		<div class="menubar">
-		  <ul class="nav nav-pills">
+		  <ul class="nav nav-pills nav-justified">
 			<? foreach($aMenuItems as $k => $v) { ?>
 			<li class="<?=(($k==$p)?'active':'')?>"><a href="?p=<?=$k?>#apage"><?=$v?></a></li>
 			<? } ?>
