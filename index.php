@@ -124,15 +124,20 @@ else
 			, "impro" => "L'impro"
 			, "agenda" => "L'agenda"
 			, "comediens" => "Comédiens"
-			//, "photos" => "Photos"
-			//, "liens" => "Liens"
 			, "contact" => "Contact"
 		); ?>
+		<? $aMenuIcons = array(
+			 "welcome" => "home"
+			, "impro" => "info-sign"
+			, "agenda" => "calendar"
+			, "comediens" => "user"
+			, "contact" => "envelope"
+		); ?>
 	
-		<div class="menubar">
-		  <ul class="nav nav-pills nav-justified">
+		<div class="menubar" role="navigation">
+		  <ul class="nav nav-justified">
 			<? foreach($aMenuItems as $k => $v) { ?>
-			<li class="<?=(($k==$p)?'active':'')?>"><a href="?p=<?=$k?>#apage"><?=$v?></a></li>
+			<li class="<?=(($k==$p)?'active':'')?>"><a href="?p=<?=$k?>#apage"><i class="glyphicon glyphicon-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
 			<? } ?>
 		  </ul> <!-- /tabs -->
 		</div> <!-- /example -->		
