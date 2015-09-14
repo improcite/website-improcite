@@ -24,7 +24,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 			$date = affiche_date($aRow["date"]);
 			$heure = affiche_heure($aRow["date"]);
 			?>
-			<div class="spectacle row">
+			<div class="row">
 				<div class="col-md-4">
 				<? // Affiche la photo de l'evenement ou de la categorie
 
@@ -32,42 +32,48 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					$photoLieu = $sPhotoLieuRelDir.$aRow["lid"].".jpg";
 					$photoCategorie = $sPhotoCategorie.$aRow["cid"].".jpg";
 					if ( file_exists($photoEvenement) ) {
-						echo "<img src=\"$photoEvenement\" alt=\"$aRow[nom]\" class=\"affiche\"/>\n";
+						echo "<img src=\"$photoEvenement\" alt=\"$aRow[nom]\" class=\"affiche img-responsive\"/>\n";
 					}
 					elseif ( file_exists($photoLieu) ) {
-						echo "<img src=\"$photoLieu\" alt=\"$aRow[nom]\" class=\"affiche\"/>\n";
+						echo "<img src=\"$photoLieu\" alt=\"$aRow[nom]\" class=\"affiche img-responsive\"/>\n";
 					}					
 					elseif ( file_exists($photoCategorie) ) {
-						echo "<img src=\"$photoCategorie\" alt=\"$aRow[nom]\" class=\"affiche\"/>\n";
+						echo "<img src=\"$photoCategorie\" alt=\"$aRow[nom]\" class=\"affiche img-responsive\"/>\n";
 					}
 				?>
 				</div>
 				<div class="col-md-8">
-					<div class="lieuspectacle"><a href="?p=lieux&id=<?=$aRow["lid"]?>"><?=$aRow["lnom"]?></a></div>
+					<div class="lieuspectacle"><a href="?p=lieux&id=<?=$aRow["lid"]?>#apage"><?=$aRow["lnom"]?></a></div>
 					<div class="datespectacle"><?=$date?> - <?=$heure?></div>
-					<div class="titrespectacle"><a href="?p=agenda" title="<?=$aRow["cdescription"]?>"><?=$aRow["nom"]?></a></div>
+					<div class="titrespectacle"><a href="?p=agenda#apage" title="<?=$aRow["cdescription"]?>"><?=$aRow["nom"]?></a></div>
 					
 					<? if ($aRow["ecommentaire"])
 					{
+						echo "<div class=\"well\">";
 						echo affiche_texte($aRow['ecommentaire']);
+						echo "</div>";
 					}
 					elseif ($aRow["cdescription"])
 					{
+						echo "<div class=\"well\">";
 						echo affiche_texte($aRow['cdescription']);
+						echo "</div>";
 					}
 					?>					
 					
+					<? if ($aRow["places"]) { ?>
+					<div class="text-center" style="margin-bottom:20px;">
+						<button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>'">
+						<i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place
+						</button>
+					</div>
+					<? }?>
 					<div class="row">
 					<?php
 					$selectionnes = $aRow['joueurs'] .";" . $aRow['mc'] . ";" . $aRow['arbitre'] . ";" . $aRow['coach']; 
 					fxDispJoueurArray(explode(";", $selectionnes), "width:100px;");
 					?>
 					</div>
-					<? if ($aRow["places"]) { ?>
-					<div class="text-center">
-						<input type="button" class="btn" value="Cliquer ici pour réserver votre place" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>'">
-					</div>
-					<? }?>
 				</div>
 			</div>
 			<hr />
