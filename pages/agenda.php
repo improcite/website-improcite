@@ -12,9 +12,7 @@ $nb_prochains = @mysql_num_rows ( $requete_prochains );
 if ($nb_prochains == 0)
 {
 ?>
-	<h2>Les spectacles seront bientôt affichés</h2>
-	<p>Nous jouons au bar <a href="?p=lieux&id=4">Le Trokson</a> chaque dernier mercredi du mois !</p>
-	<p>A bientôt !</p>
+	<div class="alert alert-warning">Les spectacles seront bientôt affichés</div>
 <?
 } else {
 	for ($i=0; $i<$nb_prochains; $i++) {
@@ -34,33 +32,42 @@ if ($nb_prochains == 0)
 		$arbitre = @mysql_result($requete_prochains, $i, "arbitre");
 		$mc = @mysql_result($requete_prochains, $i, "mc");
 
-		echo "<div class=\"spectacle\">";
-		echo "<h2>Le $date &agrave; $heure ($nom)</h2>\n";
-		//echo '<table border="0" width="100%"><tr><td width="50%" valign="top">';
+		echo "<div class=\"row\">";
+		echo "<h2>Le $date &agrave; $heure&nbsp;: $nom</h2>\n";
+		echo "<div class=\"col-md-4\">";
 		// Affiche la photo de l'evenement ou de la categorie
 		$photoEvenement = $sPhotoEvenement.$id.".jpg";
 		$photoCategorie = $sPhotoCategorie.$cid.".jpg";
 		$photoLieu = $sPhotoLieuRelDir.$id_lieu.".jpg";
 		if ( file_exists($photoEvenement) ) {
-			echo "<img src=\"$photoEvenement\" class=\"affiche\" style=\"float:left;\" />\n";
+			echo "<img src=\"$photoEvenement\" class=\"affiche img-responsive\" />\n";
 		}
 		else if ( file_exists($photoLieu) ) {
-			echo "<img src=\"$photoLieu\" class=\"affiche\" style=\"float:left;\" />\n";
+			echo "<img src=\"$photoLieu\" class=\"affiche img-responsive\" />\n";
 		}		
 		elseif( file_exists($photoCategorie) ) {
-			echo "<img src=\"$photoCategorie\" class=\"affiche\" style=\"float:left;\" />\n";
+			echo "<img src=\"$photoCategorie\" class=\"affiche img-responsive\" />\n";
 		}
-		//echo "</td><td>";
-		echo "<div>";
-		if ($commentaire) {echo "<p>$commentaire</p>\n";}
-		if( $lieu) { echo "<p><span class=\"intitules\">Lieu&nbsp;:</span> <a href=\"?p=lieux&id=$id_lieu\" title=\"$lieu\">$lieu</a></p>\n";}
-		if ($tarif) { echo "<p><span class=\"intitules\">Tarif&nbsp;:</span> $tarif &euro;";
-		if ($places)
+		echo "</div>";
+		echo "<div class=\"col-md-8\">";
+		if ($commentaire) {echo "<div class=\"well\">$commentaire</div>\n";}
+                if ($places) { ?><div class="text-center" style="margin-bottom:20px;"><button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$id?>#apage'"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place</button></div><? }
+
+		if (trim(str_replace(";", "", $joueurs)) != "")
 		{
-			?><input type="button" style="float:right" value="Cliquer ici pour réserver votre place" onclick="location='?p=reservation&id_spectacle=<?=$id?>'"><?
+			fxDispJoueurArray(explode(";", $joueurs), "width:80px;height:60px;");
 		}
-		echo "</p>\n";
-		}
+
+		?>
+
+		<div class="panel panel-warning">
+		<div class="panel-heading text-center">Plus d'informations</div>
+		<table class="table">
+
+		<?
+
+		if( $lieu) { echo "<tr><th>Lieu</th><td><a href=\"?p=lieux&id=$id_lieu\" title=\"$lieu\">$lieu</a></td></tr>\n";}
+		if ($tarif) { echo "<tr><th>Tarif</th><td>$tarif &euro;</td></tr>"; }
 		
 		if ($coach || $arbitre || $mc)
 		{
@@ -72,9 +79,9 @@ if ($nb_prochains == 0)
 				$afficherNom = @mysql_result($requete_coach, 0, "affichernom");
 				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
 
-				echo "<span class=\"intitules\">Coach&nbsp;:</span> <a href=\"?p=comediens&id=$coach\">$sNomPrenom";
+				echo "<tr><thCoach</th><td><a href=\"?p=comediens&id=$coach\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }
-				echo "</a><br />\n";
+				echo "</a></td></tr>\n";
 			}
 			if ($arbitre) {
 				$requete_arbitre = fxQuery("SELECT id,prenom,nom,surnom,affichernom FROM $table_comediens WHERE id=?", $arbitre);
@@ -84,9 +91,9 @@ if ($nb_prochains == 0)
 				$afficherNom = @mysql_result($requete_arbitre, 0, "affichernom");
 				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
 
-				echo "<span class=\"intitules\">Arbitre&nbsp;:</span> <a href=\"?p=comediens&id=$arbitre\">$sNomPrenom";
+				echo "<tr><th>Arbitre</th><td><a href=\"?p=comediens&id=$arbitre\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }
-				echo "</a><br />\n";
+				echo "</a></td></tr>\n";
 			}
 			if ($mc) {
 				$requete_mc = fxQuery("SELECT id,prenom,nom,surnom,affichernom FROM $table_comediens WHERE id=?", $mc);
@@ -96,24 +103,20 @@ if ($nb_prochains == 0)
 				$afficherNom = @mysql_result($requete_mc, 0, "affichernom");
 				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
 
-				echo "<span class=\"intitules\">Ma&icirc;tre de c&eacute;r&eacute;monie&nbsp;:</span> <a href=\"?p=comediens&id=$mc\">$sNomPrenom";
+				echo "<tr><th>Ma&icirc;tre de c&eacute;r&eacute;monie</th><td><a href=\"?p=comediens&id=$mc\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }
-				echo "</a><br />\n";
+				echo "</a></td></tr>\n";
 			}
 		}		
 
-		if (trim(str_replace(";", "", $joueurs)) != "")
-		{
-			echo "Avec&nbsp;:";
-			fxDispJoueurArray(explode(";", $joueurs), "width:80px;height:60px;");
-		}
+		?>
 
-
-		echo "</div>";
-		echo "</div>";
-		//echo "</td></tr></table>";
-		echo "<hr/>";
-
+		</table>
+		</div>
+		</div>
+		</div>
+		<hr/>
+		<?
 	}
 
 }
