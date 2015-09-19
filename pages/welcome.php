@@ -1,3 +1,5 @@
+<h1>Nos prochains spectacles</h1>
+
 <?php
 
 include(dirname(__FILE__)."/../fxJoueurs.php");
@@ -63,7 +65,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					
 					<? if ($aRow["places"]) { ?>
 					<div class="text-center" style="margin-bottom:20px;">
-						<button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>'">
+						<button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>#apage'">
 						<i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place
 						</button>
 					</div>
@@ -81,19 +83,9 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 		<? } ?>
 		
 		<? if ($iCount == 0) { ?>
-		<!--
-		        <p>Nous jouons au bar <a href="?p=lieux&id=4">Le Trokson</a> chaque dernier mercredi du mois !</p>
-			<p>A bientôt !</p>
-		-->
+			<div class="alert alert-info">Nos prochaines dates seront bientôt disponibles</div>
 		<? } ?>
-		
 
-		
-		
 		<h1>Inscrivez-vous à la newsletter</h1>
 		<? afficher_inscription_newsletter(); ?>
-		<br />
-		</td>
-	
-	</td>
 
