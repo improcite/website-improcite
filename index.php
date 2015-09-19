@@ -165,7 +165,17 @@ else
 </div> <!-- page -->
 
 	<div id="footer">
-		<form action="membres/" method="get"><input type=submit name="sub" value="Espace Membres"></form>		
+	<div class="row">
+		<div class="col-md-4">
+		<a role="button" class="btn btn-primary btn-lg" href="https://www.facebook.com/improcite"><i class="glyphicon glyphicon-thumbs-up"></i> Facebook</a>
+		</div>
+		<div class="col-md-4">
+		<a role="button" class="btn btn-info btn-lg" href="https://www.twitter.com/improcite"><i class="glyphicon glyphicon-star"></i> Twitter</a>
+		</div>
+		<div class="col-md-4">
+		<a role="button" class="btn btn-danger btn-lg" href="/membres/"><i class="glyphicon glyphicon-user"></i> Espace membres</a>
+		</div> 
+	</div>
 	</div> <!-- footer -->
 
 </div>

@@ -158,15 +158,13 @@ div#menu {
 div#footer {
 	background-color: black;
 	text-align: center;
-	margin:auto;
-	margin-top:5px;
-	margin-bottom:5px;
+	margin:10px auto;
 	width: 1040px;
-	
+	padding: 10px;	
 }
 
-div#footer p.membres {
-	font-size: 10pt;
+div#footer a {
+	color: #FFF;
 }
 
 table.layertable {
