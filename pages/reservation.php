@@ -43,13 +43,11 @@ if ( $action == "Valider" )
 
 	if ( $nb != 1 )
 	{
-		echo "<p class=\"titre2\">Spectacle demand&eacute; introuvable...</p>\n";
-		echo "<p>Merci de renouveller l'op&eacute;ration.</p>\n";
+		echo "<div class=\"alert alert-danger\">Spectacle demand&eacute; introuvable</div>\n";
 	}
 	else if (!$nom || !$prenom || !$email)
 	{	# Test des parametres
-		echo "<p class=\"titre2\">Tous les champs n'ont pas &eacute;t&eacute; remplis...</p>\n";
-		echo "<p>Merci de renouveller l'op&eacute;ration.</p>\n";
+		echo "<div class=\"alert alert-danger\">Tous les champs n'ont pas &eacute;t&eacute; remplis</div>\n";
 	}
 	else
 	{
@@ -62,31 +60,35 @@ if ( $action == "Valider" )
 			VALUES ( '' , '$id_spectacle' , '$places' , '$nom' , '$prenom' , '$email', '$telephone', $date_res )") ;
 		
 		$ref = @mysql_insert_id() ;
-		
-		echo "<p class=\"titre3\">R&eacute;capitulatif de votre r&eacute;servation&nbsp;:</p>\n" ;
-		
-		echo "<p><span class=\"intitules\">Date du spectacle :</span> ".@affiche_date( $infos["date"] )."<br />\n" ;
-		#echo "<span class=\"intitules\">Lieu du spectacle :</span> ".$infos["lieu"]."<br />\n" ;
-		echo "<span class=\"intitules\">Nombre de places :</span> ".$places."<br />\n" ;
-		echo "<span class=\"intitules\">R&eacute;f&eacute;rence :</span> 1PRO6TE_$ref (&agrave; nous communiquer pour le retrait sur place)</p>\n" ;
-		
-		echo "<p class=\"titre3\">Inscription &agrave; la lettre d'informations&nbsp;:</p>\n" ;
-		
-		echo "<p>Elle vous permet de rester facilement inform&eacute; de l'actualit&eacute; d'Improcit&eacute;.</p>\n";
 		?>
+
+		<div class="panel panel-info">
+		<div class="panel-heading text-center">Réservation validée</div>
+		<table class="table">
+		<?
+		echo "<tr><th>Date du spectacle</th><td>".@affiche_date( $infos["date"] )."</td></tr>\n" ;
+		echo "<tr><th>Nombre de places</th><td>$places</td></th>" ;
+		echo "<tr><th>Nom</th><td>$prenom $nom</td></th>" ;
+		echo "<tr><th>Email</th><td>$email</td></th>" ;
+		echo "<tr><th>R&eacute;f&eacute;rence</th><td>1PRO6TE_$ref (&agrave; nous communiquer pour le retrait sur place)</td></tr>\n" ;
 		
-		<table style="border:1px solid #aa0033; font-size:small" align=center>
-			<tr>
-			<td>
-			<? afficher_inscription_newsletter($email); ?>
-			</td>
-			</tr>
-			<tr>
-			<td>
-			<a href="http://groups.google.com/group/improcite-infos">Voir les archives</a> sur <a href="http://groups.google.com/">groups.google.com</a>
-			</td>
-			</tr>
+		?>
 		</table>
+		</div>
+
+		<div class="panel panel-success">
+		<div class="panel-heading text-center">Inscription à la lettre d'informations</div>
+		<div class="panel-body">
+
+		
+		<p>Elle vous permet de rester facilement inform&eacute; de l'actualit&eacute; d'Improcit&eacute;</p>
+		
+		<? afficher_inscription_newsletter($email); ?>
+
+		<p><a href="http://groups.google.com/group/improcite-infos">Voir les archives</a></p>
+
+		</div>
+		</div>
 		<?
 	}
 
@@ -212,7 +214,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 		<tr><th>Nom</th><td><input class="form-control" type="text" name="nom" /></td></tr>
 		<tr><th>Pr&eacute;nom</th><td><input class="form-control" type="text" name="prenom" /></td></tr>
 		<tr><th>E-mail</th><td><input class="form-control" type="text" name="email" /></td></tr>
-		<tr><th>T&eacute;l&eacute;phone</th><td><input class="form-control" type="text" name="telephone" /></td></tr>
+		<tr><th>Téléphone (facultatif)</th><td><input class="form-control" type="text" name="telephone" /></td></tr>
 		<tr class="text-center"><td colspan="2"><button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver</button></td></tr>
 		</table>
 		</form>
