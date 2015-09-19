@@ -1,4 +1,3 @@
-<h1>Informations sur le spectacle</h1>
 <?
 include(dirname(__FILE__)."/../fxJoueurs.php");
 
@@ -98,16 +97,10 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	# On affiche le formulaire pour reserver
 
 	$id_spectacle = $_REQUEST[ "id_spectacle" ];
-	if ($_REQUEST[ "id_spectacle" ]) { $id_spectacle = $_REQUEST[ "id_spectacle" ]; };
 		
 	if ( !$id_spectacle ) {
-		echo "<p class=\"titre2\">Aucun spectacle n'a &eacute;t&eacute;s&eacute;lectionn&eacute;</p>\n" ;	
-		echo "<p>Merci de renouveller l'op&eacute;ration.</p>\n";
-
-		echo "</div>\n" ;
-		@include( "pied.php" );
-		exit;
-	}
+		echo "<div class=\"alert alert-danger\">Aucun spectacle n'a &eacute;t&eacute; s&eacute;lectionn&eacute;</div>\n" ;	
+	} else {
 	
 	$requete_spectacle = @mysql_query( "SELECT * FROM $t_eve WHERE id=$id_spectacle" ) ;
 	$nb = @mysql_num_rows ( $requete_spectacle ) ;
@@ -117,13 +110,8 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	$infosLieu = @mysql_fetch_array($requete_lieu) ;
 
 	if ( $nb != 1 ) {
-		echo "<p class=\"titre2\">Spectacle demand&eacute; introuvable...</p>\n";
-		echo "<p>Merci de renouveller l'op&eacute;ration.</p>\n";
-
-		echo "</div>\n" ;
-		@include( "pied.php" );
-		exit;
-	}
+		echo "<div class=\"alert alert-danger\">Spectacle demand&eacute; introuvable</div>\n";
+	} else {
 
 	# Calcul des places restantes
 	$requete_places = @mysql_query( "SELECT SUM(places) AS total FROM $t_res WHERE evenement=$id_spectacle" ) ;
@@ -133,12 +121,18 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 
 	# Infos du spectacle
 
+	echo "<h1>Informations sur le spectacle</h1>\n";
+
 	// Affiche la photo de l'evenement ou de la categorie
 	$photoEvenement = $sPhotoEvenement.$infos["id"].".jpg";
 	$photoCategorie = $sPhotoCategorie.$infos["categorie"].".jpg";
 	$photoLieu = $sPhotoLieuRelDir.$infos["lieu"].".jpg";
+	?>
+	<div class="row">
+	<div class="col-md-4">
+	<?
 	if ( file_exists($photoEvenement) ) {
-		echo "<img src=\"$photoEvenement\" class=\"affiche\" style=\"float:left;margin-right:20px;\"/>\n";
+		echo "<img src=\"$photoEvenement\" class=\"affiche img-responsive\" />\n";
 	}
 	elseif ( file_exists($photoLieu) ) {
 		echo "<img src=\"$photoLieu\" class=\"affiche\" style=\"float:left;margin-right:20px;\"/>\n";
@@ -146,80 +140,97 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	elseif( file_exists($photoCategorie) ) {
 		echo "<img src=\"$photoCategorie\" class=\"affiche\" style=\"float:left;margin-right: 20px;\"/>\n";
 	}
+	?>
+	</div>
+	<div class="col-md-8">
 	
-	echo "<p>";
-	?>Le <?=@affiche_date( $infos["date"] )?>, <a href="?p=lieux&id=<?=$infosLieu['id']?>"><?=$infosLieu["nom"]?></a>
-	<br/>
-	<br/><?
+	<?	
+	if ($infos["commentaire"]) {echo "<div class=\"well\">".affiche_texte($infos["commentaire"])."</div>\n" ;}
 	
+	$selectionnes = $infos['joueurs'] .";" . $infos['mc'] . ";" . $infos['arbitre'] . ";" . $infos['coach']; 
+	fxDispJoueurArray(explode(";", $selectionnes), "width:80px;height:60px;");
+
+	?>
 	
-	if ($infos["commentaire"]) {echo affiche_texte($infos["commentaire"])."<br />\n" ;}
+	</div>
+	</div>
+
+	<div class="panel panel-warning">
+	<div class="panel-heading text-center">Plus d'informations</div>
+	<table class="table">
+
+	<tr><th>Date</th><td><?=affiche_date( $infos["date"] )?> à <?=affiche_heure( $infos["date"] )?></td></tr>
+	<tr><th>Lieu</th><td><a href="?p=lieux&id=<?=$infosLieu['id']?>"><?=$infosLieu["nom"]?></a></td></tr>
+
+	<?
+
 	
 	if ($resultat_places['total'])
 	{
-		echo "<span class=\"intitules\">Places disponibles&nbsp;:</span> ".dispPlaces($places_restantes, $infos[ "places" ])."<br />\n" ;
+		echo "<tr><th>Places disponibles</th><td>".dispPlaces($places_restantes, $infos[ "places" ])."</td></tr>\n" ;
 	}
 	
 	if ($infos["tarif"])
 	{
-		echo "<span class=\"intitules\">Prix de la place&nbsp;:&nbsp;</span> ".$infos["tarif"]."&euro;<br />\n" ;
+		echo "<tr><th>Prix de la place</th><td>".$infos["tarif"]."&euro;</td></tr>\n" ;
 	}
 	
-	?><br/><span class=\"intitules\">Joueurs&nbsp;:&nbsp;</span></br><?
-	$selectionnes = $infos['joueurs'] .";" . $infos['mc'] . ";" . $infos['arbitre'] . ";" . $infos['coach']; 
-	fxDispJoueurArray(explode(";", $selectionnes), "width:80px;height:60px;");
-	
-	echo "</p>";
+	?>
+
+	</table>
+	</div>
+
+	<?
 	
 	if ($places_restantes)
 	{
 		$max_places = $places_restantes > 5 ? 5 : $places_restantes ;
 	
 		?>
-		<hr style="clear:both"/>
+
+		<div class="panel panel-info">
+		<div class="panel-heading text-center">Réserver des places</div>
 		<form method="get">
 		<input type="hidden" name="p" value="reservation">
+		<input type="hidden" name="id_spectacle" value="<?=$id_spectacle?>" />
+		<input type="hidden" name="action" value="Valider" />
+
+		<table class="table">
+		<tr><th>Nombre de places</th><td>
 		<?
 	
 		# Renseignements a fournir
-		echo "<h3>Nombre de places à r&eacute;server :\n" ;
-		echo "<select name=\"places\"/>\n" ;
+		echo "<select class=\"form-control\" name=\"places\"/>\n" ;
 	
 		for ( $i = 1 ; $i <= $max_places ; $i++ )
 		{
 			echo "<option value=\"$i\">$i</option>\n" ;
 		}
-		echo "</select></h3>\n" ;
+		echo "</select>\n" ;
 		?>
 		
-		<h3>Coordonn&eacute;es&nbsp;:</h3>
-		<table>
-		<tr><th>Nom&nbsp;:</th><td><input type="text" name="nom" /> *</td></tr>
-		<tr><th>Pr&eacute;nom&nbsp;:</th><td><input type="text" name="prenom" /> *</td></tr>
-		<tr><th>E-mail&nbsp;:</th><td><input type="text" name="email" /> *</td></tr>
-		<tr><th>T&eacute;l&eacute;phone&nbsp;:</th><td><input type="text" name="telephone" /></td></tr>
-		<!--<tr><th></th><td><input type="checkbox" name="newsletter" />S'inscrire à la newsletter *</td></tr>-->
+		<tr><th>Nom</th><td><input class="form-control" type="text" name="nom" /></td></tr>
+		<tr><th>Pr&eacute;nom</th><td><input class="form-control" type="text" name="prenom" /></td></tr>
+		<tr><th>E-mail</th><td><input class="form-control" type="text" name="email" /></td></tr>
+		<tr><th>T&eacute;l&eacute;phone</th><td><input class="form-control" type="text" name="telephone" /></td></tr>
+		<tr class="text-center"><td colspan="2"><button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver</button></td></tr>
 		</table>
-		
-		<input type="hidden" name="id_spectacle" value="<?=$id_spectacle?>" />
-		<input type="hidden" name="action" value="Valider" />
-		<p><input type="submit" value="Valider la r&eacute;servation" /></p>
 		</form>
+		</div>
 		
-		<div style="border: 1px solid red; padding:3px;font-size:80%;">
-		Attention les réservations sont valables jusqu'à l'heure de début du spectacle (20h30 par exemple pour tes "Trokson").<br/>
+		<div class="alert alert-danger">
+		Attention les réservations sont valables jusqu'à l'heure de début du spectacle.
 		Après cet horaire, les réservations ne seront plus garanties.
 		</div>
-		<br/>
-		<hr/>
 		<?
+	} 
 	}
-
+	}
 }
 else
 {
 	# On affiche le formulaire pour reserver
-	echo "<p class=\"titre2\">Choisissez votre spectacle&nbsp;:</p>\n" ;
+	echo "<h1>Réserver des places pour un spectacle</h1>\n" ;
 
 	# Affichage des prochains spectacles
 		
@@ -232,9 +243,10 @@ else
 
 	if ( $nb_prochains > 0 )
 	{
-		?><form method="get">
+		?>
+		<form method="get">
 		<input type="hidden" name="p" value="reservation">
-		<select name="id_spectacle" onChange="if (this.value!='') this.form.submit();">
+		<select class="form-control" name="id_spectacle" onChange="if (this.value!='') this.form.submit();">
 		<option default="default" value="">Liste des spectacles...</option><?
 
 		for ( $i = 0 ; $i < $nb_prochains ; $i++ )
@@ -253,23 +265,23 @@ else
 	
 			if ( $places_restantes > 0 )
 			{
-				echo "<option value=\"$id\">$nom ($date) [$tarif] : ".dispPlaces($places_restantes,$places)."</option>\n" ;
+				echo "<option value=\"$id\">$nom ($date) : ".dispPlaces($places_restantes,$places)."</option>\n" ;
 			}
 			else
 			{
-				echo "<option>$nom ($date) [$tarif] : PLUS DE PLACE</option>\n" ;
+				echo "<option>$nom ($date) : Complet</option>\n" ;
 			}
 		}
 
-		echo "</select>\n" ;
-		?><input type="hidden" name="action" value="Choisir" /><?
-		echo "<input type=\"submit\" value=\"Choisir\" />\n" ;
-		echo "</form>\n" ;
-
+		?>
+		</select>
+		<input type="hidden" name="action" value="Choisir" />
+		</form>
+		<?
 	}
 	else
 	{
-		echo "<p>Pas de spectacles avec r&eacute;servations... Merci de revenir plus tard.</p>" ;
+		echo "<div class=\"alert alert-warning\">Pas de spectacles avec r&eacute;servations... Merci de revenir plus tard.</div>" ;
 	}
 
 }
