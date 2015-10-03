@@ -103,7 +103,7 @@ foreach(explode(";", $aUserInfos[1]) as $v)
 
 function fxGetExistingRights()
 {
-	return 	array("admin"=>"Administrateur", "selection"=>"SÈlectionneur", "artistik"=>"ComitÈ&nbsp;artistique", "noselect"=>"Non sÈlectionnable");
+	return 	array("admin"=>"Administrateur", "selection"=>"S√©lectionneur", "artistik"=>"Comit√©&nbsp;artistique", "noselect"=>"Non s√©lectionnable");
 }
 
 

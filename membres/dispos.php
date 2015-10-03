@@ -103,14 +103,14 @@ echo "<div id=\"corps\">\n" ;
 
 if ($bDisplayTrain)
 {
-	echo "<h1>Disponibilités <b>entrainements</b></h1>\n" ;
+	echo "<h1>DisponibilitÃ©s <b>entrainements</b></h1>\n" ;
 }
 else
 {
-	echo "<h1>Disponibilités <b>spectacles</b></h1>\n" ;
+	echo "<h1>DisponibilitÃ©s <b>spectacles</b></h1>\n" ;
 }
 
-# Mois et année
+# Mois et annÃ©e
 $month = 0;
 $year = 0;
 if (getp("month") && getp("year")) {
@@ -308,7 +308,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 					if ($aRow['coach'] == $aRowJ['id']) $sName = "Coach";
 					if ($aRow['mc'] == $aRowJ['id']) $sName = "MC";
 					if ($aRow['arbitre'] == $aRowJ['id']) $sName = "Arbitre";
-					if ($aRow['regisseur'] == $aRowJ['id']) $sName = "Régisseur";
+					if ($aRow['regisseur'] == $aRowJ['id']) $sName = "RÃ©gisseur";
 					if ($aRow['caisse'] == $aRowJ['id']) $sName = "Caisse";
 					if ($aRow['catering'] == $aRowJ['id']) $sName = "Catering";
 					if ($aRow['ovs'] == $aRowJ['id']) $sName = "OVS";
@@ -343,7 +343,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			<OPTION value="c" <?=($aRow['coach'] == $aRowJ['id'])?"SELECTED":""?>>Coach</OPTION>
 			<OPTION value="mc" <?=($aRow['mc'] == $aRowJ['id'])?"SELECTED":""?>>MC</OPTION>
 			<OPTION value="a" <?=($aRow['arbitre'] == $aRowJ['id'])?"SELECTED":""?>>Arbitre</OPTION>
-			<OPTION value="r" <?=($aRow['regisseur'] == $aRowJ['id'])?"SELECTED":""?>>Régisseur</OPTION>
+			<OPTION value="r" <?=($aRow['regisseur'] == $aRowJ['id'])?"SELECTED":""?>>RÃ©gisseur</OPTION>
 			<OPTION value="cai" <?=($aRow['caisse'] == $aRowJ['id'])?"SELECTED":""?>>Caisse</OPTION>
 			<OPTION value="cat" <?=($aRow['catering'] == $aRowJ['id'])?"SELECTED":""?>>Catering</OPTION>
 			<OPTION value="ovs" <?=($aRow['ovs'] == $aRowJ['id'])?"SELECTED":""?>>OVS</OPTION>
@@ -372,11 +372,11 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 	if ($bIsAdmin)
 	{
 		?>
-		<p>Activation des fonctionnalités <b>administrateur</b> sur cette page:
+		<p>Activation des fonctionnalitÃ©s <b>administrateur</b> sur cette page:
 		<form style="display:inline;" action="dispos.php" method="get">
 		<select name="adminfeatures" onChange="form.submit()">
-		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>Activé</OPTION>
-		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>Désactivé</OPTION>
+		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>ActivÃ©</OPTION>
+		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>DÃ©sactivÃ©</OPTION>
 		</select>
 		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 		<input type="hidden" name="month" value="<?=$month?>">
@@ -387,11 +387,11 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 	if ($bIsSelectionneur)
 	{
 		?>
-		<p>Activation des fonctionnalités <b>sélectionneur</b> sur cette page:
+		<p>Activation des fonctionnalitÃ©s <b>sÃ©lectionneur</b> sur cette page:
 		<form style="display:inline;" action="dispos.php" method="get">
 		<select name="selectfeatures" onChange="form.submit()">
-		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>Activé</OPTION>
-		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>Désactivé</OPTION>
+		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>ActivÃ©</OPTION>
+		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>DÃ©sactivÃ©</OPTION>
 		</select>
 		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 		<input type="hidden" name="month" value="<?=$month?>">

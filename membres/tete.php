@@ -41,7 +41,7 @@ if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
 <html lang="fr">
 <head>
 	<title>Improcite - Espace membres</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -107,7 +107,7 @@ foreach(explode(";", $aUserInfos[1]) as $v)
 
 function fxGetExistingRights()
 {
-	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable");
+	return 	array("admin"=>"Administrateur", "selection"=>"SÃ©lectionneur", "artistik"=>"ComitÃ©&nbsp;artistique", "noselect"=>"Non sÃ©lectionnable");
 }
 
 function fxUserHasRight($sRight)

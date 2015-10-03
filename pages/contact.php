@@ -1,6 +1,6 @@
 <h1>Rester en contact</h1>
 
-<h2>Réseaux sociaux</h2>
+<h2>RÃ©seaux sociaux</h2>
 
 <div class="row text-center">
 <div class="col-md-6">
@@ -27,20 +27,20 @@
 
 <? afficher_inscription_newsletter(); ?>
 
-<div class="badge">Vous pouvez vous désinscrire a tout moment</div>
+<div class="badge">Vous pouvez vous dÃ©sinscrire a tout moment</div>
 
 <h2>Contact direct</h2>
 
-<a role="button" class="btn btn-info btn-lg" href=# onClick="<?=$sMailTo?>"><i class="glyphicon glyphicon-envelope"></i> Contacter l'équipe communication</a> 
+<a role="button" class="btn btn-info btn-lg" href=# onClick="<?=$sMailTo?>"><i class="glyphicon glyphicon-envelope"></i> Contacter l'Ã©quipe communication</a> 
 
 <h2>Logo et mascotte</h2>
 
 <div class="row text-center">
 <div class="col-md-6">
-<img src="http://improcite.com/images2/improcite-logo-med.png" class="img-thumbnail img-responsive" alt="Logo Improcité" />
+<img src="http://improcite.com/images2/improcite-logo-med.png" class="img-thumbnail img-responsive" alt="Logo ImprocitÃ©" />
 </div>
 <div class="col-md-6">
-<img src="http://improcite.com/images2/mascotte-transparent.png" class="img-thumbnail img-responsive" alt="Mascotte Improcité" />
+<img src="http://improcite.com/images2/mascotte-transparent.png" class="img-thumbnail img-responsive" alt="Mascotte ImprocitÃ©" />
 </div>
 </div>
 

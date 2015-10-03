@@ -63,7 +63,7 @@ if ( $action == "Valider" )
 		?>
 
 		<div class="panel panel-info">
-		<div class="panel-heading text-center">Réservation validée</div>
+		<div class="panel-heading text-center">RÃ©servation validÃ©e</div>
 		<table class="table">
 		<?
 		echo "<tr><th>Date du spectacle</th><td>".@affiche_date( $infos["date"] )."</td></tr>\n" ;
@@ -77,7 +77,7 @@ if ( $action == "Valider" )
 		</div>
 
 		<div class="panel panel-success">
-		<div class="panel-heading text-center">Inscription à la lettre d'informations</div>
+		<div class="panel-heading text-center">Inscription Ã  la lettre d'informations</div>
 		<div class="panel-body">
 
 		
@@ -161,7 +161,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	<div class="panel-heading text-center">Plus d'informations</div>
 	<table class="table">
 
-	<tr><th>Date</th><td><?=affiche_date( $infos["date"] )?> à <?=affiche_heure( $infos["date"] )?></td></tr>
+	<tr><th>Date</th><td><?=affiche_date( $infos["date"] )?> Ã  <?=affiche_heure( $infos["date"] )?></td></tr>
 	<tr><th>Lieu</th><td><a href="?p=lieux&id=<?=$infosLieu['id']?>"><?=$infosLieu["nom"]?></a></td></tr>
 
 	<?
@@ -191,7 +191,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 		?>
 
 		<div class="panel panel-info">
-		<div class="panel-heading text-center">Réserver des places</div>
+		<div class="panel-heading text-center">RÃ©server des places</div>
 		<form method="get">
 		<input type="hidden" name="p" value="reservation">
 		<input type="hidden" name="id_spectacle" value="<?=$id_spectacle?>" />
@@ -214,15 +214,15 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 		<tr><th>Nom</th><td><input class="form-control" type="text" name="nom" /></td></tr>
 		<tr><th>Pr&eacute;nom</th><td><input class="form-control" type="text" name="prenom" /></td></tr>
 		<tr><th>E-mail</th><td><input class="form-control" type="text" name="email" /></td></tr>
-		<tr><th>Téléphone (facultatif)</th><td><input class="form-control" type="text" name="telephone" /></td></tr>
-		<tr class="text-center"><td colspan="2"><button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver</button></td></tr>
+		<tr><th>TÃ©lÃ©phone (facultatif)</th><td><input class="form-control" type="text" name="telephone" /></td></tr>
+		<tr class="text-center"><td colspan="2"><button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-shopping-cart"></i> RÃ©server</button></td></tr>
 		</table>
 		</form>
 		</div>
 		
 		<div class="alert alert-danger">
-		Attention les réservations sont valables jusqu'à l'heure de début du spectacle.
-		Après cet horaire, les réservations ne seront plus garanties.
+		Attention les rÃ©servations sont valables jusqu'Ã  l'heure de dÃ©but du spectacle.
+		AprÃ¨s cet horaire, les rÃ©servations ne seront plus garanties.
 		</div>
 		<?
 	} 
@@ -232,7 +232,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 else
 {
 	# On affiche le formulaire pour reserver
-	echo "<h1>Réserver des places pour un spectacle</h1>\n" ;
+	echo "<h1>RÃ©server des places pour un spectacle</h1>\n" ;
 
 	# Affichage des prochains spectacles
 		

@@ -179,8 +179,8 @@ function fxDispFields(&$aData)
 		echo "</table>\n";
 		?>
 		<input type=hidden name="tbl_name" value="<?=$aData['table']?>">
-		<input type="submit" value="Ajouter/Mettre à jour" onClick="return confirm('Etes-vous sur ?');">
-		 (Mettre à jour le n° <?=fxQueryIndexedAsSelect("SELECT id, id FROM ".$aData['table']." ORDER BY id", array(), "tbl_replace_id", $fxH_tbl_edit_id, true);?>)
+		<input type="submit" value="Ajouter/Mettre Ã  jour" onClick="return confirm('Etes-vous sur ?');">
+		 (Mettre Ã  jour le nÂ° <?=fxQueryIndexedAsSelect("SELECT id, id FROM ".$aData['table']." ORDER BY id", array(), "tbl_replace_id", $fxH_tbl_edit_id, true);?>)
 		</form>
 		<br>
 		<br>
@@ -207,8 +207,8 @@ function fxHandleRequests()
 	global $fxH_aPreFill;
 	
 	//---------------------------------------------------------------------------
-	// Exécution des éventuelles requêtes d'ajout, modification ou suppression
-	// des tables gérées.
+	// ExÃ©cution des Ã©ventuelles requÃªtes d'ajout, modification ou suppression
+	// des tables gÃ©rÃ©es.
 	//---------------------------------------------------------------------------
 	$fxH_do =getp("do");
 	$fxH_tbl_name = getp("tbl_name");

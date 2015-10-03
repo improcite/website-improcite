@@ -40,12 +40,12 @@ if ($id)
 			$photo = $sPhotoRelDir."$id.jpg" ;
 		}
 
-		# En gros on affiche le prenom du comedien, et le surnom s'il est diffÈrent
+		# En gros on affiche le prenom du comedien, et le surnom s'il est diff√©rent
 		echo "<h1>$prenom" ;
 
 		echo "</h1>\n" ;
 		echo "<div id=\"comedien\">\n";
-		// en fonction du dÈsir de la personne, on l'affiche pas son nom
+		// en fonction du d√©sir de la personne, on l'affiche pas son nom
 		$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");
 
 		if ( file_exists( $photo ) ) {
@@ -78,7 +78,7 @@ if ($id)
 
 		if ($envie) echo "<p><span class=\"intitules\">Comment as-tu eu envie de faire de l'improvisation&nbsp;?</span> $envie</p>\n" ;
 		if ($apport) echo "<p><span class=\"intitules\">Que t'apporte l'improvisation ?</span> $apport</p>\n" ;
-		if ($debutimprocite) echo "<p><span class=\"intitules\">Ton arrivÈe ‡ ImproCitÈ ?</span> $debutimprocite</p>\n" ;
+		if ($debutimprocite) echo "<p><span class=\"intitules\">Ton arriv√©e √† ImproCit√© ?</span> $debutimprocite</p>\n" ;
 		if ($improcite) echo "<p><span class=\"intitules\">Improcit&eacute; pour toi c'est&nbsp;:</span> $improcite</p>\n" ;
 		if ($qualite) echo "<p><span class=\"intitules\">Qualit&eacute; en impro&nbsp;:</span> $qualite</p>\n" ;
 		if ($defaut) echo "<p><span class=\"intitules\">D&eacute;faut en impro&nbsp;:</span> $defaut</p>\n" ;
@@ -102,8 +102,8 @@ if ($id)
 	<h1>Les com&eacute;diens d'Improcit&eacute;</h1>
 	<?
 
-	// Toutes les catÈgories
-	// (sous-titre => sÈlection SQL)
+	// Toutes les cat√©gories
+	// (sous-titre => s√©lection SQL)
 	
 	$aSaisonNames = explode(",", $saisonAdminString);
 	
@@ -148,7 +148,7 @@ if ($id)
 				$photo = $sPhotoRelDir."defaut.jpg" ;
 			}
 			
-			// en fonction du dÈsir de la personne, on l'affiche pas son nom
+			// en fonction du d√©sir de la personne, on l'affiche pas son nom
 			$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");
 	
 			echo "<li><a href=\"?p=comediens&id=$id#apage\" title=\"$sNomPrenom\">\n" ;

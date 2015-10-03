@@ -66,7 +66,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					<? if ($aRow["places"]) { ?>
 					<div class="text-center" style="margin-bottom:20px;">
 						<button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>#apage'">
-						<i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place
+						<i class="glyphicon glyphicon-shopping-cart"></i> RÃ©server une place
 						</button>
 					</div>
 					<? }?>
@@ -83,9 +83,9 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 		<? } ?>
 		
 		<? if ($iCount == 0) { ?>
-			<div class="alert alert-info">Nos prochaines dates seront bientôt disponibles</div>
+			<div class="alert alert-info">Nos prochaines dates seront bientÃ´t disponibles</div>
 		<? } ?>
 
-		<h1>Inscrivez-vous à la newsletter</h1>
+		<h1>Inscrivez-vous Ã  la newsletter</h1>
 		<? afficher_inscription_newsletter(); ?>
 

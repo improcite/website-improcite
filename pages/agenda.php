@@ -12,7 +12,7 @@ $nb_prochains = @mysql_num_rows ( $requete_prochains );
 if ($nb_prochains == 0)
 {
 ?>
-	<div class="alert alert-warning">Les spectacles seront bientôt affichés</div>
+	<div class="alert alert-warning">Les spectacles seront bientÃ´t affichÃ©s</div>
 <?
 } else {
 	for ($i=0; $i<$nb_prochains; $i++) {
@@ -51,7 +51,7 @@ if ($nb_prochains == 0)
 		echo "</div>";
 		echo "<div class=\"col-md-8\">";
 		if ($commentaire) {echo "<div class=\"well\">$commentaire</div>\n";}
-                if ($places) { ?><div class="text-center" style="margin-bottom:20px;"><button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$id?>#apage'"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place</button></div><? }
+                if ($places) { ?><div class="text-center" style="margin-bottom:20px;"><button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$id?>#apage'"><i class="glyphicon glyphicon-shopping-cart"></i> RÃ©server une place</button></div><? }
 
 		if (trim(str_replace(";", "", $joueurs)) != "")
 		{
@@ -77,7 +77,7 @@ if ($nb_prochains == 0)
 				$prenom = @mysql_result($requete_coach, 0, "prenom");
 				$surnom = @mysql_result($requete_coach, 0, "surnom");
 				$afficherNom = @mysql_result($requete_coach, 0, "affichernom");
-				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
+				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du dÃ©sir de la personne, on l'affiche pas son nom
 
 				echo "<tr><thCoach</th><td><a href=\"?p=comediens&id=$coach\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }
@@ -89,7 +89,7 @@ if ($nb_prochains == 0)
 				$prenom = @mysql_result($requete_arbitre, 0, "prenom");
 				$surnom = @mysql_result($requete_arbitre, 0, "surnom");
 				$afficherNom = @mysql_result($requete_arbitre, 0, "affichernom");
-				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
+				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du dÃ©sir de la personne, on l'affiche pas son nom
 
 				echo "<tr><th>Arbitre</th><td><a href=\"?p=comediens&id=$arbitre\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }
@@ -101,7 +101,7 @@ if ($nb_prochains == 0)
 				$prenom = @mysql_result($requete_mc, 0, "prenom");
 				$surnom = @mysql_result($requete_mc, 0, "surnom");
 				$afficherNom = @mysql_result($requete_mc, 0, "affichernom");
-				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
+				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du dÃ©sir de la personne, on l'affiche pas son nom
 
 				echo "<tr><th>Ma&icirc;tre de c&eacute;r&eacute;monie</th><td><a href=\"?p=comediens&id=$mc\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }

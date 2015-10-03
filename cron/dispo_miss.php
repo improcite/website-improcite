@@ -47,12 +47,12 @@ function sendml($email, $ml)
 	//if($email != "matfrem@gmail.com") return;
 	
 	$ml = "Yop !<br/>"
-		. "Tu as des spectacles dans les deux mois à venir dont tu n'as pas rempli les dispos.<br/>"
+		. "Tu as des spectacles dans les deux mois Ã  venir dont tu n'as pas rempli les dispos.<br/>"
 		. $ml
-		. "Tu peux cliquer ci-dessus pour accéder à l'espace membre.<br/>"
+		. "Tu peux cliquer ci-dessus pour accÃ©der Ã  l'espace membre.<br/>"
 		. "<br/>"
 		. "<br/>"
-		. "Tu peux désactiver ces notifications dans l'<a href=".$urlbase."/membres/infos.php>espace membre</a>, sur la page profil.<br/>"
+		. "Tu peux dÃ©sactiver ces notifications dans l'<a href=".$urlbase."/membres/infos.php>espace membre</a>, sur la page profil.<br/>"
 		;
 		
 	// Always set content-type when sending HTML email

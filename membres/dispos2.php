@@ -128,7 +128,7 @@ if (getp("user")  &&  getp("event"))
 
 echo "<div id=\"corps\">\n" ;
 
-# Mois et année
+# Mois et annÃ©e
 $event = getp("event");
 if(!$event)
 {
@@ -295,7 +295,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 					if ($aRow['coach'] == $aRowJ['id']) $sName = "Coach";
 					if ($aRow['mc'] == $aRowJ['id']) $sName = "MC";
 					if ($aRow['arbitre'] == $aRowJ['id']) $sName = "Arbitre";
-					if ($aRow['regisseur'] == $aRowJ['id']) $sName = "Régisseur";
+					if ($aRow['regisseur'] == $aRowJ['id']) $sName = "RÃ©gisseur";
 					if ($aRow['caisse'] == $aRowJ['id']) $sName = "Caisse";
 					if ($aRow['catering'] == $aRowJ['id']) $sName = "Catering";
 					if ($aRow['ovs'] == $aRowJ['id']) $sName = "OVS";
@@ -326,7 +326,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			<OPTION value="c" <?=($aRow['coach'] == $aRowJ['id'])?"SELECTED":""?>>Coach</OPTION>
 			<OPTION value="mc" <?=($aRow['mc'] == $aRowJ['id'])?"SELECTED":""?>>MC</OPTION>
 			<OPTION value="a" <?=($aRow['arbitre'] == $aRowJ['id'])?"SELECTED":""?>>Arbitre</OPTION>
-			<OPTION value="r" <?=($aRow['regisseur'] == $aRowJ['id'])?"SELECTED":""?>>Régisseur</OPTION>
+			<OPTION value="r" <?=($aRow['regisseur'] == $aRowJ['id'])?"SELECTED":""?>>RÃ©gisseur</OPTION>
 			<OPTION value="cai" <?=($aRow['caisse'] == $aRowJ['id'])?"SELECTED":""?>>Caisse</OPTION>
 			<OPTION value="cat" <?=($aRow['catering'] == $aRowJ['id'])?"SELECTED":""?>>Catering</OPTION>
 			<OPTION value="ovs" <?=($aRow['ovs'] == $aRowJ['id'])?"SELECTED":""?>>OVS</OPTION>
@@ -357,8 +357,8 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 		?>
 		<form style="display:inline;" action="dispos2.php" method="get">
 		<select name="adminfeatures" onChange="form.submit()">
-		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>Mode admin activé</OPTION>
-		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>Mode admin désactivé</OPTION>
+		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>Mode admin activÃ©</OPTION>
+		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>Mode admin dÃ©sactivÃ©</OPTION>
 		</select>
 		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 		<input type="hidden" name="event" value="<?=$event?>">
@@ -370,8 +370,8 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 		?>
 		<form style="display:inline;" action="dispos2.php" method="get">
 		<select name="selectfeatures" onChange="form.submit()">
-		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>Mode sélectionneur activé</OPTION>
-		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>Mode sélectionneur désactivé</OPTION>
+		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>Mode sÃ©lectionneur activÃ©</OPTION>
+		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>Mode sÃ©lectionneur dÃ©sactivÃ©</OPTION>
 		</select>
 		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 		<input type="hidden" name="event" value="<?=$event?>">

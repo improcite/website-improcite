@@ -186,7 +186,7 @@ foreach($aStats as $idJoueur => $aStatJoueur)
 echo "</tbody></table>";
 echo '</div>';
 ?>
-* Basé sur les sélections
+* BasÃ© sur les sÃ©lections
 <?
 //-------------------------------- 
 

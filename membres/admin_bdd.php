@@ -9,16 +9,16 @@ include ( "../fxFields.php" );
 fxFieldsInit(isset($_GET['tab']) &&  $_GET['tab'] != "sql");
 
 //---------------------------------------------------------------------------
-// Identifcation 'espace membre' nécessaire
+// Identifcation 'espace membre' nÃ©cessaire
 //---------------------------------------------------------------------------
 if (!$_SESSION[ "id_impro_membre" ])
 {
-	echo "Identification membre nécessaire.";
+	echo "Identification membre nÃ©cessaire.";
 	die(0);
 }
 
 //---------------------------------------------------------------------------
-// Récup des droits
+// RÃ©cup des droits
 //---------------------------------------------------------------------------
 $bIsAdmin = fxUserHasRight("admin");
 $bIsSelectionneur = fxUserHasRight("selection");
@@ -54,7 +54,7 @@ $iSaisonEnCours = 1 ;
 
 <?
 //---------------------------------------------------------------------------
-// Lecture des paramètres envoyés à la page
+// Lecture des paramÃ¨tres envoyÃ©s Ã  la page
 //---------------------------------------------------------------------------
 // Contrcution "a la mano" du champ "fld_joueurs"
 if (getp("tbl_name") == $t_eve)
@@ -74,7 +74,7 @@ if (!$tab) $tab = "SQL";
 
 
 //---------------------------------------------------------------------------
-// Définition des données
+// DÃ©finition des donnÃ©es
 //---------------------------------------------------------------------------
 
 	$aJoueurs = explode(";", fxPreFill('joueurs')); 
@@ -93,20 +93,20 @@ if (!$tab) $tab = "SQL";
 		,
 		$table_comediens=>array(
 			"table"=>$table_comediens,
-			"name"=>"Comédiens",
+			"name"=>"ComÃ©diens",
 			"listrequest" => "SELECT id, nom, prenom, surnom, email, portable, adresse, (((saison & $currentSaisonBit) >> $iCurrentSaisonNumber) * (2005 + $iCurrentSaisonNumber)) as annee FROM {$table_comediens} ORDER BY annee DESC, Nom",
 			"fields"=>array(
 				array("Login", "text", "login", ""),
 				array("Password", "password", "password", ""),
 				array("Nom", "text", "nom", ""),
-				array("Prénom", "text", "prenom", ""),
+				array("PrÃ©nom", "text", "prenom", ""),
 				array("Saison", "bitfield|".$saisonAdminString, "saison", 1 << $iSaisonEnCours)
 				)
 			)
 		,
 		$t_eve=>array(
 			"table"=>$t_eve,
-			"name"=>"Événements",
+			"name"=>"Ã‰vÃ©nements",
 			"listrequest" => "SELECT {$t_eve}.id as id, {$t_eve}.date as date, impro_categories_evenements.nom as categorie, impro_lieux.nom as lieu, {$t_eve}.commentaire as commentaire, tarif FROM {$t_eve}, impro_lieux, impro_categories_evenements WHERE impro_lieux.id = {$t_eve}.lieu AND impro_categories_evenements.id = {$t_eve}.categorie ORDER BY date DESC",
 			"fields"=>array(
 				array("Type", "otherlist|impro_categories_evenements|id|nom", "categorie", ""),
@@ -124,7 +124,7 @@ if (!$tab) $tab = "SQL";
 				array("Coach", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "coach", "", $bIsSelectionneur|$bIsAdmin),
 				array("MC", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "mc", "", $bIsSelectionneur|$bIsAdmin),
 				array("Arbitre", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "arbitre", "", $bIsSelectionneur|$bIsAdmin),
-				array("Régisseur", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "regisseur", "", $bIsSelectionneur|$bIsAdmin),
+				array("RÃ©gisseur", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "regisseur", "", $bIsSelectionneur|$bIsAdmin),
 				array("Caisse", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "caisse", "", $bIsSelectionneur|$bIsAdmin),
 				array("Catering", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "catering", "", $bIsSelectionneur|$bIsAdmin),
 				array("Ovs", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "ovs", "", $bIsSelectionneur|$bIsAdmin)
@@ -137,13 +137,13 @@ if (!$tab) $tab = "SQL";
 			"fields"=>array(
 				array("Nom", "text", "nom", ""),
 				array("Adresse|(pour Google Maps)", "text", "adresse", ""),
-				array("Adresse|(complément texte)", "text", "adresse2", "")
+				array("Adresse|(complÃ©ment texte)", "text", "adresse2", "")
 				)
 			)
 		,
 		$t_cat=>array(
 			"table"=>$t_cat,
-			"name"=>"Catégories",
+			"name"=>"CatÃ©gories",
 			"listrequest" => "SELECT id, nom, description, publique FROM {$t_cat} ORDER BY nom",
 			"fields"=>array(
 				array("Nom", "text", "nom", ""),
@@ -158,7 +158,7 @@ if (!$tab) $tab = "SQL";
 			"name"=>"Liens",
 			"listrequest" => "SELECT id, date, nom, lien, description FROM impro_liens ORDER BY date DESC",
 			"fields"=>array(
-				array("Créateur", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "id_createur", ""),
+				array("CrÃ©ateur", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "id_createur", ""),
 				array("Date", "date", "date", date("YmdHis")),
 				array("Nom textuel", "text", "nom", ""),
 				array("Lien", "text", "lien", ""),
@@ -171,7 +171,7 @@ if (!$tab) $tab = "SQL";
 			"name"=>"Omerta",
 			#"listrequest" => "SELECT id_omerta, id_comedien, nom, surnom, description FROM $t_omerta",
 			"fields"=>array(
-				array("Comédien", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "id_comedien", ""),
+				array("ComÃ©dien", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "id_comedien", ""),
 				array("Nom", "text", "nom", ""),
 				array("Surnom", "text", "surnom", ""),
 				array("Description", "memo", "description", ""),
@@ -185,8 +185,8 @@ if (!$tab) $tab = "SQL";
 				array("Surnom", "text", "surnom", ""),
 				array("Qui c'est?", "text", "qui", ""),
 				array("Fonction", "text", "fonction", ""),
-				array("Qualité", "text", "qualite", ""),
-				array("Défaut", "text", "defaut", "")
+				array("QualitÃ©", "text", "qualite", ""),
+				array("DÃ©faut", "text", "defaut", "")
 				)
 			)
 			
@@ -207,11 +207,11 @@ if (!$tab) $tab = "SQL";
 			"name"=>"Intervenants",
 			"fields"=>array(
 				array("Nom", "text", "nom", ""),
-				array("Prénom", "text", "prenom", ""),
+				array("PrÃ©nom", "text", "prenom", ""),
 				array("Description", "memo", "description", ""),
 				array("Au travail", "memo", "travail", ""),
 				array("Sa phrase", "memo", "phrase", ""),
-				array("Année de dours", "text", "annee", ""),
+				array("AnnÃ©e de dours", "text", "annee", ""),
 				)
 			) */	
 		);
@@ -276,7 +276,7 @@ if (!isPrintMode())
 
 if ($tab == "sql")
 {
-	if (!$bIsAdmin) { echo "Vous devez être admin"; exit(0); }
+	if (!$bIsAdmin) { echo "Vous devez Ãªtre admin"; exit(0); }
 	
 	?>
 	<a href="?tab=sql&do=sql&query=SHOW TABLES">Tables</a>
@@ -294,7 +294,7 @@ if ($tab == "sql")
 	<input type=hidden name="do" value="sql">
 	<input type=hidden name="tab" value="<?=$tab?>">
 	<textarea cols="80" rows="10" name="query" value=""><?=getp("query")?></textarea>
-	<br><input type="submit" value="Exécuter!">
+	<br><input type="submit" value="ExÃ©cuter!">
 	</form>
 	<?
 	if ($fxH_do == "sql"  &&  $_REQUEST["query"])
@@ -305,7 +305,7 @@ if ($tab == "sql")
 		if ($sErr)
 			echo "Erreur:$sErr<br>";
 		else
-			echo "Succès !<br>";
+			echo "SuccÃ¨s !<br>";
 	}
 }
 

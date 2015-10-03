@@ -54,7 +54,7 @@ if (sizeof($aAllSpecatclesId) > 0)
 <div class="row">
 	<div class="col-md-6">
 	
-	<h1>Sélections</h1>
+	<h1>SÃ©lections</h1>
 <?
 
 $iCountSelect = 0;
@@ -70,7 +70,7 @@ foreach($aAllEvents as $aRow)
 	if ($idMe == $aRow['mc']) $sName = "MC";
 	if ($idMe == $aRow['coach']) $sName = "Coach";
 	if ($idMe == $aRow['arbitre']) $sName = "Arbitre";
-	if ($idMe == $aRow['regisseur']) $sName = "Régisseur";
+	if ($idMe == $aRow['regisseur']) $sName = "RÃ©gisseur";
 	if ($idMe == $aRow['caisse']) $sName = "Caisse";
 	if ($idMe == $aRow['catering']) $sName = "Catering";
 	if (strstr(";".$aRow['joueurs'].";", ";".$idMe.";")) $sName = "Joueur";
@@ -82,7 +82,7 @@ foreach($aAllEvents as $aRow)
 		
 	if ($aRow['categorie'] == $category_train  &&  $iPct != "0")
 	{
-		// skip entrainements non répondu / répondu oui
+		// skip entrainements non rÃ©pondu / rÃ©pondu oui
 		continue;
 	}
 
@@ -96,7 +96,7 @@ foreach($aAllEvents as $aRow)
 	}
 	else if ($sName==""  &&  $iPct == "")
 	{
-		echo $link."<img src=img/unk.gif> - <b><a href=dispos2.php?event=".$aRow["id"].">Veuillez répondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+		echo $link."<img src=img/unk.gif> - <b><a href=dispos2.php?event=".$aRow["id"].">Veuillez rÃ©pondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
 	}
 	else if ($sName==""  &&  $iPct == "0")
 	{
@@ -189,7 +189,7 @@ foreach($aAllEvents as $aRow)
 				{
 					$dispo = ($aDispoForAllSpectacles[$aEntriesId[$sDateEntry]] == 100);
 					
-					// entrainement : pas répondu = ok
+					// entrainement : pas rÃ©pondu = ok
 					if ($dispo) $txt .= "<img border=0 src=img/yes.gif>";
 					if (!$dispo) $txt .= "<img border=0 src=img/no.gif>";
 				}

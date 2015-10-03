@@ -37,7 +37,7 @@ else
 {
 	$sRandImage = $sPhotoRelDir."defaut.jpg";
 	# MySQL est disponible, on continue !
-	// Trouver une photo de comédien à afficher parmi la saison actuelle
+	// Trouver une photo de comÃ©dien Ã  afficher parmi la saison actuelle
 	$req_comediens =  mysql_query("SELECT id FROM $table_comediens WHERE (saison & ".(1<<$iCurrentSaisonNumber).") <> 0"); 
 	$array_comediens = array();
 
@@ -59,15 +59,15 @@ else
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
-	<title>ImproCité : La Troupe d'Improvisation Théâtrale de Lyon et Villeurbanne </title>
+	<title>ImproCitÃ© : La Troupe d'Improvisation ThÃ©Ã¢trale de Lyon et Villeurbanne </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<meta name="Generator" content="vi, metapad">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="window-target" content="_top">
-	<meta name="Description" content="Improcité, troupe d'improvisation théâtrale est heureuse de vous accueillir ! Nous proposons des spectacles sur Lyon et Villeurbanne, au CCO, Trokson, Ninkasi... Vous aimez les émotions, le rire et les surprises ? Venez nous voir notre prochain spectacle !">
-	<meta name="Keywords" content="improvisation, Lyon, spectacle, sortie, divertissement, Improcité, improvisation théâtrale, Villeurbanne, théâtre, CCO, Trokson, sortie, humour, Ninkasi">
-	<meta name="Copyright" content="Improcité">
-	<meta name="Subject" content="Improcité - improvisation théâtrale à Lyon et Villeurbanne">
+	<meta name="Description" content="ImprocitÃ©, troupe d'improvisation thÃ©Ã¢trale est heureuse de vous accueillir ! Nous proposons des spectacles sur Lyon et Villeurbanne, au CCO, Trokson, Ninkasi... Vous aimez les Ã©motions, le rire et les surprises ? Venez nous voir notre prochain spectacle !">
+	<meta name="Keywords" content="improvisation, Lyon, spectacle, sortie, divertissement, ImprocitÃ©, improvisation thÃ©Ã¢trale, Villeurbanne, thÃ©Ã¢tre, CCO, Trokson, sortie, humour, Ninkasi">
+	<meta name="Copyright" content="ImprocitÃ©">
+	<meta name="Subject" content="ImprocitÃ© - improvisation thÃ©Ã¢trale Ã  Lyon et Villeurbanne">
 	<meta name="Robots" content="index,follow">
 	<meta name="Revisit-after" content="15 days">
 	<meta name="Rating" content="general">
@@ -85,7 +85,7 @@ else
 <div id="page">
 	<? if (!$promo_mode) { ?>
 	<div id="header" style="cursor:pointer" onClick="window.location.href='?';">
-			<div id="welcome">Bienvenue sur le site d'<a href=?p=improcite>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
+			<div id="welcome">Bienvenue sur le site d'<a href=?p=improcite>ImprocitÃ©</a>, la troupe d'improvisation thÃ©Ã¢trale de Lyon et Villeurbanne</div>
 	</div> <!-- header -->
 	
 	<?
@@ -123,7 +123,7 @@ else
 			 "welcome" => "Accueil"
 			, "impro" => "L'impro"
 			, "agenda" => "L'agenda"
-			, "comediens" => "Comédiens"
+			, "comediens" => "ComÃ©diens"
 			, "contact" => "Contact"
 		); ?>
 		<? $aMenuIcons = array(

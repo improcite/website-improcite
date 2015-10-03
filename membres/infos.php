@@ -100,7 +100,7 @@ else {
 		$extension = end(explode('.', $_FILES['uploaded_file']['name']));
 		if(strtolower($extension) != "jpg")
 		{
-			?><div class="alert alert-danger">Erreur seul les fichiers '.jpg' sont autorisés.</div><?
+			?><div class="alert alert-danger">Erreur seul les fichiers '.jpg' sont autorisÃ©s.</div><?
 		}
 		else
 		{
@@ -113,12 +113,12 @@ else {
 			if (!move_uploaded_file($source_path, $target_path))
 			{
 				echo "Error with your file.";
-				?><div class="alert alert-danger">Erreur de mise à jour.</div><?
+				?><div class="alert alert-danger">Erreur de mise Ã  jour.</div><?
 			}
 			else
 			{
 				image_resize_crop($target_path, $target_path_final, 400, 300, 1);
-				?><div class="alert alert-success">Image modifiée.</div><?
+				?><div class="alert alert-success">Image modifiÃ©e.</div><?
 			}
 		}
 		$actionOk = true;
@@ -153,7 +153,7 @@ else {
 
 	$photoUri = get_photo_uri($edited_id);
 	
-	HandleAjaxFileUi("infos.php", "image", $edited_id, $photoUri, "Image de l'année", "width:150px;", 400, 300, true);
+	HandleAjaxFileUi("infos.php", "image", $edited_id, $photoUri, "Image de l'annÃ©e", "width:150px;", 400, 300, true);
 	
 	?>
 
@@ -169,14 +169,14 @@ else {
 	
 	echo "<p><span class=\"intitules\">Pr&eacute;nom&nbsp;*&nbsp;:</span> <input type=\"text\" name=\"prenom\" value=\"$prenom\" /></p>\n";
 	echo "<p><span class=\"intitules\">Nom&nbsp;:</span> <input type=\"text\" name=\"nom\" value=\"$nom\" />\n";
-	echo "   <input type=\"checkbox\" name=\"afficherNom\" value=\"1\" ".($afficherNom?"CHECKED":"")." /> Nom affiché sur le site</p>\n";
+	echo "   <input type=\"checkbox\" name=\"afficherNom\" value=\"1\" ".($afficherNom?"CHECKED":"")." /> Nom affichÃ© sur le site</p>\n";
 	echo "<p><span class=\"intitules\">Surnom&nbsp;*&nbsp;:</span> <input type=\"text\" name=\"surnom\" value=\"$surnom\" /></p>\n";
 	echo "<p><span class=\"intitules\">Date de naissance&nbsp;*&nbsp;:</span> ";
 	echo "<input type=\"text\" name=\"jour\" value=\"$jour\" size=\"2\"/>";
 	echo "<input type=\"text\" name=\"mois\" value=\"$mois\" size=\"2\"/>";
 	echo "<input type=\"text\" name=\"annee\" value=\"$annee\" size=\"4\"/>";
 	echo "</p>\n";
-	echo "<p>* affiché sur le site</p>";
+	echo "<p>* affichÃ© sur le site</p>";
 
 	echo "<h2>Informations priv&eacute;es</h2>\n";
 	echo "<p><span class=\"intitules\">Email&nbsp;:</span> <input type=\"text\" name=\"email\" value=\"$email\" /></p>\n";
@@ -188,7 +188,7 @@ else {
 	echo "<h2>Ta fiche sur le site</h2>\n";
 	echo "<p><span class=\"intitules\">D&eacute;but dans l'improvisation&nbsp;:</span><br />\n";
 	echo "<textarea name=\"debut\" cols=\"80\">$debut</textarea></p>\n";
-	echo "<p><span class=\"intitules\">Ton arrivée à Improcité :</span><br />\n";
+	echo "<p><span class=\"intitules\">Ton arrivÃ©e Ã  ImprocitÃ© :</span><br />\n";
 	echo "<textarea name=\"debutimprocite\" cols=\"80\">$debutimprocite</textarea></p>\n";
 	echo "<p><span class=\"intitules\">Comment as-tu eu envie d'en faire&nbsp;:</span><br />\n";
 	echo "<textarea name=\"envie\" cols=\"80\">$envie</textarea></p>\n";

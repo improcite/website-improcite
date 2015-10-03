@@ -14,7 +14,7 @@ if ( ! $connexion || ! $db )
 }
 
 echo "<div id=\"corps\">\n" ;
-echo "<h1>Disponibilités: Rapport</h1>\n" ;
+echo "<h1>DisponibilitÃ©s: Rapport</h1>\n" ;
 
 echo "<h1>(en cours...)</h1>\n" ;
 
@@ -67,9 +67,9 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 									"[Impro] Dispos pour le {$date} ({$aRow["nom"]})",
 									"Salut {$aRowJ['prenom']}, il nous faudait tes dispos pour le {$date}, {$aRow['nom']}, {$aRow['lnom']}\n\n"
 										."Tu pourrais regarder steplait ?\n"
-										."http://improcite.free.fr/membres/identification.php - rubrique \"Disponibilités\"\n"
+										."http://improcite.free.fr/membres/identification.php - rubrique \"DisponibilitÃ©s\"\n"
 										."\n"
-										."A bientôt !"
+										."A bientÃ´t !"
 									);
 				}
 			}
@@ -81,9 +81,9 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 
 if ($bDoSendMail)
 {
-	//$sMailFromName = "Mathieu Frémont";
+	//$sMailFromName = "Mathieu FrÃ©mont";
 	//$sMailFromEmail = "mfremont@edengames.com";
-	$sMailFromName = "Site Improcité";
+	$sMailFromName = "Site ImprocitÃ©";
 	$sMailFromEmail = "contact@improcite.com";
 	
 	$sMailHeaders ="From: \"$sMailFromName\"<$sMailFromEmail>\n";
