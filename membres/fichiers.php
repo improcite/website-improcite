@@ -31,26 +31,15 @@ else {
 
 	echo "<h1>Fichiers</h1>\n" ;
 
-	//echo "<div id=\"elfinder\">\n";
-	//echo "</div>";
-	
-	
-	include_once('FmDe/class/FileManager.php');
+        ?>
 
-	$FileManager = new FileManager("/home/improcit/www/fichiers/data");
-	$FileManager2->fmView = 'icons';
-	$FileManager->hideSystemType = true;
-	$FileManager->hideColumns = array('owner', 'group', 'permissions');
-								// size, changed, permissions, owner, group
-	$FileManager->logHeight = 0;
-	$FileManager->fmCaption = "Improcit&eacute; file manager";
-	$FileManager->uploadEngine = "JS";
-	$FileManager->fmWidth = "800";
-	$FileManager->fmHeight = "600";
-	$FileManager->fmMargin = "0";
-	print $FileManager->create();
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe class="embed-responsive-item" src="../Filemanager/index.html"></iframe>
+        </div>
 
-	
+	<?
+
+
 	# Fermeture du corps de la page
 
 	echo "</div>\n" ;
