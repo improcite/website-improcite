@@ -153,7 +153,7 @@ else {
 
 	$photoUri = get_photo_uri($edited_id);
 	
-	HandleAjaxFileUi("infos.php", "image", $edited_id, $photoUri, "Image de l'année", "width:150px;", 400, 300, true);
+	HandleAjaxFileUi("infos.php", "image", $edited_id, $photoUri, "Image de l'année", "width:150px;", 400, 400, true);
 	
 	?>
 

@@ -12,8 +12,6 @@ if ($id)
 	# la variable $id est remplie. Recherche de la fiche du comedien.
 	$rqComedien = @mysql_fetch_array(mysql_query ( "SELECT * FROM $table_comediens WHERE id=$id" ));
 
-	# Affichage de l'image trame de la fiche
-	//echo "<img class=\"logo_fiche\" src=\"images/fiche.gif\" alt=\"D&eacute;cor\" />\n" ;
 
 	if ( $rqComedien ) {
 	
@@ -40,58 +38,40 @@ if ($id)
 			$photo = $sPhotoRelDir."$id.jpg" ;
 		}
 
-		# En gros on affiche le prenom du comedien, et le surnom s'il est différent
-		echo "<h1>$prenom" ;
-
-		echo "</h1>\n" ;
-		echo "<div id=\"comedien\">\n";
-		// en fonction du désir de la personne, on l'affiche pas son nom
 		$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");
+		echo "<h1>$sNomPrenom</h1>" ;
+
+		echo "<div class=\"row\">\n";
 
 		if ( file_exists( $photo ) ) {
-			# Si la photo existe on l'affiche
-			echo "<img class=\"photo_fiche\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" title=\"$sNomPrenom\" />\n" ;
+			echo "<div class=\"col-md-6\">\n";
+			echo "<img src=\"$photo\" alt=\"Photo de $sNomPrenom\" title=\"$sNomPrenom\" class=\"img-responsive img-circle\"/>\n" ;
+			echo "</div>\n";
+			echo "<div class=\"col-md-6\">\n";
+		} else {
+			echo "<div class=\"col-md-12\">\n";
 		}
 
-		//echo "<p><span class=\"intitules\">Matricule&nbsp;:</span> $sNomPrenom</p>\n" ;
-		//echo "<p><span class=\"intitules\">Venue au monde&nbsp;:</span> $jour / $mois / $annee</p>\n" ;
-		
 		if ( $surnom ) {
 			echo "<p><span class=\"intitules\">Alias&nbsp;:</span> $surnom</p>\n" ;
 		}
 
-
-		// Personnages OMERTA
-		//$rqOmerta = @mysql_query ( "SELECT * FROM $t_omerta WHERE id_comedien=$id ORDER BY nom" );
-		//$nbOmerta = @mysql_num_rows( $rqOmerta );
-
-
-		if (isset($nbOmerta)) {
-			echo "<p><span class=\"intitules\">Ses personnages Omerta&nbsp;:</span>";
-			while ( $resOmerta = @mysql_fetch_array ( $rqOmerta ) ) {
-				echo " <a href=\"index.php?p=omerta&id=".$resOmerta['id']."\">".$resOmerta['nom']."</a>";
-			}
-			echo "</p>";
-		}
-
 		if ($debut) echo "<p><span class=\"intitules\">D&eacute;but dans l'improvisation&nbsp;:</span> $debut</p>\n" ;
-
 		if ($envie) echo "<p><span class=\"intitules\">Comment as-tu eu envie de faire de l'improvisation&nbsp;?</span> $envie</p>\n" ;
 		if ($apport) echo "<p><span class=\"intitules\">Que t'apporte l'improvisation ?</span> $apport</p>\n" ;
 		if ($debutimprocite) echo "<p><span class=\"intitules\">Ton arrivée à ImproCité ?</span> $debutimprocite</p>\n" ;
 		if ($improcite) echo "<p><span class=\"intitules\">Improcit&eacute; pour toi c'est&nbsp;:</span> $improcite</p>\n" ;
 		if ($qualite) echo "<p><span class=\"intitules\">Qualit&eacute; en impro&nbsp;:</span> $qualite</p>\n" ;
 		if ($defaut) echo "<p><span class=\"intitules\">D&eacute;faut en impro&nbsp;:</span> $defaut</p>\n" ;
-		echo "<div style=\"clear:both\"></div>\n";
+		echo "</div>\n";
 		echo "</div>\n";
 	} else {
 		# La fiche n'a pas ete trouvee
-		echo "<p class=\"titre\">La fiche demand&eacute;e est introuvable</p>\n" ;
+		echo "<div class=\"alert alert-danger\">La fiche demand&eacute;e est introuvable</div>\n" ;
 	}
 
 	?>
-	<p>Cliquez ici pour voir <a href="?p=comediens" title="Retour">les autres com&eacute;diens</a></p>
-	<br/>
+	<p class="text-center"><a href="?p=comediens#apage" class="btn btn-info btn-lg">Les autres com&eacute;diens</a></p>
 	<?
 
 } else {
@@ -112,15 +92,14 @@ if ($id)
 	
 	$aCategories = array(
 		"Saison ".$aSaisonNames[$iCurrentSaisonNumber] => $iCurrentSaisonNumber,
-		"Saison ".$aSaisonNames[$iCurrentSaisonNumber-1] => $iCurrentSaisonNumber-1,
 		);
 	
 	
 	foreach( $aCategories as $sTitre => $iSaisonNumber )
 	{
 		?>
-<h2 style="clear:both;"><?=$sTitre?></h2> 
-<ul class="comediens">
+<h2><?=$sTitre?></h2> 
+<div class="row">
 		<?
 		$iMask = 1 << $iSaisonNumber;
 		$iSaisonBit = pow( 2, $iSaisonNumber );
@@ -151,9 +130,13 @@ if ($id)
 			// en fonction du désir de la personne, on l'affiche pas son nom
 			$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");
 	
-			echo "<li><a href=\"?p=comediens&id=$id#apage\" title=\"$sNomPrenom\">\n" ;
-			echo "<img class=\"photo_comedien\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" />\n";
-			echo "</a></li>\n" ;
+			echo "<div class=\"col-md-3 text-center\" style=\"margin-top:5px;\">\n";
+			echo "<a href=\"?p=comediens&id=$id#apage\" title=\"$sNomPrenom\">\n" ;
+			echo "<img class=\"img-responsive img-circle\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" />\n";
+			echo "<strong>$prenom</strong>\n";
+			echo "</a>\n" ;
+			echo "</div>\n" ;
+			
 		}
 	
 		# Liberation de la memoire MySQL
@@ -163,4 +146,4 @@ if ($id)
 }
 
 ?>
-</ul>
+</div>

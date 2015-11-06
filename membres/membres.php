@@ -129,7 +129,7 @@ if ( $nb_membres > 0 )
 			}
 			
 			?>
-			<a href="infos?id=<?=$id?>"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Edit</a>
+			<a href="infos.php?id=<?=$id?>"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Edit</a>
 			
 			<?
 			
