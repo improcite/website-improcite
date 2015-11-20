@@ -75,8 +75,6 @@ foreach($aAllEvents as $aRow)
 	if ($idMe == $aRow['catering']) $sName = "Catering";
 	if (strstr(";".$aRow['joueurs'].";", ";".$idMe.";")) $sName = "Joueur";
 	$date = affiche_date($aRow["date"]);
-	$mois = extract_month($aRow["date"]);
-	$annee = extract_year($aRow["date"]);
 
 	$iPct = isset($aDispoForAllSpectacles[$aRow["id"]]) ? $aDispoForAllSpectacles[$aRow["id"]] : "";
 		
