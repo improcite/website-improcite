@@ -387,10 +387,12 @@ class iCal
 function afficher_inscription_newsletter($sEmail = "")
 {
 
-	echo '<form action="http://groups.google.com/group/improcite-infos/boxsubscribe">';
-	echo 'Email&nbsp;: <input type="text" name="email" size="40" value="'.$sEmail.'">';
-	echo '&nbsp;<input type=submit name="sub" value="S&#39;inscrire"><div style="font-size:50%;vertical-align:super;">* Un email par mois environ. votre email ne sera jamais vendu ni partagé. Vous pourrez vous dé-inscrire a tout moment.</div>';
-	echo '</form>';
+	echo '<form action="http://groups.google.com/group/improcite-infos/boxsubscribe" class="form-inline">'."\n";
+	echo '<div class="form-group">'."\n";
+	echo '<label for="email">Email</label><input type="text" name="email" value="'.$sEmail.'" class="form-control">'."\n";
+	echo '</div>'."\n";
+	echo '<button type=submit name="sub" class="btn btn-default"/>S\'inscrire</button>'."\n";
+	echo '</form>'."\n";
 }
 
 
