@@ -44,8 +44,7 @@ img {
 div#header {
 	height: 227px;
 	width: 1000px;
-	/*padding: 20px;*/
-	margin: 0;
+	margin: 0 auto;
 	background: url("../images2/banner.png") no-repeat 0 0;
 	background-position:center; 
 }
@@ -74,6 +73,7 @@ div#welcome {
 #home-carousel
 {
 	width:1000px;
+	margin:0 auto;
 }
 
 .carousel-img
@@ -84,7 +84,8 @@ div#welcome {
 .menubar
 {
 	background-color:black;
-	width:1000px;
+	max-width:1000px;
+	margin:0 auto;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus
@@ -120,7 +121,7 @@ div#page {
 	padding-right: 20px;
 	padding-bottom:20px;
 	
-	width: 1040px;
+	/* width: 1040px; */
 	background-color: rgb(255,255,255);
 	background-color: rgba(255,255,255,0.7);
 }
@@ -129,7 +130,7 @@ div#page {
 
 div#page_archive_alpha {
 	margin: 20px auto;
-	width: 1040px;
+/*	width: 1040px; */
 	padding: 20px;
 	background: #000;
 	
@@ -154,7 +155,7 @@ div#footer {
 	background-color: black;
 	text-align: center;
 	margin:10px auto;
-	width: 1040px;
+/*	width: 1040px;*/
 	padding: 10px;	
 }
 

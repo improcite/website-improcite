@@ -84,7 +84,7 @@ else
 <div class="container">
 <div id="page">
 	<? if (!$promo_mode) { ?>
-	<div id="header" style="cursor:pointer" onClick="window.location.href='?';">
+	<div id="header" class="hidden-xs hidden-sm hidden-md">
 			<div id="welcome">Bienvenue sur le site d'<a href=?p=improcite>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
 	</div> <!-- header -->
 	
@@ -92,7 +92,7 @@ else
 	@require_once ( "carousel.inc.php" ) ;
 	shuffle($aCaroussel);
 	?>
-    <div id="home-carousel">
+    <div id="home-carousel" class="hidden-xs hidden-sm hidden-md">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="6000">
         <ol class="carousel-indicators">
 		<? $bf = 1; foreach($aCaroussel as $ix => $k) { ?>
