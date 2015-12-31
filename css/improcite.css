@@ -117,11 +117,7 @@ div#welcome {
 
 div#page {
 	margin: 0px auto;
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-bottom:20px;
-	
-	/* width: 1040px; */
+	padding: 20px;
 	background-color: rgb(255,255,255);
 	background-color: rgba(255,255,255,0.7);
 }
