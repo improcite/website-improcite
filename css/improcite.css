@@ -264,7 +264,8 @@ table.grid td
 
 /* ### Le corps de la page ### */
 #corps {
-	margin-top: 10px;
+	margin: 0 auto;
+	max-width: 1000px;
 }
 
 /* ### Le pied de page ### */
