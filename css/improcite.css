@@ -81,77 +81,23 @@ div#welcome {
 	width:1000px;
 }
 
-.menubar
-{
-	background-color:black;
-	max-width:1000px;
-	margin:0 auto;
-}
-
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus
-{
-	background-color:red;
-}
-
-.nav > li > a
-{
-	font-weight: bold;	
-}
-
-.nav > li > a:hover
-{
-	color:black;
-}
-
-
-#side_bar {
-	float:right;
-	width:200px;
-	min-height:500px;
-}
-
-#corps_content {
-	width:100%;
-}
-
-
 div#page {
 	margin: 0px auto;
-	padding: 20px;
+	padding: 10px 20px;
 	background-color: rgb(255,255,255);
 	background-color: rgba(255,255,255,0.7);
 }
 
-
-
-div#page_archive_alpha {
-	margin: 20px auto;
-/*	width: 1040px; */
-	padding: 20px;
-	background: #000;
-	
-	border:5px solid black;
-	border-radius: 5px;
-	
-	/* Fallback for web browsers that don't support RGBa */
-	background-color: rgb(60,60, 60);
-	/* RGBa with 0.6 opacity */
-	background-color: rgba(60, 60, 60, 1.0);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF444444, endColorstr=#FF444444);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF444444, endColorstr=#FF444444)";
-}
-
 div#menu {
 	text-align: center;
+	max-width: 1000px;
+	margin: 10px auto;
 }
 
 div#footer {
 	background-color: black;
 	text-align: center;
 	margin:10px auto;
-/*	width: 1040px;*/
 	padding: 10px;	
 }
 

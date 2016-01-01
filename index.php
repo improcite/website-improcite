@@ -116,33 +116,44 @@ else
       </div>
     </div>
 	
+	<a name="apage" name="apage"></a>
+
 	<div id="menu">
-		<a name="apage" name="apage"></a>	
 	
 		<? $aMenuItems = array(
-			 "welcome" => "Accueil"
-			, "impro" => "L'impro"
+			"impro" => "L'impro"
 			, "agenda" => "L'agenda"
 			, "comediens" => "Comédiens"
 			, "contact" => "Contact"
 		); ?>
 		<? $aMenuIcons = array(
-			 "welcome" => "home"
-			, "impro" => "info-sign"
+			"impro" => "info-sign"
 			, "agenda" => "calendar"
 			, "comediens" => "user"
 			, "contact" => "envelope"
 		); ?>
 	
-		<div class="menubar" role="navigation">
-		  <ul class="nav nav-justified">
-			<? foreach($aMenuItems as $k => $v) { ?>
-			<li class="<?=(($k==$p)?'active':'')?>"><a href="?p=<?=$k?>#apage"><i class="glyphicon glyphicon-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
-			<? } ?>
-		  </ul> <!-- /tabs -->
-		</div> <!-- /example -->		
-		
-  </div>  <!-- menu -->
+		<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="?p=welcome#apage"><i class="glyphicon glyphicon-home"></i>  Accueil</a>
+		</div>
+		<div class="navbar-collapse collapse">
+
+		<ul class="nav navbar-nav">
+		<? foreach($aMenuItems as $k => $v) { ?>
+			<li role="presentation" class="<?=(($k==$p)?'active':'')?>"><a href="?p=<?=$k?>#apage"><i class="glyphicon glyphicon-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
+		<? } ?>
+		</ul>
+		</div>
+		</div>	
+	</div>  <!-- menu -->
   <? } // promo_mode ?>
   
   
