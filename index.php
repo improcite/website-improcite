@@ -85,7 +85,7 @@ else
 <div id="page">
 	<? if (!$promo_mode) { ?>
 	<div id="header" class="hidden-xs hidden-sm hidden-md">
-			<div id="welcome">Bienvenue sur le site d'<a href=?p=improcite>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
+			<div id="welcome">Bienvenue sur le site d'<a href=?p=impro#apage>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
 	</div> <!-- header -->
 	
 	<?
