@@ -22,7 +22,7 @@ function fxDispJoueurArray($aJoueurs, $sStyle = "")
 		$photo = $sPhotoRelDir . $currentSaisonBit . "/" ."$id.jpg";
 		if (!file_exists($photo)) { $photo = $sPhotoRelDir."$id.jpg"; }
 		if (!file_exists($photo)) { $photo = $sPhotoRelDir."defaut.jpg"; }
-		echo "<div class=\"col-md-3 text-center\" style=\"margin-top:5px;\">\n";
+		echo "<div class=\"col-xs-6 col-sm-4 col-md-3 text-center\" style=\"margin-top:5px;\">\n";
 		echo "<a href=\"?p=comediens&id=$id#apage\" title=\"$sNomPrenom\">\n" ;
 		echo "<img class=\"img-responsive img-circle\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" />\n";
 		echo "<strong>$prenom</strong>\n";
