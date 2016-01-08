@@ -13,7 +13,7 @@ $idMe = $_SESSION['id_impro_membre'];
 $annee = date("Y");
 $date_debut_saison = date("YmdHis", mktime(0, 0, 0, 8, 1, 2004+$iCurrentSaisonNumber)) ;
 $date_actuelle = date("YmdHis") ;
-$sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.catering as catering"
+$sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.catering as catering, e.ovs as ovs"
 		." FROM $t_eve e, $t_cat c, $t_lieu l "
 		." WHERE e.categorie=c.id AND e.date>$date_debut_saison AND e.lieu=l.id"
 		." ORDER BY date ASC";
@@ -73,6 +73,7 @@ foreach($aAllEvents as $aRow)
 	if ($idMe == $aRow['regisseur']) $sName = "Régisseur";
 	if ($idMe == $aRow['caisse']) $sName = "Caisse";
 	if ($idMe == $aRow['catering']) $sName = "Catering";
+	if ($idMe == $aRow['ovs']) $sName = "OVS";
 	if (strstr(";".$aRow['joueurs'].";", ";".$idMe.";")) $sName = "Joueur";
 	$date = affiche_date($aRow["date"]);
 
