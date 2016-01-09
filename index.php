@@ -79,6 +79,7 @@ else
 	<script type="text/javascript" src="js/improcite.js"></script>
 	
 	<link href="css/improcite.css" rel="stylesheet" type="text/css" />
+	<link href="css/hover-min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container">
