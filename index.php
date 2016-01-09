@@ -149,7 +149,7 @@ else
 
 		<ul class="nav navbar-nav">
 		<? foreach($aMenuItems as $k => $v) { ?>
-			<li role="presentation" class="<?=(($k==$p)?'active':'')?>"><a href="?p=<?=$k?>#apage"><i class="glyphicon glyphicon-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
+			<li role="presentation" class="<?=(($k==$p)?'active':'')?> hvr-bounce-in"><a href="?p=<?=$k?>#apage"><i class="glyphicon glyphicon-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
 		<? } ?>
 		</ul>
 		</div>
