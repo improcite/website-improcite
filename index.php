@@ -143,7 +143,7 @@ else
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="?p=welcome#apage"><i class="glyphicon glyphicon-home"></i>  Accueil</a>
+		<a class="navbar-brand hvr-bounce-in" href="?p=welcome#apage"><i class="glyphicon glyphicon-home"></i>  Accueil</a>
 		</div>
 		<div class="navbar-collapse collapse">
 
