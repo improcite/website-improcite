@@ -40,13 +40,13 @@ if ($nb_prochains == 0)
 		$photoCategorie = $sPhotoCategorie.$cid.".jpg";
 		$photoLieu = $sPhotoLieuRelDir.$id_lieu.".jpg";
 		if ( file_exists($photoEvenement) ) {
-			echo "<img src=\"$photoEvenement\" class=\"affiche img-responsive\" />\n";
+			echo "<img src=\"$photoEvenement\" class=\"img-responsive hvr-rotate\" />\n";
 		}
 		else if ( file_exists($photoLieu) ) {
-			echo "<img src=\"$photoLieu\" class=\"affiche img-responsive\" />\n";
+			echo "<img src=\"$photoLieu\" class=\"img-responsive hvr-rotate\" />\n";
 		}		
 		elseif( file_exists($photoCategorie) ) {
-			echo "<img src=\"$photoCategorie\" class=\"affiche img-responsive\" />\n";
+			echo "<img src=\"$photoCategorie\" class=\"img-responsive hvr-rotate\" />\n";
 		}
 		echo "</div>";
 		echo "<div class=\"col-md-8\">";

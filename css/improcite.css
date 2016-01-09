@@ -414,32 +414,6 @@ img.float_picture  {
 	transform: rotate(-1deg);
 }
 
-/* Liste des spectacles */
-
-
-img.affiche {
-        margin-bottom: 10px;
-        margin-left: 15px;
-        border:1px solid black;
-        transform: rotate(-1deg);
-}
-
-div.affiche {
-        float:left;
-        /*display:inline-block;
-        width:45%;*/
-}
-
-div.description {
-        /*display:inline-block;
-        width:45%;*/
-}
-
-div.spectacle img.affiche {
-        margin-right: 30px;
-}
-
-
 /* OMERTA */
 
 div#presentation_omerta img.logo {

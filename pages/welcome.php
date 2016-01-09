@@ -34,13 +34,13 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					$photoLieu = $sPhotoLieuRelDir.$aRow["lid"].".jpg";
 					$photoCategorie = $sPhotoCategorie.$aRow["cid"].".jpg";
 					if ( file_exists($photoEvenement) ) {
-						echo "<img src=\"$photoEvenement\" alt=\"$aRow[nom]\" class=\"affiche img-responsive\"/>\n";
+						echo "<img src=\"$photoEvenement\" alt=\"$aRow[nom]\" class=\"img-responsive hvr-rotate\"/>\n";
 					}
 					elseif ( file_exists($photoLieu) ) {
-						echo "<img src=\"$photoLieu\" alt=\"$aRow[nom]\" class=\"affiche img-responsive\"/>\n";
+						echo "<img src=\"$photoLieu\" alt=\"$aRow[nom]\" class=\"img-responsive hvr-rotate\"/>\n";
 					}					
 					elseif ( file_exists($photoCategorie) ) {
-						echo "<img src=\"$photoCategorie\" alt=\"$aRow[nom]\" class=\"affiche img-responsive\"/>\n";
+						echo "<img src=\"$photoCategorie\" alt=\"$aRow[nom]\" class=\"img-responsive hvr-rotate\"/>\n";
 					}
 				?>
 				</div>
