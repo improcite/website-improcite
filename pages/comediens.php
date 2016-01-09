@@ -132,7 +132,7 @@ if ($id)
 	
 			echo "<div class=\"col-xs-6 col-sm-4 col-md-3 text-center\" style=\"margin-top:5px;\">\n";
 			echo "<a href=\"?p=comediens&id=$id#apage\" title=\"$sNomPrenom\">\n" ;
-			echo "<img class=\"img-responsive img-circle\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" />\n";
+			echo "<img class=\"img-responsive img-circle hvr-pulse-grow\" src=\"$photo\" alt=\"Photo de $sNomPrenom\" />\n";
 			echo "<strong>$prenom</strong>\n";
 			echo "</a>\n" ;
 			echo "</div>\n" ;
