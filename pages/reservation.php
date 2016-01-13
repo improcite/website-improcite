@@ -192,7 +192,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 
 		<div class="panel panel-info">
 		<div class="panel-heading text-center">Réserver des places</div>
-		<form method="get">
+		<form method="post">
 		<input type="hidden" name="p" value="reservation">
 		<input type="hidden" name="id_spectacle" value="<?=$id_spectacle?>" />
 		<input type="hidden" name="action" value="Valider" />
