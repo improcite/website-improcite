@@ -3,7 +3,7 @@ include(dirname(__FILE__)."/../fxJoueurs.php");
 
 function dispPlaces($iNbRest, $iTotal)
 {
-	if ($iNbRest == 0)
+	if ($iNbRest <= 0)
 	{
 		return "Plus de places disponibles en r&eacute;servation.";
 	}
@@ -184,7 +184,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 
 	<?
 	
-	if ($places_restantes)
+	if ($places_restantes > 0)
 	{
 		$max_places = $places_restantes > 5 ? 5 : $places_restantes ;
 	
