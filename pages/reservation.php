@@ -284,7 +284,7 @@ else
 			}
 			else
 			{
-				echo "<option>$nom ($date) : Complet</option>\n" ;
+				echo "<option value=\"$id\">$nom ($date) : Complet</option>\n" ;
 			}
 		}
 
