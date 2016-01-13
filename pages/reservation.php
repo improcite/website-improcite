@@ -55,6 +55,17 @@ if ( $action == "Valider" )
 		$infos = @mysql_fetch_array( $requete_spectacle ) ;
 		$date_res =  date("YmdHis");
 		
+		# On recalcule les places disponibles
+		$requete_places = @mysql_query( "SELECT SUM(places) AS total FROM $t_res WHERE evenement=$id_spectacle" ) ;
+		$resultat_places = @mysql_fetch_array( $requete_places );
+		$places_res = $resultat_places['total'];
+		$places_restantes = $infos[ "places" ] - $places_res;
+
+		if ($places_restantes < $places ) {
+			echo "<div class=\"alert alert-danger\">Pas assez de places disponibles</div>\n";
+		}
+
+		else {
 		# On inscrit la reservation dans la base de donnees
 		@mysql_query("INSERT INTO $t_res ( `id` , `evenement` , `places` , `nom` , `prenom` , `email`, `telephone`, `date` ) 
 			VALUES ( '' , '$id_spectacle' , '$places' , '$nom' , '$prenom' , '$email', '$telephone', $date_res )") ;
@@ -75,6 +86,8 @@ if ( $action == "Valider" )
 		?>
 		</table>
 		</div>
+
+		<? } ?>
 
 		<div class="panel panel-success">
 		<div class="panel-heading text-center">Inscription à la lettre d'informations</div>
