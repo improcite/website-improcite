@@ -79,7 +79,7 @@ if ($nb_prochains == 0)
 				$afficherNom = @mysql_result($requete_coach, 0, "affichernom");
 				$sNomPrenom = $prenom.(($afficherNom)?" $nom":"");// en fonction du désir de la personne, on l'affiche pas son nom
 
-				echo "<tr><thCoach</th><td><a href=\"?p=comediens&id=$coach\">$sNomPrenom";
+				echo "<tr><th>Coach</th><td><a href=\"?p=comediens&id=$coach\">$sNomPrenom";
 				if ($surnom) { echo " ($surnom)"; }
 				echo "</a></td></tr>\n";
 			}
