@@ -71,6 +71,29 @@ if ( $action == "Valider" )
 			VALUES ( '' , '$id_spectacle' , '$places' , '$nom' , '$prenom' , '$email', '$telephone', $date_res )") ;
 		
 		$ref = @mysql_insert_id() ;
+
+		# Envoi d'un mail de confirmation
+		$subject = "Confirmation de tes places";
+		$ml = "<html>\n"
+		. "<head><title>$subject</title></head>\n"
+		. "<body>\n"
+                . "<p>Bonjour $prenom,</p>\n"
+                . "<p>Tu as réservé $places place(s) pour notre spectacle, merci ! Ton identifiant de réservation est 1PRO6TE_$ref.</p>\n"
+		. "<p>Tu peux retrouver les informations sur ce spectacle en cliquant <a href=\"http://www.improcite.com/?p=reservation&id_spectacle=$id_spectacle#apage\">ici</a>.</p>\n"
+                . "<p>À bientôt !</p>\n"
+		. "</body>\n"
+		. "</html>\n"
+                ;
+
+	        // Always set content-type when sending HTML email
+	        $headers = "MIME-Version: 1.0 \n";
+		$headers .= "Content-Transfer-Encoding: 8bit \n";
+	        $headers .= "Content-type:text/html;charset=utf-8 \n";
+	        $headers .= 'From: Improcite <contact@improcite.com> ' . "\n";
+
+		$verif_envoi_mail = TRUE;
+	        $verif_envoi_mail = @mail($email, $subject, $ml, $headers);
+
 		?>
 
 		<div class="panel panel-info">
@@ -87,6 +110,11 @@ if ( $action == "Valider" )
 		</table>
 		</div>
 
+		<? if ($verif_envoi_mail === FALSE ) { ?>
+		<div class="alert alert-danger">Erreur lors de l'envoi de l'email de confirmation.</div>
+		<? } else { ?>
+		<div class="alert alert-success">Un email de confirmation a été envoyé.</div>
+		<? } ?>
 		<? } ?>
 
 		<div class="panel panel-success">
