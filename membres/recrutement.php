@@ -31,11 +31,10 @@ else {
 	$date_actuelle = date("YmdHis") ;
 
 	$recrutement_sql = "SELECT * from impro_recrutement ORDER BY date ASC";
-	$recrutement_resultat = @mysql_query($recrutement_requete);
 
 	$recrutement_resultat = mysql_query($recrutement_sql) or die('Erreur SQL !<br />'.$recrutement_sql.'<br />'.mysql_error());
 
-	$nb_inscrits = @mysql_num_rows($recrutement_sql);
+	$nb_inscrits = @mysql_num_rows($recrutement_resultat);
 
 	if ($nb_inscrits = 0)
 	{
@@ -43,70 +42,87 @@ else {
 	}
 	else
 	{
-	// En-tête de la table
 	?>
 		
 	<div class='table-responsive'>
-		<table class='table table-striped'>
+		<table id="table"
+			   data-height="460"
+               data-detail-view="true"
+               data-detail-formatter="detailFormatter"
+               data-striped = "true"
+			   data-sort-name="nom"
+               data-sort-order="desc"
+               data-click-to-select="true"
+               >
 			<thead>
 				<tr>
-					<th>Nom</th>
-					<th>Téléphone</th>
-					<th>E-mail</th>					
-					<th>Adresse</th>
-					<th>Source</th>
-					<th>Experiencev</th>
-					<th>Envie</th>
-					<th>Disponibilite</th>
-					<th>Date</th>
-					<?php 	if(isPrintMode() == true) echo "<th>Commentaire</th>"; ?>
-				</tr>
+            		<th data-field="nom" data-sortable="true">Nom</th>
+            		<th data-field="telephone" data-sortable="true">Téléphone</th>
+            		<th data-field="mail" data-sortable="true">E-mail</th>
+            		<th data-field="adresse" data-sortable="true">Adresse</th>
+            		<th data-field="mail" data-sortable="true">Date</th>
+            	    <th data-field="state" data-checkbox="true"></th>	
+        		</tr>
 			</thead>
-			<tbody>
-
-	<?php	
-
-		// Contenu
-		while ($row = mysql_fetch_array($recrutement_resultat, MYSQL_ASSOC)) {
-   	//		printf("ID : %s  Nom : %s", $row["nom"], $row["prenom"]);
-
-			echo "<tr>";
-			echo "<td>".$row["nom"]." ".$row["prenom"]."</td>";
-			echo "<td>".$row["telephone"]."</td>";
-			echo "<td>".$row["mail"]."</td>";
-			echo "<td>".$row["adresse"]."</td>";
-			echo "<td>".$row["source"]."</td>";
-			echo "<td>".$row["experience"]."</td>";
-			echo "<td>".$row["envie"]."</td>";
-			echo "<td>".$row["disponibilite"]."</td>";
-			echo "<td>".$row["date"]."</td>";
-			if(isPrintMode() == true) echo "<th>&emsp;&emsp;&emsp;</th>";
-			echo "</tr>";
-
-		}
-
-	?>
-			</tbody>
 		</table>
+	</div>
+
 	</div>
 
 	<?php
 
-
-
-
-
-		
-	?>
-
-
-	<?php
-
 	}
-	mysql_free_result($inscrits);
 }
 
 DisplayPrintButton();
+
+$nb_inscrits = @mysql_num_rows($recrutement_resultat);
+
+echo "<script>\n";
+echo " var data = [";
+	
+		$counter = 0;
+
+		while ($row = mysql_fetch_array($recrutement_resultat, MYSQL_ASSOC)) {
+
+			echo "{\n";
+			echo "\"nom\" : \"".$row["nom"]." ".$row["prenom"]."\",\n";
+			echo "\"telephone\" : \"".$row["telephone"]."\",\n";
+			echo "\"mail\" : \"".$row["mail"]."\",\n";
+			echo "\"adresse\" : \"".$row["adresse"]."\",\n";
+			echo "\"date\" : \"".$row["date"]."\",\n";
+			echo "\"source\" : \"".$row["source"]."\",\n";
+			echo "\"experience\" : \"".$row["experience"]."\",\n";
+			echo "\"envie\" : \"".$row["envie"]."\",\n";
+			echo "\"disponibilite\" : \"".$row["disponibilite"]."\"\n";			
+			echo "}";
+
+			if (++$counter < $nb_inscrits) echo ",\n";
+		}
+
+echo "];\n";
+?>
+
+$(function () {
+    $('#table').bootstrapTable({
+        data: data
+    });
+});
+</script>
+<script>
+    function detailFormatter(index, row) {
+        var html = [];
+        html.push('<p><b>A connu Improcité :</b><br>' + row['source']);
+        html.push('</p><p><b>Son expérience en impro :</b><br>' + row['experience']);
+        html.push('</p><p><b>Ses envies :</b><br>' + row['envie']);
+        html.push('</p><p><b>Ses disponibilités :</b><br>' + row['disponibilite'] + '</p>');
+        return html.join('');
+        }
+</script>
+<?php
+
+mysql_free_result($inscrits);
+
 # Affichage du pied de page
 @include ( "pied.php" ) ;
 

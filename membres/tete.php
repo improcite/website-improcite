@@ -53,6 +53,12 @@ if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+	<!-- Boostrap Table -->
+	<!-- http://bootstrap-table.wenzhixin.net.cn/ -->
+	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
+	<script src="../js/bootstrap-table.min.js"></script>
+	<script src="../js/bootstrap-table-locale-all.min.js"></script>
+
 <?php if ( $CURRENT_MENU_ITEM == "fichiers" ) { ?>
 
 	<!-- elFinder CSS (REQUIRED) -->
