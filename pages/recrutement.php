@@ -8,7 +8,9 @@ $action = getp("action");
 if ( $action === "inscription" ) {
 
 	# Enregistrement de l'inscription en base
-	$recrut_query = mysql_query("INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, source, experience, envie, disponibilite) VALUES('".getp("nom")."','".getp("prenom")."','".getp("datenaissance")."','".getp("adresse")."','".getp("mail").";".getp("tel")."','".getp("source")."','".getp("experience")."','".getp("envie")."','".getp("disponibilite")."')");
+	$recrut_sql = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date) VALUES('".getp("nom")."','".getp("prenom")."','".getp("datenaissance")."','".getp("adresse")."','".getp("mail")."','".getp("tel")."','".getp("source")."','".getp("experience")."','".getp("envie")."','".getp("disponibilite")."','".date('Y-m-d H:i:s')."')";
+
+	$recrut_query = mysql_query($recrut_sql);
 
 	# Envoi d'un mail
 	$mail  = "Nom : ".getp("nom")."\n";
@@ -21,7 +23,7 @@ if ( $action === "inscription" ) {
 	$mail .= "Envies : ".getp("envie")."\n";
 	$mail .= "Disponibilités : ".getp("disponibilite")."\n";
 
-	mail("tous@improcite.com","Nouvelle inscription au recrutement !",utf8_encode($mail), "MIME-Version: 1.0\r\nContent-type: text/plain; charset=UTF-8\r\nFrom: Webmaster Improcite <clem.oudot@gmail.com>\r\n");
+	mail("jossssss@gmail.com","Nouvelle inscription au recrutement !",utf8_encode($mail), "MIME-Version: 1.0\r\nContent-type: text/plain; charset=UTF-8\r\nFrom: Webmaster Improcite <clem.oudot@gmail.com>\r\n");
 
 ?>
 
