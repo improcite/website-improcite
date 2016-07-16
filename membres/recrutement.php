@@ -147,10 +147,16 @@ $(function () {
 <script>
     function detailFormatter(index, row) {
         var html = [];
+        html.push('<div class="row"><div class="col-xs-6">');
         html.push('<p><b>A connu Improcité :</b><br>' + row['source']);
+		html.push('</div><div class="col-xs-6">');
         html.push('</p><p><b>Son expérience en impro :</b><br>' + row['experience']);
-        html.push('</p><p><b>Ses envies :</b><br>' + row['envie']);
+		html.push('</div></div><div class="row"><div class="col-xs-6">');
+		html.push('</p><p><b>Ses envies :</b><br>' + row['envie']);
+		html.push('</div><div class="col-xs-6">');
         html.push('</p><p><b>Ses disponibilités :</b><br>' + row['disponibilite'] + '</p>');
+		html.push('</div></div>')
+
         return html.join('');
         }
 </script>

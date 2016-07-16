@@ -23,15 +23,15 @@ if(isPrintMode() == false)
                 <li class="<?=(($baseUri == "membres.php")?'active':'')?>">
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
+                <li class="<?=(($baseUri == "recrutement.php")?'active':'')?>">
+                  <a href="recrutement.php"><i class="fa fa-user-plus"></i>Recrutement</a>
+                </li> 
                 <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
                   <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Moi</a>
                 </li>
                 <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
                   <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
                 </li>
-                <li class="<?=(($baseUri == "recrutement.php")?'active':'')?>">
-                  <a href="recrutement.php"><i class="glyphicon glyphicons-user-add"></i>Recrutement</a>
-                </li> 
                 <li class="dropdown <?=( strstr( $baseUri, "dispos") ?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Dispos <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
