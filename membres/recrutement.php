@@ -110,7 +110,7 @@ echo " var data = [";
 			echo "\"telephone\" : \"".$row["telephone"]."\",\n";
 			echo "\"mail\" : \"".$row["mail"]."\",\n";
 			echo "\"adresse\" : \"".$row["adresse"]."\",\n";
-			echo "\"date\" : \"".$row["date"]."\",\n";
+			echo "\"date\" : \"".getdate($row["date"])."\",\n";
 			echo "\"source\" : \"".$row["source"]."\",\n";
 			echo "\"experience\" : \"".$row["experience"]."\",\n";
 			echo "\"envie\" : \"".$row["envie"]."\",\n";

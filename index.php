@@ -126,13 +126,31 @@ else
 			, "agenda" => "L'agenda"
 			, "comediens" => "Comédiens"
 			, "contact" => "Contact"
-		); ?>
+		); 
+
+	  // On affiche "Recrutement dans le menu si on est entre le 1er et le 15 septembre"
+	  $onRecrute = false;
+	  $year = date("Y");
+	  $recrutementBegin = date('Y-m-d', strtotime("07/01/".$year));
+	  $recrutementEnd = date('Y-m-d', strtotime("09/15/".$year));
+	  $today = date('Y-m-d');
+
+	  if ($today >= $recrutementBegin && $today <= $recrutementEnd)
+	  {
+	    $onRecrute = true;
+	  }
+
+		if ($onRecrute)	$aMenuItems["recrutement"] = "Recrutement";
+		?>
 		<? $aMenuIcons = array(
 			"impro" => "info-sign"
 			, "agenda" => "calendar"
 			, "comediens" => "user"
 			, "contact" => "envelope"
-		); ?>
+		); 
+
+		if ($onRecrute)	$aMenuIcons["recrutement"] = "plus";
+		?>
 	
 		<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container">

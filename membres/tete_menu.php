@@ -1,5 +1,6 @@
 <?
 $baseUri = basename($_SERVER['REQUEST_URI']);
+
 if(isPrintMode() == false)
 {
 ?>
