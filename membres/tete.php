@@ -57,7 +57,16 @@ if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
 	<!-- http://bootstrap-table.wenzhixin.net.cn/ -->
 	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
 	<script src="../js/bootstrap-table.min.js"></script>
-	<script src="../js/bootstrap-table-locale-all.min.js"></script>
+	<script src="../js/bootstrap-table-fr-FR.min.js"></script>
+
+	<!-- Boostrap Editable -->
+	<link rel="stylesheet" href="../css/bootstrap-editable.css">
+	<script src="../js/bootstrap-table-editable.min.js"></script>
+	<script src="../js/bootstrap-editable.min.js"></script>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	
 
 <?php if ( $CURRENT_MENU_ITEM == "fichiers" ) { ?>
 
