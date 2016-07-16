@@ -122,7 +122,7 @@ foreach(explode(";", $aUserInfos[1]) as $v)
 
 function fxGetExistingRights()
 {
-	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable");
+	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable", "recruteur"=>"Recruteur");
 }
 
 function fxUserHasRight($sRight)
