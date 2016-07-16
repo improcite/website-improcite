@@ -129,7 +129,7 @@ $(function () {
         data: data,
         onClickCell: function (field, value, row, $element)
         {
-        	if (field == 'selection' && editable == 'true')
+        	if (field == 'selection' && editable == true)
         	{
 		        row.selection = row.selection == 0 ? 1 :0;
 				$table.bootstrapTable('updateRow', {index: $element.attr('data-index'), row: row});
