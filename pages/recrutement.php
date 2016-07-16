@@ -7,28 +7,60 @@ $action = getp("action");
 
 if ( $action === "inscription" ) {
 
+	// Récupération des recruteurs
+	$recruteur_sql = "SELECT `prenom`, `portable`, `email` FROM impro_comediens WHERE rights LIKE '%recruteur%'";
+	$recruteur_query = mysql_query($recruteur_sql) or die('Erreur SQL !<br />'.$recruteur_sql.'<br />'.mysql_error());
+
+	$nb_recruteurs = @mysql_num_rows($recruteur_query);
+
+	$destinataires_mail = '';
+	$signature_mail_inscrit = '';
+	$counter = 0;
+
+	while ($row = mysql_fetch_array($recruteur_query, MYSQL_ASSOC)) {
+
+		$destinataires_mail .= $row['email'];
+		if (++$counter < $nb_recruteurs) $destinataires_mail .= ",";
+
+		$signature_mail_inscrit .= "<p><b>".$row['prenom']."</b><br>".$row['portable']."</p>";
+	}
+
+	mysql_free_result($recruteur_query);
+
 	# Enregistrement de l'inscription en base
 	$recrut_sql = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date) VALUES('".getp("nom")."','".getp("prenom")."','".getp("datenaissance")."','".getp("adresse")."','".getp("mail")."','".getp("tel")."','".getp("source")."','".getp("experience")."','".getp("envie")."','".getp("disponibilite")."','".date('Y-m-d H:i:s')."')";
 
 	$recrut_query = mysql_query($recrut_sql);
 
-	# Envoi d'un mail
-	$mail  = "Nom : ".getp("nom")."\n";
-	$mail .= "Prénom : ".getp("prenom")."\n";
-	$mail .= "Date de naissance : ".getp("datenaissance")."\n";
-	$mail .= "Adresse : ".getp("adresse")."\n";
-	$mail .= "Mail;Tel : ".getp("mail").";".getp("tel")."\n";
-	$mail .= "Connaissance d'improcité : ".getp("source")."\n";
-	$mail .= "Expérience en impro : ".getp("experience")."\n";
-	$mail .= "Envies : ".getp("envie")."\n";
-	$mail .= "Disponibilités : ".getp("disponibilite")."\n";
+	# Envoi d'un mail d'information à Improcité
+	$corps_mail  = "<p><b>Nom : </b><br>".getp("nom")."<br><br>\n";
+	$corps_mail .= "<b>Prénom : </b><br>".getp("prenom")."<br><br>\n";
+	$corps_mail .= "<b>Date de naissance : </b><br>".getp("datenaissance")."<br><br>\n";
+	$corps_mail .= "<b>Adresse : </b><br>".getp("adresse")."<br><br>\n";
+	$corps_mail .= "<b>E-mail : </b><br>".getp("mail")."<br><br>\n";
+	$corps_mail .= "<b>Téléphone : </b><br>".getp("tel")."</p>\n";
+	$corps_mail .= "<p><b>Connaissance d'improcité : </b><br>".getp("source")."</p>\n";
+	$corps_mail .= "<p><b>Expérience en impro : </b><br>".getp("experience")."</p>\n";
+	$corps_mail .= "<p><b>Envies : </b><br>".getp("envie")."</p>\n";
+	$corps_mail .= "<p><b>Disponibilités : </b><br>".getp("disponibilite")."</p>\n";
 
-	mail("jossssss@gmail.com","Nouvelle inscription au recrutement !",utf8_encode($mail), "MIME-Version: 1.0\r\nContent-type: text/plain; charset=UTF-8\r\nFrom: Webmaster Improcite <clem.oudot@gmail.com>\r\n");
+	$mail_confirmation_interne = file_get_contents("template_mail_recrutement_interne.html");
+	$mail_confirmation_interne = str_replace("_infos_",$corps_mail,$mail_confirmation_interne);
 
+	mail($destinataires_mail,"[Improcité] Nouvelle inscription au recrutement !",$mail_confirmation_interne, "MIME-Version: 1.0\r\nContent-Type: text/html; charset=\"iso-8859-1\"\r\nFrom: Improcite <contact@improcite.com>\r\n");
+
+	$mail_confirmation = file_get_contents("template_mail_recrutement.html");
+
+	$mail_confirmation = str_replace("_inscrit_",getp("prenom"),$mail_confirmation);
+	$mail_confirmation = str_replace("_recruteurs_",$signature_mail_inscrit,$mail_confirmation);
+
+
+	// Mail de confirmation utilisateur
+	mail(getp("mail"), "[Improcité] Tu es inscrit(e) au recrutement", $mail_confirmation, "MIME-Version: 1.0\r\nContent-Type: text/html; charset=\"iso-8859-1\"\r\nFrom: Improcite <contact@improcite.com>\r\n");
 ?>
 
 <p>Ton inscription a bien été prise en compte, merci !</p>
-
+<p>Tu recevras un mail dans 1 min 13s qui te donnera toutes les informations nécessaires. A partir de 1:14, tu peux vérifier tes spams ;-)</p>
 
 <?php } else { ?>
 
