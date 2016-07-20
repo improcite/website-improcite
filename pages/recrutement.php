@@ -67,11 +67,11 @@ if ( $action === "inscription" ) {
 <div class="panel panel-default">
   <div class="panel-heading">Recrutement 2016-2017</div>
   <div class="panel-body">
-  	Les deux séances de recrutement auront lieu les <b>jeudis 8 et 15 septembre 2016</b>, puisque c'est le jeudi soir que nous nous entraînons.<br><br>
+    Les deux séances de recrutement auront lieu les <b>jeudis 8 et 15 septembre 2016</b>, puisque c'est le jeudi soir que nous nous entraînons.<br><br>
 
-    Aucune expérience en impro n'est exigée (mais avouons-le, ça aide quand même).<br><br>
+    Une expérience minimale de deux ans en impro est recommandée, mais si tu penses avoir ça dans le sang, tente ta chance&nbsp;!<br><br>
 
-    Pour participer, suffit de remplir le formulaire ci-dessous.
+    Pour participer, il suffit de remplir le formulaire ci-dessous.
   </div>
 </div>
 
