@@ -9,11 +9,11 @@
 $debug = 0;
 
 # Serveur ou se situe MySQL
-$host = "localhost" ;
+$host = "" ;
 # Utilisateur de connexion a MySQL
-$user = "root" ;
+$user = "" ;
 # Mot de passe de connexion a MySQL
-$passwd = "root";
+$passwd = "";
 
 /* Indicatif de la saison */
 // 0 = 2004-2005
