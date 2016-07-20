@@ -17,7 +17,7 @@ $promo_mode = false;
 
 $sMailTo = "document.location='mai'+'lto:'+'contact'+'@'+'improcit'+'e.c'+'om';";
 
-// Choix de la page
+// Choix de la page@
 $p = isset($_GET['p']) ? $_GET['p'] : "welcome";
 // Protection des acces
 $sPage = "pages/" . preg_replace("[^a-z]", "", $p) . ".php";
@@ -84,12 +84,15 @@ else
 <body>
 <div class="container">
 <div id="page">
-	<? if (!$promo_mode) { ?>
+	<? if (!$promo_mode) { 
+		if($p <> "recrutement"){
+		?>
 	<div id="header" class="hidden-xs hidden-sm hidden-md">
 			<div id="welcome">Bienvenue sur le site d'<a href=?p=impro#apage>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
 	</div> <!-- header -->
 	
 	<?
+
 	@require_once ( "carousel.inc.php" ) ;
 	shuffle($aCaroussel);
 	?>
@@ -117,6 +120,20 @@ else
       </div>
     </div>
 	
+    <?php  } // fin if recrutement
+
+    else
+    {
+    	?>
+    <div id="home-carousel" style="width:100%">
+    	<img src="images/Bandeau_recrutement.png">
+    	</div>
+
+    <?php 
+    } // fin else recrutement
+
+     ?>
+
 	<a name="apage" name="apage"></a>
 
 	<div id="menu">
@@ -126,13 +143,31 @@ else
 			, "agenda" => "L'agenda"
 			, "comediens" => "Comédiens"
 			, "contact" => "Contact"
-		); ?>
+		); 
+
+	  // On affiche "Recrutement dans le menu si on est entre le 1er et le 15 septembre"
+	  $onRecrute = false;
+	  $year = date("Y");
+	  $recrutementBegin = date('Y-m-d', strtotime("07/01/".$year));
+	  $recrutementEnd = date('Y-m-d', strtotime("09/15/".$year));
+	  $today = date('Y-m-d');
+
+	  if ($today >= $recrutementBegin && $today <= $recrutementEnd)
+	  {
+	    $onRecrute = true;
+	  }
+
+		if ($onRecrute)	$aMenuItems["recrutement"] = "Recrutement";
+		?>
 		<? $aMenuIcons = array(
 			"impro" => "info-sign"
 			, "agenda" => "calendar"
 			, "comediens" => "user"
 			, "contact" => "envelope"
-		); ?>
+		); 
+
+		if ($onRecrute)	$aMenuIcons["recrutement"] = "plus";
+		?>
 	
 		<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container">

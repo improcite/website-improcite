@@ -53,6 +53,21 @@ if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+	<!-- Boostrap Table -->
+	<!-- http://bootstrap-table.wenzhixin.net.cn/ -->
+	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
+	<script src="../js/bootstrap-table.min.js"></script>
+	<script src="../js/bootstrap-table-fr-FR.min.js"></script>
+
+	<!-- Boostrap Editable -->
+	<link rel="stylesheet" href="../css/bootstrap-editable.css">
+	<script src="../js/bootstrap-table-editable.min.js"></script>
+	<script src="../js/bootstrap-editable.min.js"></script>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	
+
 <?php if ( $CURRENT_MENU_ITEM == "fichiers" ) { ?>
 
 	<!-- elFinder CSS (REQUIRED) -->
@@ -107,7 +122,7 @@ foreach(explode(";", $aUserInfos[1]) as $v)
 
 function fxGetExistingRights()
 {
-	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable");
+	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable", "recruteur"=>"Recruteur");
 }
 
 function fxUserHasRight($sRight)
