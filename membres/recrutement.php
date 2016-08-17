@@ -60,6 +60,7 @@ else {
 			   data-sort-name="nom"
                data-sort-order="desc"
                data-mobile-responsive="true"
+               data-editable-emptytext="Non renseigné"
 	          <?php if($viewtoolbar) echo "data-search='true'"; ?>
                >
 			<thead>
