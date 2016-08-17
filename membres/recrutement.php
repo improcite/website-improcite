@@ -104,6 +104,7 @@ echo " var data = [";
 
 		while ($row = mysql_fetch_array($recrutement_resultat, MYSQL_ASSOC)) {
 
+			$date = substr($row["date"],8,2) . "/" . substr($row["date"],5,2) . "/" . substr($row["date"],0,4);
 			echo "{\n";
 			echo "\"id\" : \"".$row["id"]."\",\n";
 			echo "\"selection\" : \"".$row["selection"]."\",\n";
@@ -111,7 +112,7 @@ echo " var data = [";
 			echo "\"telephone\" : \"".$row["telephone"]."\",\n";
 			echo "\"mail\" : \"".$row["mail"]."\",\n";
 			echo "\"adresse\" : \"".$row["adresse"]."\",\n";
-			echo "\"date\" : \"".getdate($row["date"])."\",\n";
+			echo "\"date\" : \"".$date."\",\n";
 			echo "\"source\" : \"".$row["source"]."\",\n";
 			echo "\"experience\" : \"".$row["experience"]."\",\n";
 			echo "\"envie\" : \"".$row["envie"]."\",\n";
