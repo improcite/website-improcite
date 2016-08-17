@@ -25,7 +25,7 @@ if(isPrintMode() == false)
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
                 <li class="<?=(($baseUri == "recrutement.php")?'active':'')?>">
-                  <a href="recrutement.php"><i class="fa fa-user-plus"></i>Recrutement</a>
+                  <a href="recrutement.php"><i class="fa fa-user-plus"></i> Recrutement</a>
                 </li> 
                 <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
                   <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Moi</a>
