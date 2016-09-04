@@ -28,7 +28,8 @@ $passwd = "";
 // 9 = 2013-2014
 // 10 = 2014-2015
 // 11 = 2015-2016
-$iCurrentSaisonNumber = 11;
+// 12 = 2016-2017
+$iCurrentSaisonNumber = 12;
 
 /* La même chose, mais en puissance de 2*/
 // 1 = 2004-2005
@@ -43,10 +44,11 @@ $iCurrentSaisonNumber = 11;
 // 512 = 2013-2014
 // 1024 = 2014-2015
 // 2048 = 2015-2016
-$currentSaisonBit = 2048;
+// 4096 = 2016-2017
+$currentSaisonBit = 4096;
 
 /* Utilisé pour afficher le champ ds l'admin */
-$saisonAdminString = "2004-2005,2005-2006,2006-2007,2007-2008,2008-2009,2009-2010,2010-2011,2011-2012,2012-2013,2013-2014,2014-2015,2015-2016";
+$saisonAdminString = "2004-2005,2005-2006,2006-2007,2007-2008,2008-2009,2009-2010,2010-2011,2011-2012,2012-2013,2013-2014,2014-2015,2015-2016,2016-2017";
 
 /* Numero de categorie pour les entrainements */
 $category_train = 1;
