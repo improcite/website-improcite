@@ -28,7 +28,17 @@ if ( $action === "inscription" ) {
 	mysql_free_result($recruteur_query);
 
 	# Enregistrement de l'inscription en base
-	$recrut_sql = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date) VALUES('".getp("nom")."','".getp("prenom")."','".getp("datenaissance")."','".getp("adresse")."','".getp("mail")."','".getp("tel")."','".getp("source")."','".getp("experience")."','".getp("envie")."','".getp("disponibilite")."','".date('Y-m-d H:i:s')."')";
+	$mysql_nom = mysql_real_escape_string(getp("nom"));
+	$mysql_prenom = mysql_real_escape_string(getp("prenom"));
+	$mysql_datenaissance = mysql_real_escape_string(getp("datenaissance"));
+	$mysql_adresse = mysql_real_escape_string(getp("adresse"));
+	$mysql_mail = mysql_real_escape_string(getp("mail"));
+	$mysql_tel = mysql_real_escape_string(getp("tel"));
+	$mysql_source = mysql_real_escape_string(getp("source"));
+	$mysql_experience = mysql_real_escape_string(getp("experience"));
+	$mysql_envie = mysql_real_escape_string(getp("envie"));
+	$mysql_disponibilite = mysql_real_escape_string(getp("disponibilite"));
+	$recrut_sql = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date) VALUES('$mysql_nom','$mysql_prenom','$mysql_datenaissance','$mysql_adresse','$mysql_mail','$mysql_tel','$mysql_source','$mysql_experience','$mysql_envie','$mysql_disponibilite','".date('Y-m-d H:i:s')."')";
 
 	$recrut_query = mysql_query($recrut_sql);
 
