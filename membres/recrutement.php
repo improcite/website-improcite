@@ -216,7 +216,7 @@ $(function () {
 </script>
 <?php
 
-mysql_free_result($inscrits);
+mysql_free_result($recrutement_resultat);
 
 # Affichage du pied de page
 @include ( "pied.php" ) ;
