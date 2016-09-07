@@ -145,11 +145,11 @@ else
 			, "contact" => "Contact"
 		); 
 
-	  // On affiche "Recrutement dans le menu si on est entre le 1er et le 15 septembre"
+	  // On affiche "Recrutement dans le menu si on est entre le 1er juillet et le 05 septembre"
 	  $onRecrute = false;
 	  $year = date("Y");
 	  $recrutementBegin = date('Y-m-d', strtotime("07/01/".$year));
-	  $recrutementEnd = date('Y-m-d', strtotime("09/15/".$year));
+	  $recrutementEnd = date('Y-m-d', strtotime("09/05/".$year));
 	  $today = date('Y-m-d');
 
 	  if ($today >= $recrutementBegin && $today <= $recrutementEnd)
