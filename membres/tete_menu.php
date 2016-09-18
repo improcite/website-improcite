@@ -27,17 +27,11 @@ if(isPrintMode() == false)
                 <li class="<?=(($baseUri == "membres.php")?'active':'')?>">
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
-                <li class="<?=(($baseUri == "recrutement.php")?'active':'')?>">
-                  <a href="recrutement.php"><i class="fa fa-user-plus"></i> Recrutement</a>
-                </li> 
                 <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
-                  <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Moi</a>
-                </li>
-                <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
-                  <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
+                  <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Mon compte</a>
                 </li>
                 <li class="dropdown <?=( strstr( $baseUri, "dispos") ?'active':'')?>">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Dispos <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Disponibilités <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="<?=(($baseUri == "dispos.php")?'active':'')?>">
                       <a href="dispos.php"><i class="glyphicon glyphicon-star"></i> Spectacles</a>
@@ -51,19 +45,25 @@ if(isPrintMode() == false)
                     </li>
                   </ul>
                 </li>
-                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php" || $baseUri == "fichiers.php") ?'active':'')?>">
+                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php" || $baseUri == "fichiers.php" || $baseUri == "recrutement.php" || $baseUri == "reservation.php") ?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-wrench"></i> Admin <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-					<li class="<?=(($baseUri == "admin_bdd.php")?'active':'')?>">
-					  <a href="admin_bdd.php"><i class="glyphicon glyphicon-list-alt"></i> Donn&eacute;es</a>
-					</li>
-					<li class="<?=(($baseUri == "carousel.php")?'active':'')?>">
-					  <a href="carousel.php"><i class="glyphicon glyphicon-film"></i> Caroussel</a>
-					</li>
-					<li class="<?=(($baseUri == "fichiers.php")?'active':'')?>">
-					  <a href="fichiers.php"><i class="glyphicon glyphicon-file"></i> Fichiers</a>
-					</li>					
-                  </ul>
+                    <li class="<?=(($baseUri == "recrutement.php")?'active':'')?>">
+                      <a href="recrutement.php"><i class="fa fa-user-plus"></i> Recrutement</a>
+                    </li>
+                    <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
+                      <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
+                    </li>
+		    <li class="<?=(($baseUri == "admin_bdd.php")?'active':'')?>">
+		      <a href="admin_bdd.php"><i class="glyphicon glyphicon-list-alt"></i> Donn&eacute;es</a>
+		    </li>
+		    <li class="<?=(($baseUri == "carousel.php")?'active':'')?>">
+		      <a href="carousel.php"><i class="glyphicon glyphicon-film"></i> Caroussel</a>
+		    </li>
+		    <li class="<?=(($baseUri == "fichiers.php")?'active':'')?>">
+		      <a href="fichiers.php"><i class="glyphicon glyphicon-file"></i> Fichiers</a>
+		    </li>
+		  </ul>
                 </li>				
               </ul>
               <ul class="nav navbar-nav">
