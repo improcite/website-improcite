@@ -45,25 +45,25 @@ else {
 	//--------------------------
 	if ($action == "Modifier")
 	{
-		$password = getp("password");
-		$prenom = getp("prenom");
-		$nom = getp("nom");
-		$afficherNom = getp("affichernom");
-		$notif_email = getp("notif_email");
-		$surnom = getp("surnom");
-		$jour = getp("jour");
-		$mois = getp("mois");
-		$annee = getp("annee");
-		$email = getp("email");
-		$portable = getp("portable");
-		$adresse = getp("adresse");
-		$apport = getp("apport");
-		$envie = getp("envie");
-		$debut = getp("debut");
-		$debutimprocite = getp("debutimprocite");
-		$improcite = getp("improcite");
-		$qualite = getp("qualite");
-		$defaut = getp("defaut");
+		$password = mysql_real_escape_string(getp("password"));
+		$prenom = mysql_real_escape_string(getp("prenom"));
+		$nom = mysql_real_escape_string(getp("nom"));
+		$afficherNom = mysql_real_escape_string(getp("affichernom"));
+		$notif_email = mysql_real_escape_string(getp("notif_email"));
+		$surnom = mysql_real_escape_string(getp("surnom"));
+		$jour = mysql_real_escape_string(getp("jour"));
+		$mois = mysql_real_escape_string(getp("mois"));
+		$annee = mysql_real_escape_string(getp("annee"));
+		$email = mysql_real_escape_string(getp("email"));
+		$portable = mysql_real_escape_string(getp("portable"));
+		$adresse = mysql_real_escape_string(getp("adresse"));
+		$apport = mysql_real_escape_string(getp("apport"));
+		$envie = mysql_real_escape_string(getp("envie"));
+		$debut = mysql_real_escape_string(getp("debut"));
+		$debutimprocite = mysql_real_escape_string(getp("debutimprocite"));
+		$improcite = mysql_real_escape_string(getp("improcite"));
+		$qualite = mysql_real_escape_string(getp("qualite"));
+		$defaut = mysql_real_escape_string(getp("defaut"));
 
 		// MAJ de la fiche
 		$maj_fiche = @mysql_query("UPDATE $table_comediens SET
