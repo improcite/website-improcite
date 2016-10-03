@@ -67,8 +67,15 @@ if ( $action == "Valider" )
 
 		else {
 		# On inscrit la reservation dans la base de donnees
+		$mysql_id_spectacle = mysql_real_escape_string($id_spectacle);
+		$mysql_places = mysql_real_escape_string($places);
+		$mysql_nom = mysql_real_escape_string($nom);
+		$mysql_prenom = mysql_real_escape_string($prenom);
+		$mysql_email = mysql_real_escape_string($email);
+		$mysql_telephone = mysql_real_escape_string($telephone);
+		$mysql_date_res = mysql_real_escape_string($date_res);
 		@mysql_query("INSERT INTO $t_res ( `id` , `evenement` , `places` , `nom` , `prenom` , `email`, `telephone`, `date` ) 
-			VALUES ( '' , '$id_spectacle' , '$places' , '$nom' , '$prenom' , '$email', '$telephone', $date_res )") ;
+			VALUES ( '' , '$mysql_id_spectacle' , '$mysql_places' , '$mysql_nom' , '$mysql_prenom' , '$mysql_email', '$mysql_telephone', $mysql_date_res )") ;
 		
 		$ref = @mysql_insert_id() ;
 
