@@ -59,8 +59,6 @@ $password = getp("password");
 $backURL = getp("backURL");
 $rememberme = getp("rememberme");
 
-$salt = "blobi123";
-
 $requete_membre = false;
 if (isset($_COOKIE['login']) && isset($_COOKIE['md5password']))
 {
@@ -76,7 +74,7 @@ else if($login && $password)
 if($md5password)
 {
 	# Recherche du login dans la base
-	$requete_membre = mysql_query ( "SELECT * FROM $table_comediens WHERE login='$login' AND MD5(CONCAT('$salt', password))='$md5password' AND saison  & ".($currentSaisonBit)." <> 0") ;
+	$requete_membre = mysql_query( "SELECT * FROM $table_comediens WHERE login='$login' AND password='$md5password' AND saison  & ".($currentSaisonBit)." <> 0") ;
 
 	$nb = @mysql_num_rows ( $requete_membre ) ;
 	if ( $nb > 0 )

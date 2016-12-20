@@ -9,11 +9,13 @@
 $debug = 0;
 
 # Serveur ou se situe MySQL
-$host = "" ;
+$host = "";
 # Utilisateur de connexion a MySQL
-$user = "" ;
+$user = "";
 # Mot de passe de connexion a MySQL
 $passwd = "";
+# Sel des mots de passe
+$salt = "";
 
 /* Indicatif de la saison */
 // 0 = 2004-2005

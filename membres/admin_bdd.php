@@ -97,9 +97,10 @@ if (!$tab) $tab = "SQL";
 			"listrequest" => "SELECT id, nom, prenom, surnom, email, portable, adresse, (((saison & $currentSaisonBit) >> $iCurrentSaisonNumber) * (2005 + $iCurrentSaisonNumber)) as annee FROM {$table_comediens} ORDER BY annee DESC, Nom",
 			"fields"=>array(
 				array("Login", "text", "login", ""),
-				array("Password", "password", "password", ""),
 				array("Nom", "text", "nom", ""),
 				array("Prénom", "text", "prenom", ""),
+				array("Email", "text", "email", ""),
+				array("Portable", "text", "portable", ""),
 				array("Saison", "bitfield|".$saisonAdminString, "saison", 1 << $iSaisonEnCours)
 				)
 			)

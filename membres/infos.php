@@ -45,7 +45,6 @@ else {
 	//--------------------------
 	if ($action == "Modifier")
 	{
-		$password = mysql_real_escape_string(getp("password"));
 		$prenom = mysql_real_escape_string(getp("prenom"));
 		$nom = mysql_real_escape_string(getp("nom"));
 		$afficherNom = mysql_real_escape_string(getp("affichernom"));
@@ -67,7 +66,6 @@ else {
 
 		// MAJ de la fiche
 		$maj_fiche = @mysql_query("UPDATE $table_comediens SET
-			password='$password',
 			prenom='$prenom',
 			nom='$nom',
 			affichernom='$afficherNom',
@@ -87,6 +85,15 @@ else {
 			qualite='$qualite',
 			defaut='$defaut'
 			WHERE id=$edited_id");
+
+		// MAJ mot de passe
+		if (getp("password")) {
+			$password = mysql_real_escape_string(getp("password"));
+			$md5password = md5($salt.$password);
+			$maj_passord = @mysql_query("UPDATE $table_comediens SET
+				password='$md5password'
+				WHERE id=$edited_id");
+		}
 
 		// Fin
 		
@@ -162,7 +169,7 @@ else {
 	<h2>Acc&egrave;s &agrave; l'espace membres</h2>
 	<?
 	echo "<p><span class=\"intitules\">Identifiant (non modifiable)&nbsp;:</span> $login</p>\n";
-	echo "<p><span class=\"intitules\">Mot de passe&nbsp;:</span> <input type=\"password\" name=\"password\" value=\"$password\" /></p>\n";
+	echo "<p><span class=\"intitules\">Mot de passe&nbsp;:</span> <input type=\"password\" name=\"password\" /></p>\n";
 	echo "<p><input type=\"checkbox\" name=\"notif_email\" value=\"1\" ".($notif_email?"CHECKED":"")." /> Activer les notifications email</p>\n";
 	
 	echo "<h2>Identit&eacute;</h2>\n";
