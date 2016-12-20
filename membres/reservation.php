@@ -25,9 +25,20 @@ else {
 
 	# MySQL est disponible, on continue !
 
+	# Traitement des actions
+	$deleted = false;
+	if ( getp("action") === "delete" and getp("id") ) {
+		$id = mysql_real_escape_string( getp("id") );
+		$deleted = mysql_query("DELETE FROM $t_res WHERE id=$id");
+	}
+
 	# Ouverture du corps de la page
 
 	echo "<div id=\"corps\">\n" ;
+
+	if ($deleted) {
+		echo "<div class=\"alert alert-success\">La r&eacute;servation 1PRO6T_$id a &eacute;t&eacute; supprim&eacute;e</div>\n";
+	}
 
 	echo "<h1>Liste des r&eacute;servations</h1>\n" ;
 
@@ -69,15 +80,17 @@ else {
 				echo "<th>Places</th>\n";
 				echo "<th>Email</th>\n";
 				echo "<th>T&eacute;l&eacute;phone</th>\n";
-				//echo "<th>Date</th>\n";
+				echo "<th>R&eacute;serv&eacute; le</th>\n";
 				echo "<th>R&eacute;f&eacute;rence</th>\n";
+				echo "<th></th>\n";
 				echo "</tr>\n";
 				echo "</thead>\n";
 				echo "<tbody>\n";
 
 				while ( $resultat_places = @mysql_fetch_array( $requete_places ) ) {
 
-					$ref = "1PRO6TE_".$resultat_places["id"] ;
+					$id = $resultat_places["id"];
+					$ref = "1PRO6TE_$id" ;
 					$places_res = $resultat_places["places"] ;
 					$nom_res = $resultat_places["nom"] ;
 					$prenom_res = $resultat_places["prenom"] ;
@@ -89,8 +102,9 @@ else {
 
 					echo "<tr>\n";
 					echo "<td>$nom_res $prenom_res</td><td>$places_res</td><td>$email_res</td><td>$tel_res</td>";
-					//echo "<td>$date_res</td>";
+					echo "<td>$date_res</td>";
 					echo "<td>$ref</td>\n";
+					echo "<td><a href=\"reservation.php?id=$id&action=delete\" title=\"Supprimer\" class=\"text-danger\"><i class=\"glyphicon glyphicon-minus-sign\"></i></a></td>\n";
 					echo "</tr>\n";
 				}
 
@@ -155,7 +169,7 @@ else {
 				$date = @affiche_date( @mysql_result( $requete_stats_resas , $i , "e.date" ) ) ;
 				$places = @mysql_result( $requete_stats_resas , $i , "e.places" ) ;
 
-							$requete_places = @mysql_query( "SELECT * FROM $t_res WHERE evenement=$id" ) ;
+				$requete_places = @mysql_query( "SELECT * FROM $t_res WHERE evenement=$id" ) ;
 				$places_tot = 0 ;
 				while ( $resultat_places = @mysql_fetch_array( $requete_places ) ) {
 					$places_res = $resultat_places["places"] ;
