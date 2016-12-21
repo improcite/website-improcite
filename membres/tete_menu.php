@@ -6,10 +6,10 @@ if(isPrintMode() == false)
 ?>
 
     <div id="menumembres" class="navbar-wrapper">
-      <div class="container">
 
-        <nav class="navbar navbar-inverse" role="navigation">
-          <div class="container">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -27,9 +27,6 @@ if(isPrintMode() == false)
                 <li class="<?=(($baseUri == "membres.php")?'active':'')?>">
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
-                <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
-                  <a href="infos.php"><i class="glyphicon glyphicon-user"></i> Mon compte</a>
-                </li>
                 <li class="dropdown <?=( strstr( $baseUri, "dispos") ?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-calendar"></i> Disponibilités <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -45,14 +42,14 @@ if(isPrintMode() == false)
                     </li>
                   </ul>
                 </li>
-                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php" || $baseUri == "fichiers.php" || $baseUri == "recrutement.php" || $baseUri == "reservation.php") ?'active':'')?>">
+                <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
+                  <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
+                </li>
+                <li class="dropdown <?=(($baseUri == "admin_bdd.php" || $baseUri == "carousel.php" || $baseUri == "fichiers.php" || $baseUri == "recrutement.php")?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-wrench"></i> Admin <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="<?=(($baseUri == "recrutement.php")?'active':'')?>">
                       <a href="recrutement.php"><i class="fa fa-user-plus"></i> Recrutement</a>
-                    </li>
-                    <li class="<?=(($baseUri == "reservation.php")?'active':'')?>">
-                      <a href="reservation.php"><i class="glyphicon glyphicon-shopping-cart"></i> R&eacute;servations</a>
                     </li>
 		    <li class="<?=(($baseUri == "admin_bdd.php")?'active':'')?>">
 		      <a href="admin_bdd.php"><i class="glyphicon glyphicon-list-alt"></i> Donn&eacute;es</a>
@@ -66,13 +63,30 @@ if(isPrintMode() == false)
 		  </ul>
                 </li>				
               </ul>
-              <ul class="nav navbar-nav">
-                <li><a href="sortie.php"><i class="glyphicon glyphicon-log-out"></i> Sortir</a></li> 
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown <?=(($baseUri == "infos.php")?'active':'')?>">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <?php
+                    $photo = "../photos/comediens/$currentSaisonBit/".$_SESSION['id_impro_membre'].".jpg";
+                    if (!file_exists($photo)) { $photo = "../photos/comediens/$id.jpg"; }
+                    if (!file_exists($photo)) { $photo = "../photos/comediens/defaut.jpg"; }
+                    ?>
+                    <img src="<?=$photo?>" class="img" alt="<?=$aUserInfos[0]?>" style="max-height:22px;display:inline;margin:0;padding:0" />
+                    <?php echo $aUserInfos[0] ?>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="<?=(($baseUri == "infos.php")?'active':'')?>">
+                      <a href="infos.php"><i class="fa fa-user"></i> Mon compte</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="sortie.php"><i class="glyphicon glyphicon-log-out"></i> Sortir</a></li> 
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
-
       </div>
     </div>
 <?

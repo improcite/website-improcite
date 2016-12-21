@@ -105,10 +105,6 @@ if (!isPrintMode()) {
 <body>
 	<div class="container">
 
-	<?php include("tete_menu.php"); ?>
-
-	<div id="pagemembres" class="panel panel-body">
-
 <?php
 $aUserInfos = fxQueryMultiValues("SELECT prenom, rights FROM impro_comediens WHERE id = ?", array($_SESSION['id_impro_membre']));
 $aUserRights = array();
@@ -134,3 +130,8 @@ function fxUserHasRight($sRight)
 }
 
 ?>
+
+	<?php include("tete_menu.php"); ?>
+
+	<div id="pagemembres" class="panel panel-body">
+
