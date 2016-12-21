@@ -32,12 +32,23 @@ else {
 		$deleted = mysql_query("DELETE FROM $t_res WHERE id=$id");
 	}
 
+	$places_updated = false;
+	if ( getp("action") === "updateplaces" and getp("id") and getp("places") ) {
+		$id = mysql_real_escape_string( getp("id") );
+		$places = mysql_real_escape_string( getp("places") );
+		$places_updated = mysql_query("UPDATE $t_res SET places=$places WHERE id=$id");
+	}
+
 	# Ouverture du corps de la page
 
 	echo "<div id=\"corps\">\n" ;
 
 	if ($deleted) {
 		echo "<div class=\"alert alert-success\">La r&eacute;servation 1PRO6T_$id a &eacute;t&eacute; supprim&eacute;e</div>\n";
+	}
+
+	if ($places_updated) {
+		echo "<div class=\"alert alert-success\">Les places pour la r&eacute;servation 1PRO6T_$id ont &eacute;t&eacute; modifi&eacute;es</div>\n";
 	}
 
 	echo "<h1>Liste des r&eacute;servations</h1>\n" ;
@@ -101,10 +112,21 @@ else {
 					$places_tot += $places_res ;
 
 					echo "<tr>\n";
-					echo "<td>$nom_res $prenom_res</td><td>$places_res</td><td>$email_res</td><td>$tel_res</td>";
-					echo "<td>$date_res</td>";
+					echo "<td>$nom_res $prenom_res</td>\n";
+					echo "<td>";
+					if ( $places_res > 1) { echo "<a href=\"reservation.php?id=$id&action=updateplaces&places=".($places_res-1)."\" title=\"Enlever une place\" class=\"text-danger\">"; }
+					echo "<i class=\"glyphicon glyphicon-minus-sign\"></i>";
+					if ( $places_res > 1) { echo "</a>"; }
+					echo " $places_res ";
+					echo "<a href=\"reservation.php?id=$id&action=updateplaces&places=".($places_res+1)."\" title=\"Ajouter une place\" class=\"text-success\">";
+					echo "<i class=\"glyphicon glyphicon-plus-sign\"></i>";
+					echo "</a>";
+					echo "</td>\n";
+					echo "<td>$email_res</td>\n";
+					echo "<td>$tel_res</td>\n";
+					echo "<td>$date_res</td>\n";
 					echo "<td>$ref</td>\n";
-					echo "<td><a href=\"reservation.php?id=$id&action=delete\" title=\"Supprimer\" class=\"text-danger\"><i class=\"glyphicon glyphicon-minus-sign\"></i></a></td>\n";
+					echo "<td><a href=\"reservation.php?id=$id&action=delete\" title=\"Supprimer\" class=\"text-danger\"><i class=\"glyphicon glyphicon-trash\"></i></a></td>\n";
 					echo "</tr>\n";
 				}
 
