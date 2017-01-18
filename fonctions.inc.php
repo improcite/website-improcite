@@ -534,7 +534,7 @@ function cutIfWider($t, $mx)
 {
 	if(strlen($t) > $mx)
 	{
-		return substr($t, 0, $mx)."...";
+		return substr(htmlentities($t), 0, $mx)."...";
 	}
 	else
 	{
