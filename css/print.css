@@ -364,3 +364,11 @@ table.msie {
 	width: 800px;
 }
 
+/* Remove printed links */
+
+@media print {
+  a[href]:after {
+    content: "";
+  }
+}
+

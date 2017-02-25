@@ -531,3 +531,11 @@ font-size:10pt;
 
 }
 
+/* Remove printed links */
+
+@media print {
+  a[href]:after {
+    content: "";
+  }
+}
+

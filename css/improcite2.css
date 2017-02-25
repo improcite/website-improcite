@@ -95,3 +95,11 @@ h3 {
 
 }
 
+/* Remove printed links */
+
+@media print {
+  a[href]:after {
+    content: "";
+  }
+}
+
