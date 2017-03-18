@@ -403,12 +403,12 @@ function HandleAjaxFileUi($thisPage, $field, $edited_id, $photoUri, $title, $pre
 ?>
 	<script type='text/javascript' src='../js/cropbox.js'></script>
 	<div class="panel panel-default"><div class="panel-heading"><?=$title?></div><div class="panel-body">
-	<? if ($editMode) { ?>
+	<?php if ($editMode) { ?>
 	<img id="photo_preview" src="<?=($photoUri."?".rand())?>" style="<?=$previewStyle?>"/>	
 	<input type="button" class="btn btn-primary" value="Modifier" id="ed_pic"/>
-	<? } else { ?>
+	<?php } else { ?>
 	<input type="button" class="btn btn-primary" value="Ajouter" id="ed_pic"/>
-	<? } ?>
+	<?php } ?>
 	
 	<style>
         .action
@@ -494,9 +494,8 @@ function HandleAjaxFileUi($thisPage, $field, $edited_id, $photoUri, $title, $pre
 		});
 	</script>		
 	</div></div>
-<?
+<?php
 }
-
 
 function HandleAjaxFileUpload($field, $path)
 {
@@ -541,16 +540,5 @@ function cutIfWider($t, $mx)
 		return $t;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
