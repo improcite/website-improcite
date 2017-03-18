@@ -57,9 +57,15 @@ if (sizeof($aAllSpecatclesId) > 0)
 	<h1>Sélections</h1>
 <?
 
-$iCountSelect = 0;
 $date_actuelle = date("YmdHis") ;
 $date_max = date("YmdHis", time()+3600*24*31*3) ;// trois mois
+
+echo "<table class=\"table table-striped\">";
+echo "<tr><th></th><th></th>";
+echo "<th>Statut</th>";
+echo "<th>Date</th>";
+echo "<th>Type</th>";
+echo "</tr>";
 
 foreach($aAllEvents as $aRow)
 {
@@ -78,44 +84,37 @@ foreach($aAllEvents as $aRow)
 	$date = affiche_date($aRow["date"]);
 
 	$iPct = isset($aDispoForAllSpectacles[$aRow["id"]]) ? $aDispoForAllSpectacles[$aRow["id"]] : "";
-		
-	if ($aRow['categorie'] == $category_train  &&  $iPct != "0")
-	{
-		// skip entrainements non répondu / répondu oui
-		continue;
-	}
 
 	$tooltip = $aRow["nom"]."<br/>".$aRow["lnom"]."<br/>".htmlentities($aRow['ecommentaire']);
 	$link = '<a href="dispos2.php?event='.$aRow["id"].'" data-html="true" data-toggle="tooltip" title="'.$tooltip.'"><img src="img/calendar.gif"></a> ';
 
+        echo "<tr>";
+	echo "<td>$link</td>";
 	if($sName)
 	{
-		echo $link."<img src=img/star.gif> - <u>{$sName}</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]} <br/>";
-		$iCountSelect++;
+		echo "<td><img src=\"img/star.gif\"></td><td>{$sName}</td>";
 	}
 	else if ($sName==""  &&  $iPct == "")
 	{
-		echo $link."<img src=img/unk.gif> - <b><a href=dispos2.php?event=".$aRow["id"].">Veuillez répondre !</a></b> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+		echo "<td><img src=\"img/unk.gif\"></td><td><a href=\"dispos2.php?event=".$aRow["id"]."\">Veuillez répondre !</a></td>";
 	}
 	else if ($sName==""  &&  $iPct == "0")
 	{
-		echo $link."<img src=img/no.gif> - <u>Non dispo</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+		echo "<td><img src=\"img/no.gif\"></td><td>Non disponible</td>";
 	}
 	else if ($sName==""  &&  $iPct == "100")
 	{
-		echo $link."<img src=img/yes.gif> - <u>Dispo</u> - {$date}-{$aRow["nom"]}-{$aRow["lnom"]}<br/>";
+		echo "<td><img src=\"img/yes.gif\"></td><td>Disponible</td>";
 	}
-	if($aRow['ecommentaire'])
-	{
-		?><div style="margin-left:60px;margin-bottom:0px;font-style: italic;"><?=cutIfWider($aRow['ecommentaire'], 100)?></div><?
-	}
-	?><div style="height:5px;"></div><?
+	echo "<td>$date</td>";
+	echo "<td>".$aRow["nom"]."</td>";
+	echo "</tr>";
 }
-?>	
-</div>
-
-<? // --------------------------------------------
+echo "</table>";
 ?>
+
+
+	</div>
 
 	<div class="col-md-6">
 	
@@ -222,11 +221,6 @@ foreach($aAllEvents as $aRow)
 	?>
 		</div>
 	</div>
-<?	
-
-
-//-----------------------
-?>
 	</div>
 
 <hr />
