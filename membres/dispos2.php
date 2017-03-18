@@ -16,40 +16,6 @@ if ( ! $connexion || ! $db )
 	die();
 }
 
-?>
-<style>
-.dispo_comment
-{
-	border:1px solid #DDD;
-	font-size: 75%;
-	color:#888;
-	padding-top : 2px;
-	padding-bottom : 2px;
-	padding-left:10px;
-	padding-right:10px;
-	border-radius: 6px;
-	margin-left:30px;
-}
-
-.details_spectacle
-{
-	border:1px solid #DDD;
-	background:#EFEFEF;
-	padding-top : 2px;
-	padding-bottom : 2px;
-	padding-left:10px;
-	padding-right:10px;
-	border-radius: 6px;
-	margin-bottom:8px;
-}
-</style>
-<?
-
-
-# Traitement special pour les entrainements
-$bDisplayTrain = getp("train") ? 1 : 0;
-$CURRENT_MENU_ITEM = $bDisplayTrain ? "dispos_t" : "dispos";
-
 # Gestion des droits
 $bIsAdmin = fxUserHasRight("admin");
 $bIsSelectionneur = fxUserHasRight("selection");
@@ -135,7 +101,6 @@ if(!$event)
 	die("No event requested");
 }
 
-
 # Proprietes du tableau
 $iFontSize = 9;
 $sStyl = " valign=\"top\" style=\"text-align:center\"";
@@ -166,10 +131,9 @@ foreach($aMembres as $aRowJ)
 //-------------------------------- 
 
 $filtredate = "e.id = ".$event;
-$sWhereTrain = $bDisplayTrain ? " AND e.categorie = $category_train " : " AND e.categorie <> $category_train ";
 $sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.regisseur as regisseur, e.caisse as caisse, e.catering as catering, e.ovs as ovs "
 		."FROM $t_eve e, $t_cat c, $t_lieu l "
-		."WHERE e.categorie=c.id AND $filtredate AND e.lieu=l.id $sWhereTrain"
+		."WHERE e.categorie=c.id AND $filtredate AND e.lieu=l.id "
 		."ORDER BY date ASC";
 $requete_prochains = fxQuery($sSQL) ;
 
@@ -179,57 +143,54 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 
 	if(isPrintMode() == false)
 	{
-		list($eventNext, $eventNextDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date > '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date ASC LIMIT 1");
-		list($eventPrev, $eventPrevDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date < '".$aRow["date"]."'". $sWhereTrain." ORDER BY e.date DESC LIMIT 1");
+		list($eventNext, $eventNextDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date > '".$aRow["date"]."' ORDER BY e.date ASC LIMIT 1");
+		list($eventPrev, $eventPrevDate) = fxQueryMultiValues("SELECT e.id, e.date FROM $t_eve e WHERE e.lieu > 0 AND e.date < '".$aRow["date"]."' ORDER BY e.date DESC LIMIT 1");
 		
 		# Liens pour avant et apres
 		echo "<div id='choixdate' class='text-center'>";
 		echo "<div class='btn-group'>";
 		# <span class="hidden-xs">
-		if($eventPrev) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventPrev.'"><i class="glyphicon glyphicon-chevron-left"></i> '.affiche_date($eventPrevDate, true).'</a>';
+		if($eventPrev) echo '<a class="btn btn-default" href="dispos2.php?event='.$eventPrev.'"><i class="glyphicon glyphicon-chevron-left"></i> '.affiche_date($eventPrevDate, true).'</a>';
 		//echo "<div class='btn btn-default'>$month/$year</div>";
-		if($eventNext) echo '<a class="btn btn-default" href="dispos2.php?train='.$bDisplayTrain.'&event='.$eventNext.'">'.affiche_date($eventNextDate, true).' <i class="glyphicon glyphicon-chevron-right"></i></a>';
+		if($eventNext) echo '<a class="btn btn-default" href="dispos2.php?event='.$eventNext.'">'.affiche_date($eventNextDate, true).' <i class="glyphicon glyphicon-chevron-right"></i></a>';
 		echo "</div>";
 		echo "</div>";	
 	}
 	
 	$date = affiche_date($aRow["date"]);
-	$sOutDated = ($aRow["unixdate"] < time()) ? "class=\"outdated\"":"";
-	
 	echo "<h1>".$date."</h1>" ;
 ?>
-<div class="details_spectacle">
-- <?=$aRow["nom"]?><br/>
-- <?=$aRow["lnom"]?><br/>
-<? if($aRow["ecommentaire"]) { ?><?=(" - ".$aRow["ecommentaire"])?><? } ?>
+<div class="alert alert-info">
+<ul>
+<li>Type d'événement : <?php echo $aRow["nom"] ?></li>
+<li>Lieu : <?php echo $aRow["lnom"] ?></li>
+<?php if($aRow["ecommentaire"]) { echo "<li> Détails : ".$aRow["ecommentaire"] ."</li>"; } ?>
+</ul>
 </div>
 
-<table class="table table-condensed">
+<table class="table table-striped">
 <?
 	foreach($aMembres as $aRowJ)
 	{
 		$id = $aRowJ['id'];
 		
-		echo "<tr><td>";
+		echo "<tr><td width=\"10%\">";
 		
 		$photo = "../".$sPhotoRelDir . $currentSaisonBit . "/" ."$id.jpg";
 		if (!file_exists($photo)) { $photo = "../".$sPhotoRelDir."$id.jpg"; }
 		if (!file_exists($photo)) { $photo = "../".$sPhotoRelDir."defaut.jpg"; }
-		echo "<img style=\"height:30px;\" src=\"$photo\" />\n";
+		echo "<img src=\"$photo\" class=\"img-responsive img-rounded\" style=\"max-width:50px\"/>\n";
 		
-		echo "</td><td>";
+		echo "</td><td class=\"text-center\" style=\"vertical-align: middle\">";
 		
-		echo "<div style=\"line-height:30px;\">";
 		if ($aRowJ['id'] == $_SESSION['id_impro_membre']) echo "<b>";
 		echo $aMemberIdToName[$id];
 		if ($aRowJ['id'] == $_SESSION['id_impro_membre']) echo "</b>";
-		echo "</div>";
-		echo "</td><td>";
+		echo "</td><td class=\"text-center\" style=\"vertical-align: middle\">";
 	
 		list($iDispo,$sComment) = fxQueryMultiValues("SELECT dispo_pourcent, commentaire FROM impro_dispo WHERE id_spectacle = ? AND id_personne = ?", array($aRow['id'], $aRowJ['id']));
 		
 		$sClrOui = "#BBFFBB"; $sClrNon = "#FFBBBB"; $sClrSel = "#FFFFBB";
-		//$sClrOui = ""; $sClrNon = ""; $sClrSel = "";
 		$sImgOui = "<img src=img/yes.gif>";
 		$sImgNon = "<img src=img/no.gif>";
 		$sImgSel = "<img src=img/star.gif>";
@@ -248,18 +209,18 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 					  )
 			{
 				?>
-				<form action="dispos2.php" method="get">
+				<form action="dispos2.php" method="get" class="form-inline">
 				<input type="hidden" name="user" value="<?=$aRowJ['id']?>">
 				<input type="hidden" name="event" value="<?=$aRow['id']?>">
-				<small><u>Dispo:</u></small><br>
-				<select style="font-size:<?=$iFontSize?>pt;" name="dispo" onChange="form.submit()">
-				<OPTION value="" <?=($iDispo=="")?"SELECTED":""?>>?</OPTION>
-				<OPTION value="100" <?=($iDispo=="100")?"SELECTED":""?>>Oui</OPTION>
-				<OPTION value="0" <?=($iDispo=="0")?"SELECTED":""?>>Non</OPTION></select>
-				<small><u>Commentaire:</u></small><br>
-				<input style="font-size:<?=$iFontSize?>pt;" name="commentaire" value="<?=$sComment?>" size="10" maxsize="100">
-				<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 				<input type="hidden" name="year" value="<?=$year?>">
+				<div class="form-group">
+				<label for="dispo">Disponibilité</label>
+				<select name="dispo" onChange="form.submit()" class="form-control">
+				<option value="" <?=($iDispo=="")?"SELECTED":""?>>?</option>
+				<option value="100" <?=($iDispo=="100")?"SELECTED":""?>>Oui</option>
+				<option value="0" <?=($iDispo=="0")?"SELECTED":""?>>Non</option></select>
+				</div>
+				<input name="commentaire" value="<?=$sComment?>" class="form-control" placeholder="Commentaire" />
 				</form>
 				
 				<?
@@ -269,7 +230,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 				$sCancel = "";
 				if (($aRowJ['id'] == $_SESSION['id_impro_membre']) && (isPrintMode() == false))
 				{
-					$sCancel = "&nbsp;<a href=dispos2.php?user={$aRowJ['id']}&event={$aRow['id']}&train={$bDisplayTrain}&dispo=>"
+					$sCancel = "&nbsp;<a href=dispos2.php?user={$aRowJ['id']}&event={$aRow['id']}&dispo=>"
 								."<span style=\"font-size:20px;line-height:30px;\">"
 								."<i class=\"glyphicon glyphicon-remove\"></i></span></a>";
 				}
@@ -331,7 +292,6 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			<OPTION value="cat" <?=($aRow['catering'] == $aRowJ['id'])?"SELECTED":""?>>Catering</OPTION>
 			<OPTION value="ovs" <?=($aRow['ovs'] == $aRowJ['id'])?"SELECTED":""?>>OVS</OPTION>
 			</select>
-			<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 			</form>
 			<?
 		}
@@ -360,7 +320,6 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 		<OPTION value="1" <?=$bAdminDispoFeatures?"SELECTED":""?>>Mode admin activé</OPTION>
 		<OPTION value="0" <?=$bAdminDispoFeatures?"":"SELECTED"?>>Mode admin désactivé</OPTION>
 		</select>
-		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 		<input type="hidden" name="event" value="<?=$event?>">
 		</form></p>
 		<?
@@ -373,7 +332,6 @@ if (!isPrintMode()  &&  !$bDisplayTrain)
 		<OPTION value="1" <?=$bSelectionDispoFeatures?"SELECTED":""?>>Mode sélectionneur activé</OPTION>
 		<OPTION value="0" <?=$bSelectionDispoFeatures?"":"SELECTED"?>>Mode sélectionneur désactivé</OPTION>
 		</select>
-		<input type="hidden" name="train" value="<?=$bDisplayTrain?>">
 		<input type="hidden" name="event" value="<?=$event?>">
 		</form></p>
 		<?
