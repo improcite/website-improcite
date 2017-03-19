@@ -230,16 +230,8 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 				$sCancel = "";
 				if (($aRowJ['id'] == $_SESSION['id_impro_membre']) && (isPrintMode() == false))
 				{
-					$sCancel = "&nbsp;<a href=dispos2.php?user={$aRowJ['id']}&event={$aRow['id']}&dispo=>"
-								."<span style=\"font-size:20px;line-height:30px;\">"
-								."<i class=\"glyphicon glyphicon-remove\"></i></span></a>";
-				}
-				if ($sComment)
-				{
-					//$sComment = "<br><font size=-2>".
-					//			"<div data-html=\"true\" data-toggle=\"tooltip\" title=\"".$sComment."\" style=\"cursor:help\">".
-					//			cutIfWider($sComment, 10).
-					//			"</div></font>";
+					$sCancel = "<a href=\"dispos2.php?user={$aRowJ['id']}&event={$aRow['id']}&dispo=\">"
+								."<i class=\"glyphicon glyphicon-remove text-danger\"></i></a>";
 				}
 				
 				$bSelection = strstr(";".$aRow['joueurs'].";", ";".$aRowJ['id'].";")
@@ -296,12 +288,12 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			<?
 		}
 		
-		echo "</td></tr>";
-		
+		echo "</td><td class=\"text-center\" style=\"vertical-align: middle\">";
 		if($sComment)
 		{
-			?><tr><td style="border-top:none;padding-top:0px;" colspan="3"><div class="dispo_comment"><?=$sComment?></div></td></tr><?
+			echo "<i>$sComment</i>";
 		}
+		echo "</td></tr>";
 	}
 	break;
 }
