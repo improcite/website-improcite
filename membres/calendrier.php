@@ -29,12 +29,12 @@ else {
 
 	echo "<div id=\"corps\">\n" ;
 
-	echo "<h1>Calendrier</h1>\n" ;
+	echo "<h1>Calendrier (version de travail)</h1>\n" ;
 
         ?>
 
         <div class="embed-responsive embed-responsive-4by3">
-          <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/1VwGlw6bNW0ThPGdDQ6Hg1F1TjOl4M844op7jt4IwUbA/pubhtml?gid=741515249&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+          <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/1VwGlw6bNW0ThPGdDQ6Hg1F1TjOl4M844op7jt4IwUbA/pubhtml?gid=2015704494&single=true"></iframe>
         </div>
 
 	<?
