@@ -154,7 +154,8 @@ else
 
 	  if ($today >= $recrutementBegin && $today <= $recrutementEnd)
 	  {
-	    $onRecrute = true;
+            // Desactivation pour cette saison
+	    #$onRecrute = true;
 	  }
 
 		if ($onRecrute)	$aMenuItems["recrutement"] = "Recrutement";
