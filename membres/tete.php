@@ -26,7 +26,6 @@ if($debug) error_reporting(E_ALL);
 
 # Chargement des fonctions
 require_once ("../fonctions.inc.php") ;
-require_once ("../Mobile_Detect.php");
 
 # Lancement de la connexion MySQL
 include ( "../connexion_mysql.php" ) ;
