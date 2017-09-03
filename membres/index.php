@@ -6,49 +6,38 @@
 #====================================================================
 
 # Affichage de la tete de page
-
 include ( "tete.php" ) ;
 $idMe = $_SESSION['id_impro_membre'];
 
 $annee = date("Y");
 $date_debut_saison = date("YmdHis", mktime(0, 0, 0, 8, 1, 2004+$iCurrentSaisonNumber)) ;
 $date_actuelle = date("YmdHis") ;
-$sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.catering as catering, e.ovs as ovs"
-		." FROM $t_eve e, $t_cat c, $t_lieu l "
-		." WHERE e.categorie=c.id AND e.date>$date_debut_saison AND e.lieu=l.id"
-		." ORDER BY date ASC";
-$requete_prochains = fxQuery($sSQL) ;
+$requete_prochains = getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date_debut_saison);
 
 $aAllEvents = array();
-
-
 $aAllSpecatclesId = array();
 $aEntriesRow = array();
 $aEntriesName = array();
 $aEntriesId = array();
 $aEntriesCate = array();
 $aEntriesDesc = array();
-while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
-{
-	$aAllEvents[] = $aRow;
-	$year = substr($aRow['date'],0,4);
-	$month = substr($aRow['date'],4,2);
-	$day = substr($aRow['date'],6,2);
-	$aEntriesRow[$year.$month.$day] = $aRow;
-	$aEntriesName[$year.$month.$day] = "{$aRow["nom"]}-{$aRow["lnom"]}";
-	$aEntriesId[$year.$month.$day] = $aRow['id'];
-	$aEntriesCate[$year.$month.$day] = $aRow['categorie'];
-	$aEntriesDesc[$year.$month.$day] = $aRow['ecommentaire'];
-	$aAllSpecatclesId[] = $aRow['id'];
-}
-
 $aDispoForAllSpectacles = array();
-if (sizeof($aAllSpecatclesId) > 0)
-{
-	$aDispoForAllSpectacles = fxQueryIndexed("SELECT id_spectacle, dispo_pourcent FROM impro_dispo WHERE id_spectacle IN (".implode(",", $aAllSpecatclesId).") AND id_personne = $idMe");
+while ($aRow = $requete_prochains->fetch_assoc()) {
+    $aAllEvents[] = $aRow;
+    $year = substr($aRow['date'],0,4);
+    $month = substr($aRow['date'],4,2);
+    $day = substr($aRow['date'],6,2);
+    $aEntriesRow[$year.$month.$day] = $aRow;
+    $aEntriesName[$year.$month.$day] = "{$aRow["nom"]}-{$aRow["lnom"]}";
+    $aEntriesId[$year.$month.$day] = $aRow['id'];
+    $aEntriesCate[$year.$month.$day] = $aRow['categorie'];
+    $aEntriesDesc[$year.$month.$day] = $aRow['ecommentaire'];
+    $aAllSpecatclesId[] = $aRow['id'];
 }
 
-
+if (sizeof($aAllSpecatclesId) > 0) {
+    $aDispoForAllSpectacles = fxQueryIndexed("SELECT id_spectacle, dispo_pourcent FROM impro_dispo WHERE id_spectacle IN (".implode(",", $aAllSpecatclesId).") AND id_personne = $idMe");
+}
 
 ?>
 <div class="row">
