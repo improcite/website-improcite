@@ -14,11 +14,11 @@ $force_utf8 = @mysql_set_charset("utf8");
 $db = @mysql_select_db ( $base ) ;
 
 # New Driver
-$connection_new = mysqli_connect($host, $user, $passwd, $base);
-if (!$connection_new && $debug) {
+$mysqli = new mysqli($host, $user, $passwd, $base);
+if ($mysqli->connect_errno && $debug) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    echo "Debugging errno: " . $mysqli->connect_errno . PHP_EOL;
+    echo "Debugging error: " . $mysqli->connect_error . PHP_EOL;
     exit;
 }
 
