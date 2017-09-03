@@ -31,6 +31,7 @@ require_once ("../fonctions.inc.php") ;
 include ( "../connexion_mysql.php" ) ;
 
 include ( "../fxDB.php" );
+include ( "sql.inc.php" );
 
 // Fix warning
 if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
@@ -105,27 +106,21 @@ if (!isPrintMode()) {
 	<div class="container">
 
 <?php
-$aUserInfos = fxQueryMultiValues("SELECT prenom, rights FROM impro_comediens WHERE id = ?", array($_SESSION['id_impro_membre']));
+$aUserInfos = getUserMinimalInfos($mysqli, $table_comediens, $_SESSION['id_impro_membre']);
 $aUserRights = array();
-foreach(explode(";", $aUserInfos[1]) as $v)
-{
-	if ($v)
-	{
-		$aUserRights[$v] = 1;
-	}
+foreach(explode(";", $aUserInfos['rights']) as $v) {
+    if ($v) { $aUserRights[$v] = 1; }
 }
 
-function fxGetExistingRights()
-{
-	return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable", "recruteur"=>"Recruteur");
+function fxGetExistingRights() {
+    return 	array("admin"=>"Administrateur", "selection"=>"Sélectionneur", "artistik"=>"Comité&nbsp;artistique", "noselect"=>"Non sélectionnable", "recruteur"=>"Recruteur");
 }
 
-function fxUserHasRight($sRight)
-{
+function fxUserHasRight($sRight) {
 	$aExisting = fxGetExistingRights();
-	if (!$aExisting[$sRight]) die("invalid right : '$sRight'");
+	if (!$aExisting[$sRight]) die("Invalid right: '$sRight'");
 	global $aUserRights;
-	return (isset($aUserRights[$sRight])  &&  $aUserRights[$sRight] == 1);
+	return (isset($aUserRights[$sRight]) && $aUserRights[$sRight] == 1);
 }
 
 ?>
