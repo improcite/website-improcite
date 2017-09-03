@@ -6,35 +6,29 @@
 #====================================================================
 
 # Verification de la session
+session_start();
+session_save_path('sessions');
 
-session_start() ;
-session_save_path ('sessions'); 
-
-if ( !isset ( $_SESSION[ "id_impro_membre" ] ) )
-{
-	# La session n'existe pas
-	@header("Location: identification.php?backURL=".base64_encode($_SERVER["REQUEST_URI"]));
-	die(0);
+if (!isset ($_SESSION[ "id_impro_membre" ])) {
+    # La session n'existe pas
+    @header("Location: identification.php?backURL=".base64_encode($_SERVER["REQUEST_URI"]));
+    die(0);
 }
 
 # Chargement de la configuration
-require_once ( "../config.inc.php" ) ;
-
-/* Messages d'erreur */
-error_reporting(0);
-if($debug) error_reporting(E_ALL);
+require_once("../config.inc.php");
 
 # Chargement des fonctions
-require_once ("../fonctions.inc.php") ;
+require_once ("../fonctions.inc.php");
 
 # Lancement de la connexion MySQL
-include ( "../connexion_mysql.php" ) ;
+include("../connexion_mysql.php");
 
-include ( "../fxDB.php" );
-include ( "sql.inc.php" );
+include("../fxDB.php");
+include("sql.inc.php");
 
 // Fix warning
-if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
+if(!isset($CURRENT_MENU_ITEM)) {$CURRENT_MENU_ITEM = '';}
 
 ?>
 <!DOCTYPE html>
@@ -47,11 +41,11 @@ if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/improcite.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/smoothness/jquery-ui.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/smoothness/jquery-ui.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 	<!-- Boostrap Table -->
 	<!-- http://bootstrap-table.wenzhixin.net.cn/ -->
@@ -93,13 +87,7 @@ if(!isset($CURRENT_MENU_ITEM)) $CURRENT_MENU_ITEM = '';
 	</script>
 <?php } ?>
 
-<?php
-if (!isPrintMode()) {
-	echo "\t<link rel=\"stylesheet\" href=\"../css/improcite2.css\" type=\"text/css\" />\n";
-} else {
-	echo "\t<link rel=\"stylesheet\" href=\"../css/print.css\" type=\"text/css\" />\n";
-}
-?>
+	<link rel="stylesheet" href="../css/improcite2.css" type="text/css" />
 	<meta name="author" content="Clement OUDOT & Mathieu FREMONT" />
 </head>
 <body>
