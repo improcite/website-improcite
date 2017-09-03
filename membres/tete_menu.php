@@ -1,9 +1,4 @@
-<?
-$baseUri = basename($_SERVER['REQUEST_URI']);
-
-if(isPrintMode() == false)
-{
-?>
+<?php $baseUri = basename($_SERVER['REQUEST_URI']); ?>
 
     <div id="menumembres" class="navbar-wrapper">
 
@@ -89,6 +84,3 @@ if(isPrintMode() == false)
         </nav>
       </div>
     </div>
-<?
-} // printmode
-?>
