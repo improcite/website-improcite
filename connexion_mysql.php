@@ -21,5 +21,6 @@ if ($mysqli->connect_errno && $debug) {
     echo "Debugging error: " . $mysqli->connect_error . PHP_EOL;
     exit;
 }
+$mysqli->set_charset("utf8");
 
 ?>
