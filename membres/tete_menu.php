@@ -66,8 +66,8 @@
                     if (!file_exists($photo)) { $photo = "../photos/comediens/$id.jpg"; }
                     if (!file_exists($photo)) { $photo = "../photos/comediens/defaut.jpg"; }
                     ?>
-                    <img src="<?=$photo?>" class="img" alt="<?=$aUserInfos[0]?>" style="max-height:22px;display:inline;margin:0;padding:0" />
-                    <?php echo $aUserInfos[0] ?>
+                    <img src="<?=$photo?>" class="img" alt="<?=$aUserInfos['prenom']?>" style="max-height:22px;display:inline;margin:0;padding:0;margin-right:5px" />
+                    <?php echo $aUserInfos['prenom'] ?>
                     <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
