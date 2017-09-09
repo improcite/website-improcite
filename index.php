@@ -59,7 +59,7 @@ else
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
-	<title>ImproCité : La Troupe d'Improvisation Théâtrale de Lyon et Villeurbanne </title>
+	<title>Improcité : troupe d'improvisation théâtrale de Lyon et Villeurbanne</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<meta name="Generator" content="vi, metapad">
 	<meta http-equiv="pragma" content="no-cache">
@@ -80,6 +80,9 @@ else
 	
 	<link href="css/improcite.css" rel="stylesheet" type="text/css" />
 	<link href="css/hover-min.css" rel="stylesheet" type="text/css" />
+
+ 	<link rel="icon" type="image/png" href="favicon-improcite.png">
+	<link rel="shortcut icon" type="image/png" href="favicon-improcite.png">
 </head>
 <body>
 <div class="container">
