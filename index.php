@@ -84,55 +84,8 @@ else
 <body>
 <div class="container">
 <div id="page">
-	<? if (!$promo_mode) { 
-		if($p <> "recrutement"){
-		?>
-	<div id="header" class="hidden-xs hidden-sm hidden-md">
-			<div id="welcome">Bienvenue sur le site d'<a href=?p=impro#apage>Improcité</a>, la troupe d'improvisation théâtrale de Lyon et Villeurbanne</div>
-	</div> <!-- header -->
-	
-	<?
 
-	@require_once ( "carousel.inc.php" ) ;
-	shuffle($aCaroussel);
-	?>
-    <div id="home-carousel" class="hidden-xs hidden-sm hidden-md">
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="6000">
-        <ol class="carousel-indicators">
-		<? $bf = 1; foreach($aCaroussel as $ix => $k) { ?>
-			<li data-target="#carousel-example-generic" data-slide-to="<?=$ix?>" class="<?if($bf) echo 'active';$bf = 0; ?>"></li>
-		<? } ?>
-		
-       </ol>
-        <div class="carousel-inner">
-		<? $bf = 1; foreach($aCaroussel as $k) { ?>
-			  <div class="item <?if($bf) echo 'active';$bf = 0; ?>">
-				<img class="carousel-img" src="photos/carousel/<?=$k?>.jpg">
-			  </div>
-		<? } // class="item active" ?>
-        </div>
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" style="width:30px;">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" style="width:30px;">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-      </div>
-    </div>
-	
-    <?php  } // fin if recrutement
-
-    else
-    {
-    	?>
-    <div id="home-carousel" style="width:100%">
-    	<img src="images/Bandeau_recrutement.png">
-    	</div>
-
-    <?php 
-    } // fin else recrutement
-
-     ?>
+	<img src="images/photo-troupe-refonte-intermediaire-avec-logo.jpg" class="img-responsive center-block" />
 
 	<a name="apage" name="apage"></a>
 
@@ -144,21 +97,6 @@ else
 			, "comediens" => "Comédiens"
 			, "contact" => "Contact"
 		); 
-
-	  // On affiche "Recrutement dans le menu si on est entre le 1er juillet et le 05 septembre"
-	  $onRecrute = false;
-	  $year = date("Y");
-	  $recrutementBegin = date('Y-m-d', strtotime("07/01/".$year));
-	  $recrutementEnd = date('Y-m-d', strtotime("09/05/".$year));
-	  $today = date('Y-m-d');
-
-	  if ($today >= $recrutementBegin && $today <= $recrutementEnd)
-	  {
-            // Desactivation pour cette saison
-	    #$onRecrute = true;
-	  }
-
-		if ($onRecrute)	$aMenuItems["recrutement"] = "Recrutement";
 		?>
 		<? $aMenuIcons = array(
 			"impro" => "info-sign"
@@ -166,8 +104,6 @@ else
 			, "comediens" => "user"
 			, "contact" => "envelope"
 		); 
-
-		if ($onRecrute)	$aMenuIcons["recrutement"] = "plus";
 		?>
 	
 		<nav class="navbar navbar-inverse" role="navigation">
@@ -191,8 +127,6 @@ else
 		</div>
 		</div>	
 	</div>  <!-- menu -->
-  <? } // promo_mode ?>
-  
   
 	<div id="corps">
 	
