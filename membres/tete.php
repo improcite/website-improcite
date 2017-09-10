@@ -47,8 +47,8 @@ if(!isset($CURRENT_MENU_ITEM)) {$CURRENT_MENU_ITEM = '';}
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        <link rel="icon" type="image/png" href="../favicon-improcite.png">
-        <link rel="shortcut icon" type="image/png" href="../favicon-improcite.png">
+        <link rel="icon" type="image/png" href="../favicon-improcite-fond.png">
+        <link rel="shortcut icon" type="image/png" href="../favicon-improcite-fond.png">
 
 	<!-- Boostrap Table -->
 	<!-- http://bootstrap-table.wenzhixin.net.cn/ -->

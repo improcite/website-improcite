@@ -81,8 +81,8 @@ else
 	<link href="css/improcite.css" rel="stylesheet" type="text/css" />
 	<link href="css/hover-min.css" rel="stylesheet" type="text/css" />
 
- 	<link rel="icon" type="image/png" href="favicon-improcite.png">
-	<link rel="shortcut icon" type="image/png" href="favicon-improcite.png">
+	<link rel="icon" type="image/png" href="favicon-improcite-fond.png">
+	<link rel="shortcut icon" type="image/png" href="favicon-improcite-fond.png">
 </head>
 <body>
 <div class="container">
