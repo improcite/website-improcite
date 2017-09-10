@@ -27,14 +27,14 @@
 
 <a role="button" class="btn btn-info btn-lg" href=# onClick="<?=$sMailTo?>"><i class="glyphicon glyphicon-envelope"></i> Contacter l'équipe communication</a> 
 
-<h2>Logo et mascotte</h2>
+<h2>Notre logo</h2>
 
 <div class="row text-center">
 <div class="col-md-6">
-<img src="http://improcite.com/images2/improcite-logo-med.png" class="img-thumbnail img-responsive" alt="Logo Improcité" />
+<img src="images/logo-lapin-improcite-avecfond@2x.png" class="img-responsive" alt="Logo Improcité avec fond" />
 </div>
 <div class="col-md-6">
-<img src="http://improcite.com/images2/mascotte-transparent.png" class="img-thumbnail img-responsive" alt="Mascotte Improcité" />
+<img src="images/logo-lapin-improcite@2x.png" class="img-responsive" alt="Logo Improcité transparent" />
 </div>
 </div>
 
