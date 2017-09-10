@@ -65,7 +65,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					
 					<? if ($aRow["places"]) { ?>
 					<div class="text-center" style="margin-bottom:20px;">
-						<button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>#apage'">
+						<button type="button" class="btn btn-lg btn-default" onclick="location='?p=reservation&id_spectacle=<?=$aRow["eid"]?>#apage'">
 						<i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place
 						</button>
 					</div>

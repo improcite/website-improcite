@@ -51,7 +51,7 @@ if ($nb_prochains == 0)
 		echo "</div>";
 		echo "<div class=\"col-md-8\">";
 		if ($commentaire) {echo "<div class=\"well\">$commentaire</div>\n";}
-                if ($places) { ?><div class="text-center" style="margin-bottom:20px;"><button type="button" class="btn btn-lg btn-warning" onclick="location='?p=reservation&id_spectacle=<?=$id?>#apage'"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place</button></div><? }
+                if ($places) { ?><div class="text-center" style="margin-bottom:20px;"><button type="button" class="btn btn-lg btn-default" onclick="location='?p=reservation&id_spectacle=<?=$id?>#apage'"><i class="glyphicon glyphicon-shopping-cart"></i> Réserver une place</button></div><? }
 
 		if (trim(str_replace(";", "", $joueurs)) != "")
 		{
