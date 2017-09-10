@@ -80,6 +80,7 @@ else
 	
 	<link href="css/improcite.css" rel="stylesheet" type="text/css" />
 	<link href="css/hover-min.css" rel="stylesheet" type="text/css" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 	<link rel="icon" type="image/png" href="favicon-improcite-fond.png">
 	<link rel="shortcut icon" type="image/png" href="favicon-improcite-fond.png">
@@ -102,15 +103,15 @@ else
 		); 
 		?>
 		<? $aMenuIcons = array(
-			"impro" => "info-sign"
+			"impro" => "info-circle"
 			, "agenda" => "calendar"
-			, "comediens" => "user"
+			, "comediens" => "users"
 			, "contact" => "envelope"
 		); 
 		?>
 	
 		<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container">
+		<div class="container-fluid">
 		<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 		<span class="sr-only">Toggle navigation</span>
@@ -118,14 +119,19 @@ else
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand hvr-bounce-in" href="?p=welcome#apage"><i class="glyphicon glyphicon-home"></i>  Accueil</a>
+		<a class="navbar-brand hvr-bounce-in" href="?p=welcome#apage"><i class="fa fa-home"></i>  Accueil</a>
 		</div>
 		<div class="navbar-collapse collapse">
 
 		<ul class="nav navbar-nav">
 		<? foreach($aMenuItems as $k => $v) { ?>
-			<li role="presentation" class="<?=(($k==$p)?'active':'')?> hvr-bounce-in"><a href="?p=<?=$k?>#apage"><i class="glyphicon glyphicon-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
+			<li role="presentation" class="<?=(($k==$p)?'active':'')?> hvr-bounce-in"><a href="?p=<?=$k?>#apage"><i class="fa fa-<?=$aMenuIcons[$k]?>"></i> <?=$v?></a></li>
 		<? } ?>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+		<li><a href="https://www.facebook.com/improcite"><i class="fa fa-facebook"></i></a></li>
+		<li><a href="https://www.twitter.com/improcite"><i class="fa fa-twitter"></i></a></li>
 		</ul>
 		</div>
 		</div>	
@@ -151,14 +157,8 @@ else
 
 	<div id="footer">
 	<div class="row">
-		<div class="col-md-4">
-		<a role="button" class="btn btn-primary btn-lg" href="https://www.facebook.com/improcite"><i class="glyphicon glyphicon-thumbs-up"></i> Facebook</a>
-		</div>
-		<div class="col-md-4">
-		<a role="button" class="btn btn-info btn-lg" href="https://www.twitter.com/improcite"><i class="glyphicon glyphicon-star"></i> Twitter</a>
-		</div>
-		<div class="col-md-4">
-		<a role="button" class="btn btn-danger btn-lg" href="/membres/"><i class="glyphicon glyphicon-user"></i> Espace membres</a>
+		<div class="text-ceneter">
+		<a role="button" class="btn btn-danger btn-lg" href="/membres/"><i class="fa fa-user-secret"></i> Espace membres</a>
 		</div> 
 	</div>
 	</div> <!-- footer -->
