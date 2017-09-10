@@ -202,8 +202,6 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 
 	?>
 	
-	</div>
-	</div>
 
 	<div class="panel panel-warning">
 	<div class="panel-heading text-center">Plus d'informations</div>
@@ -230,6 +228,8 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	</table>
 	</div>
 
+	</div>
+	</div>
 	<?
 	
 	if ($places_restantes > 0)

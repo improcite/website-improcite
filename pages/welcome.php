@@ -33,6 +33,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					$photoEvenement = $sPhotoEvenement.$aRow["eid"].".jpg";
 					$photoLieu = $sPhotoLieuRelDir.$aRow["lid"].".jpg";
 					$photoCategorie = $sPhotoCategorie.$aRow["cid"].".jpg";
+					echo "<a href=\"?p=reservation&id_spectacle=".$aRow["eid"]."\">\n";
 					if ( file_exists($photoEvenement) ) {
 						echo "<img src=\"$photoEvenement\" alt=\"$aRow[nom]\" class=\"img-responsive hvr-rotate\"/>\n";
 					}
@@ -42,6 +43,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					elseif ( file_exists($photoCategorie) ) {
 						echo "<img src=\"$photoCategorie\" alt=\"$aRow[nom]\" class=\"img-responsive hvr-rotate\"/>\n";
 					}
+					echo "</a>\n";
 				?>
 				</div>
 				<div class="col-md-8">
