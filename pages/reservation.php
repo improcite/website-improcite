@@ -124,19 +124,6 @@ if ( $action == "Valider" )
 		<? } ?>
 		<? } ?>
 
-		<div class="panel panel-success">
-		<div class="panel-heading text-center">Inscription à la lettre d'informations</div>
-		<div class="panel-body">
-
-		
-		<p>Elle vous permet de rester facilement inform&eacute; de l'actualit&eacute; d'Improcit&eacute;</p>
-		
-		<? afficher_inscription_newsletter($email); ?>
-
-		<p><a href="http://groups.google.com/group/improcite-infos">Voir les archives</a></p>
-
-		</div>
-		</div>
 		<?
 	}
 

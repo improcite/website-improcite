@@ -23,12 +23,6 @@
 
 </div>
 
-<h2>S&#39;abonner &agrave; la lettre d&#39;informations d&#39;Improcit&eacute;</h2>
-
-<? afficher_inscription_newsletter(); ?>
-
-<div class="badge">Vous pouvez vous désinscrire a tout moment</div>
-
 <h2>Contact direct</h2>
 
 <a role="button" class="btn btn-info btn-lg" href=# onClick="<?=$sMailTo?>"><i class="glyphicon glyphicon-envelope"></i> Contacter l'équipe communication</a> 

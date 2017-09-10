@@ -88,6 +88,3 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 			<div class="alert alert-info">Nos prochaines dates seront bientôt disponibles</div>
 		<? } ?>
 
-		<h1>Inscrivez-vous à la newsletter</h1>
-		<? afficher_inscription_newsletter(); ?>
-
