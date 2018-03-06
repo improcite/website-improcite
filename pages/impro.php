@@ -2,11 +2,7 @@
 
 <div class="row">
 
-<div class="col-md-2">
-<img src="images2/improcite-logo-med.png" class="img-responsive">
-</div>
-
-<div class="col-md-10">
+<div class="col-md-12">
 Improcité est une troupe de théâtre d'improvisation pour amateurs, et qui souhaite le rester !
 
 Créée en 2002, c'est un collectif d'acteurs venant d'autres ligues qui ont voulu se regrouper pour former leur troupe autonome. Certains d'entre eux ont depuis fondé d'autres troupes (<a href="http://www.schyzoz.fr/">Les Schyzoz</a>, <a href="http://labandeoriginale.jimdo.com/">La Bande originale</a>...)
@@ -14,16 +10,12 @@ Créée en 2002, c'est un collectif d'acteurs venant d'autres ligues qui ont vou
 </div>
 
 <div class="row">
-<div class="col-md-10">
+<div class="col-md-12">
 Passerelle entre les cours d'impro confirmés et l'impro pro ou semi-pro, notre souhait est de jouer régulièrement, à domicile ou à l'extérieur et d'explorer différentes formes d'improvisation.
 
 Nos entrainements se déroulent avec des enseignants professionnels (<a href="http://www.impro-lyon.com/">La LILY</a>, <a href="http://www.improetcompagnie.com/">Et Compagnie</a>...) que nous choisissons selon nos envies et nos besoins d'improvisation.
 
 Nous sommes une petite association et pour vivre et prospérer chacun met la main à la pâte, et prend des responsabilités. Nous sommes fier des <a href="?p=comediens#apage">comédiens</a> de la troupe, qui amènent tant une cohésion de groupe et une ambiance sympa qu'un niveau d'impro où tout le monde se fait plaisir.
-</div>
-
-<div class="col-md-2">
-<img src="images2/mascotte-transparent.png" class="img-responsive">
 </div>
 
 </div>
