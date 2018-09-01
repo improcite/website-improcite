@@ -62,7 +62,8 @@
                 <li class="dropdown <?=(($baseUri == "infos.php")?'active':'')?>">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <?php
-                    $photo = "../photos/comediens/$currentSaisonBit/".$_SESSION['id_impro_membre'].".jpg";
+                    $id = $_SESSION['id_impro_membre'];
+                    $photo = "../photos/comediens/$currentSaisonBit/$id.jpg";
                     if (!file_exists($photo)) { $photo = "../photos/comediens/$id.jpg"; }
                     if (!file_exists($photo)) { $photo = "../photos/comediens/defaut.jpg"; }
                     ?>
