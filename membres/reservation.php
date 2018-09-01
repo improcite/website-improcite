@@ -115,18 +115,18 @@ else {
 					echo "<td>$nom_res $prenom_res</td>\n";
 					echo "<td>";
 					if ( $places_res > 1) { echo "<a href=\"reservation.php?id=$id&action=updateplaces&places=".($places_res-1)."\" title=\"Enlever une place\" class=\"text-danger\">"; }
-					echo "<i class=\"glyphicon glyphicon-minus-sign\"></i>";
+					echo "<i class=\"glyphicon glyphicon-minus-sign bouton\"></i>";
 					if ( $places_res > 1) { echo "</a>"; }
 					echo " $places_res ";
 					echo "<a href=\"reservation.php?id=$id&action=updateplaces&places=".($places_res+1)."\" title=\"Ajouter une place\" class=\"text-success\">";
-					echo "<i class=\"glyphicon glyphicon-plus-sign\"></i>";
+					echo "<i class=\"glyphicon glyphicon-plus-sign bouton\"></i>";
 					echo "</a>";
 					echo "</td>\n";
 					echo "<td>$email_res</td>\n";
 					echo "<td>$tel_res</td>\n";
 					echo "<td>$date_res</td>\n";
 					echo "<td>$ref</td>\n";
-					echo "<td><a href=\"reservation.php?id=$id&action=delete\" title=\"Supprimer\" class=\"text-danger\"><i class=\"glyphicon glyphicon-trash\"></i></a></td>\n";
+					echo "<td><a href=\"reservation.php?id=$id&action=delete\" title=\"Supprimer\" class=\"text-danger\"><i class=\"glyphicon glyphicon-trash bouton\"></i></a></td>\n";
 					echo "</tr>\n";
 				}
 

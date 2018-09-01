@@ -89,7 +89,7 @@ else
 <div class="container">
 <div id="page">
 
-	<img src="images/photo-troupe-refonte-intermediaire-avec-logo.jpg" class="img-responsive center-block" />
+	<img src="images/photo-header.png" class="img-responsive center-block" />
 
 	<a name="apage" name="apage"></a>
 
