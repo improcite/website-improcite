@@ -52,6 +52,8 @@ if (getp("user")  &&  getp("event"))
 	{
 		$s = getp("selection");
 		$aEvent = fxFetch(fxQuery("SELECT * FROM $t_eve WHERE id = ?", getp("event")));
+
+		# Suppression
 		if ($aEvent['coach'] == getp("user")) fxQueryUpdate($t_eve, array('coach'=>''), getp("event"));
 		if ($aEvent['mc'] == getp("user")) fxQueryUpdate($t_eve, array('mc'=>''), getp("event"));
 		if ($aEvent['arbitre'] == getp("user")) fxQueryUpdate($t_eve, array('arbitre'=>''), getp("event"));
@@ -59,42 +61,45 @@ if (getp("user")  &&  getp("event"))
 		if ($aEvent['caisse'] == getp("user")) fxQueryUpdate($t_eve, array('caisse'=>''), getp("event"));
 		if ($aEvent['catering'] == getp("user")) fxQueryUpdate($t_eve, array('catering'=>''), getp("event"));
 		if ($aEvent['ovs'] == getp("user")) fxQueryUpdate($t_eve, array('ovs'=>''), getp("event"));
-		$sNoJoueur = trim(str_replace(";".getp("user").";", "", ";".$aEvent['joueurs'].";"), ";");
-		$sNoJoueur = preg_replace("~[0-9][0-9][0-9]+~", "", $sNoJoueur);// cleanup des 2425; qui trainent
-		
-		if (strstr(";".$aEvent['joueurs'].";", ";".getp("user").";")) fxQueryUpdate($t_eve, array('joueurs'=>$sNoJoueur), getp("event"));
-		
-		if ($s == "c") 
+		$aJoueurs = explode(";", $aEvent['joueurs']);
+		if ( ($key = array_search( getp("user"), $aJoueurs)) !== false)  {
+			unset($aJoueurs[$key]);
+			fxQueryUpdate($t_eve, array('joueurs'=> implode(";",$aJoueurs)), getp("event"));
+		}
+
+		# Ajout
+		if ($s == "c")
 		{
 			fxQueryUpdate($t_eve, array('coach'=>getp("user")), getp("event"));
 		}
-		else if ($s == "mc") 
+		elseif ($s == "mc")
 		{
 			fxQueryUpdate($t_eve, array('mc'=>getp("user")), getp("event"));
 		}
-		else if ($s == "a") 
+		elseif ($s == "a")
 		{
 			fxQueryUpdate($t_eve, array('arbitre'=>getp("user")), getp("event"));
 		}
-		else if ($s == "r") 
+		elseif ($s == "r")
 		{
 			fxQueryUpdate($t_eve, array('regisseur'=>getp("user")), getp("event"));
 		}
-		else if ($s == "cai") 
+		elseif ($s == "cai")
 		{
 			fxQueryUpdate($t_eve, array('caisse'=>getp("user")), getp("event"));
 		}
-		else if ($s == "cat") 
+		elseif ($s == "cat")
 		{
 			fxQueryUpdate($t_eve, array('catering'=>getp("user")), getp("event"));
 		}
-		else if ($s == "ovs") 
+		elseif ($s == "ovs")
 		{
 			fxQueryUpdate($t_eve, array('ovs'=>getp("user")), getp("event"));
 		}
-		else if ($s == "j") 
+		elseif ($s == "j")
 		{
-			fxQueryUpdate($t_eve, array('joueurs'=>($sNoJoueur.";".getp("user"))), getp("event"));
+			$aJoueurs[] = getp("user");
+			fxQueryUpdate($t_eve, array('joueurs'=> implode(";", $aJoueurs)), getp("event"));
 		}
 	}
 }
