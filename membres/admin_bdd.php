@@ -59,7 +59,7 @@ $iSaisonEnCours = 1 ;
 // Contrcution "a la mano" du champ "fld_joueurs"
 if (getp("tbl_name") == $t_eve)
 {
-	$_REQUEST["fld_joueurs"] = getp("fld_j1").";".getp("fld_j2").";".getp("fld_j3").";".getp("fld_j4").";".getp("fld_j5").";".getp("fld_j6").";";
+	$_REQUEST["fld_joueurs"] = implode(";", array(getp("fld_j1"),getp("fld_j2"),getp("fld_j3"),getp("fld_j4"),getp("fld_j5"),getp("fld_j6")));
 	for($i=0;$i<=6;$i++) { unset($_REQUEST["fld_j$i"]);unset($_POST["fld_j$i"]);unset($_GET["fld_j$i"]); }
 }
 
@@ -77,8 +77,8 @@ if (!$tab) $tab = "SQL";
 // Définition des données
 //---------------------------------------------------------------------------
 
-	$aJoueurs = explode(";", fxPreFill('joueurs')); 
-	
+	$aJoueurs = array_values(array_filter(explode(";", fxPreFill('joueurs'))));
+
 	$aColumnData = 
 		array(
 		"impro_news"=>array(

@@ -61,7 +61,7 @@ if (getp("user")  &&  getp("event"))
 		if ($aEvent['caisse'] == getp("user")) fxQueryUpdate($t_eve, array('caisse'=>''), getp("event"));
 		if ($aEvent['catering'] == getp("user")) fxQueryUpdate($t_eve, array('catering'=>''), getp("event"));
 		if ($aEvent['ovs'] == getp("user")) fxQueryUpdate($t_eve, array('ovs'=>''), getp("event"));
-		$aJoueurs = explode(";", $aEvent['joueurs']);
+		$aJoueurs = array_filter(explode(";", $aEvent['joueurs']));
 		if ( ($key = array_search( getp("user"), $aJoueurs)) !== false)  {
 			unset($aJoueurs[$key]);
 			fxQueryUpdate($t_eve, array('joueurs'=> implode(";",$aJoueurs)), getp("event"));
