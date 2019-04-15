@@ -30,21 +30,18 @@ else {
 	echo "<div id=\"corps\">\n" ;
 
 	if (getp("new")) {
-	echo "<h1>Nouvel exercice</h1>\n" ;
         ?>
 
         <div class="embed-responsive embed-responsive-4by3">
-          <iframe src="$airtables_form_url"></iframe>
+          <iframe src="<?php echo "$airtables_form_url" ?>"></iframe>
         </div>
 
 	<?
-
 	} else {
-	echo "<h1>Exercice</h1>\n" ;
         ?>
 
         <div class="embed-responsive embed-responsive-4by3">
-          <iframe src="$airtables_cards_url"></iframe>
+          <iframe src="<?php echo "$airtables_cards_url" ?>"></iframe>
         </div>
 
 	<?

@@ -38,13 +38,13 @@
                   </ul>
                 </li>
                  <li class="dropdown <?=( strstr( $baseUri, "exercices") ?'active':'')?>">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-education"></i> Exercices <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Exercices <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="<?=(($baseUri == "exercices.php")?'active':'')?>">
-                      <a href="dispos.php"><i class="glyphicon glyphicon-th"></i> Liste</a>
+                      <a href="exercices.php"><i class="glyphicon glyphicon-th"></i> Liste</a>
                     </li>
-                    <li class="<?=(($baseUri == "exercices.php?create=1")?'active':'')?>">
-                      <a href="dispos.php?train=1"><i class="glyphicon glyphicon-plus-sign"></i> Nouveau</a>
+                    <li class="<?=(($baseUri == "exercices.php?new=1")?'active':'')?>">
+                      <a href="exercices.php?new=1"><i class="glyphicon glyphicon-plus-sign"></i> Nouveau</a>
                     </li>
                   </ul>
                 </li>

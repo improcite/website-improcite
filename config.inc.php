@@ -115,8 +115,8 @@ $t_omerta_comediens = "impro_omerta_comediens";
 $t_recrutement = "impro_recrutement";
 
 # Airtables URL
-$airtables_cards_url = "https://airtable.com/embed/".$airtables_cards."?backgroundColor=blue&viewControls=on"
-$airtables_form_url = "https://airtable.com/embed/".$airtables_form."?backgroundColor=blue"
+$airtables_cards_url = "https://airtable.com/embed/".$airtables_cards."?backgroundColor=blue&viewControls=on";
+$airtables_form_url = "https://airtable.com/embed/".$airtables_form."?backgroundColor=blue";
 
 if ($debug)
 {
