@@ -7,4 +7,8 @@ $user = "" ;
 $passwd = "";
 # Sel des mots de passe
 $salt = "";
+# Airtables - cartes
+$airtables_cards = "";
+# Airtables - formulaire
+$airtables_form = "";
 ?>
