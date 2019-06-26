@@ -69,19 +69,44 @@ if ( $action === "inscription" ) {
 	mail(getp("mail"), "[Improcité] Tu es inscrit(e) au recrutement", $mail_confirmation, "MIME-Version: 1.0\r\nContent-Type: text/html; charset=\"iso-8859-1\"\r\nFrom: Improcite <contact@improcite.com>\r\n");
 ?>
 
+<div class="panel panel-default">
+  <div class="panel-heading text-center">Recrutement</div>
+  <div class="panel-body">
 <p>Ton inscription a bien été prise en compte, merci !</p>
 <p>Tu recevras un mail dans 1 min 13s qui te donnera toutes les informations nécessaires. A partir de 1:14, tu peux vérifier tes spams ;-)</p>
+<p>Résumé des détails pratiques :
+<ul>
+<li>Session de recrutement : jeudi 5 septembre et jeudi 12 septembre.</li>
+<li>Entraînements les jeudi soirs de 20h à 22h à Villeurbanne (le lieu sera précisé plus tard).</li>
+<li>Spectacles dans différents bars et salles de Lyon.</li>
+<li>Cotisation 225 euros l'année.</li>
+<li>Weekend d'intégration 12 et 13 octobre (présence obligatoire pour tous).</li>
+</ul>
+</p>
+  </div>
+</div>
+<div class="text-center">
+  <a role="button" class="btn btn-info btn-lg" href="/"><i class="fa fa-home"></i> Retour au site</a>
+</div>
 
 <?php } else { ?>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Recrutement 2016-2017</div>
+  <div class="panel-heading text-center">Recrutement</div>
   <div class="panel-body">
-    Les deux séances de recrutement auront lieu les <b>jeudis 8 et 15 septembre 2016</b>, puisque c'est le jeudi soir que nous nous entraînons.<br><br>
-
-    Une expérience minimale de deux ans en impro est recommandée, mais si tu penses avoir ça dans le sang, tente ta chance&nbsp;!<br><br>
-
-    Pour participer, il suffit de remplir le formulaire ci-dessous.
+<p>
+Parce que tu as déjà fait de l'impro (+/- 2 ans) ou du théâtre et que tu recherches une troupe pour t'entraîner, jouer et t'épanouir !<br />
+Parce que tu aimes les challenges, jouer différents types de spectacles dans différentes salles, et avec d'autres équipes !<br />
+Parce que tu es motivé(e) pour t'impliquer dans le fonctionnement de la troupe et investir tous les postes liés à un spectacle (joueur, régie, communication, MC, caisse, ...) !<br />
+Parce que tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration (réserve les 12 et 13 octobre prochains absolument) avec une quinzaine de nouveaux amis ne te fait pas peur !</p>
+<div class="text-center">
+<video width="300px" controls autoplay>
+<source src="teaser_recrutement.mp4" type="video/mp4">
+</video>
+</div>
+<p>Alors, IMPROCITE est faite pour toi !<br />
+Pour participer à nos deux séances de recrutement les jeudis 5 et 12 septembre 2019, 20h-22h à Villeurbanne, il suffit de remplir le formulaire ci-dessous.
+</p>
   </div>
 </div>
 
@@ -94,12 +119,12 @@ if ( $action === "inscription" ) {
   	
 <fieldset>
 <legend>Qui es-tu ?</legend>
-<label for="nom">Nom : </label><input name="nom" type="text" class="required" /><br />
-<label for="prenom">Prénom : </label><input name="prenom" type="text" class="required" /><br />
-<label for="mail">Email : </label><input name="mail" type="text" class="required email" /><br />
-<label for="adresse">Adresse : </label><input name="adresse" type="text" class="required" /><br />
-<label for="tel">Téléphone : </label><input name="tel" type="text" class="required" /><br />
-<label for="datenaissance">Date de naissance : </label><input name="datenaissance" type="text" class="required date" /><br />
+<label for="nom">Nom : </label><input name="nom" type="text" class="required" required /><br />
+<label for="prenom">Prénom : </label><input name="prenom" type="text" class="required" required /><br />
+<label for="mail">Email : </label><input name="mail" type="text" class="required email" required /><br />
+<label for="adresse">Adresse : </label><input name="adresse" type="text" class="required" required /><br />
+<label for="tel">Téléphone : </label><input name="tel" type="text" class="required" required /><br />
+<label for="datenaissance">Date de naissance : </label><input name="datenaissance" type="text" class="required date" required /><br />
 </fieldset>
 
   </div>
@@ -108,27 +133,23 @@ if ( $action === "inscription" ) {
 <fieldset>
 <legend>Improvisation</legend>
 <label for="experience">Quelle est ton expérience en improvisation ?</legend><br />
-<textarea name="experience" class="required" ></textarea><br />
+<textarea name="experience" class="required" required ></textarea><br />
 <label for="envie">Quelles sont tes envies ?</legend><br />
-<textarea name="envie" class="required" ></textarea><br />
+<textarea name="envie" class="required" required ></textarea><br />
 </fieldset>
 
 <fieldset>
 <legend>Improcité</legend>
 <label for="source">Comment as-tu connu Improcité ?</legend><br />
-<textarea name="source" class="required" ></textarea><br />
+<textarea name="source" class="required" required ></textarea><br />
 <label for="disponibilite">Quelles sont tes disponibilités sur l'année ?</legend><br />
-<textarea name="disponibilite" class="required" ></textarea><br />
+<textarea name="disponibilite" class="required" required ></textarea><br />
 </fieldset>
-
 
   </div>
 </div>
 
-
-
-
-<button>Inscription</button>
+<input type="submit" class="btn btn-success btn-lg" value="Inscription">
 
 </form>
 
