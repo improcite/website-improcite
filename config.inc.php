@@ -27,7 +27,8 @@ include_once("secrets.inc.php");
 // 12 = 2016-2017
 // 13 = 2017-2018
 // 14 = 2018-2019
-$iCurrentSaisonNumber = 14;
+// 15 = 2019-2020
+$iCurrentSaisonNumber = 15;
 
 /* La même chose, mais en puissance de 2*/
 // 1 = 2004-2005
@@ -45,10 +46,11 @@ $iCurrentSaisonNumber = 14;
 // 4096 = 2016-2017
 // 8192 = 2017-2018
 // 16384 = 2018-2019
-$currentSaisonBit = 16384;
+// 32768 = 2019-2020
+$currentSaisonBit = 32768;
 
 /* Utilisé pour afficher le champ ds l'admin */
-$saisonAdminString = "2004-2005,2005-2006,2006-2007,2007-2008,2008-2009,2009-2010,2010-2011,2011-2012,2012-2013,2013-2014,2014-2015,2015-2016,2016-2017,2017-2018,2018-2019";
+$saisonAdminString = "2004-2005,2005-2006,2006-2007,2007-2008,2008-2009,2009-2010,2010-2011,2011-2012,2012-2013,2013-2014,2014-2015,2015-2016,2016-2017,2017-2018,2018-2019,2019-2020";
 
 /* Numero de categorie pour les entrainements */
 $category_train = 1;
