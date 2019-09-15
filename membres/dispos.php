@@ -59,12 +59,16 @@ if (getp("user")  &&  getp("event"))
 		if ($aEvent['arbitre'] == getp("user")) fxQueryUpdate($t_eve, array('arbitre'=>''), getp("event"));
 		if ($aEvent['regisseur'] == getp("user")) fxQueryUpdate($t_eve, array('regisseur'=>''), getp("event"));
 		if ($aEvent['caisse'] == getp("user")) fxQueryUpdate($t_eve, array('caisse'=>''), getp("event"));
-		if ($aEvent['catering'] == getp("user")) fxQueryUpdate($t_eve, array('catering'=>''), getp("event"));
 		if ($aEvent['ovs'] == getp("user")) fxQueryUpdate($t_eve, array('ovs'=>''), getp("event"));
 		$aJoueurs = array_filter(explode(";", $aEvent['joueurs']));
 		if ( ($key = array_search( getp("user"), $aJoueurs)) !== false)  {
 			unset($aJoueurs[$key]);
 			fxQueryUpdate($t_eve, array('joueurs'=> implode(";",$aJoueurs)), getp("event"));
+		}
+		$aAnimateurs = array_filter(explode(";", $aEvent['animateurs']));
+		if ( ($key = array_search( getp("user"), $aJoueurs)) !== false)  {
+			unset($aAnimateurs[$key]);
+			fxQueryUpdate($t_eve, array('animateurs'=> implode(";",$aAnimateurs)), getp("event"));
 		}
 
 		# Ajout
@@ -88,10 +92,6 @@ if (getp("user")  &&  getp("event"))
 		{
 			fxQueryUpdate($t_eve, array('caisse'=>getp("user")), getp("event"));
 		}
-		elseif ($s == "cat")
-		{
-			fxQueryUpdate($t_eve, array('catering'=>getp("user")), getp("event"));
-		}
 		elseif ($s == "ovs")
 		{
 			fxQueryUpdate($t_eve, array('ovs'=>getp("user")), getp("event"));
@@ -100,6 +100,11 @@ if (getp("user")  &&  getp("event"))
 		{
 			$aJoueurs[] = getp("user");
 			fxQueryUpdate($t_eve, array('joueurs'=> implode(";", $aJoueurs)), getp("event"));
+		}
+		elseif ($s == "ani")
+		{
+			$aAnimateurs[] = getp("user");
+			fxQueryUpdate($t_eve, array('joueurs'=> implode(";", $aAnimateurs)), getp("event"));
 		}
 	}
 }
@@ -196,7 +201,7 @@ foreach($aMembres as $aRowJ)
 	$w = 80/$nbMembres;
 	$sColumnHeader .= "<td {$sStyl} width=\"{$w}%\">{$sNom}</td>";
 	
-	$aStats[$aRowJ['id']] = array('joueur' => 0, 'coach'=>0, 'mc'=>0, 'arbitre'=>0, 'regisseur'=>0, 'caisse'=>0, 'catering'=>0, 'ovs'=>0);
+	$aStats[$aRowJ['id']] = array('joueur' => 0, 'coach'=>0, 'mc'=>0, 'arbitre'=>0, 'regisseur'=>0, 'caisse'=>0, 'animateurs'=>0, 'ovs'=>0);
 }
 $sColumnHeader .= "</tr>";
 
@@ -206,7 +211,7 @@ $sColumnHeader .= "</tr>";
 # Seulement pour le mois en cours
 $filtredate = "date>'".$year.$month."01000000' AND date<'".$year.$month."31235959'";
 $sWhereTrain = $bDisplayTrain ? " AND e.categorie = $category_train " : " AND e.categorie <> $category_train ";
-$sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.regisseur as regisseur, e.caisse as caisse, e.catering as catering, e.ovs as ovs "
+$sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs "
 		."FROM $t_eve e, $t_cat c, $t_lieu l "
 		."WHERE e.categorie=c.id AND $filtredate AND e.lieu=l.id $sWhereTrain"
 		."ORDER BY date ASC";
@@ -300,12 +305,12 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 				}
 				
 				$bSelection = strstr(";".$aRow['joueurs'].";", ";".$aRowJ['id'].";")
+				        ||  strstr(";".$aRow['animateurs'].";", ";".$aRowJ['id'].";")
 					||  $aRow['coach'] == $aRowJ['id']
 					||  $aRow['mc'] == $aRowJ['id']
 					||  $aRow['arbitre'] == $aRowJ['id']
 					||  $aRow['regisseur'] == $aRowJ['id']
 					||  $aRow['caisse'] == $aRowJ['id']
-					||  $aRow['catering'] == $aRowJ['id']
 					||  $aRow['ovs'] == $aRowJ['id'];
 				if ($bSelection)
 				{
@@ -315,7 +320,7 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 					if ($aRow['arbitre'] == $aRowJ['id']) $sName = "Arbitre";
 					if ($aRow['regisseur'] == $aRowJ['id']) $sName = "Régisseur";
 					if ($aRow['caisse'] == $aRowJ['id']) $sName = "Caisse";
-					if ($aRow['catering'] == $aRowJ['id']) $sName = "Catering";
+					if ( strstr(";".$aRow['animateurs'].";", ";".$aRowJ['id'].";") ) $sName = "Animateur";
 					if ($aRow['ovs'] == $aRowJ['id']) $sName = "OVS";
 				
 					echo "<td $sStyl bgcolor=\"$sClrSel\" align=\"center\">{$sImgSel}";
@@ -345,12 +350,12 @@ while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
 			<select style="font-size:<?=$iFontSize?>pt;border:0px;background-color:#000;color:#AAA;" name="selection" onChange='form.submit()'>
 			<OPTION value=""></OPTION>
 			<OPTION value="j" <?=(strstr(";".$aRow['joueurs'].";", ";".$aRowJ['id'].";"))?"SELECTED":""?>>Joueur</OPTION>
+			<OPTION value="ani" <?=(strstr(";".$aRow['animateurs'].";", ";".$aRowJ['id'].";"))?"SELECTED":""?>>Animateur</OPTION>
 			<OPTION value="c" <?=($aRow['coach'] == $aRowJ['id'])?"SELECTED":""?>>Coach</OPTION>
 			<OPTION value="mc" <?=($aRow['mc'] == $aRowJ['id'])?"SELECTED":""?>>MC</OPTION>
 			<OPTION value="a" <?=($aRow['arbitre'] == $aRowJ['id'])?"SELECTED":""?>>Arbitre</OPTION>
 			<OPTION value="r" <?=($aRow['regisseur'] == $aRowJ['id'])?"SELECTED":""?>>Régisseur</OPTION>
 			<OPTION value="cai" <?=($aRow['caisse'] == $aRowJ['id'])?"SELECTED":""?>>Caisse</OPTION>
-			<OPTION value="cat" <?=($aRow['catering'] == $aRowJ['id'])?"SELECTED":""?>>Catering</OPTION>
 			<OPTION value="ovs" <?=($aRow['ovs'] == $aRowJ['id'])?"SELECTED":""?>>OVS</OPTION>
 			</select>
 			<input type="hidden" name="train" value="<?=$bDisplayTrain?>">

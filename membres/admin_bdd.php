@@ -56,11 +56,13 @@ $iSaisonEnCours = 1 ;
 //---------------------------------------------------------------------------
 // Lecture des paramètres envoyés à la page
 //---------------------------------------------------------------------------
-// Contrcution "a la mano" du champ "fld_joueurs"
+// Construction "a la mano" des champs "fld_joueurs" et 'fld_animateurs"
 if (getp("tbl_name") == $t_eve)
 {
 	$_REQUEST["fld_joueurs"] = implode(";", array(getp("fld_j1"),getp("fld_j2"),getp("fld_j3"),getp("fld_j4"),getp("fld_j5"),getp("fld_j6")));
 	for($i=0;$i<=6;$i++) { unset($_REQUEST["fld_j$i"]);unset($_POST["fld_j$i"]);unset($_GET["fld_j$i"]); }
+	$_REQUEST["fld_animateurs"] = implode(";", array(getp("fld_a1"),getp("fld_a2"),getp("fld_a3"),getp("fld_a4"),getp("fld_a5"),getp("fld_a6")));
+	for($i=0;$i<=6;$i++) { unset($_REQUEST["fld_a$i"]);unset($_POST["fld_a$i"]);unset($_GET["fld_a$i"]); }
 }
 
 fxHandleRequests();
@@ -78,6 +80,7 @@ if (!$tab) $tab = "SQL";
 //---------------------------------------------------------------------------
 
 	$aJoueurs = array_values(array_filter(explode(";", fxPreFill('joueurs'))));
+	$aAnimateurs = array_values(array_filter(explode(";", fxPreFill('animateurs'))));
 
 	$aColumnData = 
 		array(
@@ -122,12 +125,17 @@ if (!$tab) $tab = "SQL";
 				array("Joueur 4", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "j4", isset($aJoueurs[3])?$aJoueurs[3]:"", $bIsSelectionneur|$bIsAdmin),
 				array("Joueur 5", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "j5", isset($aJoueurs[4])?$aJoueurs[4]:"", $bIsSelectionneur|$bIsAdmin),
 				array("Joueur 6", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "j6", isset($aJoueurs[5])?$aJoueurs[5]:"", $bIsSelectionneur|$bIsAdmin),
+				array("Animateur 1", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "a1", isset($aAnimateurs[0])?$aAnimateurs[0]:"", $bIsSelectionneur|$bIsAdmin),
+				array("Animateur 2", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "a2", isset($aAnimateurs[1])?$aAnimateurs[1]:"", $bIsSelectionneur|$bIsAdmin),
+				array("Animateur 3", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "a3", isset($aAnimateurs[2])?$aAnimateurs[2]:"", $bIsSelectionneur|$bIsAdmin),
+				array("Animateur 4", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "a4", isset($aAnimateurs[3])?$aAnimateurs[3]:"", $bIsSelectionneur|$bIsAdmin),
+				array("Animateur 5", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "a5", isset($aAnimateurs[4])?$aAnimateurs[4]:"", $bIsSelectionneur|$bIsAdmin),
+				array("Animateur 6", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "a6", isset($aAnimateurs[5])?$aAnimateurs[5]:"", $bIsSelectionneur|$bIsAdmin),
 				array("Coach", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "coach", "", $bIsSelectionneur|$bIsAdmin),
 				array("MC", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "mc", "", $bIsSelectionneur|$bIsAdmin),
 				array("Arbitre", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "arbitre", "", $bIsSelectionneur|$bIsAdmin),
 				array("Régisseur", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "regisseur", "", $bIsSelectionneur|$bIsAdmin),
 				array("Caisse", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "caisse", "", $bIsSelectionneur|$bIsAdmin),
-				array("Catering", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "catering", "", $bIsSelectionneur|$bIsAdmin),
 				array("Ovs", "otherlist|$table_comediens|id|CONCAT(nom,' ',prenom)", "ovs", "", $bIsSelectionneur|$bIsAdmin)
 				)
 			)

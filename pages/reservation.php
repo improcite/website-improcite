@@ -184,7 +184,7 @@ else if ( $action == "Choisir" || $_REQUEST[ "id_spectacle" ] )
 	<?	
 	if ($infos["commentaire"]) {echo "<div class=\"well\">".affiche_texte($infos["commentaire"])."</div>\n" ;}
 	
-	$selectionnes = $infos['joueurs'] .";" . $infos['mc'] . ";" . $infos['arbitre'] . ";" . $infos['coach']; 
+	$selectionnes = $infos['joueurs'] .";" . $infos["animateurs"] . ";" . $infos['mc'] . ";" . $infos['arbitre'] . ";" . $infos['coach']; 
 	fxDispJoueurArray(explode(";", $selectionnes), "width:80px;height:60px;");
 
 	?>

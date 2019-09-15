@@ -56,12 +56,13 @@ if (getp("user")  &&  getp("event"))
 		if ($aEvent['arbitre'] == getp("user")) fxQueryUpdate($t_eve, array('arbitre'=>''), getp("event"));
 		if ($aEvent['regisseur'] == getp("user")) fxQueryUpdate($t_eve, array('regisseur'=>''), getp("event"));
 		if ($aEvent['caisse'] == getp("user")) fxQueryUpdate($t_eve, array('caisse'=>''), getp("event"));
-		if ($aEvent['catering'] == getp("user")) fxQueryUpdate($t_eve, array('catering'=>''), getp("event"));
 		if ($aEvent['ovs'] == getp("user")) fxQueryUpdate($t_eve, array('ovs'=>''), getp("event"));
 		$sNoJoueur = trim(str_replace(";".getp("user").";", "", ";".$aEvent['joueurs'].";"), ";");
 		$sNoJoueur = preg_replace("~[0-9][0-9][0-9]+~", "", $sNoJoueur);// cleanup des 2425; qui trainent
+		$sNoAnimateur = trim(str_replace(";".getp("user").";", "", ";".$aEvent['animateurs'].";"), ";");
 		
 		if (strstr(";".$aEvent['joueurs'].";", ";".getp("user").";")) fxQueryUpdate($t_eve, array('joueurs'=>$sNoJoueur), getp("event"));
+		if (strstr(";".$aEvent['animateurs'].";", ";".getp("user").";")) fxQueryUpdate($t_eve, array('animateurs'=>$sNoAnimateur), getp("event"));
 		
 		if ($s == "c") 
 		{
@@ -83,10 +84,6 @@ if (getp("user")  &&  getp("event"))
 		{
 			fxQueryUpdate($t_eve, array('caisse'=>getp("user")), getp("event"));
 		}
-		else if ($s == "cat") 
-		{
-			fxQueryUpdate($t_eve, array('catering'=>getp("user")), getp("event"));
-		}
 		else if ($s == "ovs") 
 		{
 			fxQueryUpdate($t_eve, array('ovs'=>getp("user")), getp("event"));
@@ -94,6 +91,10 @@ if (getp("user")  &&  getp("event"))
 		else if ($s == "j") 
 		{
 			fxQueryUpdate($t_eve, array('joueurs'=>($sNoJoueur.";".getp("user"))), getp("event"));
+		}
+		else if ($s == "ani")
+		{
+			fxQueryUpdate($t_eve, array('animateurs'=>($sNoAnimateur.";".getp("user"))), getp("event"));
 		}
 	}
 }
@@ -134,7 +135,7 @@ foreach($aMembres as $aRowJ)
 	$w = 80/$nbMembres;
 	$sColumnHeader .= "<td {$sStyl} width=\"{$w}%\">{$sNom}</td>";
 	
-	$aStats[$aRowJ['id']] = array('joueur' => 0, 'coach'=>0, 'mc'=>0, 'arbitre'=>0, 'regisseur'=>0, 'caisse'=>0, 'catering'=>0, 'ovs'=>0);
+	$aStats[$aRowJ['id']] = array('joueur' => 0, 'coach'=>0, 'mc'=>0, 'arbitre'=>0, 'regisseur'=>0, 'caisse'=>0, 'animateur'=>0, 'ovs'=>0);
 }
 $sColumnHeader .= "</tr>";
 
@@ -149,11 +150,14 @@ while ($aRow = mysql_fetch_array($sqlResult))
 	if ($aRow['arbitre']) $aStats[$aRow['arbitre']]['arbitre']++;
 	if ($aRow['regisseur']) $aStats[$aRow['regisseur']]['regisseur']++;
 	if ($aRow['caisse']) $aStats[$aRow['caisse']]['caisse']++;
-	if ($aRow['catering']) $aStats[$aRow['catering']]['catering']++;
 	if ($aRow['ovs']) $aStats[$aRow['ovs']]['ovs']++;
 	foreach(explode(';', $aRow['joueurs']) as $idJoueur)
 	{
 		if ($idJoueur) $aStats[$idJoueur]['joueur']++;
+	}
+	foreach(explode(';', $aRow['animateurs']) as $idAnimateur)
+	{
+		if ($idAnimateur) $aStats[$idAnimateur]['animateur']++;
 	}
 }
 echo '<div class="table-responsive">';

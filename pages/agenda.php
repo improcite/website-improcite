@@ -28,6 +28,7 @@ if ($nb_prochains == 0)
 		$tarif = @mysql_result($requete_prochains, $i, "tarif");
 		$places = @mysql_result($requete_prochains, $i, "places");
 		$joueurs = @mysql_result($requete_prochains, $i, "joueurs");
+		$animateurs = @mysql_result($requete_prochains, $i, "animateurs");
 		$coach = @mysql_result($requete_prochains, $i, "coach");
 		$arbitre = @mysql_result($requete_prochains, $i, "arbitre");
 		$mc = @mysql_result($requete_prochains, $i, "mc");
@@ -56,6 +57,10 @@ if ($nb_prochains == 0)
 		if (trim(str_replace(";", "", $joueurs)) != "")
 		{
 			fxDispJoueurArray(explode(";", $joueurs), "width:80px;height:60px;");
+		}
+		if (trim(str_replace(";", "", $animateurs)) != "")
+		{
+			fxDispJoueurArray(explode(";", $animateurs), "width:80px;height:60px;");
 		}
 
 		?>

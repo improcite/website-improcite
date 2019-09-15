@@ -17,7 +17,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 		$iCount = 0;
 		$date_actuelle = date("YmdHis") ;
 		$requete_prochains = fxQuery( 	"SELECT e.id as eid, c.id as cid, l.id as lid, e.commentaire as ecommentaire,"
-									.	"c.description as cdescription, l.nom as lnom, c.nom as nom, e.date as date, e.joueurs as joueurs, e.mc as mc,"
+									.	"c.description as cdescription, l.nom as lnom, c.nom as nom, e.date as date, e.joueurs as joueurs, e.animateurs as animateurs, e.mc as mc,"
 									.	"e.arbitre as arbitre, e.coach as coach , e.places as places FROM $t_eve e, $t_cat c, $t_lieu l WHERE "
 									.	"c.publique=1 AND e.categorie=c.id AND e.date>$date_actuelle AND e.lieu=l.id ORDER BY date ASC LIMIT 0,$nb_spectacles_welcome" );
 		while ($aRow = mysql_fetch_array($requete_prochains,MYSQL_ASSOC))
@@ -74,7 +74,7 @@ $oRqLastNews = mysql_query("SELECT * FROM impro_news WHERE active = 1 ORDER BY d
 					<? }?>
 					<div class="row">
 					<?php
-					$selectionnes = $aRow['joueurs'] .";" . $aRow['mc'] . ";" . $aRow['arbitre'] . ";" . $aRow['coach']; 
+					$selectionnes = $aRow['joueurs'] .";" . $aRow["animateurs"] . ";" . $aRow['mc'] . ";" . $aRow['arbitre'] . ";" . $aRow['coach'];
 					fxDispJoueurArray(explode(";", $selectionnes), "width:100px;");
 					?>
 					</div>

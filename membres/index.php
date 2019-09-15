@@ -67,9 +67,9 @@ foreach($aAllEvents as $aRow)
 	if ($idMe == $aRow['arbitre']) $sName = "Arbitre";
 	if ($idMe == $aRow['regisseur']) $sName = "Régisseur";
 	if ($idMe == $aRow['caisse']) $sName = "Caisse";
-	if ($idMe == $aRow['catering']) $sName = "Catering";
 	if ($idMe == $aRow['ovs']) $sName = "OVS";
 	if (strstr(";".$aRow['joueurs'].";", ";".$idMe.";")) $sName = "Joueur";
+	if (strstr(";".$aRow['animateurs'].";", ";".$idMe.";")) $sName = "Animateur";
 	$date = affiche_date($aRow["date"]);
 
 	$iPct = isset($aDispoForAllSpectacles[$aRow["id"]]) ? $aDispoForAllSpectacles[$aRow["id"]] : "";
