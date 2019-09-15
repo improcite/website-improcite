@@ -66,7 +66,7 @@ if (getp("user")  &&  getp("event"))
 			fxQueryUpdate($t_eve, array('joueurs'=> implode(";",$aJoueurs)), getp("event"));
 		}
 		$aAnimateurs = array_filter(explode(";", $aEvent['animateurs']));
-		if ( ($key = array_search( getp("user"), $aJoueurs)) !== false)  {
+		if ( ($key = array_search( getp("user"), $aAnimateurs)) !== false)  {
 			unset($aAnimateurs[$key]);
 			fxQueryUpdate($t_eve, array('animateurs'=> implode(";",$aAnimateurs)), getp("event"));
 		}
@@ -104,7 +104,7 @@ if (getp("user")  &&  getp("event"))
 		elseif ($s == "ani")
 		{
 			$aAnimateurs[] = getp("user");
-			fxQueryUpdate($t_eve, array('joueurs'=> implode(";", $aAnimateurs)), getp("event"));
+			fxQueryUpdate($t_eve, array('animateurs'=> implode(";", $aAnimateurs)), getp("event"));
 		}
 	}
 }
