@@ -98,11 +98,6 @@ Parce que tu as déjà fait de l'impro (+/- 2 ans) ou du théâtre et que tu rec
 Parce que tu aimes les challenges, jouer différents types de spectacles dans différentes salles, et avec d'autres équipes !<br />
 Parce que tu es motivé(e) pour t'impliquer dans le fonctionnement de la troupe et investir tous les postes liés à un spectacle (joueur, régie, communication, MC, caisse, ...) !<br />
 Parce que tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration avec une quinzaine de nouveaux amis ne te fait pas peur !</p>
-<div class="text-center">
-<video width="300px" controls autoplay>
-<source src="teaser_recrutement.mp4" type="video/mp4">
-</video>
-</div>
 <p>Alors, IMPROCITE est faite pour toi !<br />
 Pour participer à nos deux séances de recrutement les jeudis 3 et 10 septembre 2020, 20h-22h à Villeurbanne, il suffit de remplir le formulaire ci-dessous.
 </p>
