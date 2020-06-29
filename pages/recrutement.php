@@ -76,11 +76,10 @@ if ( $action === "inscription" ) {
 <p>Tu recevras un mail dans 1 min 13s qui te donnera toutes les informations nécessaires. A partir de 1:14, tu peux vérifier tes spams ;-)</p>
 <p>Résumé des détails pratiques :
 <ul>
-<li>Session de recrutement : jeudi 5 septembre et jeudi 12 septembre.</li>
-<li>Entraînements les jeudi soirs de 20h à 22h à Villeurbanne (le lieu sera précisé plus tard).</li>
-<li>Spectacles dans différents bars et salles de Lyon.</li>
+<li>Session de recrutement : jeudi 3 septembre et jeudi 10 septembre au collège Jean Jaurès.</li>
+<li>Entraînements les jeudis soirs de 20h à 22h à Villeurbanne (collège Jean Jaurès).</li>
+<li>Spectacles dans différents bars et salles de Lyon et certains déplacements dans l'année.</li>
 <li>Cotisation 225 euros l'année.</li>
-<li>Weekend d'intégration 12 et 13 octobre (présence obligatoire pour tous).</li>
 </ul>
 </p>
   </div>
@@ -98,14 +97,14 @@ if ( $action === "inscription" ) {
 Parce que tu as déjà fait de l'impro (+/- 2 ans) ou du théâtre et que tu recherches une troupe pour t'entraîner, jouer et t'épanouir !<br />
 Parce que tu aimes les challenges, jouer différents types de spectacles dans différentes salles, et avec d'autres équipes !<br />
 Parce que tu es motivé(e) pour t'impliquer dans le fonctionnement de la troupe et investir tous les postes liés à un spectacle (joueur, régie, communication, MC, caisse, ...) !<br />
-Parce que tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration (réserve les 12 et 13 octobre prochains absolument) avec une quinzaine de nouveaux amis ne te fait pas peur !</p>
+Parce que tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration avec une quinzaine de nouveaux amis ne te fait pas peur !</p>
 <div class="text-center">
 <video width="300px" controls autoplay>
 <source src="teaser_recrutement.mp4" type="video/mp4">
 </video>
 </div>
 <p>Alors, IMPROCITE est faite pour toi !<br />
-Pour participer à nos deux séances de recrutement les jeudis 5 et 12 septembre 2019, 20h-22h à Villeurbanne, il suffit de remplir le formulaire ci-dessous.
+Pour participer à nos deux séances de recrutement les jeudis 3 et 10 septembre 2020, 20h-22h à Villeurbanne, il suffit de remplir le formulaire ci-dessous.
 </p>
   </div>
 </div>
