@@ -105,24 +105,19 @@ echo " var data = [";
 		while ($row = mysql_fetch_array($recrutement_resultat, MYSQL_ASSOC)) {
 
 			$date = substr($row["date"],8,2) . "/" . substr($row["date"],5,2) . "/" . substr($row["date"],0,4);
-			$toreplace = array("\r\n","\r","\n");
-			$adresse = str_replace($toreplace, "<br />", $row["addresse"]);
-			$source = str_replace($toreplace, "<br />", $row["source"]);
-			$experience = str_replace($toreplace, "<br />", $row["experience"]);
-			$envie = str_replace($toreplace, "<br />", $row["envie"]);
-			$disponibilite = str_replace($toreplace, "<br />", $row["disponibilite"]);
 			echo "{\n";
 			echo "\"id\" : \"".$row["id"]."\",\n";
+			echo "\"selection\" : \"".$row["selection"]."\",\n";
 			echo "\"nom\" : \"".$row["nom"]." ".$row["prenom"]."\",\n";
 			echo "\"telephone\" : \"".$row["telephone"]."\",\n";
 			echo "\"mail\" : \"".$row["mail"]."\",\n";
-			echo "\"adresse\" : \"".$adresse."\",\n";
+			echo "\"adresse\" : \"".$row["adresse"]."\",\n";
 			echo "\"date\" : \"".$date."\",\n";
-			echo "\"source\" : \"".$source."\",\n";
-			echo "\"experience\" : \"".$experience."\",\n";
-			echo "\"envie\" : \"".$envie."\",\n";
-			echo "\"disponibilite\" : \"".$disponibilite."\",\n";
-			echo "\"selection\" : \"".$selection."\"\n";
+			echo "\"source\" : \"".$row["source"]."\",\n";
+			echo "\"experience\" : \"".$row["experience"]."\",\n";
+			echo "\"envie\" : \"".$row["envie"]."\",\n";
+			echo "\"disponibilite\" : \"".$row["disponibilite"]."\",\n";			
+			echo "\"selection\" : \"".$row["selection"]."\"\n";			
 			echo "}";
 
 			if (++$counter < $nb_inscrits) echo ",\n";
