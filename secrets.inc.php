@@ -1,14 +1,14 @@
 <?php
 # Serveur ou se situe MySQL
-$host = "localhost:8889" ;
+$host = "" ;
 # Utilisateur de connexion a MySQL
-$user = "root" ;
+$user = "" ;
 # Mot de passe de connexion a MySQL
-$passwd = "root";
+$passwd = "";
 # Sel des mots de passe
-$salt = "V1leurB4N!";
+$salt = "";
 # Airtables - cartes
-$airtables_cards = "shrZZYQMSXxFevbv4/tblmUnghKae9jDinB";
+$airtables_cards = "";
 # Airtables - formulaire
-$airtables_form = "shrYun4v4BOfDWWrI";
+$airtables_form = "";
 ?>
