@@ -63,22 +63,28 @@ if(!isset($CURRENT_MENU_ITEM)) {$CURRENT_MENU_ITEM = '';}
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
-	
+
 
 <?php if ( $CURRENT_MENU_ITEM == "fichiers" ) { ?>
 
+  <!-- Composant pour intégration Box.com -->
+  <link href="https://cdn01.boxcdn.net/platform/elements/11.0.2/fr-FR/explorer.css" rel="stylesheet" type="text/css">
+  </link>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Intl"></script>
+  <script src="https://cdn01.boxcdn.net/platform/elements/11.0.2/fr-FR/explorer.js"></script>
+
 	<!-- elFinder CSS (REQUIRED) -->
-	<link rel="stylesheet" type="text/css" href="elfinder/css/elfinder.min.css">
-	<link rel="stylesheet" type="text/css" href="elfinder/css/theme.css">
+	<!--link rel="stylesheet" type="text/css" href="elfinder/css/elfinder.min.css"-->
+	<!--link rel="stylesheet" type="text/css" href="elfinder/css/theme.css"-->
 
 	<!-- elFinder JS (REQUIRED) -->
-	<script src="elfinder/js/elfinder.min.js"></script>
+	<!--script src="elfinder/js/elfinder.min.js"></script-->
 
 	<!-- elFinder translation (OPTIONAL) -->
-	<script src="elfinder/js/i18n/elfinder.fr.js"></script>
+	<!--script src="elfinder/js/i18n/elfinder.fr.js"></script-->
 
 	<!-- elFinder initialization (REQUIRED) -->
-	<script type="text/javascript" charset="utf-8">
+	<!--script type="text/javascript" charset="utf-8">
 		// Documentation for client options:
 		// https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
 		$(document).ready(function() {
@@ -87,7 +93,7 @@ if(!isset($CURRENT_MENU_ITEM)) {$CURRENT_MENU_ITEM = '';}
 				, lang: 'fr'                    // language (OPTIONAL)
 			});
 		});
-	</script>
+	</script-->
 <?php } ?>
 
 	<link rel="stylesheet" href="../css/improcite2.css" type="text/css" />
@@ -119,4 +125,3 @@ function fxUserHasRight($sRight) {
 	<?php include("tete_menu.php"); ?>
 
 	<div id="pagemembres" class="panel panel-body">
-

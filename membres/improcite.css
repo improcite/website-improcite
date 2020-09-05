@@ -1,6 +1,6 @@
 /*
 Rouge Cible			#CB0810
-Rouge Cible Foncé		#9F0D13
+Rouge Cible FoncÃ©		#9F0D13
 Fond Gris			#7F7F7F
 Jaune				#FDD913
 Orange				#FF6E02
@@ -225,7 +225,7 @@ img.hymne2 {
 
 /*** === Cadres (<div>) dans la page === ***/
 
-/* ### Maitre ### 
+/* ### Maitre ###
 * Il contient tous les autres cadres
 */
 #maitre {
@@ -244,11 +244,11 @@ img.hymne2 {
 	margin-left: 20px;
 	padding-left:	60px;
 	border: 0;
-	/* force la hauteur à 500px */
-	/* hyper important sinon la cible se décale sur les pages trop petites sous IE
+	/* force la hauteur Ã  500px */
+	/* hyper important sinon la cible se dÃ©cale sur les pages trop petites sous IE
 	/* http://blog.alsacreations.com/2004/08/17/54-min-height-sur-internet-explorer */
 	height: auto !important;height: 500px;min-height: 500px;
-	
+
 }
 
 /* ### Le pied de page ### */
@@ -341,7 +341,7 @@ img.hymne2 {
 
 /* Hymne */
 p.couplet {
-	
+
 }
 
 p.refrain {

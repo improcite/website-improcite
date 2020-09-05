@@ -66,6 +66,16 @@ h3 {
   margin-top:60px;
 }
 
+/** Fichiers ** Composant Box.Com **/
+div.boxExplorer {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		min-width: 320px;
+		height: 600px;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -102,4 +112,3 @@ h3 {
     content: "";
   }
 }
-

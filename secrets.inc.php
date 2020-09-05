@@ -11,4 +11,17 @@ $salt = "";
 $airtables_cards = "";
 # Airtables - formulaire
 $airtables_form = "";
+# Box.com - settings
+$box_settings = '{
+  "boxAppSettings": {
+    "clientID": "",
+    "clientSecret": "",
+    "appAuth": {
+      "publicKeyID": "",
+      "privateKey": ""
+      "passphrase": ""
+    }
+  },
+  "enterpriseID": ""
+}';
 ?>
