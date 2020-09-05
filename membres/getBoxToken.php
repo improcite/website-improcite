@@ -14,8 +14,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 // 1. Read JSON Configuration
 
-$json = file_get_contents('getBoxToken.json');
-$config = json_decode($json);
+require_once("../config.inc.php");
+$config = json_decode($box_settings);
 
 // 2. Decrypt private key
 
@@ -25,7 +25,7 @@ $key = openssl_pkey_get_private($private_key, $passphrase);
 
 // 3. Create JWT assertion
 
-$authenticationUrl = 'https://api.box.com/oauth2/token';
+$authenticationUrl = $box_token_url;
 
 // On récupère le userId du compte via https://api.box.com/2.0/users/ et un token de dev
 $userId = '13545946182';

@@ -120,6 +120,9 @@ $t_recrutement = "impro_recrutement";
 $airtables_cards_url = "https://airtable.com/embed/".$airtables_cards."?backgroundColor=blue&viewControls=on";
 $airtables_form_url = "https://airtable.com/embed/".$airtables_form."?backgroundColor=blue";
 
+# Box URL
+$box_token_url = 'https://api.box.com/oauth2/token';
+
 if ($debug)
 {
 	error_reporting(E_ALL);
