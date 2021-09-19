@@ -40,6 +40,7 @@ if ($nb_prochains == 0)
 		$photoEvenement = $sPhotoEvenement.$id.".jpg";
 		$photoCategorie = $sPhotoCategorie.$cid.".jpg";
 		$photoLieu = $sPhotoLieuRelDir.$id_lieu.".jpg";
+		echo "<a href=\"?p=reservation&id_spectacle=".$id."\">\n";
 		if ( file_exists($photoEvenement) ) {
 			echo "<img src=\"$photoEvenement\" class=\"img-responsive hvr-rotate\" />\n";
 		}
@@ -49,6 +50,7 @@ if ($nb_prochains == 0)
 		elseif( file_exists($photoCategorie) ) {
 			echo "<img src=\"$photoCategorie\" class=\"img-responsive hvr-rotate\" />\n";
 		}
+		echo "</a>";
 		echo "</div>";
 		echo "<div class=\"col-md-8\">";
 		if ($commentaire) {echo "<div class=\"well\">$commentaire</div>\n";}
