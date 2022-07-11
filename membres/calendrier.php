@@ -34,7 +34,7 @@ else {
         ?>
 
         <div class="embed-responsive embed-responsive-4by3">
-          <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4AttoYcGZbi2KFrrpe7mgqLQijHegATDS_cpAqBlNI6giBUdweHssnKBHSmd4gyU5MuLrpE9t7pQB/pubhtml?gid=1438577895&single=true&widget=true&headers=false"></iframe>
+          <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4AttoYcGZbi2KFrrpe7mgqLQijHegATDS_cpAqBlNI6giBUdweHssnKBHSmd4gyU5MuLrpE9t7pQB/pubhtml?gid=1358985015&single=true"></iframe>
         </div>
 
 	<?
