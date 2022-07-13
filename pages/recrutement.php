@@ -76,7 +76,7 @@ if ( $action === "inscription" ) {
 <p>Tu recevras un mail dans 1 min 13s qui te donnera toutes les informations nécessaires. A partir de 1:14, tu peux vérifier tes spams ;-)</p>
 <p>Résumé des détails pratiques :
 <ul>
-<li>Session de recrutement : jeudi 3 septembre et jeudi 10 septembre au collège Jean Jaurès.</li>
+<li>Session de recrutement : jeudi 8 septembre et jeudi 15 septembre au collège Jean Jaurès.</li>
 <li>Entraînements les jeudis soirs de 20h à 22h à Villeurbanne (collège Jean Jaurès).</li>
 <li>Spectacles dans différents bars et salles de Lyon et certains déplacements dans l'année.</li>
 <li>Cotisation 225 euros l'année.</li>
@@ -99,7 +99,7 @@ Parce que tu aimes les challenges, jouer différents types de spectacles dans di
 Parce que tu es motivé(e) pour t'impliquer dans le fonctionnement de la troupe et investir tous les postes liés à un spectacle (joueur, régie, communication, MC, caisse, ...) !<br />
 Parce que tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration avec une quinzaine de nouveaux amis ne te fait pas peur !</p>
 <p>Alors, IMPROCITE est faite pour toi !<br />
-Pour participer à nos deux séances de recrutement les jeudis 3 et 10 septembre 2020, 20h-22h à Villeurbanne, il suffit de remplir le formulaire ci-dessous.
+Pour participer à nos deux séances de recrutement les jeudis 8 et 15 septembre 2022, 20h-22h à Villeurbanne, il suffit de remplir le formulaire ci-dessous.
 </p>
   </div>
 </div>
