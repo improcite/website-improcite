@@ -71,7 +71,7 @@ else {
             		<th data-field="telephone" data-sortable="true" data-editable="true">Téléphone</th>
             		<th data-field="mail" data-sortable="true" data-editable="true">E-mail</th>
             		<th data-field="adresse" data-sortable="true" data-editable="true">Adresse</th>
-            		<th data-field="date" data-sortable="true">Date</th>
+            		<th data-field="datenaissance" data-sortable="true">Date de naissance</th>
         		</tr>
 			</thead>
 		</table>
@@ -104,14 +104,13 @@ echo " var data = [";
 
 		while ($row = mysql_fetch_array($recrutement_resultat, MYSQL_ASSOC)) {
 
-			$date = substr($row["date"],8,2) . "/" . substr($row["date"],5,2) . "/" . substr($row["date"],0,4);
 			echo "{\n";
 			echo "\"id\" : ".json_encode($row["id"]).",\n";
 			echo "\"nom\" : ".json_encode($row["nom"]." ".$row["prenom"]).",\n";
 			echo "\"telephone\" : ".json_encode($row["telephone"]).",\n";
 			echo "\"mail\" : ".json_encode($row["mail"]).",\n";
 			echo "\"adresse\" : ".json_encode($row["adresse"]).",\n";
-			echo "\"date\" : ".json_encode($date).",\n";
+			echo "\"datenaissance\" : ".json_encode($row["datenaissance"]).",\n";
 			echo "\"source\" : ".json_encode($row["source"]).",\n";
 			echo "\"experience\" : ".json_encode($row["experience"]).",\n";
 			echo "\"envie\" : ".json_encode($row["envie"]).",\n";
