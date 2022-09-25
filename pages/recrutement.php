@@ -1,6 +1,10 @@
 <h1>Participer au recrutement</h1>
 
-<?php 
+<?php
+
+# Recrutement terminé
+echo "<h2>Malheureusement notre recrutement est fermé.</h2>\n";
+return;
 
 # On verifie l'action
 $action = getp("action");
