@@ -32,7 +32,7 @@ include_once("secrets.inc.php");
 // 17 = 2021-2022
 // 18 = 2022-2023
 // 19 = 2023-2024
-$iCurrentSaisonNumber = 18;
+$iCurrentSaisonNumber = 19;
 
 /* La même chose, mais en puissance de 2*/
 // 1 = 2004-2005
