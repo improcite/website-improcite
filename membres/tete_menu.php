@@ -16,9 +16,6 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="<?=(($baseUri == "calendrier.php")?'active':'')?>">
-                  <a href="calendrier.php"><i class="glyphicon glyphicon-calendar"></i> Calendrier</a>
-                </li>
                 <li class="<?=(($baseUri == "membres.php")?'active':'')?>">
                   <a href="membres.php"><i class="glyphicon glyphicon-th-list"></i> Membres</a>
                 </li>
