@@ -62,6 +62,7 @@ $saisonAdminString = "2004-2005,2005-2006,2006-2007,2007-2008,2008-2009,2009-201
 
 /* Numero de categorie pour les entrainements */
 $category_train = 1;
+$categories_train = array('1', '2', '5', '240', '17', '248', '10', '11');
 
 /* Numero de categorie OMERTA */
 $category_omerta = 4;
