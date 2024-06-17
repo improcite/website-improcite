@@ -96,14 +96,16 @@ else
 	<div id="menu">
 	
 		<? $aMenuItems = array(
-			"impro" => "L'impro"
+			"recrutement" => "On recrute !"
+			, "impro" => "L'impro"
 			, "agenda" => "L'agenda"
 			, "comediens" => "Comédiens"
 			, "contact" => "Contact"
 		); 
 		?>
 		<? $aMenuIcons = array(
-			"impro" => "info-circle"
+			"recrutement" => "star"
+			, "impro" => "info-circle"
 			, "agenda" => "calendar"
 			, "comediens" => "users"
 			, "contact" => "envelope"
