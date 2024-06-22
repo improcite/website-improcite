@@ -210,7 +210,13 @@ $sColumnHeader .= "</tr>";
 # Affichage des evenements
 # Seulement pour le mois en cours
 $filtredate = "date>'".$year.$month."01000000' AND date<'".$year.$month."31235959'";
-$sWhereTrain = $bDisplayTrain ? " AND e.categorie = $category_train " : " AND e.categorie <> $category_train ";
+$size_array_train = sizeof($categories_train);
+$sWhereTrain = $bDisplayTrain ? " AND ( " : " AND " ;
+for( $i=0; $i < $size_array_train; $i++ ) {
+    $sWhereTrain .= $bDisplayTrain ? " e.categorie = ".$categories_train[$i] : " e.categorie <> ".$categories_train[$i];
+    if ($i <> ($size_array_train -1)) { $sWhereTrain .= $bDisplayTrain ? " OR " : " AND " ; }
+}
+$sWhereTrain .= $bDisplayTrain ? " ) " : " " ;
 $sSQL = "SELECT e.id as id, l.nom as lnom, c.nom as nom, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs "
 		."FROM $t_eve e, $t_cat c, $t_lieu l "
 		."WHERE e.categorie=c.id AND $filtredate AND e.lieu=l.id $sWhereTrain"
