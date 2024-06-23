@@ -22,4 +22,3 @@
 </head>
 <body>
     <div class="container vh-100">
-    <div class="text-center"><img src="/assets/images/photo-header.png" class="w-100 img-fluid my-2" /></div>
