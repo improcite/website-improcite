@@ -141,5 +141,7 @@ else
 	error_reporting(0);
 }
 
+# Timezone
+$date_timezone = "Europe/Paris";
 
 ?>

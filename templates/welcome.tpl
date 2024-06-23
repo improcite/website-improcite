@@ -17,6 +17,8 @@
       <div class="col-md-8">
         <div class="card-body">
         <h5 class="card-title">{$dates.$date_id.nom}</h5>
+        <p class="card-text"><i class="fa fa-calendar-days"></i> {$dates.$date_id.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"}</p>
+        <p class="card-text"><i class="fa fa-location-dot"></i> {$dates.$date_id.lnom}</p>
         <p class="card-text">{$dates.$date_id.ecommentaire}</p>
         </div>
       </div>

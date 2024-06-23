@@ -5,6 +5,7 @@ use Smarty\Smarty;
 
 # Chargement de la configuration
 require_once("config.inc.php");
+date_default_timezone_set($date_timezone);
 
 # Messages d'erreur
 error_reporting(0);
