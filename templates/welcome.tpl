@@ -1,7 +1,9 @@
-<div class="text-center"><img src="/assets/images/photo-header.png" class="w-100 img-fluid my-2" /></div>
-
-<div class="alert alert-info text-center fs-5 fw-medium" role="alert">
-  Bienvenue sur le site d'Improcité, troupe amatrice d'improvisation théâtrale depuis 2003&nbsp;!
+<div class="card text-white mb-3">
+  <img src="/assets/images/photo-header.png" class="card-img" />
+  <div class="card-img-overlay">
+    <h2 class="card-title">Bienvenue sur le site d'Improcité</h2>
+    <p class="card-text fs-5">Troupe amatrice d'improvisation théâtrale depuis 2003&nbsp;!</p>
+  </div>
 </div>
 
 {if count($dates)}

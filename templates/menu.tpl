@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg sticky-top bg-black shadow" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg sticky-top bg-black shadow container" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><img src="/assets/images/favicon-improcite-fond.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
