@@ -11,10 +11,10 @@
         </li>
       </ul>
       <ul class="navbar-nav navbar-right">
-	    <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" aria-current="page" href="https://www.facebook.com/improcite" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
         </li>
-		<li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="https://www.instagram.com/improcite/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
         </li>
       </ul>
