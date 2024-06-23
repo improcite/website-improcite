@@ -7,24 +7,7 @@
 {if count($dates)}
 <div class="row">
 {for $date_id = 0 to count($dates)-1}
-  <div class="col-md-6">
-
-    <div class="card mb-3">
-      <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{$dates.$date_id.photo}" class="img-fluid rounded-start" alt="{$dates.$date_id.nom}"/>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-        <h5 class="card-title">{$dates.$date_id.nom}</h5>
-        <p class="card-text"><small class="text-body-secondary"><i class="fa fa-calendar-days"></i> {$dates.$date_id.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"} | <i class="fa fa-location-dot"></i> {$dates.$date_id.lnom}</small></p>
-        <p class="card-text">{$dates.$date_id.ecommentaire}</p>
-        </div>
-      </div>
-      </div>
-    </div>
-
-  </div>
+{include file="date.tpl" date=$dates.$date_id}
 {/for}
 </div>
 {/if}
