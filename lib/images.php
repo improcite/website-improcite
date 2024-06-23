@@ -13,3 +13,21 @@ function getPhotoEvenement($id_evenement, $id_lieu, $id_categorie) {
 
     return $photo;
 }
+
+function getPhotoMembre($id_membre, $id_saison) {
+
+    $photo = "/assets/images/photo_membre_defaut.jpg";
+
+    $bit_saison = pow(2,intval($id_saison));
+    $photoSaison = "/photos/comediens/".$bit_saison."/".$id_membre.".jpg";
+    $photoBase = "/photos/comediens/".$id_membre.".jpg";
+
+    if (file_exists(".$photoSaison")) { $photo = $photoSaison; }
+    if (file_exists(".$photoBase")) { $photo = $photoBase; }
+
+    return $photo;
+}
+
+function photo_membre($params, $samrty) {
+    return getPhotoMembre($params['id_membre'], $params['id_saison']);
+}

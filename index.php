@@ -32,5 +32,7 @@ if (file_exists($page) == false)
 # Template
 $smarty = new Smarty();
 $smarty->assign('p',$p);
+$smarty->assign('id_saison',$iCurrentSaisonNumber);
+$smarty->registerPlugin("function","photo_membre","photo_membre");
 require_once($page);
 $smarty->display('index.tpl');
