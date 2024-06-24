@@ -27,7 +27,3 @@ function getPhotoMembre($id_membre, $id_saison) {
 
     return $photo;
 }
-
-function photo_membre($params, $samrty) {
-    return getPhotoMembre($params['id_membre'], $params['id_saison']);
-}

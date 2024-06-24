@@ -1,7 +1,7 @@
 <?php 
 
 function getUserMinimalInfos($mysqli, $table, $id) {
-    $query = $mysqli->query("SELECT prenom, rights FROM $table WHERE id=$id");
+    $query = $mysqli->query("SELECT prenom, nom, rights FROM $table WHERE id=$id");
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
