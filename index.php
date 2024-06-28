@@ -41,6 +41,7 @@ $smarty->assign('table_comediens',$table_comediens);
 $smarty->registerPlugin("function","photo_membre","photo_membre");
 $smarty->registerPlugin("function","get_membre","get_membre");
 $smarty->registerPlugin("function","get_membre_min","get_membre_min");
+$smarty->registerPlugin("function","get_saison_string","get_saison_string");
 
 require_once($page);
 

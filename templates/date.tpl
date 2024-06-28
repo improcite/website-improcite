@@ -1,6 +1,6 @@
   <div class="col-lg-6">
 
-    <div class="card mb-3">
+    <div class="card mb-3 shadow">
       <div class="row g-0">
       <div class="col-sm-5 text-center">
         <img src="{$date.photo}" class="img-fluid rounded-start" alt="{$date.nom}"/>

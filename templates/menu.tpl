@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/?p=agenda"><i class="fa fa-calendar"></i> Agenda</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/?p=equipe"><i class="fa fa-users"></i> Équipe</a>
+        </li>
       </ul>
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
