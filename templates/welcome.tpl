@@ -6,6 +6,12 @@
   </div>
 </div>
 
+<div class="alert alert-success">
+<i class="fa-solid fa-circle-question"></i> Improcité est une troupe amatrice d'improvisation théâtrale de Lyon et Villeurbanne.
+Elle a été créée en 2003 et continue son aventure depuis&nbsp;!<br />
+<i class="fa fa-calendar"></i> Vous pouvez nous retrouver lors de nos nombreux spectacles, consultez notre <a href="?p=agenda">agenda</a> pour en savoir plus&nbsp;!
+</div>
+
 {if count($dates)}
 <div class="row">
 {for $date_id = 0 to count($dates)-1}
