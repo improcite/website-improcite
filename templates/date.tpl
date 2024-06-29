@@ -3,7 +3,7 @@
     <div class="card mb-3 shadow">
       <div class="row g-0">
       <div class="col-sm-5 text-center">
-        <img src="{$date.photo}" class="img-fluid rounded-start" alt="{$date.nom}"/>
+        <a href="/?p=evenement&id={$date.id}"><img src="{$date.photo}" class="img-fluid rounded-start" alt="{$date.nom}"/></a>
       </div>
       <div class="col-sm-7">
         <div class="card-body">

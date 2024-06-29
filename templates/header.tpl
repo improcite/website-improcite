@@ -16,6 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/vendor/fortawesome/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/leaflet/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/improcite.css" />
 	<link rel="icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
 	<link rel="shortcut icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
