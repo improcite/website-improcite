@@ -25,6 +25,15 @@ function getUsersSaison($mysqli, $table, $id_saison) {
     return $query;
 }
 
+function getUsersWithRights($mysqli, $table, $right, $id_saison) {
+    $bit_saison = pow(2, $id_saison);
+    $query = $mysqli->query("SELECT id, nom, prenom, email, portable FROM $table WHERE saison & $bit_saison AND rights LIKE '%$right%'ORDER BY prenom");
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $only_public=false) {
     $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs"
         ." FROM $t_eve e, $t_cat c, $t_lieu l "
