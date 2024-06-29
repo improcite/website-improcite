@@ -1,4 +1,5 @@
 <h1 class="text-center my-3"><i class="fa fa-handshake"></i> Recrutement</h1>
+<div class="text-center"><img src="/assets/images/recrutement.png" class="img-fluid" /></div>
 <p class="text-center my-3 fs-5">Rejoins la famille Improcité !</p>
 
 {if $action eq "presentation"}
