@@ -23,8 +23,9 @@
     <p class="card-text">
     Vous devrez participer à nos deux sessions de recrutement :
     <ul>
-      <li>Jeudi 5 septembre 2024 à 20h</li>
-      <li>Jeudi 12 septembre 2024 à 20h</li>
+    {foreach $dates_recrutement as $date_recrutement}
+      <li>{$date_recrutement}</li>
+    {/foreach}
     </ul>
     Le lieu de rendez-vous est à la salle Théodore (8 rue Saint Théodore - 69003 Lyon)
     </p>
