@@ -1,3 +1,2 @@
 User-agent: *
 Disallow: /membres/
-Sitemap: http://www.improcite.com/sitemap.xml
