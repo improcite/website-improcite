@@ -16,6 +16,15 @@ function getUserInfos($mysqli, $table, $id) {
     return $query->fetch_assoc();
 }
 
+function getUserWithPassword($mysqli, $table, $login, $password, $id_saison) {
+    $bit_saison = pow(2, $id_saison);
+    $query = $mysqli->query("SELECT id, prenom, nom, rights FROM $table WHERE login='$login' AND password='$md5password' AND saison & $bit_saison");
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query->fetch_assoc();
+}
+
 function getUsersSaison($mysqli, $table, $id_saison) {
     $bit_saison = pow(2, $id_saison);
     $query = $mysqli->query("SELECT * FROM $table WHERE saison & $bit_saison ORDER BY prenom");
