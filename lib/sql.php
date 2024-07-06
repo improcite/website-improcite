@@ -18,7 +18,7 @@ function getUserInfos($mysqli, $table, $id) {
 
 function getUserWithPassword($mysqli, $table, $login, $password, $id_saison) {
     $bit_saison = pow(2, $id_saison);
-    $query = $mysqli->query("SELECT id, prenom, nom, rights FROM $table WHERE login='$login' AND password='$md5password' AND saison & $bit_saison");
+    $query = $mysqli->query("SELECT id, prenom, nom, rights FROM $table WHERE login='$login' AND password='$password' AND saison & $bit_saison");
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }

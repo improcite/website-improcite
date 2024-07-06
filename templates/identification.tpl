@@ -1,5 +1,11 @@
 <h1 class="text-center my-3"><i class="fa fa-mask"></i> Espace réservé aux lapins <i class="fa fa-carrot"></i></h1>
 
+{if $error == "invalid_credentials" }
+<div class="alert alert-danger" role="alert">
+Authentification invalide, n'essaye pas de nous carotter !
+</div>
+{/if}
+
 <div class="row mt-5 pb-3">
 <div class="col-md-3"></div>
 <div class="col-md-6">

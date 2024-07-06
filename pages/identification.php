@@ -29,13 +29,15 @@ if ($action == "login") {
 
 $auth = getUserWithPassword($mysqli, $table_comediens, $login, $md5password, $iCurrentSaisonNumber);
 
-if ($auth["id"]) {
+if ($auth && $auth["id"]) {
     $_SESSION[ "id_impro_membre" ] = $auth["id"];
     $_SESSION[ "prenom_impro_membre" ] = $auth["prenom"];
     $_SESSION[ "nom_impro_membre" ] = $auth["nom"];
     $_SESSION[ "rights_impro_membre" ] = $auth["rights"];
 
     header("Location: $decodedURL");
+} else {
+    $smarty->assign('error','invalid_credentials');
 }
 
 $smarty->assign('action', $action);
