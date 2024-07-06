@@ -11,7 +11,7 @@ session_save_path('sessions');
 
 if (!isset ($_SESSION[ "id_impro_membre" ])) {
     # La session n'existe pas
-    @header("Location: identification.php?backURL=".base64_encode($_SERVER["REQUEST_URI"]));
+    @header("Location: /?p=identification&backURL=".base64_encode($_SERVER["REQUEST_URI"]));
     die(0);
 }
 
