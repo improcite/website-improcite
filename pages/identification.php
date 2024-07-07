@@ -10,6 +10,7 @@ $password = "";
 $md5password = "";
 $backURL = $_REQUEST['backURL'];
 $decodedURL = $backURL ? base64_decode($backURL) : "membres/index.php";
+$rememberme = 0;
 
 $action = $_POST["action"] ? $_POST["action"] : "form";
 
@@ -34,10 +35,15 @@ if ($auth && $auth["id"]) {
     $_SESSION[ "prenom_impro_membre" ] = $auth["prenom"];
     $_SESSION[ "nom_impro_membre" ] = $auth["nom"];
     $_SESSION[ "rights_impro_membre" ] = $auth["rights"];
-
+    if ($rememberme) {
+        setcookie('login', $login, time()+60*60*24*365);
+	    setcookie('md5password', $md5password, time()+60*60*24*365);
+    }
     header("Location: $decodedURL");
-} else {
+} else if($login) {
     $smarty->assign('error','invalid_credentials');
+    setcookie('login', '', time()+60*60*24*365);
+    setcookie('md5password', '', time()+60*60*24*365);
 }
 
 $smarty->assign('action', $action);
