@@ -1,7 +1,7 @@
 <?php
 
 function photo_membre($params, $smarty) {
-    return getPhotoMembre($params['id_membre'], $params['id_saison']);
+    return getPhotoMembre($params['id_membre'], $params['id_saison'], $params['path']);
 }
 
 function get_membre($params, $smarty) {
