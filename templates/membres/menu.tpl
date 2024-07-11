@@ -4,8 +4,8 @@
                 </a>
                 <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="index.php?p=fichiers" class="nav-link px-sm-0 px-2">
-                            <i class="fs-5 fa fa-file"></i><span class="ms-1 d-none d-sm-inline">Fichiers</span>
+                        <a href="index.php?p=fichiers" class="nav-link px-sm-0 px-2 link-light">
+                            <span class="ms-1 d-none d-sm-inline"><i class="fs-5 fa fa-file me-3"></i>Fichiers</span>
                         </a>
                     </li>
                 </ul>
@@ -15,11 +15,12 @@
                         <span class="d-none d-sm-inline mx-1">{$membre.prenom}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Mon compte</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa fa-user-ninja me-2"></i>Mon compte</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sortir</a></li>
+                        <li><a class="dropdown-item" href="../"><i class="fa fa-map me-2"></i>Retour au site public</a></li>
+                        <li><a class="dropdown-item" href="../?p=sortie"><i class="fa fa-door-open me-2"></i>Se déconnecter</a></li>
                     </ul>
                 </div>
             </div>
