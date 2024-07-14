@@ -1,12 +1,18 @@
         <div id="sidebar"
              class="d-flex flex-column
                     flex-shrink-0
-                    p-3 bg-dark
+                    px-5 py-3 bg-dark
                     text-white offcanvas-md offcanvas-start">
-            <a href="index.php"
-               class="navbar-brand"><i class="fa fa-home me-2"></i>Accueil
-            </a><hr>
+            <a href="index.php"><img class="img-fluid my-3 mx-auto d-block" src="/assets/images/logo-lapin-improcite-200px.png" alt="Logo Improcite" /></a>
+            <p class="text-center">Saison {get_saison_string id_saison={$id_saison}}</p>
+            <hr/>
             <ul class="mynav nav nav-pills flex-column mb-auto">
+                <li class="nav-item mb-1">
+                    <a href="index.php">
+                        <i class="fa fa-home"></i>
+                        Accueil
+                    </a>
+                </li>
                 <li class="nav-item mb-1">
                     <a href="index.php?p=fichiers">
                         <i class="fa-regular fa-file"></i>
