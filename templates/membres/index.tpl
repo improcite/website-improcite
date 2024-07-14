@@ -1,14 +1,25 @@
 {include file="header.tpl"}
 
-<div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
 {include file="menu.tpl"}
-</div>
 
-<div class="col d-flex flex-column h-sm-100">
-  <main class="row overflow-auto">
-    <div class="col pt-4">
-    {include file="{$p}.tpl"}
-    </div>
-  </main>
+        <div class="bg-light flex-fill">
+            <div class="p-2 d-md-none d-flex text-white bg-dark">
+                <a href="#" class="text-white"
+                   data-bs-toggle="offcanvas"
+                   data-bs-target="#sidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+                <span class="ms-3">Espace Membres</span>
+            </div>
+            <div class="p-4">
+                <div class="row">
+                    <div class="col">
+                    {include file="{$p}.tpl"}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
 
 {include file="footer.tpl"}
