@@ -45,5 +45,23 @@
   </div>
 </div>
 
+<div class="card mb-3">
+  <div class="card-header text-center"><h4>Ton parcours</h4></div>
+  <div class="card-body row">
+    {assign var=items value=['debut' => "Début dans l'improvisation", 'envie' => "Comment as-tu eu envie de faire de l'improvisation&nbsp;?", 'apport' => "Que t'apporte l'improvisation ?", 'debutimprocite' => "Ton arrivée à Improcité ?", 'improcite' => "Pour toi Improcité c'est quoi ?",'qualite' => "Qualité en impro", 'defaut' => "Défaut en impro"]}
+    {foreach $items as $item => $label}
+    <div class="col-md-4">
+      <div class="mb-2 me-2 p-3 rounded border border-secondary">
+      <h5>{$label}</h5>
+      <p>{$infos.$item}</p>
+      </div>
+    </div>
+   {/foreach}
+  </div>
+</div>
+
+<div id="actions">
+  <a href="/index.php?p=membre&id={$membre.id}" target="_blank" class="btn btn-lg btn-primary" type="button">Voir sur le site public</a>
+</div>
 
 {/if}

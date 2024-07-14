@@ -1,7 +1,7 @@
 <h3><i class="fa fa-file"></i> Fichiers</h3>
 <hr />
 
-<div class="boxExplorer"></div>
+<div class="boxExplorer h-100"></div>
 
 {literal}
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Intl"></script>
