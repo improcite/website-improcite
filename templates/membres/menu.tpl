@@ -15,13 +15,13 @@
                 </li>
                 <li class="nav-item mb-1">
                     <a href="index.php?p=membres">
-                        <i class="fa-regular fa-users"></i>
+                        <i class="fa fa-users"></i>
                         Membres
                     </a>
                 </li>
                 <li class="nav-item mb-1">
                     <a href="index.php?p=fichiers">
-                        <i class="fa-regular fa-file"></i>
+                        <i class="fa fa-file"></i>
                         Fichiers
                     </a>
                 </li>
