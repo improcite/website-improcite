@@ -19,6 +19,12 @@
                         Membres
                     </a>
                 </li>
+                <li class="nav-item mb-1">
+                    <a href="index.php?p=dispos">
+                        <i class="fa fa-calendar-check"></i>
+                        Disponibilités
+                    </a>
+                </li>
                 <hr />
                 <li class="nav-item mb-1">
                     <a href="index.php?p=fichiers">
