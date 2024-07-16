@@ -1,3 +1,5 @@
+<link href="https://cdn01.boxcdn.net/platform/elements/11.0.2/fr-FR/explorer.css" rel="stylesheet" type="text/css" />
+
 <h3><i class="fa fa-file"></i> Fichiers</h3>
 <hr />
 

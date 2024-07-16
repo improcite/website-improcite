@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="/vendor/fortawesome/font-awesome/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="/assets/leaflet/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/membres.css" />
-    <link href="https://cdn01.boxcdn.net/platform/elements/11.0.2/fr-FR/explorer.css" rel="stylesheet" type="text/css" />
 	<link rel="icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
 	<link rel="shortcut icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
 </head>
