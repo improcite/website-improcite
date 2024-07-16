@@ -21,7 +21,7 @@
       <td>{$dates.$date_id.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"}</td>
       <td>{$dates.$date_id.nom}</td>
       <td>{$dates.$date_id.lnom}</td>
-      <td><span title="{$dates.$date_id.commentaire}">{$dates.$date_id.description|truncate:60}</span></td>
+      <td><span title="{$dates.$date_id.commentaire}">{$dates.$date_id.commentaire|truncate:60}</span></td>
       <td class="text-center">
       {if $dates.$date_id.dispo_pourcent == 0}
       <span class="badge py-2 px-3 text-bg-danger"><i class="fa fa-circle-xmark me-3"></i>Non</span>
