@@ -60,6 +60,7 @@ $smarty->registerPlugin("function","get_membre","get_membre");
 $smarty->registerPlugin("function","get_membre_min","get_membre_min");
 $smarty->registerPlugin("function","get_saison_string","get_saison_string");
 $smarty->registerPlugin("function","get_dispo_user","get_dispo_user");
+$smarty->registerPlugin("function","get_selection_user","get_selection_user");
 
 require_once($page);
 

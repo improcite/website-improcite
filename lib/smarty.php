@@ -25,3 +25,7 @@ function get_dispo_user($params, $smarty) {
     $infos = getEventDisposUser($params['mysqli'], $params['t_dispo'], $params['id_eve'] , $params['id']);
     $smarty->assign($params['infos'], $infos);
 }
+
+function get_selection_user($params, $smarty) {
+    return getEventSelectionUser($params['mysqli'], $params['t_eve'], $params['id_eve'] , $params['id']);
+}
