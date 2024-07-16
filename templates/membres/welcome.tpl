@@ -19,7 +19,7 @@
       <td>{$dates.$date_id.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"}</td>
       <td>{$dates.$date_id.nom}</td>
       <td>{$dates.$date_id.lnom}</td>
-      <td>{if $dates.$date_id.ecommentaire}{$dates.$date_id.ecommentaire|truncate:50}{else}{$dates.$date_id.description|truncate:50}{/if}</td>
+      <td><span title="{$dates.$date_id.commentaire}">{$dates.$date_id.description|truncate:60}</span></td>
       {if $dates.$date_id.dispo_pourcent == 0}
       <td class="text-bg-danger"><i class="fa fa-circle-xmark me-2"></i> Non</td>
       {else if $dates.$date_id.dispo_pourcent == 50}

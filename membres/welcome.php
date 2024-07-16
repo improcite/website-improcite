@@ -13,6 +13,8 @@ foreach ($result as $row) {
     } else {
         $row['dispo_pourcent'] = "50";
     }
+    // Commentaire
+    $row['commentaire'] = $row['ecommentaire'] ? $row['ecommentaire'] : $row['description'];
     $dates[] = $row;
 }
 
