@@ -20,3 +20,8 @@ function get_saison_string($params, $smarty) {
     $annee_fin = 2005 + $id_saison;
     return $annee_debut." - ".$annee_fin;
 }
+
+function get_dispo_user($params, $smarty) {
+    $infos = getEventDisposUser($params['mysqli'], $params['t_dispo'], $params['id_eve'] , $params['id']);
+    $smarty->assign($params['infos'], $infos);
+}

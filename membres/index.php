@@ -51,12 +51,15 @@ $smarty->assign('p',$p);
 $smarty->assign('id_saison',$iCurrentSaisonNumber);
 $smarty->assign('mysqli',$mysqli);
 $smarty->assign('table_comediens',$table_comediens);
+$smarty->assign('t_dispo',"impro_dispo");
+$smarty->assign('t_eve',$t_eve);
 $smarty->assign('membre',$membre);
 
 $smarty->registerPlugin("function","photo_membre","photo_membre");
 $smarty->registerPlugin("function","get_membre","get_membre");
 $smarty->registerPlugin("function","get_membre_min","get_membre_min");
 $smarty->registerPlugin("function","get_saison_string","get_saison_string");
+$smarty->registerPlugin("function","get_dispo_user","get_dispo_user");
 
 require_once($page);
 

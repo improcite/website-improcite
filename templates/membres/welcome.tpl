@@ -3,6 +3,7 @@
 <h3 class="mb-3"><i class="fa fa-calendar me-2"></i>Prochaines dates</h3>
 
 {if count($dates)}
+<div class="table-responsive">
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -37,4 +38,5 @@
 {/for}
   </tbody>
 </table>
+</div>
 {/if}

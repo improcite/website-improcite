@@ -55,3 +55,14 @@ $smarty->assign('month_after', $month_after);
 $smarty->assign('year', $year);
 $smarty->assign('year_before', $year_before);
 $smarty->assign('year_after', $year_after);
+
+// Dates du mois
+
+$dates = [];
+$result = getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, 0, 0, false, $month, $year);
+
+foreach ($result as $row) {
+    $dates[] = $row;
+}
+
+$smarty->assign('dates',$dates);
