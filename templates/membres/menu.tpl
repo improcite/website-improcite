@@ -19,10 +19,17 @@
                         Membres
                     </a>
                 </li>
+                <hr />
                 <li class="nav-item mb-1">
                     <a href="index.php?p=fichiers">
                         <i class="fa fa-file"></i>
                         Fichiers
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="index.php?p=exercices">
+                        <i class="fa fa-book"></i>
+                        Exercices
                     </a>
                 </li>
 
