@@ -76,6 +76,23 @@ function getEventDisposUser($mysqli, $t_dispo, $id_eve, $id) {
     return $query->fetch_assoc();
 }
 
+function getEventSelectionUser($mysqli, $t_eve, $id_eve, $id) {
+    $query = $mysqli->query("SELECT joueurs,coach,mc,arbitre,regisseur,caisse,animateurs FROM $t_eve WHERE id=$id_eve");
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    $infos = $query->fetch_assoc();
+
+    if ( in_array( $id, explode(';', $infos['joueurs']) ) ) { return "joueur"; }
+    if ( $infos['coach'] == $id ) { return "coach"; }
+    if ( $infos['mc'] == $id ) { return "mc"; }
+    if ( $infos['arbitre'] == $id ) { return "arbitre"; }
+    if ( $infos['regisseur'] == $id ) { return "regisseur"; }
+    if ( $infos['caisse'] == $id ) { return "caisse"; }
+    if ( in_array( $id, explode(';', $infos['animateurs']) ) ) { return "animateur"; }
+    return;
+}
+
 function addInscriptionRecrutement($mysqli, $t_recrutement, $id_saison, $data) {
     $insert = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date, saison) ";
     $insert .= "VALUES ('".$data['nom']."','".$data['prenom']."','".$data['datenaissance']."','".$data['adresse']."','".$data['mail']."','".$data['telephone']."','".$data['source']."','".$data['experience']."','".$data['envie']."','".$data['disponibilite']."','".date('Y-m-d H:i:s')."','".$id_saison."')";
