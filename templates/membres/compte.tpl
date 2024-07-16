@@ -1,4 +1,7 @@
-<h3><i class="fa fa-user"></i> Mon compte</h3>
+<div class="clearfix">
+  <h3 class="float-start"><i class="fa fa-user"></i> Mon compte</h3>
+  <a href="/index.php?p=membre&id={$membre.id}" target="_blank" class="btn btn-primary float-end" type="button"><i class="fa fa-globe me-2"></i>Voir sur le site public</a>
+</div>
 <hr />
 
 
@@ -59,9 +62,4 @@
    {/foreach}
   </div>
 </div>
-
-<div id="actions">
-  <a href="/index.php?p=membre&id={$membre.id}" target="_blank" class="btn btn-lg btn-primary" type="button">Voir sur le site public</a>
-</div>
-
 {/if}
