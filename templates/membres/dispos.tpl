@@ -28,22 +28,37 @@
       {assign var="role" value={get_selection_user mysqli=$mysqli t_eve=$t_eve id_eve=$date.id id=$joueur.id}}
       <td class="text-center">
       {if !$infos or $infos.dispo_pourcent==50}
-        <span class="badge py-2 px-4 mb-2 text-bg-light">
+        <span class="badge py-2 px-4 mb-2 text-bg-light"{if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
         {if $infos.commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
         {else}
         <i class="fa fa-circle-question me-3"></i>
         {/if}
         ???
-       </span>
+        </span>
         {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa fa-star me-3"></i>{$role}</span>{/if}
       {else if $infos.dispo_pourcent==100}
-        <span class="badge py-2 px-3 mb-2 text-bg-success"><i class="fa fa-circle-check me-3"></i>Oui</span>
+        <span class="badge py-2 px-3 mb-2 text-bg-success" {if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
+        {if $infos.commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-check me-3"></i>
+        {/if}
+        Oui
+        </span>
         {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa-solid fa-star me-3"></i>{$role}</span>{/if}
       {else if $infos.dispo_pourcent==0}
-        <span class="badge py-2 px-3 mb-2 text-bg-danger"><i class="fa fa-circle-xmark me-3"></i>Non</span>
+        <span class="badge py-2 px-3 mb-2 text-bg-danger" {if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
+        {if $infos.commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-xmark me-3"></i>
+        {/if}
+        Non
+        </span>
         {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa-solid fa-star me-3"></i>{$role}</span>{/if}
       {/if}
+      {include 'modal-dispo.tpl' idModal="dispo-{$date.id}-{$joueur.id}" date=$date membre_id=$joueur.id backURL="index.php?p=dispos&year={$year}&month={$month}"}
       </td>
       {/foreach}
     <tr>

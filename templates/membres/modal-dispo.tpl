@@ -10,14 +10,14 @@
         <h6>{$date.nom}</h6>
         <p>{$date.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"}<br />{$date.lnom}</p>
         
-        <input type="radio" class="btn-check" name="dispo_pourcent" id="dispo_0" autocomplete="off" value="0"{if $date.dispo_pourcent == 0} checked{/if}>
-        <label class="btn btn-danger" for="dispo_0"><i class="fa fa-circle-xmark me-3"></i>Non</label>
+        <input type="radio" class="btn-check" name="dispo_pourcent" id="dispo_0_{$date.id}_{$membre_id}" autocomplete="off" value="0"{if $date.dispo_pourcent == 0} checked{/if}>
+        <label class="btn btn-danger" for="dispo_0_{$date.id}_{$membre_id}"><i class="fa fa-circle-xmark me-3"></i>Non</label>
 
-        <input type="radio" class="btn-check" name="dispo_pourcent" id="dispo_50" autocomplete="off" value="50" {if $date.dispo_pourcent == 50 or !$date.dispo_pourcent} checked{/if}>
-        <label class="btn btn-light" for="dispo_50"><i class="fa fa-circle-question me-3"></i>Peut-être</label>
+        <input type="radio" class="btn-check" name="dispo_pourcent" id="dispo_50_{$date.id}_{$membre_id}" autocomplete="off" value="50" {if $date.dispo_pourcent == 50 or !$date.dispo_pourcent} checked{/if}>
+        <label class="btn btn-light" for="dispo_50_{$date.id}_{$membre_id}"><i class="fa fa-circle-question me-3"></i>Peut-être</label>
 
-        <input type="radio" class="btn-check" name="dispo_pourcent" id="dispo_100" autocomplete="off" value="100" {if $date.dispo_pourcent == 100} checked{/if}>
-        <label class="btn btn-success" for="dispo_100"><i class="fa fa-circle-check me-3"></i>Oui</label>
+        <input type="radio" class="btn-check" name="dispo_pourcent" id="dispo_100_{$date.id}_{$membre_id}" autocomplete="off" value="100" {if $date.dispo_pourcent == 100} checked{/if}>
+        <label class="btn btn-success" for="dispo_100_{$date.id}_{$membre_id}"><i class="fa fa-circle-check me-3"></i>Oui</label>
 
         <textarea name="dispo_commentaire" class="form-control my-4" placeholder="Une envie ou une excuse bidon ?">{$date.dispo_commentaire}</textarea>
 
