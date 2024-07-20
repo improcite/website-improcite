@@ -24,12 +24,13 @@
       <td><span title="{$dates.$date_id.commentaire}">{$dates.$date_id.commentaire|truncate:60}</span></td>
       <td class="text-center">
       {if $dates.$date_id.dispo_pourcent == 0}
-      <span class="badge py-2 px-3 text-bg-danger"><i class="fa fa-circle-xmark me-3"></i>Non</span>
+      <span role='button' class="badge py-2 px-3 text-bg-danger" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}"><i class="fa fa-circle-xmark me-3"></i>Non</span>
       {else if $dates.$date_id.dispo_pourcent == 50}
-      <span class="badge py-2 px-4 text-bg-light"><i class="fa fa-circle-question"></i></span>
+      <span role='button' class="badge py-2 px-4 text-bg-light" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}"><i class="fa fa-circle-question"></i></span>
       {else if $dates.$date_id.dispo_pourcent == 100}
-      <span class="badge py-2 px-3 text-bg-success"><i class="fa fa-circle-check me-3"></i>Oui</span>
+      <span role='button' class="badge py-2 px-3 text-bg-success" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}"><i class="fa fa-circle-check me-3"></i>Oui</span>
       {/if}
+      {include 'modal-dispo.tpl' idModal="dispo-{$dates.$date_id.id}-{$membre.id}" date=$dates.$date_id membre_id=$membre.id backURL="index.php?p=welcome"}
       </td>
       {if $dates.$date_id.selection}
       <td class="text-center">

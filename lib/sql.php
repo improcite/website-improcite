@@ -107,4 +107,13 @@ function addInscriptionRecrutement($mysqli, $t_recrutement, $id_saison, $data) {
     return $query;
 }
 
+function updateEventDispo($mysqli, $t_dispo, $id_eve, $id, $dispo_pourcent, $dispo_commentaire) {
+    $replace = "REPLACE INTO $t_dispo (id_spectacle, id_personne, dispo_pourcent, commentaire) VALUES ('$id_eve', '$id', '$dispo_pourcent', '$dispo_commentaire')";
+    $query = $mysqli->query($replace);
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 ?>
