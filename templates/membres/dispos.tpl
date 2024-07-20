@@ -58,7 +58,7 @@
         </span>
         {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa-solid fa-star me-3"></i>{$role}</span>{/if}
       {/if}
-      {include 'modal-dispo.tpl' idModal="dispo-{$date.id}-{$joueur.id}" date=$date membre_id=$joueur.id backURL="index.php?p=dispos&year={$year}&month={$month}"}
+      {include 'modal-dispo.tpl' idModal="dispo-{$date.id}-{$joueur.id}" date=$date dispo_pourcent=$infos.dispo_pourcent dispo_commentaire=$infos.commentaire membre_id=$joueur.id backURL="index.php?p=dispos&year={$year}&month={$month}"}
       </td>
       {/foreach}
     <tr>

@@ -51,7 +51,7 @@
         Oui
       </span>
       {/if}
-      {include 'modal-dispo.tpl' idModal="dispo-{$dates.$date_id.id}-{$membre.id}" date=$dates.$date_id membre_id=$membre.id backURL="index.php?p=welcome"}
+      {include 'modal-dispo.tpl' idModal="dispo-{$dates.$date_id.id}-{$membre.id}" date=$dates.$date_id dispo_pourcent=$dates.$date_id.dispo_pourcent dispo_commentaire=dates.$date_id.dispo_commentaire membre_id=$membre.id backURL="index.php?p=welcome"}
       </td>
       {if $dates.$date_id.selection}
       <td class="text-center">
