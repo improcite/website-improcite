@@ -19,17 +19,23 @@
   <tbody>
     {foreach from=$dates item=date}
     <tr>
-      <th>
-          {$date.unixdate|date_format:"%d/%m | %Hh%M"}<br />
-          <span class="fw-light">{$date.nom}</span><br />
-          <span class="fw-light fst-italic">{$date.lnom}</span>
+      <th data-bs-toggle="tooltip"  data-bs-html="true" data-bs-title="<span class='fw-light'>{$date.nom}</span><br /><span class='fw-light fst-italic'>{$date.lnom}</span>">
+          {$date.unixdate|date_format:"%d/%m"}<br />
+          {$date.unixdate|date_format:"%Hh%M"}
       </th>
       {foreach from=$joueurs item=joueur}
       {get_dispo_user mysqli=$mysqli t_dispo=$t_dispo id_eve=$date.id id=$joueur.id infos="infos"}
       {assign var="role" value={get_selection_user mysqli=$mysqli t_eve=$t_eve id_eve=$date.id id=$joueur.id}}
       <td class="text-center">
-      {if !$infos}
-        <span class="badge py-2 px-4 mb-2 text-bg-light"><i class="fa fa-circle-question"></i></span>
+      {if !$infos or $infos.dispo_pourcent==50}
+        <span class="badge py-2 px-4 mb-2 text-bg-light">
+        {if $infos.commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-question me-3"></i>
+        {/if}
+        ???
+       </span>
         {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa fa-star me-3"></i>{$role}</span>{/if}
       {else if $infos.dispo_pourcent==100}
         <span class="badge py-2 px-3 mb-2 text-bg-success"><i class="fa fa-circle-check me-3"></i>Oui</span>
