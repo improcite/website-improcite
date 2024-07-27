@@ -98,9 +98,9 @@ function getEventSelectionUser($mysqli, $t_eve, $id_eve, $id) {
 }
 
 function addInscriptionRecrutement($mysqli, $t_recrutement, $id_saison, $data) {
-    $insert = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date, saison) ";
-    $insert .= "VALUES ('".$data['nom']."','".$data['prenom']."','".$data['datenaissance']."','".$data['adresse']."','".$data['mail']."','".$data['telephone']."','".$data['source']."','".$data['experience']."','".$data['envie']."','".$data['disponibilite']."','".date('Y-m-d H:i:s')."','".$id_saison."')";
-    $query = $mysqli->query($insert);
+    $insert = "INSERT INTO $t_recrutement (nom, prenom, datenaissance, adresse, mail, telephone, source, experience, envie, disponibilite, date, saison) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    $values = array($data['nom'], $data['prenom'], $data['datenaissance'], $data['adresse'], $data['mail'], $data['telephone'], $data['source'], $data['experience'], $data['envie'], $data['disponibilite'], date('Y-m-d H:i:s'), $id_saison);
+    $query = $mysqli->execute_query($insert, $values);
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
