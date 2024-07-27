@@ -37,9 +37,9 @@
         {if $dates.$date_id.dispo_commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$dates.$date_id.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
         {else}
-        <i class="fa fa-circle-question"></i>
+        <i class="fa fa-circle-question me-3"></i>
         {/if}
-        Peut-être
+        ???
       </span>
       {else if $dates.$date_id.dispo_pourcent == 100}
       <span role='button' class="badge py-2 px-3 text-bg-success" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}">
