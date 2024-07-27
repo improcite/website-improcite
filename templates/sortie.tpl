@@ -4,7 +4,7 @@
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div class="alert alert-success" role="alert">
-      <i class="fa fa-check-circle"></i> Tu as bien été déconnecté !
+      <i class="fa fa-check-circle me-2"></i>Tu as bien été déconnecté !
     </div>
   </div>
   <div class="col-md-4"></div>

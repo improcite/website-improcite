@@ -13,7 +13,7 @@ Authentification invalide, n'essaye pas de nous carotter !
 <form method="post" action="/?p=identification">
 
   <div class="row mb-3">
-    <label for="inputLogin" class="col-sm-3 col-form-label">Identifiant</label>
+    <label for="inputLogin" class="col-sm-3 col-form-label">Identifiant ou adresse mail</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" id="inputLogin" name="login" required />
     </div>
