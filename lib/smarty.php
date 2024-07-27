@@ -27,5 +27,5 @@ function get_dispo_user($params, $smarty) {
 }
 
 function get_selection_user($params, $smarty) {
-    return getEventSelectionUser($params['mysqli'], $params['t_eve'], $params['id_eve'] , $params['id']);
+    return ucfirst(getEventSelectionUser($params['mysqli'], $params['t_eve'], $params['id_eve'] , $params['id']));
 }

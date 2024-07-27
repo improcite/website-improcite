@@ -55,7 +55,7 @@
       </td>
       {if $dates.$date_id.selection}
       <td class="text-center">
-      <span class="badge py-2 px-3 text-bg-secondary"><i class="fa-solid fa-star me-3"></i>{$dates.$date_id.selection}</span>
+      <span class="badge py-2 px-2 text-bg-secondary"><i class="fa-solid fa-star me-2"></i>{$dates.$date_id.selection}</span>
       </td>
       {else}
       <td></td>

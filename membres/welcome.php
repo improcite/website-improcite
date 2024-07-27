@@ -16,7 +16,7 @@ foreach ($result as $row) {
     // Commentaire
     $row['commentaire'] = $row['ecommentaire'] ? $row['ecommentaire'] : $row['description'];
     // Selection
-    $row['selection'] = getEventSelectionUser($mysqli, $t_eve, $row['id'], $membre['id']);
+    $row['selection'] = ucfirst(getEventSelectionUser($mysqli, $t_eve, $row['id'], $membre['id']));
     $dates[] = $row;
 }
 
