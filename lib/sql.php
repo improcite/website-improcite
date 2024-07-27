@@ -1,7 +1,7 @@
 <?php 
 
 function getUserMinimalInfos($mysqli, $table, $id) {
-    $query = $mysqli->query("SELECT id, prenom, nom, rights FROM $table WHERE id=$id");
+    $query = $mysqli->execute_query("SELECT id, prenom, nom, rights FROM $table WHERE id=?", array($id));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -9,7 +9,7 @@ function getUserMinimalInfos($mysqli, $table, $id) {
 }
 
 function getUserInfos($mysqli, $table, $id) {
-    $query = $mysqli->query("SELECT * FROM $table WHERE id=$id");
+    $query = $mysqli->execute_query("SELECT * FROM $table WHERE id=?", array($id));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -18,7 +18,7 @@ function getUserInfos($mysqli, $table, $id) {
 
 function getUserWithPassword($mysqli, $table, $login, $password, $id_saison) {
     $bit_saison = pow(2, $id_saison);
-    $query = $mysqli->query("SELECT id, prenom, nom, rights FROM $table WHERE login='$login' AND password='$password' AND saison & $bit_saison");
+    $query = $mysqli->execute_query("SELECT id, prenom, nom, rights FROM $table WHERE login=? AND password=? AND saison & ?", array($login, $password, $bit_saison));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -27,7 +27,7 @@ function getUserWithPassword($mysqli, $table, $login, $password, $id_saison) {
 
 function getUsersSaison($mysqli, $table, $id_saison) {
     $bit_saison = pow(2, $id_saison);
-    $query = $mysqli->query("SELECT * FROM $table WHERE saison & $bit_saison ORDER BY prenom");
+    $query = $mysqli->execute_query("SELECT * FROM $table WHERE saison & ? ORDER BY prenom", array($bit_saison));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -36,7 +36,7 @@ function getUsersSaison($mysqli, $table, $id_saison) {
 
 function getUsersWithRights($mysqli, $table, $right, $id_saison) {
     $bit_saison = pow(2, $id_saison);
-    $query = $mysqli->query("SELECT id, nom, prenom, email, portable FROM $table WHERE saison & $bit_saison AND rights LIKE '%$right%'ORDER BY prenom");
+    $query = $mysqli->execute_query("SELECT id, nom, prenom, email, portable FROM $table WHERE saison & ? AND rights LIKE '%?%' ORDER BY prenom", array($bit_saison, $right));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -44,17 +44,28 @@ function getUsersWithRights($mysqli, $table, $right, $id_saison) {
 }
 
 function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $only_public=false, $month=0, $year=0) {
+    $values = array();
     $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs"
         ." FROM $t_eve e, $t_cat c, $t_lieu l "
         ." WHERE e.categorie=c.id AND e.lieu=l.id";
     if ($month and $year) {
-        $recherche .= " AND date>'".$year.$month."01000000' AND date<'".$year.$month."31235959'";
+        $recherche .= " AND date>? AND date<?";
+        $values[] = $year.$month."01000000";
+        $values[] = $year.$month."31235959";
     }
-    if ($date) { $recherche .= " AND UNIX_TIMESTAMP(e.date)>$date"; }
-    if ($only_public) { $recherche .= " AND c.publique=1"; }
+    if ($date) {
+        $recherche .= " AND UNIX_TIMESTAMP(e.date)>?";
+        $values[] = $date;
+    }
+    if ($only_public) {
+        $recherche .= " AND c.publique=1";
+    }
     $recherche .= " ORDER BY date ASC";
-    if ($limit) { $recherche .= " LIMIT $limit"; }
-    $query = $mysqli->query($recherche);
+    if ($limit) {
+        $recherche .= " LIMIT ?";
+        $values[] = $limit;
+    }
+    $query = $mysqli->execute_query($recherche, $values);
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -64,8 +75,8 @@ function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $
 function getEventInfos($mysqli, $t_eve, $t_cat, $t_lieu, $id_eve) {
     $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, l.adresse as ladresse, l.adresse2 as ladresse2, l.coordonnees as lcoordonnees, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs"
         ." FROM $t_eve e, $t_cat c, $t_lieu l "
-        ." WHERE e.categorie=c.id AND e.lieu=l.id AND e.id=$id_eve";
-    $query = $mysqli->query($recherche);
+        ." WHERE e.categorie=c.id AND e.lieu=l.id AND e.id=?";
+    $query = $mysqli->execute_query($recherche, array($id_eve));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -73,7 +84,7 @@ function getEventInfos($mysqli, $t_eve, $t_cat, $t_lieu, $id_eve) {
 }
 
 function getEventDisposUser($mysqli, $t_dispo, $id_eve, $id) {
-    $query = $mysqli->query("SELECT * FROM $t_dispo WHERE id_spectacle=$id_eve AND id_personne=$id");
+    $query = $mysqli->execute_query("SELECT * FROM $t_dispo WHERE id_spectacle=? AND id_personne=?", array($id_eve, $id));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -81,7 +92,7 @@ function getEventDisposUser($mysqli, $t_dispo, $id_eve, $id) {
 }
 
 function getEventSelectionUser($mysqli, $t_eve, $id_eve, $id) {
-    $query = $mysqli->query("SELECT joueurs,coach,mc,arbitre,regisseur,caisse,animateurs FROM $t_eve WHERE id=$id_eve");
+    $query = $mysqli->execute_query("SELECT joueurs,coach,mc,arbitre,regisseur,caisse,animateurs FROM $t_eve WHERE id=?", array($id_eve));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -108,8 +119,8 @@ function addInscriptionRecrutement($mysqli, $t_recrutement, $id_saison, $data) {
 }
 
 function updateEventDispo($mysqli, $t_dispo, $id_eve, $id, $dispo_pourcent, $dispo_commentaire) {
-    $replace = "REPLACE INTO $t_dispo (id_spectacle, id_personne, dispo_pourcent, commentaire) VALUES ('$id_eve', '$id', '$dispo_pourcent', '$dispo_commentaire')";
-    $query = $mysqli->query($replace);
+    $replace = "REPLACE INTO $t_dispo (id_spectacle, id_personne, dispo_pourcent, commentaire) VALUES (?,?,?,?)";
+    $query = $mysqli->execute_query($replace, array($id_eve, $id, $dispo_pourcent, $dispo_commentaire));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
