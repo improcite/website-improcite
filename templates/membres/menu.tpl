@@ -38,7 +38,13 @@
                         Exercices
                     </a>
                 </li>
-
+                <hr />
+                <li class="nav-item mb-1">
+                    <a href="index.php?p=recrutements">
+                        <i class="fa fa-handshake"></i>
+                        Recrutements
+                    </a>
+                </li>
             </ul>
             <hr>
             <div class="d-flex">
