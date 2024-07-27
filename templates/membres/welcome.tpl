@@ -33,7 +33,7 @@
         Non
       </span>
       {else if $dates.$date_id.dispo_pourcent == 50}
-      <span role='button' class="badge py-2 px-4 text-bg-light" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}">
+      <span role='button' class="badge py-2 px-3 text-bg-light border border-2" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}">
         {if $dates.$date_id.dispo_commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$dates.$date_id.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
         {else}

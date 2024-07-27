@@ -28,7 +28,7 @@
       {assign var="role" value={get_selection_user mysqli=$mysqli t_eve=$t_eve id_eve=$date.id id=$joueur.id}}
       <td class="text-center">
       {if !$infos or $infos.dispo_pourcent==50}
-        <span class="badge py-2 px-4 mb-2 text-bg-light"{if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
+        <span class="badge py-2 px-3 mb-2 text-bg-light border border-2"{if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
         {if $infos.commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
         {else}
