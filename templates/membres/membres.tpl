@@ -1,4 +1,11 @@
-<h3><i class="fa fa-users"></i> Les membres d'Improcité - Saison {get_saison_string id_saison={$id_saison}}</h3>
+<div class="clearfix">
+  <h3 class="float-start"><i class="fa fa-users me-3"></i>Les membres d'Improcité</h3>
+  <div class="btn-group float-end" role="group">
+    {if isset($saison_before)}<a href="index.php?p=membres&saison={$saison_before}" class="btn btn-secondary"><i class="fa-solid fa-caret-left"></i></a>{/if}
+    <a href="index.php?p=membres" class="btn btn-secondary">Saison {get_saison_string id_saison={$saison}}</a>
+    {if isset($saison_after)}<a href="index.php?p=membres&saison={$saison_after}" class="btn btn-secondary"><i class="fa-solid fa-caret-right"></i></a>{/if}
+  </div>
+</div>
 <hr />
 
 {if count($membres)}
