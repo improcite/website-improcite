@@ -1,5 +1,8 @@
 <h3><i class="fa fa-handshake me-2"></i>Candidats pour la prochaine saison</h3>
 <hr />
+<div class="alert alert-success" role="alert">
+  {count($candidats)} inscriptions reçues !
+</div>
 {if count($candidats)}
 <div class="table-responsive">
 <table class="table table-striped table-hover">
@@ -26,10 +29,10 @@
       <td>{$candidats.$id.telephone}</td>
       <td>{$candidats.$id.adresse}</td>
       <td>{mailto address=$candidats.$id.mail}</td>
-      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.experience}">{$candidats.$id.experience|truncate}</span></td>
-      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.envie}">{$candidats.$id.envie|truncate}</span></td>
-      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.source}">{$candidats.$id.source|truncate}</span></td>
-      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.disponibilite}">{$candidats.$id.disponibilite|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.experience|escape}">{$candidats.$id.experience|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.envie|escape}">{$candidats.$id.envie|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.source|escape}">{$candidats.$id.source|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.disponibilite|escape}">{$candidats.$id.disponibilite|truncate}</span></td>
     </tr>
 {/for}
   </tbody>
