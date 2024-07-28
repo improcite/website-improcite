@@ -128,7 +128,7 @@ function updateEventDispo($mysqli, $t_dispo, $id_eve, $id, $dispo_pourcent, $dis
 }
 
 function getCandidats($mysqli, $table, $id_saison) {
-    $query = $mysqli->execute_query("SELECT * FROM $table WHERE saison=?", array($id_saison));
+    $query = $mysqli->execute_query("SELECT * FROM $table WHERE saison=? ORDER BY date ASC", array($id_saison));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
