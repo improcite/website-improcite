@@ -36,7 +36,7 @@ function getUsersSaison($mysqli, $table, $id_saison) {
 
 function getUsersWithRights($mysqli, $table, $right, $id_saison) {
     $bit_saison = pow(2, $id_saison);
-    $query = $mysqli->execute_query("SELECT id, nom, prenom, email, portable FROM $table WHERE saison & ? AND rights LIKE '%?%' ORDER BY prenom", array($bit_saison, $right));
+    $query = $mysqli->execute_query("SELECT id, nom, prenom, email, portable FROM $table WHERE saison & ? AND rights LIKE '%$right%' ORDER BY prenom", array($bit_saison));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
