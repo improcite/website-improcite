@@ -1,10 +1,10 @@
-<h1 class="text-center mt-3"><i class="fa fa-mask me-2"></i>Espace membres</h1>
+<h1 class="text-center mt-3">Page non trouvée</h1>
 
 <div class="row my-5">
   <div class="col-md-4"></div>
   <div class="col-md-4">
-    <div class="alert alert-success" role="alert">
-      <i class="fa fa-check-circle me-2"></i>Tu as bien été déconnecté !
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-carrot me-2"></i>Cette page t'a posé un lapin !
     </div>
   </div>
   <div class="col-md-4"></div>
