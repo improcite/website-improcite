@@ -26,10 +26,10 @@
       <td>{$candidats.$id.telephone}</td>
       <td>{$candidats.$id.adresse}</td>
       <td>{mailto address=$candidats.$id.mail}</td>
-      <td>{$candidats.$id.experience}</td>
-      <td>{$candidats.$id.envie}</td>
-      <td>{$candidats.$id.source}</td>
-      <td>{$candidats.$id.disponibilite}</td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.experience}">{$candidats.$id.experience|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.envie}">{$candidats.$id.envie|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.source}">{$candidats.$id.source|truncate}</span></td>
+      <td><span data-bs-toggle="tooltip" data-bs-title="{$candidats.$id.disponibilite}">{$candidats.$id.disponibilite|truncate}</span></td>
     </tr>
 {/for}
   </tbody>
