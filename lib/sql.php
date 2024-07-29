@@ -135,5 +135,12 @@ function getCandidats($mysqli, $table, $id_saison) {
     return $query;
 }
 
+function getAllObjects($mysqli, $table) {
+    $query = $mysqli->execute_query("SELECT * FROM $table ORDER BY id ASC", array());
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
 
 ?>

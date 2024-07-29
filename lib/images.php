@@ -28,3 +28,9 @@ function getPhotoMembre($id_membre, $id_saison, $path) {
 
     return $photo;
 }
+
+function getPhotoCategorie($id_categorie, $path) {
+    $photoCategorie = $path . "/photos/categories/".$id_categorie.".jpg";
+    if (file_exists($photoCategorie)) { return $photoCategorie; }
+    return false;
+}

@@ -41,6 +41,7 @@ if (file_exists($page) == false)
 
 # Infos membre
 $membre = getUserMinimalInfos($mysqli, $table_comediens, $_SESSION[ "id_impro_membre" ]);
+$membre["isAdmin"] = str_contains($membre["rights"], "admin");
 
 # Template
 $smarty = new Smarty();
