@@ -159,4 +159,22 @@ function deleteObject($mysqli, $table, $id) {
     return $query;
 }
 
+function updateCategorie($mysqli, $table, $data) {
+    $replace = "REPLACE INTO $table (id, nom, description, publique) VALUES (?,?,?,?)";
+    $query = $mysqli->execute_query($replace, array($data["id"], $data["nom"], $data["description"], $data["publique"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
+function createCategorie($mysqli, $table, $data) {
+    $insert = "INSERT INTO $table (nom, description, publique) VALUES (?,?,?)";
+    $query = $mysqli->execute_query($insert, array($data["nom"], $data["description"], $data["publique"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 ?>

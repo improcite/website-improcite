@@ -19,7 +19,7 @@ if ($action == "consultation") {
 
 }
 
-if ($action == "afficher") {
+if ($action == "afficher" or $action == "editer") {
     if(!$_REQUEST["id"]) {
         header('location: /membres/index.php?p=admin_categories'); exit;
     }
@@ -36,5 +36,13 @@ if ($action == "supprimer") {
     header('location: /membres/index.php?p=admin_categories'); exit;
 }
 
+if ($action == "enregistrer") {
+    if(!$_REQUEST["id"]) {
+        createCategorie($mysqli, $t_cat, array("nom" => $_REQUEST["nom"], "description" => $_REQUEST["description"], "publique" => $_REQUEST["publique"] ? 1 : 0));
+    } else {
+        updateCategorie($mysqli, $t_cat, array('id' => $_REQUEST["id"], "nom" => $_REQUEST["nom"], "description" => $_REQUEST["description"], "publique" => $_REQUEST["publique"] ? 1 : 0));
+    }
+    header('location: /membres/index.php?p=admin_categories'); exit;
+}
 
 $smarty->assign("action", $action);
