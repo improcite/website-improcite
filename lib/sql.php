@@ -143,4 +143,20 @@ function getAllObjects($mysqli, $table) {
     return $query;
 }
 
+function getObject($mysqli, $table, $id) {
+    $query = $mysqli->execute_query("SELECT * FROM $table WHERE id=?", array($id));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query->fetch_assoc();
+}
+
+function deleteObject($mysqli, $table, $id) {
+    $query = $mysqli->execute_query("DELETE FROM $table WHERE id=?", array($id));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 ?>
