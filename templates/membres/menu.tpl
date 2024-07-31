@@ -48,7 +48,7 @@
                 {if $membre.isAdmin}
                 <li class="nav-item mb-1">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1"><i class="fa fa-gears me-2"></i>Administration</span>
+                        <span class="d-sm-inline mx-1"><i class="fa fa-gears me-2"></i>Administration</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownAdmin">
                         <li><a class="dropdown-item" href="#"><i class="fa fa-users me-2"></i>Membres</a></li>
@@ -65,7 +65,7 @@
                 <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{photo_membre id_membre={$membre.id} id_saison={$id_saison} path=".."}" alt="{$membre.prenom}" width="28" height="28" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">{$membre.prenom}</span>
+                        <span class="d-sm-inline mx-1">{$membre.prenom}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="index.php?p=compte"><i class="fa fa-user-ninja me-2"></i>Mon compte</a></li>
