@@ -2,7 +2,7 @@
 
 // Liste des prochaines dates
 $dates = [];
-$result = getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, time(), 0, false);
+$result = getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, time(), 0, false, true);
 
 foreach ($result as $row) {
     // Dispos

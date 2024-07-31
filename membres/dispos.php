@@ -59,7 +59,7 @@ $smarty->assign('year_after', $year_after);
 // Dates du mois
 
 $dates = [];
-$result = getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, 0, 0, false, $month, $year);
+$result = getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, 0, 0, false, $month, $year, true);
 
 foreach ($result as $row) {
     $dates[] = $row;

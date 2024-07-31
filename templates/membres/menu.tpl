@@ -51,11 +51,11 @@
                         <span class="d-sm-inline mx-1"><i class="fa fa-gears me-2"></i>Administration</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownAdmin">
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-users me-2"></i>Membres</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-calendar me-2"></i>Événements</a></li>
+                        <li><a class="dropdown-item disabled" href="#"><i class="fa fa-users me-2"></i>Membres</a></li>
+                        <li><a class="dropdown-item" href="index.php?p=admin_evenements"><i class="fa fa-calendar me-2"></i>Événements</a></li>
                         <li><a class="dropdown-item" href="index.php?p=admin_categories"><i class="fa fa-tag me-2"></i>Catégories</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-location-dot me-2"></i>Lieux</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-handshake me-2"></i>Recrutements</a></li>
+                        <li><a class="dropdown-item disabled" href="#"><i class="fa fa-location-dot me-2"></i>Lieux</a></li>
+                        <li><a class="dropdown-item disabled" href="#"><i class="fa fa-handshake me-2"></i>Recrutements</a></li>
                     </ul>
                 </li>
                 {/if}

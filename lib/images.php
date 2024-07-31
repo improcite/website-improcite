@@ -34,3 +34,9 @@ function getPhotoCategorie($id_categorie, $path) {
     if (file_exists($photoCategorie)) { return $photoCategorie; }
     return false;
 }
+
+function getPhotoEve($id_evenement, $path) {
+    $photoEvenement = $path . "/photos/evenements/".$id_evenement.".jpg";
+    if (file_exists($photoEvenement)) { return $photoEvenement; }
+    return false;
+}

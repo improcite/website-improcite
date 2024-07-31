@@ -43,7 +43,7 @@ function getUsersWithRights($mysqli, $table, $right, $id_saison) {
     return $query;
 }
 
-function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $only_public=false, $month=0, $year=0) {
+function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $only_public=false, $month=0, $year=0, $asc=false) {
     $values = array();
     $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs"
         ." FROM $t_eve e, $t_cat c, $t_lieu l "
@@ -60,7 +60,8 @@ function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $
     if ($only_public) {
         $recherche .= " AND c.publique=1";
     }
-    $recherche .= " ORDER BY date ASC";
+    $recherche .= " ORDER BY date";
+    $recherche .= $asc ? " ASC" : " DESC";
     if ($limit) {
         $recherche .= " LIMIT ?";
         $values[] = $limit;
@@ -171,6 +172,14 @@ function updateCategorie($mysqli, $table, $data) {
 function createCategorie($mysqli, $table, $data) {
     $insert = "INSERT INTO $table (nom, description, publique) VALUES (?,?,?)";
     $query = $mysqli->execute_query($insert, array($data["nom"], $data["description"], $data["publique"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
+function deleteDispoEvenement($mysqli, $table, $id) {
+    $query = $mysqli->execute_query("DELETE FROM $table WHERE id_spectacle=?", array($id));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
