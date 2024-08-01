@@ -306,7 +306,7 @@
           </div>
           <div class="col-md-4 mb-3">
           <label for="selectRegisseur" class="form-label">Régie</label>
-          <select class="form-select" id="selectRegisseur" aria-label="Regisseur" name="regisseury">
+          <select class="form-select" id="selectRegisseur" aria-label="Regisseur" name="regisseur">
             <option value=""></option>
             {foreach from=$membres item=membre}
             <option value="{$membre.id}"{if $evenement.regisseur == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
@@ -315,7 +315,7 @@
           </div>
           <div class="col-md-4 mb-3">
           <label for="selectCaisse" class="form-label">Caisse</label>
-          <select class="form-select" id="selectCaisse" aria-label="Caisse" name="caissey">
+          <select class="form-select" id="selectCaisse" aria-label="Caisse" name="caisse">
             <option value=""></option>
             {foreach from=$membres item=membre}
             <option value="{$membre.id}"{if $evenement.caisse == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
@@ -340,6 +340,7 @@
       </form>
       </div>
     </div>
+    {if $action == "editer"}
     <div class="card shadow mb-3">
       <div class="card-body">
       {foreach from=$membres item=membre}
@@ -374,6 +375,7 @@
       {/foreach}
       </div>
     </div>
+    {/if}
   </div>
 </div>
 {/if}
