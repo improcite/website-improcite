@@ -26,6 +26,8 @@ if ($action == "afficher" or $action == "editer") {
     }
     $evenement = getEventInfos($mysqli, $t_eve, $t_cat, $t_lieu, $_REQUEST["id"]);
     $evenement["photo"] = getPhotoEve($evenement["id"], "..");
+    $evenement["joueursArray"] = explode(";", $evenement["joueurs"]);
+    $evenement["animateursArray"] = explode(";", $evenement["animateurs"]);
     $smarty->assign("evenement", $evenement);
 
     $result_cat = getAllObjects($mysqli, $t_cat);

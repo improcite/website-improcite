@@ -191,27 +191,27 @@
       {if $membre.dispo.dispo_pourcent == 0}
       <span class="badge py-2 px-2 text-bg-danger mb-2">
         {if $membre.dispo.dispo_commentaire}
-        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
-        <i class="fa fa-circle-xmark me-3"></i>
+        <i class="fa fa-circle-xmark me-2"></i>
         {/if}
         {$membre.prenom} {$membre.nom}
       </span>
       {else if $membre.dispo.dispo_pourcent == 50}
       <span class="badge py-2 px-2 text-bg-light border border-2 mb-2">
         {if $membre.dispo.dispo_commentaire}
-        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
-        <i class="fa fa-circle-question me-3"></i>
+        <i class="fa fa-circle-question me-2"></i>
         {/if}
         {$membre.prenom} {$membre.nom}
       </span>
       {else if $membre.dispo.dispo_pourcent == 100}
       <span class="badge py-2 px-2 text-bg-success mb-2">
         {if $membre.dispo.dispo_commentaire}
-        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
-        <i class="fa fa-circle-check me-3"></i>
+        <i class="fa fa-circle-check me-2"></i>
         {/if}
         {$membre.prenom} {$membre.nom}
       </span>
@@ -232,26 +232,109 @@
       <div class="card-body">
       <form method="post" action="index.php?p=admin_evenements&action=enregistrer&id={$evenement.id}">
         <div class="mb-3">
-          <select class="form-select" aria-label="Liste des catégories" name="categorie">
+          <label for="selectCategorie" class="form-label">Catégorie</label>
+          <select class="form-select" id="selectCategorie" aria-label="Liste des catégories" name="categorie">
           {foreach from=$categories item=categorie}
             <option value="{$categorie.id}"{if $evenement.categorie == $categorie.id} selected{/if}>{$categorie.nom}</option>
           {/foreach}
-          <select>
+          </select>
         </div>
         <div class="mb-3">
           <label for="inputDate" class="form-label">Date et heure</label>
           <input class="form-control" id="inputDate" name="date" type="datetime-local" value="{$evenement.unixdate|date_format:"%Y-%m-%dT%H:%M"}" />
         </div>
         <div class="mb-3">
-          <select class="form-select" aria-label="Liste des lieux" name="lieu">
+          <label for="selectLieu" class="form-label">Lieu</label>
+          <select class="form-select" id="selectLieu" aria-label="Liste des lieux" name="lieu">
           {foreach from=$lieux item=lieu}
             <option value="{$lieu.id}"{if $evenement.lieu == $lieu.id} selected{/if}>{$lieu.nom}</option>
           {/foreach}
-          <select>
+          </select>
         </div>
         <div class="mb-3">
           <label for="inputCommentaire" class="form-label">Commentaire</label>
-          <textarea class="form-control" id="inputDescription" name="commentaire" row="5">{$evenement.ecommentaire}</textarea>
+          <textarea class="form-control" id="inputDescription" name="commentaire" rows="5">{$evenement.ecommentaire}</textarea>
+        </div>
+        <div class="mb-3">
+          <label for="inputPlace" class="form-label">Places</label>
+          <input class="form-control" id="inputPlace" name="places" type="int" value="{$evenement.places}" />
+        </div>
+        <div class="mb-3">
+          <label for="inputTarif" class="form-label">Tarif</label>
+          <input class="form-control" id="inputTarif" name="tarif" type="text" value="{$evenement.tarif}" />
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label">Joueurs</label>
+          {for $i=1 to 6}
+          <div class="col-md-4 mb-3">
+          <select class="form-select" id="selectJoueur{$i}" aria-label="Joueur {$i}" name="joueur{$i}">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.joueursArray.{$i-1} == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+          {/for}
+        </div>
+        <div class="mb-3 row">
+          <div class="col-md-4 mb-3">
+          <label for="selectMC" class="form-label">MC</label>
+          <select class="form-select" id="selectMC" aria-label="MC" name="mc">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.mc == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+          <div class="col-md-4 mb-3">
+          <label for="selectArbitre" class="form-label">Arbitre</label>
+          <select class="form-select" id="selectArbitre" aria-label="Arbitre" name="arbitre">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.arbitre == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+          <div class="col-md-4 mb-3">
+          <label for="selectCoach" class="form-label">Coach</label>
+          <select class="form-select" id="selectCoach" aria-label="Coach" name="coach">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.coach == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+          <div class="col-md-4 mb-3">
+          <label for="selectRegisseur" class="form-label">Regisseur</label>
+          <select class="form-select" id="selectRegisseur" aria-label="Regisseur" name="regisseury">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.regisseur == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+          <div class="col-md-4 mb-3">
+          <label for="selectCaisse" class="form-label">Caisse</label>
+          <select class="form-select" id="selectCaisse" aria-label="Caisse" name="caissey">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.caisse == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label">Animateurs</label>
+          {for $i=1 to 6}
+          <div class="col-md-4 mb-3">
+          <select class="form-select" id="selectAnimateur{$i}" aria-label="Animateur {$i}" name="animateur{$i}">
+            <option value=""></option>
+            {foreach from=$membres item=membre}
+            <option value="{$membre.id}"{if $evenement.animateursArray.{$i-1} == $membre.id} selected{/if}>{$membre.prenom} {$membre.nom}</option>
+            {/foreach}
+          </select>
+          </div>
+          {/for}
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
       </form>
@@ -263,27 +346,27 @@
       {if $membre.dispo.dispo_pourcent == 0}
       <span class="badge py-2 px-2 text-bg-danger mb-2">
         {if $membre.dispo.dispo_commentaire}
-        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
-        <i class="fa fa-circle-xmark me-3"></i>
+        <i class="fa fa-circle-xmark me-2"></i>
         {/if}
         {$membre.prenom} {$membre.nom}
       </span>
       {else if $membre.dispo.dispo_pourcent == 50}
       <span class="badge py-2 px-2 text-bg-light border border-2 mb-2">
         {if $membre.dispo.dispo_commentaire}
-        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
-        <i class="fa fa-circle-question me-3"></i>
+        <i class="fa fa-circle-question me-2"></i>
         {/if}
         {$membre.prenom} {$membre.nom}
       </span>
       {else if $membre.dispo.dispo_pourcent == 100}
       <span class="badge py-2 px-2 text-bg-success mb-2">
         {if $membre.dispo.dispo_commentaire}
-        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
-        <i class="fa fa-circle-check me-3"></i>
+        <i class="fa fa-circle-check me-2"></i>
         {/if}
         {$membre.prenom} {$membre.nom}
       </span>
