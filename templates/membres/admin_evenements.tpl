@@ -305,7 +305,7 @@
           </select>
           </div>
           <div class="col-md-4 mb-3">
-          <label for="selectRegisseur" class="form-label">Regisseur</label>
+          <label for="selectRegisseur" class="form-label">Régie</label>
           <select class="form-select" id="selectRegisseur" aria-label="Regisseur" name="regisseury">
             <option value=""></option>
             {foreach from=$membres item=membre}
@@ -344,7 +344,7 @@
       <div class="card-body">
       {foreach from=$membres item=membre}
       {if $membre.dispo.dispo_pourcent == 0}
-      <span class="badge py-2 px-2 text-bg-danger mb-2">
+      <span class="badge py-2 px-2 text-bg-danger border border-2 mb-2">
         {if $membre.dispo.dispo_commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}
@@ -362,7 +362,7 @@
         {$membre.prenom} {$membre.nom}
       </span>
       {else if $membre.dispo.dispo_pourcent == 100}
-      <span class="badge py-2 px-2 text-bg-success mb-2">
+      <span class="badge py-2 px-2 text-bg-success border border-2 mb-2">
         {if $membre.dispo.dispo_commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-2"></i></span>
         {else}

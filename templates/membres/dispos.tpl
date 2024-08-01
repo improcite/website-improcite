@@ -13,7 +13,7 @@
   <thead>
     <th>Date</th>
     {foreach from=$joueurs item=joueur}
-    <th class="text-center">{$joueur.prenom}<br /><span class="fw-light">{$joueur.nom}</span></th>
+    <th class="text-center"><img src="{photo_membre id_membre={$joueur.id} id_saison={$id_saison} path=".."}" class="img-fluid img-thumbnail" width="60px" alt="Photo de {$joueurprenom}" /><br />{$joueur.prenom}<br /><span class="fw-light">{$joueur.nom}</span></th>
     {/foreach}
   </thead>
   <tbody>
@@ -21,7 +21,8 @@
     <tr>
       <th data-bs-toggle="tooltip"  data-bs-html="true" data-bs-title="<span class='fw-light'>{$date.nom}</span><br /><span class='fw-light fst-italic'>{$date.lnom}</span>">
           {$date.unixdate|date_format:"%d/%m"}<br />
-          {$date.unixdate|date_format:"%Hh%M"}
+          {$date.unixdate|date_format:"%Hh%M"}<br />
+          <span class="fw-light">{$date.nom}</span>
       </th>
       {foreach from=$joueurs item=joueur}
       {get_dispo_user mysqli=$mysqli t_dispo=$t_dispo id_eve=$date.id id=$joueur.id infos="infos"}
@@ -36,9 +37,9 @@
         {/if}
         ???
         </span>
-        {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa fa-star me-3"></i>{$role}</span>{/if}
+        {if $role}<br /><span class="badge py-2 px-2 text-bg-primary"><i class="fa-solid fa-star me-2"></i>{$role}</span>{/if}
       {else if $infos.dispo_pourcent==100}
-        <span class="badge py-2 px-3 mb-2 text-bg-success" {if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
+        <span class="badge py-2 px-3 mb-2 text-bg-success border border-2" {if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
         {if $infos.commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
         {else}
@@ -46,9 +47,9 @@
         {/if}
         Oui
         </span>
-        {if $role}<br /><span class="badge py-2 px-3 text-bg-secondary"><i class="fa-solid fa-star me-3"></i>{$role}</span>{/if}
+        {if $role}<br /><span class="badge py-2 px-2 text-bg-primary"><i class="fa-solid fa-star me-2"></i>{$role}</span>{/if}
       {else if $infos.dispo_pourcent==0}
-        <span class="badge py-2 px-3 mb-2 text-bg-danger" {if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
+        <span class="badge py-2 px-3 mb-2 text-bg-danger border border-2" {if $joueur.id == $membre.id} data-bs-toggle="modal" data-bs-target="#dispo-{$date.id}-{$joueur.id}" role="button"{/if}>
         {if $infos.commentaire}
         <span data-bs-toggle="tooltip" data-bs-title="{$infos.commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
         {else}
