@@ -44,6 +44,15 @@ if ($action == "afficher" or $action == "editer") {
     usort($lieux, fn($a, $b) => $a['nom'] <=> $b['nom']);
     $smarty->assign("lieux", $lieux);
 
+    $result_membre = getUsersSaison($mysqli, $table_comediens, $iCurrentSaisonNumber);
+    $membres = [];
+    foreach ($result_membre as $row) {
+        $row["dispo"] = getEventDisposUser($mysqli, "impro_dispo", $_REQUEST["id"], $row["id"]);
+        if (!isset($row["dispo"]["dispo_pourcent"])) { $row["dispo"]["dispo_pourcent"] = 50; }
+        $membres[] = $row;
+    }
+    usort($membres, fn($a, $b) => $a['prenom'] <=> $b['prenom']);
+    $smarty->assign("membres", $membres);
 }
 
 if ($action == "supprimer") {

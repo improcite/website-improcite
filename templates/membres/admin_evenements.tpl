@@ -136,7 +136,7 @@
     {if $evenement.photo}<img src="{$evenement.photo}" class="img-fluid shadow" alt="{$evenement.nom}"/>{/if}
   </div>
   <div class="col-md-8">
-    <div class="card shadow">
+    <div class="card shadow mb-3">
       <div class="card-body">
         <h5 class="card-title">{$evenement.nom}</h5>
         <p class="card-text">
@@ -185,6 +185,39 @@
         </p>
       </div>
     </div>
+    <div class="card shadow mb-3">
+      <div class="card-body">
+      {foreach from=$membres item=membre}
+      {if $membre.dispo.dispo_pourcent == 0}
+      <span class="badge py-2 px-2 text-bg-danger mb-2">
+        {if $membre.dispo.dispo_commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-xmark me-3"></i>
+        {/if}
+        {$membre.prenom} {$membre.nom}
+      </span>
+      {else if $membre.dispo.dispo_pourcent == 50}
+      <span class="badge py-2 px-2 text-bg-light border border-2 mb-2">
+        {if $membre.dispo.dispo_commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-question me-3"></i>
+        {/if}
+        {$membre.prenom} {$membre.nom}
+      </span>
+      {else if $membre.dispo.dispo_pourcent == 100}
+      <span class="badge py-2 px-2 text-bg-success mb-2">
+        {if $membre.dispo.dispo_commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-check me-3"></i>
+        {/if}
+        {$membre.prenom} {$membre.nom}
+      </span>
+      {/if}
+      {/foreach}
+      </div>
   </div>
 </div>
 {/if}
@@ -195,7 +228,7 @@
     {if $evenement.photo}<img src="{$evenement.photo}" class="img-fluid shadow" alt="{$evenement.nom}"/>{/if}
   </div>
   <div class="col-md-8">
-    <div class="card shadow">
+    <div class="card shadow mb-3">
       <div class="card-body">
       <form method="post" action="index.php?p=admin_evenements&action=enregistrer&id={$evenement.id}">
         <div class="mb-3">
@@ -222,6 +255,40 @@
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
       </form>
+      </div>
+    </div>
+    <div class="card shadow mb-3">
+      <div class="card-body">
+      {foreach from=$membres item=membre}
+      {if $membre.dispo.dispo_pourcent == 0}
+      <span class="badge py-2 px-2 text-bg-danger mb-2">
+        {if $membre.dispo.dispo_commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-xmark me-3"></i>
+        {/if}
+        {$membre.prenom} {$membre.nom}
+      </span>
+      {else if $membre.dispo.dispo_pourcent == 50}
+      <span class="badge py-2 px-2 text-bg-light border border-2 mb-2">
+        {if $membre.dispo.dispo_commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-question me-3"></i>
+        {/if}
+        {$membre.prenom} {$membre.nom}
+      </span>
+      {else if $membre.dispo.dispo_pourcent == 100}
+      <span class="badge py-2 px-2 text-bg-success mb-2">
+        {if $membre.dispo.dispo_commentaire}
+        <span data-bs-toggle="tooltip" data-bs-title="{$membre.dispo.dispo_commentaire}"><i class="fa-regular fa-comment me-3"></i></span>
+        {else}
+        <i class="fa fa-circle-check me-3"></i>
+        {/if}
+        {$membre.prenom} {$membre.nom}
+      </span>
+      {/if}
+      {/foreach}
       </div>
     </div>
   </div>
