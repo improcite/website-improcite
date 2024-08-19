@@ -108,7 +108,7 @@ marker.bindPopup("<b>"+nom+"</b><br />" + adresse).openPopup();
   <div class="card-header text-center"><h3>Félicitations {$participant.prenom} !</h3></div>
   <div class="card-body">
   <p class="card-text">Ton inscription a bien été prise en compte, merci !</p>
-  <p>Un mail de confirmation a été envoyé à {$participant.mail}, tu devrais le recevoir dans les prochaines minutes.</p>
+  <p>Un mail de confirmation a été envoyé à {$participant.mail}, tu devrais le recevoir dans les prochaines minutes. Si ce n'est pas le cas, pense à vérifier tes spams !</p>
   <p>À très bientôt !</p>
   </div>
 </div>
