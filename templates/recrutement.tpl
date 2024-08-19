@@ -21,13 +21,14 @@
   <div class="card-header text-center"><h3>Comment ça marche ?</h3></div>
   <div class="card-body">
     <p class="card-text">
-    Vous devrez participer à nos deux sessions de recrutement :
+    Vous devrez participer à nos deux sessions de recrutement (une première sélection aura lieu pour revenir en deuxième semaine) :
     <ul>
     {foreach $dates_recrutement as $date_recrutement}
       <li>{$date_recrutement}</li>
     {/foreach}
     </ul>
-    Le lieu de rendez-vous est à la salle Théodore (8 rue Saint Théodore - 69003 Lyon)
+    Le lieu de rendez-vous est à La Cordée Villeurbanne (71 rue Francis Pressensé - 69100 Villeurbanne). L'entrée se fait sur la rue Colin.<br />
+    Tu peux venir à partir de 19h45 pour que nous puissions démarrer à l'heure !
     </p>
   </div>
   <div id="map" class="card-img-bottom" style="width: 100%; height: 400px;"></div>
@@ -84,9 +85,9 @@
 
 <script src="/assets/leaflet/leaflet.js"></script>
 <script type="text/javascript">
-var coordonnees = "18/45.74943/4.86350".split("/");
-var nom = "Salle Théodore";
-var adresse = "8 rue Saint Théodore - 69003 Lyon";
+var coordonnees = "18/45.772339/4.873973".split("/");
+var nom = "Cordée Villeurbanne";
+var adresse = "71 rue Francis Pressensé - 69100 Villeurbanne";
 {literal}
 var map = L.map('map').setView([coordonnees[1], coordonnees[2]], coordonnees[0]);
 var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
