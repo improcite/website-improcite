@@ -1,7 +1,7 @@
 <?php 
 
 function getUserMinimalInfos($mysqli, $table, $id) {
-    $query = $mysqli->execute_query("SELECT id, prenom, nom, rights FROM $table WHERE id=?", array($id));
+    $query = $mysqli->execute_query("SELECT id, prenom, nom, email, rights FROM $table WHERE id=?", array($id));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -18,7 +18,7 @@ function getUserInfos($mysqli, $table, $id) {
 
 function getUserWithPassword($mysqli, $table, $login, $password, $id_saison) {
     $bit_saison = pow(2, $id_saison);
-    $query = $mysqli->execute_query("SELECT id, prenom, nom, rights FROM $table WHERE (login=? OR email=?) AND password=? AND saison & ?", array($login, $login, $password, $bit_saison));
+    $query = $mysqli->execute_query("SELECT id, prenom, nom, email, rights FROM $table WHERE (login=? OR email=?) AND password=? AND saison & ?", array($login, $login, $password, $bit_saison));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -204,5 +204,14 @@ function createEvenement($mysqli, $table, $data) {
     return $query;
 }
 
+function updatePassword($mysqli, $table, $id, $password, $salt) {
+    $md5password = md5($salt.$password);
+    $replace = "UPDATE $table SET password=? WHERE id=?";
+    $query = $mysqli->execute_query($replace, array($md5password, $id));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
 
 ?>

@@ -69,6 +69,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="index.php?p=compte"><i class="fa fa-user-ninja me-2"></i>Mon compte</a></li>
+                        <li><a class="dropdown-item" href="index.php?p=password"><i class="fa fa-key me-2"></i>Changer mon mot de passe</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
