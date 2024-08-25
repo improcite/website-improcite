@@ -214,4 +214,13 @@ function updatePassword($mysqli, $table, $id, $password, $salt) {
     return $query;
 }
 
+function updateInformationCompte($mysqli, $table, $data) {
+    $update = "UPDATE $table SET prenom=?, nom=?, surnom=?, email=?, portable=?, jour=?, mois=?, annee=?, adresse=?, debut=?, envie=?, apport=?, debutimprocite=?, improcite=?, qualite=?, defaut=? WHERE id=?";
+    $query = $mysqli->execute_query($update, array($data["prenom"], $data["nom"], $data["surnom"], $data["email"], $data["portable"], $data["jour"], $data["mois"], $data["annee"], $data["adresse"], $data["debut"], $data["envie"], $data["apport"], $data["debutimprocite"], $data["improcite"], $data["qualite"], $data["defaut"], $data["id"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 ?>
