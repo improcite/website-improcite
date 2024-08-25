@@ -10,3 +10,4 @@ foreach ($result as $row) {
 }
 
 $smarty->assign('candidats', $candidats);
+$smarty->assign('action', $_GET["action"]);
