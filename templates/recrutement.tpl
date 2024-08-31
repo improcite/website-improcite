@@ -28,7 +28,7 @@
     {/foreach}
     </ul>
     Le lieu de rendez-vous est à La Cordée Villeurbanne (71 rue Francis Pressensé - 69100 Villeurbanne). L'entrée se fait sur la rue Colin.<br />
-    Tu peux venir à partir de 19h45 pour que nous puissions démarrer à l'heure !
+    Tu peux venir à partir de 19h30 pour que nous puissions démarrer à l'heure !
     </p>
   </div>
   <div id="map" class="card-img-bottom" style="width: 100%; height: 400px;"></div>
