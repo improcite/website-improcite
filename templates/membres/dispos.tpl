@@ -59,7 +59,6 @@
         </span>
         {if $role}<br /><span class="badge py-2 px-2 text-bg-primary"><i class="fa-solid fa-star me-2"></i>{$role}</span>{/if}
       {/if}
-      {include 'modal-dispo.tpl' idModal="dispo-{$date.id}-{$joueur.id}" date=$date dispo_pourcent=$infos.dispo_pourcent dispo_commentaire=$infos.commentaire membre_id=$joueur.id backURL="index.php?p=dispos&year={$year}&month={$month}"}
       </td>
       {/foreach}
     <tr>
@@ -67,3 +66,10 @@
   </tbody>
 </table>
 </div>
+
+{foreach from=$joueurs item=joueur}
+{get_dispo_user mysqli=$mysqli t_dispo=$t_dispo id_eve=$date.id id=$joueur.id infos="infos"}
+{foreach from=$dates item=date}
+{include 'modal-dispo.tpl' idModal="dispo-{$date.id}-{$joueur.id}" date=$date dispo_pourcent=$infos.dispo_pourcent dispo_commentaire=$infos.commentaire membre_id=$joueur.id backURL="index.php?p=dispos&year={$year}&month={$month}"}
+{/foreach}
+{/foreach}
