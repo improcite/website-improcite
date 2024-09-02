@@ -3,7 +3,7 @@
 function getPhotoEvenement($id_evenement, $id_lieu, $id_categorie) {
 
     $photo = "/assets/images/photo_spectacle_defaut.jpg";
-    $photoEvenement = "/photos/evemenents/".$id_evenement.".jpg";
+    $photoEvenement = "/photos/evenements/".$id_evenement.".jpg";
     $photoLieu = "/photos/lieux/".$id_lieu.".jpg";
     $photoCategorie = "/photos/categories/".$id_categorie.".jpg";
 
