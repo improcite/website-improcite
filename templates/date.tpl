@@ -17,6 +17,9 @@
         {/if}
         </p>
         {include file="joueurs.tpl" joueurs=[{$date.joueurs},{$date.mc},{$date.arbitre},{$date.animateurs}]|join:';'}
+        {if $date.tarif}
+        <p class="card-text"><small class="text-body-secondary"><i class="fa fa-coins"></i> Tarif : {$date.tarif}</small></p>
+        {/if}
         </div>
       </div>
       </div>
