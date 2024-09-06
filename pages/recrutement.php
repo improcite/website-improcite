@@ -1,5 +1,9 @@
 <?php 
 
+if (!$display_recrutement_public) {
+    header('location: /?p=welcome'); exit;
+}
+
 # Présentation du recrutement
 $action = $_POST["action"] ? $_POST["action"] : "presentation";
 

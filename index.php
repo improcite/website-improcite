@@ -37,6 +37,7 @@ $smarty->assign('p',$p);
 $smarty->assign('id_saison',$iCurrentSaisonNumber);
 $smarty->assign('mysqli',$mysqli);
 $smarty->assign('table_comediens',$table_comediens);
+$smarty->assign('display_recrutement_public',$display_recrutement_public);
 
 $smarty->registerPlugin("function","photo_membre","photo_membre");
 $smarty->registerPlugin("function","get_membre","get_membre");
