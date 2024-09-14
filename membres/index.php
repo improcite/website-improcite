@@ -39,6 +39,15 @@ if (file_exists($page) == false)
     die();
 }
 
+# Liste des droits
+$rights_list = array(
+    "admin" => "Administrateur/rice",
+    "selection" => "Sélectionneur/se",
+    "artistik" => "Comité&nbsp;artistique",
+    "noselect" => "Non sélectionnable",
+    "recruteur" => "Recruteur/se"
+);
+
 # Infos membre
 $membre = getUserMinimalInfos($mysqli, $table_comediens, $_SESSION[ "id_impro_membre" ]);
 $membre["isAdmin"] = str_contains($membre["rights"], "admin");
@@ -55,6 +64,7 @@ $smarty->assign('table_comediens',$table_comediens);
 $smarty->assign('t_dispo',"impro_dispo");
 $smarty->assign('t_eve',$t_eve);
 $smarty->assign('membre',$membre);
+$smarty->assign("rights_list", $rights_list);
 
 $smarty->registerPlugin("function","photo_membre","photo_membre");
 $smarty->registerPlugin("function","get_membre","get_membre");

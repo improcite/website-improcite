@@ -204,6 +204,24 @@ function createEvenement($mysqli, $table, $data) {
     return $query;
 }
 
+function updateUser($mysqli, $table, $data) {
+    $update = "UPDATE $table SET login=?, prenom=?, nom=?, surnom=?, email=?, portable=?, jour=?, mois=?, annee=?, adresse=?, rights=?, saison=? WHERE id=?";
+    $query = $mysqli->execute_query($update, array($data["login"], $data["prenom"], $data["nom"], $data["surnom"], $data["email"], $data["portable"], $data["jour"], $data["mois"], $data["annee"], $data["adresse"], $data["rights"], $data["saison"], $data["id"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
+function createUser($mysqli, $table, $data) {
+    $insert = "INSERT INTO $table (login, password, prenom, nom, surnom, email, portable, jour, mois, annee, adresse, rights, saison, qualite, defaut, debut, debutimprocite, envie, apport, improcite, affichernom, notif_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $query = $mysqli->execute_query($insert, array($data["login"], $data["password"], $data["prenom"], $data["nom"], $data["surnom"], $data["email"], $data["portable"], $data["jour"], $data["mois"], $data["annee"], $data["adresse"], $data["rights"], $data["saison"], $data["qualite"], $data["defaut"], $data["debut"], $data["envie"], $data["apport"], $data["debutimprocite"], $data["improcite"], $data["affichernom"], $data["notif_email"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 function updatePassword($mysqli, $table, $id, $password, $salt) {
     $md5password = md5($salt.$password);
     $replace = "UPDATE $table SET password=? WHERE id=?";
