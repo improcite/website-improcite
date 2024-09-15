@@ -43,13 +43,13 @@ if ($action == "enregistrer") {
     # Données
     $data = array();
     foreach(array("login", "surnom", "prenom", "nom", "jour", "mois", "annee", "email", "portable", "adresse") as $key) {
-        $data[$key] = $_REQUEST[$key];
+        $data[$key] = $_POST[$key];
     }
 
     # Droits
     $rights = "";
     foreach($rights_list as $right_key => $right_value) {
-        if ($_REQUEST["right_$right_key"]) {
+        if ($_POST["right_$right_key"]) {
             $rights .= $right_key.";";
         }
     }
@@ -58,9 +58,8 @@ if ($action == "enregistrer") {
     # Saisons
     $saison = 0;
     for ($i = 0; $i <= $iCurrentSaisonNumber + 1; $i++) {
-        if ($_REQUEST["saison_$i"]) {
+        if ($_POST["saison_$i"]) {
             $saison = $saison + 2 ** $i;
-            error_log("==============> SAISON $saison");
         } 
     }
     $data["saison"] = $saison;
@@ -70,7 +69,7 @@ if ($action == "enregistrer") {
         foreach(array("qualite", "defaut", "debut", "debutimprocite", "envie", "apport", "improcite") as $key) {
             $data[$key] = "";
         }
-        $data["password"] = md5($salt.$$_REQUEST["password"]);
+        $data["password"] = md5($salt.$_POST["password"]);
         $data["affichernom"] = 1;
         $data["notif_email"] = 1;
         createUser($mysqli, $table_comediens, $data);
@@ -78,7 +77,7 @@ if ($action == "enregistrer") {
     } else {
         $data["id"] = $_REQUEST["id"];
         if ($_REQUEST["password"]) {
-            updatePassword($mysqli, $table_comediens, $_REQUEST["id"], $_REQUEST["password"], $salt);
+            updatePassword($mysqli, $table_comediens, $_REQUEST["id"], $_POST["password"], $salt);
         }
         updateUser($mysqli, $table_comediens, $data);
         $id = $_REQUEST["id"];
