@@ -59,7 +59,7 @@
             </tr>
             <tr>
               <th><i class="fa fa-calendar me-2"></i>Saisons à Improcité</th>
-              <td>{for $i = -1 to $id_saison + 1}
+              <td>{for $i = -1 to $id_saison}
               <span class="badge py-2 px-2 mb-2 {if $infos.saison & (2 ** $i)}text-bg-success{else}text-bg-secondary{/if}">{2004+$i} - {2004+$i+1}</span>
               {/for}</td>
             </tr>
