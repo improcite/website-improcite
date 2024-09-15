@@ -57,6 +57,20 @@
               <th><i class="fa fa-location-dot me-2"></i>Adresse</th>
               <td>{$infos.adresse|regex_replace:"/[\r\n]/" : "<br />"}</td>
             </tr>
+            <tr>
+              <th><i class="fa fa-calendar me-2"></i>Saisons à Improcité</th>
+              <td>{for $i = -1 to $id_saison + 1}
+              <span class="badge py-2 px-2 mb-2 {if $infos.saison & (2 ** $i)}text-bg-success{else}text-bg-secondary{/if}">{2004+$i} - {2004+$i+1}</span>
+              {/for}</td>
+            </tr>
+            {if $infos.rights}
+            <tr>
+              <th><i class="fa fa-gears me-2"></i>Profil</th>
+              <td>{foreach $infos.rights_array as $right}
+              <span class="badge py-2 px-2 text-bg-primary">{$rights_list.$right}</span>
+              {/foreach}</td>
+            </tr>
+            {/if}
           </tbody>
         </table>
       </div>

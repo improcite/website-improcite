@@ -35,6 +35,8 @@ if ( $action == "modifier") {
 }
 
 $infos = getUserInfos($mysqli, $table_comediens, $membre['id']);
+$infos["rights_array"] = explode(';', $infos["rights"]);
+
 
 $smarty->assign("infos", $infos);
 $smarty->assign("action", $action);
