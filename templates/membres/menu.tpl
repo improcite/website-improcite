@@ -39,12 +39,14 @@
                     </a>
                 </li>
                 <hr />
+                {if $display_recrutement_private}
                 <li class="nav-item mb-1">
                     <a href="index.php?p=recrutements">
                         <i class="fa fa-handshake"></i>
                         Recrutements
                     </a>
                 </li>
+                {/if}
                 {if $membre.isAdmin}
                 <li class="nav-item mb-1">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">

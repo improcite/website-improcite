@@ -1,5 +1,9 @@
 <?php
 
+if (!$display_recrutement_private) {
+    header('location: /membres/'); exit;
+}
+
 // Liste des inscriptions au recrutement
 
 $candidats = [];

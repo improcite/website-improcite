@@ -65,6 +65,7 @@ $smarty->assign('t_dispo',"impro_dispo");
 $smarty->assign('t_eve',$t_eve);
 $smarty->assign('membre',$membre);
 $smarty->assign("rights_list", $rights_list);
+$smarty->assign("display_recrutement_private", $display_recrutement_private);
 
 $smarty->registerPlugin("function","photo_membre","photo_membre");
 $smarty->registerPlugin("function","get_membre","get_membre");

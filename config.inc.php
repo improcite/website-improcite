@@ -55,6 +55,8 @@ $sPhotoOmerta = "photos/omerta/";
 
 /* Afficher la page recrutement sur la partie publique */
 $display_recrutement_public = 0;
+/* Afficher la page recrutement sur la partie privée */
+$display_recrutement_private = 0;
 
 # Nom de la base MySQL
 $base = "improcite" ;
