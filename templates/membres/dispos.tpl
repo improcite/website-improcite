@@ -19,7 +19,7 @@
   <tbody>
     {foreach from=$dates item=date}
     <tr>
-      <th data-bs-toggle="tooltip"  data-bs-html="true" data-bs-title="<span class='fw-light'>{$date.nom}</span><br /><span class='fw-light fst-italic'>{$date.lnom}</span>">
+      <th data-bs-toggle="tooltip"  data-bs-html="true" data-bs-title="<span class='fw-light'>{$date.nom}</span><br /><span class='fw-light fst-italic'>{$date.lnom}</span><br />{$date.ecommentaire|escape:'html'}">
           {$date.unixdate|date_format:"%d/%m"}<br />
           {$date.unixdate|date_format:"%Hh%M"}<br />
           <span class="fw-light">{$date.nom}</span>
