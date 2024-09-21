@@ -21,7 +21,7 @@
       <td>{$dates.$date_id.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"}</td>
       <td>{$dates.$date_id.nom}</td>
       <td>{$dates.$date_id.lnom}</td>
-      <td><span title="{$dates.$date_id.commentaire}">{$dates.$date_id.commentaire|truncate:60}</span></td>
+      <td><span title="{$dates.$date_id.commentairei|unescape:'html'}">{$dates.$date_id.commentaire|truncate:60}</span></td>
       <td class="text-center">
       {if $dates.$date_id.dispo_pourcent == 0}
       <span role='button' class="badge py-2 px-3 text-bg-danger border border-2" data-bs-toggle="modal" data-bs-target="#dispo-{$dates.$date_id.id}-{$membre.id}">
