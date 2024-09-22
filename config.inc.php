@@ -62,32 +62,17 @@ $base = "improcite" ;
 # Table contenant la liste des comediens
 $table_comediens = "impro_comediens" ;
 
-# Table contenant les news apparaissant en premiere page
-$table_news = "impro_news" ;
-
-# Table contenant la liste des membres du Fan Club
-$table_fanclub = "impro_tamere" ;
-
 # Table contenant la liste des evenements
 $t_eve = "impro_evenements" ;
 
 # Table contenant la liste des categories des evenements
 $t_cat = "impro_categories_evenements" ;
 
-# Table contenant la liste des intervenants
-$table_intervenants = "impro_intervenants" ;
-
 # Table contenant la liste des liens
 $table_liens = "impro_liens" ;
 
-# Table contenant la liste des boulettes et autres
-$t_nq = "impro_nimportequoi" ;
-
 # Table contenant la liste des reservations
 $t_res = "impro_reservations" ;
-
-# Table contenant la liste des inscrits a la lettre d'informations
-$t_lettre = "impro_newsletter" ;
 
 # Table contenant la liste des lieux
 $t_lieu = "impro_lieux" ;
