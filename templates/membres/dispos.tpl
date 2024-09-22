@@ -8,6 +8,9 @@
 </div>
 <hr />
 
+{for $interne=0 to 1}
+<h4><i class="fa fa-calendar me-2"></i>Dates {if $interne}internes{else}publiques{/if}</h4>
+
 <div class="table-responsive">
 <table class="table table-striped table-hover">
   <thead>
@@ -18,6 +21,7 @@
   </thead>
   <tbody>
     {foreach from=$dates item=date}
+    {if $date.interne == $interne}
     <tr>
       <th data-bs-toggle="tooltip"  data-bs-html="true" data-bs-title="<span class='fw-light'>{$date.nom}</span><br /><span class='fw-light fst-italic'>{$date.lnom}</span><br />{$date.ecommentaire|escape:'html'}">
           {$date.unixdate|date_format:"%d/%m"}<br />
@@ -62,10 +66,14 @@
       </td>
       {/foreach}
     <tr>
+    {/if}
     {/foreach}
   </tbody>
 </table>
 </div>
+
+<hr />
+{/for}
 
 {foreach from=$joueurs item=joueur}
 {get_dispo_user mysqli=$mysqli t_dispo=$t_dispo id_eve=$date.id id=$joueur.id infos="infos"}

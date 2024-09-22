@@ -1,6 +1,11 @@
 <h3>Bienvenue {$membre.prenom} !</h3>
 <hr />
-<h3 class="mb-3"><i class="fa fa-calendar me-2"></i>Prochaines dates</h3>
+
+<div class="row">
+{for $interne=0 to 1}
+<div class="col-md-6">
+
+<h3 class="mb-3"><i class="fa fa-calendar me-2"></i>Prochaines dates {if $interne}internes{else}publiques{/if}</h3>
 
 {if count($dates)}
 <div class="table-responsive">
@@ -17,6 +22,7 @@
   </thead>
   <tbody>
 {for $date_id = 0 to count($dates)-1}
+{if $dates.$date_id.interne == $interne}
     <tr>
       <td>{$dates.$date_id.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"}</td>
       <td>{$dates.$date_id.nom}</td>
@@ -60,12 +66,17 @@
       <td></td>
       {/if}
     </tr>
+{/if}
 {/for}
   </tbody>
 </table>
 </div>
 
+{/if}
+</div>
+{/for}
+</div>
+
 {for $date_id = 0 to count($dates)-1}
 {include 'modal-dispo.tpl' idModal="dispo-{$dates.$date_id.id}-{$membre.id}" date=$dates.$date_id dispo_pourcent=$dates.$date_id.dispo_pourcent dispo_commentaire=$dates.$date_id.dispo_commentaire membre_id=$membre.id backURL="index.php?p=welcome"}
 {/for}
-{/if}
