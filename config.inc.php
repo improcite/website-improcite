@@ -39,9 +39,6 @@ $iCurrentSaisonNumber = 20;
 $category_train = 1;
 $categories_train = array('1', '2', '5', '240', '17', '248', '10', '11');
 
-/* Numero de categorie OMERTA */
-$category_omerta = 4;
-
 /* Nb de spectacles affiches sur la page de bienvenue */
 $nb_spectacles_welcome = 2;
 
@@ -51,7 +48,6 @@ $sPhotoLieuRelDir = "photos/lieux/";
 $sPhotoIntervenantsRelDir = "photos/intervenants/";
 $sPhotoEvenement = "photos/evenements/";
 $sPhotoCategorie = "photos/categories/";
-$sPhotoOmerta = "photos/omerta/";
 
 /* Afficher la page recrutement sur la partie publique */
 $display_recrutement_public = 0;
@@ -95,12 +91,6 @@ $t_lettre = "impro_newsletter" ;
 
 # Table contenant la liste des lieux
 $t_lieu = "impro_lieux" ;
-
-# Table omerta
-$t_omerta = "impro_omerta";
-
-# Table liens entre spectacle omerta, comedien et personnage omerta
-$t_omerta_comediens = "impro_omerta_comediens";
 
 # Table questionnaire recrutement
 $t_recrutement = "impro_recrutement";
