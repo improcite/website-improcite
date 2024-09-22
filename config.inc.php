@@ -35,10 +35,6 @@ include_once("secrets.inc.php");
 // 20 = 2024-2025
 $iCurrentSaisonNumber = 20;
 
-/* Numero de categorie pour les entrainements */
-$category_train = 1;
-$categories_train = array('1', '2', '5', '240', '17', '248', '10', '11');
-
 /* Nb de spectacles affiches sur la page de bienvenue */
 $nb_spectacles_welcome = 2;
 

@@ -75,6 +75,7 @@
       <th>Nom</th>
       <th>Description</th>
       <th>Publique</th>
+      <th>Interne</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -86,6 +87,7 @@
       <td>{$categories.$id.nom}</td>
       <td>{if $categories.$id.description}<span data-bs-toggle="tooltip" data-bs-title="{$categories.$id.description|escape}">{$categories.$id.description|truncate}</span>{/if}</td>
       <td>{$categories.$id.publique}</td>
+      <td>{$categories.$id.interne}</td>
       <td>
         <div class="btn-group" role="group">
         <a role="button" class="btn btn-secondary" href="index.php?p=admin_categories&action=afficher&id={$categories.$id.id}" title="Afficher"><i class="fa fa-eye"></i></a>
@@ -145,6 +147,10 @@
           <b>Publique</b><br />
           {if $categorie.publique}Oui{else}Non{/if}
         </p>
+        <p class="card-text">
+          <b>Interne</b><br />
+          {if $categorie.interne}Oui{else}Non{/if}
+        </p>
       </div>
     </div>
   </div>
@@ -171,6 +177,10 @@
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="inputPublique" name="publique"{if $categorie.publique} checked{/if}>
           <label class="form-check-label" for="inputPublique">Catégorie visible sur le site public</label>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="inputInterne" name="interne"{if $categorie.interne} checked{/if}>
+          <label class="form-check-label" for="inputInterne">Catégorie correspondant à un événement interne</label>
         </div>
          <button type="submit" class="btn btn-primary">Envoyer</button>
       </form>

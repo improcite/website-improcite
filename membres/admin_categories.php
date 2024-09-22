@@ -38,9 +38,9 @@ if ($action == "supprimer") {
 
 if ($action == "enregistrer") {
     if(!$_REQUEST["id"]) {
-        createCategorie($mysqli, $t_cat, array("nom" => $_REQUEST["nom"], "description" => $_REQUEST["description"], "publique" => $_REQUEST["publique"] ? 1 : 0));
+        createCategorie($mysqli, $t_cat, array("nom" => $_REQUEST["nom"], "description" => $_REQUEST["description"], "publique" => $_REQUEST["publique"] ? 1 : 0, "interne" => $_REQUEST["interne"] ? 1 : 0));
     } else {
-        updateCategorie($mysqli, $t_cat, array('id' => $_REQUEST["id"], "nom" => $_REQUEST["nom"], "description" => $_REQUEST["description"], "publique" => $_REQUEST["publique"] ? 1 : 0));
+        updateCategorie($mysqli, $t_cat, array('id' => $_REQUEST["id"], "nom" => $_REQUEST["nom"], "description" => $_REQUEST["description"], "publique" => $_REQUEST["publique"] ? 1 : 0, "interne" => $_REQUEST["interne"] ? 1 : 0));
     }
     header('location: /membres/index.php?p=admin_categories'); exit;
 }
