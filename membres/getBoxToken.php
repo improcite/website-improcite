@@ -2,24 +2,12 @@
 
 # Verification de la session
 session_start();
-session_save_path('sessions');
 
 if (!isset ($_SESSION[ "id_impro_membre" ])) {
-    # La session n'existe pas
-    @header("Location: identification.php?backURL=".base64_encode($_SERVER["REQUEST_URI"]));
     die(0);
 }
 
-// Prerequisites
-// guzzlehttp/guzzle
-// firebase/php-jwt
-// cf. composer.json
-// L'API autorise les connexions deouis improcite.com et localhost:8888
-// install composer : https://getcomposer.org/download/
-// php composer.phar install
-// 'tention à la version de php, je me suis fait niquer et ça marchait pas
-
-require __DIR__ . '/vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // From https://developer.box.com/guides/authentication/jwt/without-sdk/#1-read-json-configuration
 

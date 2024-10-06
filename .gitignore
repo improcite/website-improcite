@@ -1,0 +1,4 @@
+composer.lock
+secrets.inc.php
+vendor/
+templates_c/
