@@ -20,6 +20,21 @@
   Erreur lors de la modification de tes informations
 </div>
 {/if}
+{if $result == "phototoobig"}
+<div class="alert alert-danger" role="alert">
+  La taille du fichier est trop grande
+</div>
+{/if}
+{if $result == "photonotuploaded"}
+<div class="alert alert-danger" role="alert">
+  Erreur lors de la mise à jour de la photo
+</div>
+{/if}
+{if $result == "photouploaded"}
+<div class="alert alert-success" role="alert">
+  Ta photo a bien été changée
+</div>
+{/if}
 
 {if $action == "consultation"}
 
@@ -96,10 +111,24 @@
 
 {if $action == "editer"}
 
+
+<div class="row mb-3">
+
+  <div class="col-md-4 text-center">
+    <img src="{photo_membre id_membre={$membre.id} id_saison={$id_saison} path=".."}" class="img-fluid rounded mb-3" alt="Photo actuelle">
+    <form action="?p=compte" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="modifierphoto" />
+    <div class="alert alert-info mb-3">Tu peux changer ta photo en chargeant un fichier ici. Dimensions préconisées : 400px x 400px. Format : jpg.</div>
+    <input class="form-control mb-3" type="file" id="photo" name="photo">
+    <input type="submit" value="Modifier ma photo" class="btn btn-success mb-3">
+    </form>
+  </div>
+
+  <div class="col-md-8">
+
 <form method="post" action="?p=compte">
 <input type="hidden" name="action" value="modifier" />
-
-<div class="card mb-3">
+<div class="card">
   <div class="card-header">
     Informations principales
   </div>
@@ -162,6 +191,8 @@
 
   </div>
 </div>
+</div>
+</div>
 
 <div class="card mb-3">
   <div class="card-header">
@@ -183,7 +214,7 @@
   </div>
 </div>
 
-<input type="submit" value="Modifier mes information" class="btn btn-success">
+<input type="submit" value="Modifier mes informations" class="btn btn-success mb-3">
 
 </form>
 {/if}
