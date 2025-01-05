@@ -1,8 +1,8 @@
 <div class="card text-white mb-3">
   <img src="/assets/images/photo-header.png" class="card-img" />
   <div class="card-img-overlay">
-    <h2 class="card-title">Bienvenue sur le site d'Improcité</h2>
-    <p class="card-text fs-5">Troupe amatrice d'improvisation théâtrale depuis 2003&nbsp;!</p>
+    <h2 class="card-title text-dark">Bienvenue sur le site d'Improcité</h2>
+    <p class="card-text fs-5 text-dark">Troupe amatrice d'improvisation théâtrale depuis 2003&nbsp;!</p>
   </div>
 </div>
 

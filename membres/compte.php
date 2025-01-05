@@ -34,6 +34,22 @@ if ( $action == "modifier") {
     $action = "consultation";
 }
 
+if ( $action == "modifierphoto") {
+
+    if ( !empty($_FILES['photo']['name'])) {
+        if (filesize($_FILES['photo']['tmp_name']) >= 500000) {
+            $result = "phototoobig";
+        } else if (!move_uploaded_file($_FILES['photo']['tmp_name'], '../photos/comediens/' .pow(2, $iCurrentSaisonNumber). '/' . $membre['id'] .'.jpg')) {
+            $result = "photonotuploaded";
+        } else {
+            $result = "photouploaded";
+        }
+        $action = "consultation";
+    } else {
+        $action = "editer";
+    }
+}
+
 $infos = getUserInfos($mysqli, $table_comediens, $membre['id']);
 $infos["rights_array"] = explode(';', $infos["rights"]);
 
