@@ -25,6 +25,12 @@
                         Disponibilités
                     </a>
                 </li>
+                <li class="nav-item mb-1">
+                    <a href="index.php?p=stats">
+                        <i class="fa fa-chart-pie"></i>
+                        Statistiques
+                    </a>
+                </li>
                 <hr />
                 <li class="nav-item mb-1">
                     <a href="index.php?p=fichiers">

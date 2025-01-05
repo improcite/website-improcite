@@ -240,5 +240,26 @@ function updateInformationCompte($mysqli, $table, $data) {
     }
     return $query;
 }
+function getSelectionSaison($mysqli, $t_eve, $id_saison, $id_joueur) {
+    $annee_inf = 2004 + $id_saison;
+    $annee_sup = 2004 + $id_saison + 1;
+    $result = $mysqli->execute_query("SELECT joueurs,coach,mc,arbitre,regisseur,caisse,animateurs FROM $t_eve WHERE date>=? AND date<=?", array($annee_inf."0901000000", $annee_sup."0831235959"));
+    if (!$result && $debug) {
+        die($mysqli->sqlstate);
+    }
+
+    $selections = array( "joueur" => 0, "coach" => 0, "mc" => 0, "arbitre" => 0, "regisseur" => 0, "caisse" => 0, "animateur" => 0);
+
+    foreach ($result as $row) {
+    if ( in_array( $id_joueur, explode(';', $row['joueurs']) ) ) { $selections["joueur"] += 1; }
+    if ( $row['coach'] == $id_joueur ) { $selections["coach"] += 1; }
+    if ( $row['mc'] == $id_joueur ) { $selections["mc"] += 1; }
+    if ( $row['arbitre'] == $id_joueur ) { $selections["arbitre"] += 1; }
+    if ( $row['regisseur'] == $id_joueur ) { $selections["regisseur"] += 1; }
+    if ( $row['caisse'] == $id_joueur ) { $selections["caisse"] += 1; }
+    if ( in_array( $id_joueur, explode(';', $row['animateurs']) ) ) { $selections["animateur"] += 1; }
+    }
+    return $selections;
+}
 
 ?>
