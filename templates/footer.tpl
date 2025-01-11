@@ -8,8 +8,8 @@
       &copy; Improcité
     </div>
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a href="https://www.facebook.com/improcite" target="_blank"<i class="fa-brands fa-square-facebook"></a></li>
-      <li class="ms-3"><a href="https://www.instagram.com/improcite/" target="_blank"<i class="fa-brands fa-square-instagram"></a></li>
+      <li class="ms-3"><a href="https://www.facebook.com/improcite" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+      <li class="ms-3"><a href="https://www.instagram.com/improcite/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a></li>
     </ul>
     </footer>
   </div>
