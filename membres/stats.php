@@ -17,7 +17,6 @@ $roles = array('joueur','mc','arbitre','regisseur','animateur');
 $statistiques = array();
 foreach ($joueurs as $joueur) {
     $selections = getSelectionSaison($mysqli, $t_eve, $iCurrentSaisonNumber, $joueur['id']);
-    print_r($selections);
     $statistiques[$joueur["id"]] = array();
     foreach ($roles as $role) {
         $statistiques[$joueur["id"]][$role] = $selections[$role];
