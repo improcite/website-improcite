@@ -12,6 +12,9 @@ if (!$infos) { header('location: /?p=agenda'); exit; }
 
 $infos['photo'] = getPhotoEvenement($infos['id'], $infos['lieu'], $infos['categorie']);
 
+if (preg_match('/^(;)+$/', $infos['joueurs'])) { $infos['joueurs'] = null; }
+if (preg_match('/^(;)+$/', $infos['animateurs'])) { $infos['animateurs'] = null; }
+
 $smarty->assign('infos', $infos);
 $smarty->assign('og_title', "Improcité - ".$infos['nom']." - ".$infos['lnom']);
 $smarty->assign('og_description', $infos['ecommentaire'] ? $infos['ecommentaire'] : $infos['description']);

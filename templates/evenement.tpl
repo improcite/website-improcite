@@ -18,11 +18,31 @@
         {$infos.description}
         {/if}
         </p>
-        {include file="joueurs.tpl" joueurs=[{$infos.joueurs},{$infos.mc},{$infos.arbitre},{$infos.animateurs}]|join:';'}
         {if $infos.tarif}
         <p class="card-text">
           <i class="fa fa-coins"></i> Tarif : {$infos.tarif}
         </p>
+        {/if}
+      </div>
+        {if $infos.joueurs || $infos.mc || $infos.arbitre || $infos.animateurs}
+      <div class="card-header">
+        <h5 class="card-text">
+          <i class="fa fa-star"></i> Les stars du jour
+        </h5>
+      </div>
+      <div class="card-body">
+        {if $infos.joueurs}
+        <p>Joueuses et joueurs</p>
+        {include file="joueurs.tpl" joueurs={$infos.joueurs}}
+        {/if}
+        {if $infos.mc || $infos.arbitre}
+        <p>MC / Arbitre</p>
+        {include file="joueurs.tpl" joueurs=[{$infos.mc},{$infos.arbitre}]|join:';'}
+        {/if}
+        {if $infos.animateurs}
+        <p>Animatrices et animateurs -{$infos.animateurs}-</p>
+        {include file="joueurs.tpl" joueurs={$infos.animateurs}}
+        {/if}
         {/if}
       </div>
       <div class="card-header">
