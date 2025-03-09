@@ -43,8 +43,8 @@
         <p>Animatrices et animateurs</p>
         {include file="joueurs.tpl" joueurs={$infos.animateurs}}
         {/if}
-        {/if}
       </div>
+        {/if}
       <div class="card-header">
         <h5 class="card-title"><i class="fa fa-location-dot"></i> {$infos.lnom}</h5>
         {$infos.ladresse}
