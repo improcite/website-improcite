@@ -40,7 +40,7 @@
         {include file="joueurs.tpl" joueurs=[{$infos.mc},{$infos.arbitre}]|join:';'}
         {/if}
         {if $infos.animateurs}
-        <p>Animatrices et animateurs -{$infos.animateurs}-</p>
+        <p>Animatrices et animateurs</p>
         {include file="joueurs.tpl" joueurs={$infos.animateurs}}
         {/if}
         {/if}
