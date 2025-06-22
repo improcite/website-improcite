@@ -33,6 +33,7 @@ include_once("secrets.inc.php");
 // 18 = 2022-2023
 // 19 = 2023-2024
 // 20 = 2024-2025
+// 21 = 2025-2026
 $iCurrentSaisonNumber = 20;
 
 /* Nb de spectacles affiches sur la page de bienvenue */
@@ -46,9 +47,12 @@ $sPhotoEvenement = "photos/evenements/";
 $sPhotoCategorie = "photos/categories/";
 
 /* Afficher la page recrutement sur la partie publique */
-$display_recrutement_public = 0;
+$display_recrutement_public = 1;
 /* Afficher la page recrutement sur la partie privée */
-$display_recrutement_private = 0;
+$display_recrutement_private = 1;
+/* Saison concernée par le recrutement et dates */
+$saison_recrutement = 21;
+$dates_recrutement = ['Jeudi 4 septembre 2025 à 20h', 'Jeudi 11 septembre 2025 à 20h'];
 
 # Nom de la base MySQL
 $base = "improcite" ;

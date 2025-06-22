@@ -7,7 +7,7 @@ if (!$display_recrutement_private) {
 // Liste des inscriptions au recrutement
 
 $candidats = [];
-$result = getCandidats($mysqli, "impro_recrutement", $iCurrentSaisonNumber);
+$result = getCandidats($mysqli, "impro_recrutement", $saison_recrutement);
 
 foreach ($result as $row) {
     $candidats[] = $row;

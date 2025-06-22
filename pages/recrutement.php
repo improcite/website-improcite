@@ -7,8 +7,6 @@ if (!$display_recrutement_public) {
 # Présentation du recrutement
 $action = $_POST["action"] ? $_POST["action"] : "presentation";
 
-$dates_recrutement = ['Jeudi 5 septembre 2024 à 20h', 'Jeudi 12 septembre 2024 à 20h'];
-$smarty->assign('dates_recrutement', $dates_recrutement);
 
 # Réception du formulaire
 if ($action == "inscription") {
@@ -17,15 +15,15 @@ if ($action == "inscription") {
     filter_var_array($_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
     # Enregistrement de l'inscription
-    $query_inscription = addInscriptionRecrutement($mysqli, $t_recrutement, $iCurrentSaisonNumber, $_POST); 
+    $query_inscription = addInscriptionRecrutement($mysqli, $t_recrutement, $saison_recrutement, $_POST);
 
     # Personnalisation du message affiché
     $smarty->assign('participant', $_POST);
 
     # Envoi d'un mail aux recruteurs
     $right = "recruteur";
-    $result_recruteurs = getUsersWithRights($mysqli, $table_comediens, $right, $iCurrentSaisonNumber);
-    $mail_recruteurs;
+    $result_recruteurs = getUsersWithRights($mysqli, $table_comediens, $right, $saison_recrutement);
+    $mail_recruteurs = array();
     foreach($result_recruteurs as $row) {
         $mail_recruteurs[] = $row['email'];
     }
@@ -41,3 +39,5 @@ if ($action == "inscription") {
 }
 
 $smarty->assign('action', $action);
+$smarty->assign('dates_recrutement', $dates_recrutement);
+$smarty->assign('saison_recrutement', $saison_recrutement);

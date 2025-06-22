@@ -13,10 +13,7 @@
     Tu es disponible les jeudis soirs pour les entrainements et à d'autres moments en fonction des spectacles ?<br />
     Tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration avec une quinzaine de nouveaux amis ne te fait pas peur ?
     </p>
-    <h4 class="card-text text-center"><i class="fa fa-hand-point-right"></i> Alors tente ta chance pour la saison 2024-2025 !</h4>
-    <div class="alert alert-warning" role="alert">
-    <i class="fa fa-venus-mars"></i> Afin de maintenir un équilibre dans la troupe, sache que nous recherchons en priorité cette année des <b>improvisatrices</b>. Cependant toutes les candidatures sont bien entendu acceptées et nous serons heureux de tous vous rencontrer lors du recrutement !
-    </div>
+    <h4 class="card-text text-center"><i class="fa fa-hand-point-right"></i> Alors tente ta chance pour la saison {get_saison_string id_saison={$saison_recrutement}} !</h4>
   </div>
   <div class="card-header text-center"><h3>Comment ça marche ?</h3></div>
   <div class="card-body">
