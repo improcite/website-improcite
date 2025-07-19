@@ -1,4 +1,6 @@
 <?php 
+use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\Captcha\PhraseBuilder;
 
 if (!$display_recrutement_public) {
     header('location: /?p=welcome'); exit;
@@ -6,13 +8,35 @@ if (!$display_recrutement_public) {
 
 # Présentation du recrutement
 $action = $_POST["action"] ? $_POST["action"] : "presentation";
+$error = $_GET["error"];
 
+session_start();
+
+if ($action == "presentation") {
+    $builder = new CaptchaBuilder;
+    $builder->build();
+    $_SESSION['phrase'] = $builder->getPhrase();
+    $smarty->assign("captcha_image",$builder->inline());
+}
 
 # Réception du formulaire
 if ($action == "inscription") {
 
     # Filtre des données
     filter_var_array($_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+    # Vérification du captcha
+    if (!isset($_POST["phrase"])) {
+        header('location: /?p=recrutement&error=nocaptcha'); exit;
+    }
+
+    if (!isset($_SESSION['phrase'])) {
+        header('location: /?p=recrutement&error=nocaptchasession'); exit;
+    }
+
+    if (!PhraseBuilder::comparePhrases($_SESSION['phrase'], $_POST['phrase'])){
+        header('location: /?p=recrutement&error=badcaptcha'); exit;
+    }
 
     # Enregistrement de l'inscription
     $query_inscription = addInscriptionRecrutement($mysqli, $t_recrutement, $saison_recrutement, $_POST);
@@ -39,5 +63,6 @@ if ($action == "inscription") {
 }
 
 $smarty->assign('action', $action);
+$smarty->assign('error', $error);
 $smarty->assign('dates_recrutement', $dates_recrutement);
 $smarty->assign('saison_recrutement', $saison_recrutement);

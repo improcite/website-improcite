@@ -2,6 +2,20 @@
 <div class="text-center"><img src="/assets/images/recrutement.png" class="img-fluid" /></div>
 <p class="text-center my-3 fs-5">Rejoins la famille Improcité !</p>
 
+{if $error}
+<div class="alert alert-danger mb-3" role="alert">
+    {if $error eq 'nocaptcha'}
+    La saisie du captcha est obligatoire
+    {/if}
+    {if $error eq 'nocaptchasession'}
+    Problème de session captcha, merci de réessayer
+    {/if}
+    {if $error eq 'badcaptcha'}
+    A priori tu ne sais pas bien lire ou écrire, retente de mettre le bon captcha
+    {/if}
+</div>
+{/if}
+
 {if $action eq "presentation"}
 <div class="card">
   <div class="card-header text-center"><h3>Participer au recrutement</h3></div>
@@ -73,6 +87,16 @@
     <div class="col-md-6">
       <label for="inputDisponibilite" class="form-label">Quelles sont tes disponibilités sur l'année ?</label>
       <textarea class="form-control" id="inputDisponibilite" rows="3" name="disponibilite" required></textarea>
+    </div>
+    <hr />
+    <div class="col-md-6">
+        <p>On vérifie que tu sais lire et écrire</p>
+    </div>
+    <div class="col-md-3">
+      <img src="{$captcha_image}" />
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" id="inputPhrase" autocomplete="no" name="phrase" required>
     </div>
     <input type="hidden" name="action" value="inscription" />
     <button type="submit" class="btn btn-primary">Je m'inscris !</button>

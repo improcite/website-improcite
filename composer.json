@@ -5,6 +5,7 @@
         "fortawesome/font-awesome": "6.5.1",
         "smarty/smarty": "v5.3.1",
         "guzzlehttp/guzzle": "6.*",
-        "firebase/php-jwt": "^6.0.0"
+        "firebase/php-jwt": "^6.0.0",
+        "gregwar/captcha": "1.*"
     }
 }
