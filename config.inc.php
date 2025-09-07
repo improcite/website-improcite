@@ -34,7 +34,7 @@ include_once("secrets.inc.php");
 // 19 = 2023-2024
 // 20 = 2024-2025
 // 21 = 2025-2026
-$iCurrentSaisonNumber = 20;
+$iCurrentSaisonNumber = 21;
 
 /* Nb de spectacles affiches sur la page de bienvenue */
 $nb_spectacles_welcome = 2;
@@ -47,7 +47,7 @@ $sPhotoEvenement = "photos/evenements/";
 $sPhotoCategorie = "photos/categories/";
 
 /* Afficher la page recrutement sur la partie publique */
-$display_recrutement_public = 1;
+$display_recrutement_public = 0;
 /* Afficher la page recrutement sur la partie privée */
 $display_recrutement_private = 1;
 /* Saison concernée par le recrutement et dates */
