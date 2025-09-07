@@ -1,90 +1,75 @@
-        <div id="sidebar"
-             class="d-flex flex-column
-                    flex-shrink-0
-                    px-5 py-3 bg-dark
-                    text-white offcanvas-md offcanvas-start">
-            <a href="index.php"><img class="img-fluid my-3 mx-auto d-block" src="/assets/images/logo-lapin-improcite-200px.png" alt="Logo Improcite" /></a>
-            <p class="text-center">Saison {get_saison_string id_saison={$id_saison}}</p>
-            <hr/>
-            <ul class="mynav nav nav-pills flex-column mb-auto">
-                <li class="nav-item mb-1">
-                    <a href="index.php">
-                        <i class="fa fa-home"></i>
-                        Accueil
-                    </a>
-                </li>
-                <li class="nav-item mb-1">
-                    <a href="index.php?p=membres">
-                        <i class="fa fa-users"></i>
-                        Membres
-                    </a>
-                </li>
-                <li class="nav-item mb-1">
-                    <a href="index.php?p=dispos">
-                        <i class="fa fa-calendar-check"></i>
-                        Disponibilités
-                    </a>
-                </li>
-                <li class="nav-item mb-1">
-                    <a href="index.php?p=stats">
-                        <i class="fa fa-chart-pie"></i>
-                        Statistiques
-                    </a>
-                </li>
-                <hr />
-                <li class="nav-item mb-1">
-                    <a href="index.php?p=fichiers">
-                        <i class="fa fa-file"></i>
-                        Fichiers
-                    </a>
-                </li>
-                <li class="nav-item mb-1">
-                    <a href="index.php?p=exercices">
-                        <i class="fa fa-book"></i>
-                        Exercices
-                    </a>
-                </li>
-                <hr />
-                {if $display_recrutement_private}
-                <li class="nav-item mb-1">
-                    <a href="index.php?p=recrutements">
-                        <i class="fa fa-handshake"></i>
-                        Recrutements
-                    </a>
-                </li>
-                {/if}
-                {if $membre.isAdmin}
-                <li class="nav-item mb-1">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-sm-inline mx-1"><i class="fa fa-gears me-2"></i>Administration</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownAdmin">
-                        <li><a class="dropdown-item" href="index.php?p=admin_users"><i class="fa fa-users me-2"></i>Membres</a></li>
-                        <li><a class="dropdown-item" href="index.php?p=admin_evenements"><i class="fa fa-calendar me-2"></i>Événements</a></li>
-                        <li><a class="dropdown-item" href="index.php?p=admin_categories"><i class="fa fa-tag me-2"></i>Catégories</a></li>
-                        <li><a class="dropdown-item disabled" href="#"><i class="fa fa-location-dot me-2"></i>Lieux</a></li>
-                        <li><a class="dropdown-item disabled" href="#"><i class="fa fa-handshake me-2"></i>Recrutements</a></li>
-                    </ul>
-                </li>
-                {/if}
-            </ul>
-            <hr>
-            <div class="d-flex">
-                <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{photo_membre id_membre={$membre.id} id_saison={$id_saison} path=".."}" alt="{$membre.prenom}" width="28" height="28" class="rounded-circle">
-                        <span class="d-sm-inline mx-1">{$membre.prenom}</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="index.php?p=compte"><i class="fa fa-user-ninja me-2"></i>Mon compte</a></li>
-                        <li><a class="dropdown-item" href="index.php?p=password"><i class="fa fa-key me-2"></i>Changer mon mot de passe</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="../"><i class="fa fa-map me-2"></i>Retour au site public</a></li>
-                        <li><a class="dropdown-item" href="../?p=sortie"><i class="fa fa-door-open me-2"></i>Se déconnecter</a></li>
-                    </ul>
-                </div>
+    <div class="dashboard-nav">
+        <header>
+            <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+            <a href="index.php" class="brand-logo"><i class="fas fa-carrot me-2"></i>Improcité</a>
+        </header>
 
+        <nav class="dashboard-nav-list">
+            <div class="nav-item-divider"></div>
+            <a href="index.php" class="dashboard-nav-item">
+                <i class="fas fa-home"></i>
+                Accueil
+            </a>
+            <a href="index.php?p=membres" class="dashboard-nav-item">
+                <i class="fa fa-users"></i>
+                Membres
+            </a>
+            <a href="index.php?p=dispos" class="dashboard-nav-item">
+                <i class="fa fa-calendar-check"></i>
+                Disponibilités
+            </a>
+            <a href="index.php?p=stats" class="dashboard-nav-item">
+                <i class="fa fa-chart-pie"></i>
+                Statistiques
+            </a>
+
+            <div class="nav-item-divider"></div>
+            <a href="index.php?p=fichiers" class="dashboard-nav-item">
+                <i class="fa fa-file"></i>
+                Fichiers
+            </a>
+            <a href="index.php?p=exercices" class="dashboard-nav-item">
+                <i class="fa fa-book"></i>
+                Exercices
+            </a>
+{if $display_recrutement_private}
+            <a href="index.php?p=recrutements" class="dashboard-nav-item">
+                <i class="fa fa-handshake"></i>
+                Recrutements
+            </a>
+{/if}
+{if $membre.isAdmin}
+            <div class="nav-item-divider"></div>
+            <div class='dashboard-nav-dropdown'>
+                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                    <i class="fas fa-cogs"></i>
+                    Administration
+                </a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="index.php?p=admin_users" class="dashboard-nav-dropdown-item"><i class="fas fa-users me-2"></i>Membres</a>
+                    <a href="index.php?p=admin_evenements" class="dashboard-nav-dropdown-item"><i class="fas fa-calendar me-2"></i>Événements</a>
+                    <a href="index.php?p=admin_categories" class="dashboard-nav-dropdown-item"><i class="fas fa-tag me-2"></i>Catégories</a>
+                </div>
             </div>
-        </div>
+{/if}
+            <div class="nav-item-divider"></div>
+            <a href="index.php?p=compte" class="dashboard-nav-item">
+                <i class="fas fa-user-ninja"></i>
+                Mon compte
+            </a>
+            <a href="index.php?p=password" class="dashboard-nav-item">
+                <i class="fas fa-key me-2"></i>
+                Mot de passe
+            </a>
+            <a href="../" class="dashboard-nav-item">
+                <i class="fa fa-map"></i>
+                Retour au site
+            </a>
+            <a href="../?p=sortie" class="dashboard-nav-item">
+                <i class="fa fa-door-open"></i>
+                Déconnexion
+            </a>
+
+        </nav>
+
+    </div>
