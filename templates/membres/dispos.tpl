@@ -1,6 +1,6 @@
 <div class="clearfix">
-  <h3 class="float-start"><i class="fa fa-calendar-check me-3"></i>Disponibilités</h3>
-  <div class="btn-group float-end" role="group">
+  <h3 class="float-start me-3"><i class="fa fa-calendar-check me-3"></i>Disponibilités</h3>
+  <div class="btn-group" role="group">
     <a href="index.php?p=dispos&month={$month_before}&year={$year_before}" class="btn btn-secondary"><i class="fa-solid fa-caret-left"></i></a>
     <a href="index.php?p=dispos" class="btn btn-secondary">{$month} / {$year}</a>
     <a href="index.php?p=dispos&month={$month_after}&year={$year_after}" class="btn btn-secondary"><i class="fa-solid fa-caret-right"></i></a>
