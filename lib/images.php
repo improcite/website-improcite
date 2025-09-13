@@ -23,8 +23,8 @@ function getPhotoMembre($id_membre, $id_saison, $path) {
     $photoSaison = "/photos/comediens/".$bit_saison."/".$id_membre.".jpg";
     $photoBase = "/photos/comediens/".$id_membre.".jpg";
 
-    if (file_exists("$path$photoSaison")) { $photo = $photoSaison; }
     if (file_exists("$path$photoBase")) { $photo = $photoBase; }
+    if (file_exists("$path$photoSaison")) { $photo = $photoSaison; }
 
     return $photo;
 }
