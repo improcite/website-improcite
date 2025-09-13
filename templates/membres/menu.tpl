@@ -58,7 +58,7 @@
                 Mon compte
             </a>
             <a href="index.php?p=password" class="dashboard-nav-item">
-                <i class="fas fa-key me-2"></i>
+                <i class="fas fa-key"></i>
                 Mot de passe
             </a>
             <a href="../" class="dashboard-nav-item">
