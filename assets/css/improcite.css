@@ -3,7 +3,3 @@ body {
     background-size: cover;
     color: #000;
 }
-
-body > div.container {
-    background-color: rgba(255,255,255,0.7);
-}
