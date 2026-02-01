@@ -1,4 +1,6 @@
-<h1 class="text-center my-3"><i class="fa fa-mask"></i> Espace réservé aux lapins <i class="fa fa-carrot"></i></h1>
+<div class="card my-3">
+  <div class="card-body">
+    <h1 class="text-center"><i class="fa fa-carrot"></i> Espace réservé aux lapins <i class="fa fa-carrot"></i></h1>
 
 {if $error == "invalid_credentials" }
 <div class="alert alert-danger" role="alert">
@@ -48,4 +50,7 @@ Authentification invalide, n'essaye pas de nous carotter !
 
 </div>
 <div class="col-md-3"></div>
+</div>
+
+</div>
 </div>

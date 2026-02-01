@@ -1,6 +1,6 @@
 <div class="card border-3 rounded shadow">
   <div class="card-body">
-  <h1 class="card-title">
+  <h1 class="card-title text-center">
 Bienvenue sur le site d’Improcité<br />
 Troupe d’improvisation à Lyon depuis 2003
   </h1>

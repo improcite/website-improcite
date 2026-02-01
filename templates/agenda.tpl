@@ -1,5 +1,9 @@
-<h1 class="text-center my-3"><i class="fa fa-calendar"></i> Agenda</h1>
-<p class="text-center my-3 fs-5">Venez nous rencontrer lors d'une de nos prochaines dates&nbsp;!</p>
+<div class="card my-3">
+  <div class="card-body text-center">
+    <h1><i class="fa fa-calendar"></i> Agenda</h1>
+    <p class="fs-5">Venez nous rencontrer lors d'une de nos prochaines dates&nbsp;!</p>
+  </div>
+</div>
 
 {if count($dates)}
 <div class="row">
