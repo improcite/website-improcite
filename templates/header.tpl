@@ -5,13 +5,12 @@
     <title>{$og_title}</title>
     <meta property="og:title" content="{$og_title}" />
     {else}
-    <title>Improcité : troupe d'improvisation théâtrale de Lyon et Villeurbanne</title>
+    <title>Improcité | Troupe d’impro à Lyon depuis plus de 20 ans</title>
     {/if}
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <meta name="Generator" content="vi, metapad">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="window-target" content="_top">
-    <meta name="Description" content="Improcité, troupe d'improvisation théâtrale est heureuse de vous accueillir ! Nous proposons des spectacles sur Lyon et Villeurbanne, au CCO, Trokson, Ninkasi... Vous aimez les émotions, le rire et les surprises ? Venez nous voir notre prochain spectacle !">
     <meta name="Keywords" content="improvisation, Lyon, spectacle, sortie, divertissement, Improcité, improvisation théâtrale, Villeurbanne, théâtre, CCO, Trokson, sortie, humour, Ninkasi">
     <meta name="Copyright" content="Improcité">
     <meta name="Subject" content="Improcité - improvisation théâtrale à Lyon et Villeurbanne">
@@ -27,6 +26,9 @@
     {/if}
     {if $og_description}
     <meta property="og:description" content="{$og_description}" />
+    <meta name="Description" content="{$og_description}">
+    {else}
+    <meta name="Description" content="Envie de rires, de surprises et de scénarios improbables ? Découvre Improcité, troupe d’impro à Lyon depuis 2003 !">
     {/if}
     <link rel="stylesheet" type="text/css" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/vendor/fortawesome/font-awesome/css/all.min.css" />

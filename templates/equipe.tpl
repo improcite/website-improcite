@@ -1,5 +1,9 @@
-<h1 class="text-center my-3"><i class="fa fa-users"></i> Les membres d'Improcité</h1>
-<p class="text-center my-3 fs-5">Saison {get_saison_string id_saison={$id_saison}}</p>
+<div class="card my-3">
+  <div class="card-body text-center">
+    <h1><i class="fa fa-users"></i> Les membres d'Improcité</h1>
+    <p class="fs-5">Saison {get_saison_string id_saison={$id_saison}}</p>
+  </div>
+</div>
 
 {if count($membres)}
 <div class="row">

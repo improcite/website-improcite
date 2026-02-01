@@ -1,4 +1,8 @@
-<h1 class="text-center my-3"><i class="fa fa-user"></i> {$infos.prenom} {if $infos.surnom}({$infos.surnom}){/if}</h1>
+<div class="card my-3">
+  <div class="card-body text-center">
+    <h1><i class="fa fa-user"></i> {$infos.prenom} {if $infos.surnom}({$infos.surnom}){/if}</h1>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-4 mb-2 text-center">

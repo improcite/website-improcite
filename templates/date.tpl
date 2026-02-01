@@ -11,9 +11,9 @@
         <p class="card-text"><small class="text-body-secondary"><i class="fa fa-calendar-days"></i> {$date.unixdate|date_format:"Le %d/%m/%Y à %Hh%M"} | <i class="fa fa-location-dot"></i> {$date.lnom}</small></p>
         <p class="card-text">
         {if $date.ecommentaire}
-        {$date.ecommentaire}
+        {$date.ecommentaire|truncate:300}
         {else}
-        {$date.description}
+        {$date.description|truncate:300}
         {/if}
         </p>
         {if $date.tarif}
