@@ -61,6 +61,22 @@
 </div>
 <hr />
 
+{if $result == "phototoobig"}
+<div class="alert alert-danger" role="alert">
+  La taille du fichier est trop grande
+</div>
+{/if}
+{if $result == "photonotuploaded"}
+<div class="alert alert-danger" role="alert">
+  Erreur lors de la mise à jour de la photo
+</div>
+{/if}
+{if $result == "photouploaded"}
+<div class="alert alert-success" role="alert">
+  La photo a bien été changée
+</div>
+{/if}
+
 {if $action == "consultation"}
 <div class="alert alert-success" role="alert">
   {count($evenements)} événements trouvés
@@ -225,7 +241,16 @@
 {if $action == "editer" or $action == "creer"}
 <div class="row">
   <div class="col-md-4">
-    {if $evenement.photo}<img src="{$evenement.photo}" class="img-fluid shadow" alt="{$evenement.nom}"/>{/if}
+    {if $evenement.photo}<img src="{$evenement.photo}" class="img-fluid shadow mb-3" alt="{$evenement.nom}"/>{/if}
+    {if $evenement.id}
+    <form action="?p=admin_evenements" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="modifierphoto" />
+    <input type="hidden" name="id" value="{$evenement.id}" />
+    <div class="alert alert-info mb-3">Photo au format JPG et moins de 1 Mo.</div>
+    <input class="form-control mb-3" type="file" id="photo" name="photo">
+    <input type="submit" value="Modifier la photo" class="btn btn-success mb-3">
+    </form>
+    {/if}
   </div>
   <div class="col-md-8">
     <div class="card shadow mb-3">

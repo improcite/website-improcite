@@ -6,6 +6,25 @@ if (!$membre["isAdmin"]) {
 
 # Action
 $action = $_REQUEST["action"] ? $_REQUEST["action"] : "consultation";
+$result = "";
+
+
+if ( $action == "modifierphoto") {
+
+    if(!$_REQUEST["id"]) {
+        header('location: /membres/index.php?p=admin_evenements'); exit;
+    }
+    if ( !empty($_FILES['photo']['name'])) {
+        if (filesize($_FILES['photo']['tmp_name']) >= 1000000) {
+            $result = "phototoobig";
+        } else if (!move_uploaded_file($_FILES['photo']['tmp_name'], '../photos/evenements/' . $_REQUEST["id"] .'.jpg')) {
+            $result = "photonotuploaded";
+        } else {
+            $result = "photouploaded";
+        }
+    }
+    $action = "editer";
+}
 
 if ($action == "consultation") {
 
@@ -121,3 +140,4 @@ if ($action == "enregistrer") {
 }
 
 $smarty->assign("action", $action);
+$smarty->assign("result", $result);
