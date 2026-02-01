@@ -25,11 +25,29 @@ Côté localisation, nous faisons de l’impro à Lyon et ses alentours, mais pa
 </div>
 
 <div class="card my-3 border-3 border-info">
-  <div class="card-header">🐰 Pourquoi un lapin comme mascotte de la troupe ?</div>
+  <div class="card-header fs-2">🐰 Pourquoi un lapin comme mascotte de la troupe ?</div>
   <div class="card-body">
   <p class="card-text">
 Rassure-toi, si toi aussi ça t’intrigue, sache que tu n’es pas le premier (et tu ne seras pas le dernier). L’anecdote nous est aussi précieuse qu’elle est absurde. En effet, lors du lancement de notre site internet, un des membres de notre troupe d’impro à Lyon, dont le métier était développeur, travaillait sur le jeu vidéo Lapins Crétins. Il a donc mis une tête de lapin en photo par défaut sur les profils de nos joueurs. Evidemment, on a rapidement adopté ce symbole… jusqu’à en faire notre logo !
   </p>
+  </div>
+</div>
+
+<div class="card my-3 border-3">
+  <div class="card-body">
+  <h2 class="card-title">Nos spectacles d’improvisation théâtrale dans la région lyonnaise et ailleurs</h2>
+  <p class="card-text">
+En tant que troupe d’impro à Lyon bien installée depuis des années, nous avons le plaisir de jouer régulièrement dans divers lieux de la scène lyonnaise. Nos spectacles d’improvisation théâtrale prennent différentes formes&nbsp;:<br />
+🎭 Format court (short form) type cabaret<br />
+🪶 Format long (long form)<br />
+⚽ Match d’impro<br />
+🥊 Catch d’impro
+  </p>
+{if count($dates)}
+  <p class="card-text">
+Tu as envie de voir nos improvisateurs et nos improvisatrices à l’œuvre ? Voici un aperçu de nos prochaines dates.
+  </p>
+{/if}
   </div>
 </div>
 
@@ -41,3 +59,40 @@ Rassure-toi, si toi aussi ça t’intrigue, sache que tu n’es pas le premier (
 </div>
 {/if}
 
+<div class="card my-3 border-3">
+  <div class="card-body">
+  <h2 class="card-title">Découvre nos improvisateurs et nos improvisatrices</h2>
+  <p class="card-text">
+Improcité, c’est avant tout une bande de joyeux drilles qui aiment l’impro (étonnant), mais surtout avec des personnalités toutes distinctes. Notre troupe compte une quinzaine de membres environ. Cela nous permet notamment de prendre le temps de tisser de précieux liens, et ça fait la différence en matière d’alchimie sur scène&nbsp;!<br />
+Alors, qui sont celles et ceux qui sauront te faire t’évader le temps d’un spectacle d’improvisation théâtrale à Lyon&nbsp;?
+  </p>
+  </div>
+  <div class="card-footer text-center">
+  <a href="/?p=equipe" class="btn btn-primary" type="button">Viens voir nos bouilles incroyables</a>
+  </div>
+</div>
+
+<div class="card my-3 border-3">
+  <div class="card-body">
+  <h2 class="card-title">Faire de l’improvisation à Lyon avec Improcité&nbsp;: comment se passe le recrutement&nbsp;?</h2>
+  <p class="card-text">
+Nous organisons <strong>un recrutement par an</strong>, aux alentours du mois de septembre. Elle se divise en <strong>deux séances</strong>  d’impro à Lyon (des soirées de 2h environ). Objectif&nbsp;: connaître les candidats pendant des exercices d’improvisation de toute sorte (et autour d’un bon buffet).<br />
+Les Improcitadins en charge du recrutement font ensuite une présélection à l’issue de la première session, et une sélection finale à la fin de la seconde.
+  </p>
+  </div>
+</div>
+
+
+<div class="card my-3 border-3">
+  <div class="card-body">
+  <h2 class="card-title">Parlons impro&nbsp;: écris-nous&nbsp;!</h2>
+  <p class="card-text">
+Tu as des questions&nbsp;? Tu veux connaître nos dernières actualités&nbsp;? Tu as envie de taper la discute&nbsp;? Tu aimerais débattre de la préservation des moules au Mozambique&nbsp;?<br />
+🌐 Retrouve-nous sur les réseaux sociaux et envoie-nous un message&nbsp;!
+  </p>
+  </div>
+  <div class="card-footer text-center">
+  <a href="https://www.facebook.com/improcite" class="btn btn-primary" type="button" target="_blank"><i class="fa-brands fa-square-facebook me-2"></i>Facebook</a>
+  <a href="https://www.instagram.com/improcite/" class="btn btn-primary" type="button" target="_blank"><i class="fa-brands fa-square-instagram me-2"></i>Instagram</a>
+  </div>
+</div>
