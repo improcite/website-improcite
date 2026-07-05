@@ -47,12 +47,12 @@ $sPhotoEvenement = "photos/evenements/";
 $sPhotoCategorie = "photos/categories/";
 
 /* Afficher la page recrutement sur la partie publique */
-$display_recrutement_public = 0;
+$display_recrutement_public = 1;
 /* Afficher la page recrutement sur la partie privée */
-$display_recrutement_private = 0;
+$display_recrutement_private = 1;
 /* Saison concernée par le recrutement et dates */
-$saison_recrutement = 21;
-$dates_recrutement = ['Jeudi 4 septembre 2025 à 20h', 'Jeudi 11 septembre 2025 à 20h'];
+$saison_recrutement = 22;
+$dates_recrutement = ['Jeudi 3 septembre 2026 à 20h', 'Jeudi 10 septembre 2026 à 20h'];
 
 # Nom de la base MySQL
 $base = "improcite" ;

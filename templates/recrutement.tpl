@@ -1,6 +1,10 @@
-<h1 class="text-center my-3"><i class="fa fa-handshake"></i> Recrutement</h1>
-<div class="text-center"><img src="/assets/images/recrutement.png" class="img-fluid" /></div>
-<p class="text-center my-3 fs-5">Rejoins la famille Improcité !</p>
+<div class="card my-3">
+  <div class="card-body text-center">
+    <h1 class="text-center my-3"><i class="fa fa-handshake"></i> Recrutement</h1>
+    <div class="text-center"><img src="/assets/images/recrutement.png" class="img-fluid" /></div>
+    <p class="text-center my-3 fs-5">Rejoins la famille Improcité !</p>
+  </div>
+</div>
 
 {if $error}
 <div class="alert alert-danger mb-3" role="alert">
