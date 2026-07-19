@@ -53,6 +53,7 @@ $display_recrutement_private = 1;
 /* Saison concernée par le recrutement et dates */
 $saison_recrutement = 22;
 $dates_recrutement = ['Jeudi 3 septembre 2026 à 20h', 'Jeudi 10 septembre 2026 à 20h'];
+$date_wei = "Samedi 3 et Dimanche 4 octobre 2026";
 
 # Nom de la base MySQL
 $base = "improcite" ;

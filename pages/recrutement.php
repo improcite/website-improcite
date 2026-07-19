@@ -65,4 +65,5 @@ if ($action == "inscription") {
 $smarty->assign('action', $action);
 $smarty->assign('error', $error);
 $smarty->assign('dates_recrutement', $dates_recrutement);
+$smarty->assign('date_wei', $date_wei);
 $smarty->assign('saison_recrutement', $saison_recrutement);

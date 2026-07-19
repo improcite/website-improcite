@@ -29,14 +29,14 @@
     Tu aimes les challenges, jouer différents types de spectacles dans différentes salles, et avec d'autres équipes ?<br />
     Tu es motivé(e) pour t'impliquer dans le fonctionnement de la troupe et participer à tous les postes liés à un spectacle (joueur, régie, communication, MC, caisse) ?<br />
     Tu es disponible les jeudis soirs pour les entrainements et à d'autres moments en fonction des spectacles ?<br />
-    Tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration avec une quinzaine de nouveaux amis ne te fait pas peur ?
+    Tu es friand(e) d'apéros, sorties et cohésion déjantés, et qu'un fabuleux weekend d'intégration avec une quinzaine de nouveaux amis ne te fait pas peur {if $date_wei}(date prévisionelle : {$date_wei}) {/if}?
     </p>
     <h4 class="card-text text-center"><i class="fa fa-hand-point-right"></i> Alors tente ta chance pour la saison {get_saison_string id_saison={$saison_recrutement}} !</h4>
   </div>
   <div class="card-header text-center"><h3>Comment ça marche ?</h3></div>
   <div class="card-body">
     <p class="card-text">
-    Vous devrez participer à nos deux sessions de recrutement (une première sélection aura lieu pour revenir en deuxième semaine) :
+    Tu viens à nos deux séances "test" ou tu pourras t'entraîner avec nous ! (une première sélection aura lieu pour revenir en deuxième semaine) :
     <ul>
     {foreach $dates_recrutement as $date_recrutement}
       <li>{$date_recrutement}</li>
@@ -49,58 +49,60 @@
   <div id="map" class="card-img-bottom" style="width: 100%; height: 400px;"></div>
   <div class="card-header text-center"><h3>Inscription</h3></div>
   <div class="card-body">
+    <h4>On aurait besoin de savoir ça pour t'inscrire :</h4>
     <form class="row g-3" method="post" action="/?p=recrutement">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <label for="inputNom" class="form-label">Nom</label>
-      <input type="text" class="form-control" id="inputNom" autocomplete="family-name" name="nom" required>
+      <input type="text" class="form-control border border-danger" id="inputNom" autocomplete="family-name" name="nom" required>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <label for="inputPrenom" class="form-label">Prénom</label>
-      <input type="text" class="form-control" id="inputPrenom" autocomplete="given-name" name="prenom" required>
+      <input type="text" class="form-control border border-danger" id="inputPrenom" autocomplete="given-name" name="prenom" required>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <label for="inputEmail" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail" autocomplete="email" name="mail" required>
+      <input type="email" class="form-control border border-danger" id="inputEmail" autocomplete="email" name="mail" required>
     </div>
-    <div class="col-md-4">
-      <label for="inputAdresse" class="form-label">Adresse</label>
-      <textarea class="form-control" id="inputAdresse" rows="2" autocomplete="street-address" name="adresse" required></textarea>
-    </div>
-    <div class="col-md-4">
-      <label for="inputDateNaissance" class="form-label">Date de naissance</label>
-      <input type="date" class="form-control" id="inputDateNaissance" autocomplete="bday" name="datenaissance" required>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <label for="inputTelephone" class="form-label">Téléphone</label>
-      <input type="tel" class="form-control" id="inputTelephone" autocomplete="tel" name="telephone" required>
+      <input type="tel" class="form-control border border-danger" id="inputTelephone" autocomplete="tel" name="telephone" required>
     </div>
     <hr />
     <div class="col-md-6">
       <label for="inputExperience" class="form-label">Quelle est ton expérience en improvisation ?</label>
-      <textarea class="form-control" id="inputExperience" rows="3" name="experience" required></textarea>
+      <textarea class="form-control border border-danger" id="inputExperience" rows="3" name="experience" required></textarea>
     </div>
     <div class="col-md-6">
       <label for="inputEnvie" class="form-label">Quelles sont tes envies ?</label>
-      <textarea class="form-control" id="inputEnvie" rows="3" name="envie" required></textarea>
+      <textarea class="form-control border border-danger" id="inputEnvie" rows="3" name="envie" required></textarea>
+    </div>
+    <h4>Tu peux aussi nous dire si tu veux :</h4>
+    <div class="col-md-6">
+      <label for="inputAdresse" class="form-label">Ton adresse</label>
+      <textarea class="form-control" id="inputAdresse" rows="2" autocomplete="street-address" name="adresse"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label for="inputDateNaissance" class="form-label">Ta date de naissance</label>
+      <input type="date" class="form-control" id="inputDateNaissance" autocomplete="bday" name="datenaissance">
     </div>
     <hr />
     <div class="col-md-6">
       <label for="inputSource" class="form-label">Comment as-tu connu Improcité ?</label>
-      <textarea class="form-control" id="inputSource" rows="3" name="source" required></textarea>
+      <textarea class="form-control" id="inputSource" rows="3" name="source"></textarea>
     </div>
     <div class="col-md-6">
       <label for="inputDisponibilite" class="form-label">Quelles sont tes disponibilités sur l'année ?</label>
-      <textarea class="form-control" id="inputDisponibilite" rows="3" name="disponibilite" required></textarea>
+      <textarea class="form-control" id="inputDisponibilite" rows="3" name="disponibilite"></textarea>
     </div>
     <hr />
     <div class="col-md-6">
-        <p>On vérifie que tu sais lire et écrire</p>
+        <p>On vérifie que tu sais lire et écrire (mais c'est surtout parce qu'on reçoit beaucoup de spams...). Peux-tu recopier le code dans la case d'à côté ? Tu peux aussi démarrer une improvisation avec ce thème...</p>
     </div>
     <div class="col-md-3">
-      <img src="{$captcha_image}" />
+      <img src="{$captcha_image}" width="100%" />
     </div>
     <div class="col-md-3">
-      <input type="text" class="form-control" id="inputPhrase" autocomplete="no" name="phrase" required>
+      <input type="text" class="form-control border border-danger" id="inputPhrase" autocomplete="no" name="phrase" required>
     </div>
     <input type="hidden" name="action" value="inscription" />
     <button type="submit" class="btn btn-primary">Je m'inscris !</button>

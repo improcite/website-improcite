@@ -21,6 +21,7 @@
           {/foreach}
           </ul>
           <p>Merci d'arriver un peu en avance !</p>
+          {if $date_wei}<p>Sache aussi que nous avons déjà réservé cette date pour notre week-end d'intégration : {$date_wei}. Nous espérons que tu sera disponible pour y participer si tu intgères la troupe !</p>{/if}
           <p>N'hésite pas à nous contacter si tu as besoin de plus d'informations.</p>
         </div>
         <div class="footer">
