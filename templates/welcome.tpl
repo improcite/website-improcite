@@ -27,30 +27,6 @@ Côté localisation, nous faisons de l’impro à Lyon et ses alentours, mais pa
   </div>
 </div>
 
-<div class="card my-3 border-3 border-info">
-  <div class="card-header fs-2">🐰 Pourquoi un lapin comme mascotte de la troupe ?</div>
-  <div class="card-body">
-  <p class="card-text">
-Rassure-toi, si toi aussi ça t’intrigue, sache que tu n’es pas le premier (et tu ne seras pas le dernier). Alors voici l'explication...</p>
-  <p class="card-text">
-Lors des premières années de la troupe, l'un des développeurs du site internet travaillait sur le jeu vidéo Rayman et les Lapins Crétins. En cherchant une image à mettre par défaut comme photo de profil, il a pris une image d'un des personnsages et ajouté une cible (car nos spectacles s'appelaient à l'époque les Z'improssibles)</p>
-  <p class="card-text">
-Dès lors, les autres troupes ont associé Improcité à ce lapin, que nous avons utilisé dans nos différentes versions de logos&nbsp;!
-</p>
-<div class="mx-auto text-center row">
-<div class="col-sm">
-  <img src="/assets/images/photo_membre_defaut.jpg" alt="Image de profil d'orgine avec un lapin devant une cible" class="img-fluid img-thumbnail my-2 me-2" style="max-height: 200px;" />
-</div>
-<div class="col-sm">
-  <img src="/assets/images/mascotte-transparent.png" alt="Mascotte lapin avec un noeud papillon" class="img-fluid img-thumbnail my-2 me-2" style="max-height: 200px;" />
-</div>
-<div class="col-sm">
-  <img src="/assets/images/logo-lapin-improcite-avecfond.png" alt="Logo actuel avec un lapin caché derrière une carotte" class="img-fluid img-thumbnail my-2" style="max-height: 200px;" />
-</div>
-</div>
-  </div>
-</div>
-
 <div class="card my-3 border-3">
   <div class="card-body">
   <h2 class="card-title">Nos spectacles d’improvisation théâtrale dans la région lyonnaise et ailleurs</h2>
@@ -80,6 +56,30 @@ Tu as envie de voir nos improvisateurs et nos improvisatrices à l’œuvre ? 
 </div>
 {/if}
 
+<div class="card my-3 border-3 border-info">
+  <div class="card-header fs-2">🐰 Pourquoi un lapin comme mascotte de la troupe ?</div>
+  <div class="card-body">
+  <p class="card-text">
+Rassure-toi, si toi aussi ça t’intrigue, sache que tu n’es pas le premier (et tu ne seras pas le dernier). Alors voici l'explication...</p>
+  <p class="card-text">
+Lors des premières années de la troupe, l'un des développeurs du site internet travaillait sur le jeu vidéo Rayman et les Lapins Crétins. En cherchant une image à mettre par défaut comme photo de profil, il a pris une image d'un des personnsages et ajouté une cible (car nos spectacles s'appelaient à l'époque les Z'improssibles)</p>
+  <p class="card-text">
+Dès lors, les autres troupes ont associé Improcité à ce lapin, que nous avons utilisé dans nos différentes versions de logos&nbsp;!
+</p>
+<div class="mx-auto text-center row">
+<div class="col-sm">
+  <img src="/assets/images/photo_membre_defaut.jpg" alt="Image de profil d'orgine avec un lapin devant une cible" class="img-fluid img-thumbnail my-2 me-2" style="max-height: 200px;" />
+</div>
+<div class="col-sm">
+  <img src="/assets/images/mascotte-transparent.png" alt="Mascotte lapin avec un noeud papillon" class="img-fluid img-thumbnail my-2 me-2" style="max-height: 200px;" />
+</div>
+<div class="col-sm">
+  <img src="/assets/images/logo-lapin-improcite-avecfond.png" alt="Logo actuel avec un lapin caché derrière une carotte" class="img-fluid img-thumbnail my-2" style="max-height: 200px;" />
+</div>
+</div>
+  </div>
+</div>
+
 <div class="card my-3 border-3">
   <div class="card-body">
   <h2 class="card-title">Découvre nos improvisateurs et nos improvisatrices</h2>
@@ -101,6 +101,11 @@ Alors, qui sont celles et ceux qui sauront te faire t’évader le temps d’un 
 Nous organisons <strong>un recrutement par an</strong>, aux alentours du mois de septembre. Elle se divise en <strong>deux séances</strong>  d’impro à Lyon (des soirées de 2h environ). Objectif&nbsp;: connaître les candidats pendant des exercices d’improvisation de toute sorte (et autour d’un bon buffet).</p>
   <p class="card-text">
 Les Improcitadins en charge du recrutement font ensuite une présélection à l’issue de la première session, et une sélection finale à la fin de la seconde.
+  </p>
+  {if $display_recrutement_public}
+  <p class="card-text">
+Les inscriptions au recrutement sont justement ouvertes en ce moment ! Clique <a href="/?p=recrutement">ici</a> pour tenter ta chance !
+  {/if}
   </p>
   </div>
 </div>
