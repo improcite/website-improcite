@@ -34,7 +34,8 @@ include_once("secrets.inc.php");
 // 19 = 2023-2024
 // 20 = 2024-2025
 // 21 = 2025-2026
-$iCurrentSaisonNumber = 21;
+// 22 = 2026-2027
+$iCurrentSaisonNumber = 22;
 
 /* Nb de spectacles affiches sur la page de bienvenue */
 $nb_spectacles_welcome = 2;
