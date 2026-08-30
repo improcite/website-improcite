@@ -40,3 +40,9 @@ function getPhotoEve($id_evenement, $path) {
     if (file_exists($photoEvenement)) { return $photoEvenement; }
     return false;
 }
+
+function getPhotoLieu($id_lieu, $path) {
+    $photoLieu = $path . "/photos/lieux/".$id_lieu.".jpg";
+    if (file_exists($photoLieu)) { return $photoLieu; }
+    return false;
+}

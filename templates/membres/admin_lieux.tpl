@@ -61,6 +61,22 @@
 </div>
 <hr />
 
+{if $result == "phototoobig"}
+<div class="alert alert-danger" role="alert">
+  La taille du fichier est trop grande
+</div>
+{/if}
+{if $result == "photonotuploaded"}
+<div class="alert alert-danger" role="alert">
+  Erreur lors de la mise à jour de la photo
+</div>
+{/if}
+{if $result == "photouploaded"}
+<div class="alert alert-success" role="alert">
+  La photo a bien été changée
+</div>
+{/if}
+
 {if $action == "consultation"}
 <div class="alert alert-success" role="alert">
   {count($lieux)} lieux trouvés
@@ -71,6 +87,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Photo</th>
       <th>Nom</th>
       <th>Adresse</th>
       <th>Coordonnées</th>
@@ -81,6 +98,7 @@
 {for $id = 0 to count($lieux)-1}
     <tr>
       <td>{$lieux.$id.id}</td>
+      <td>{if $lieux.$id.photo}<i class="fa fa-image" role="button" data-bs-toggle="modal" data-bs-target="#img-lieu-{$lieux.$id.id}"></i>{/if}</td>
       <td>{$lieux.$id.nom}</td>
       <td>{$lieux.$id.adresse}</td>
       <td>{$lieux.$id.coordonnees}</td>
@@ -97,6 +115,15 @@
 </table>
 </div>
 {for $id = 0 to count($lieux)-1}
+{if $lieux.$id.photo}
+<div class="modal fade" id="img-lieu-{$lieux.$id.id}" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <img src="{$lieux.$id.photo}" />
+    </div>
+  </div>
+</div>
+{/if}
 <div class="modal fade" id="delete-lieu-{$lieux.$id.id}" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -121,7 +148,10 @@
 
 {if $action == "afficher"}
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-4">
+    {if $lieu.photo}<img src="{$lieu.photo}" class="img-fluid shadow" alt="{$lieu.nom}"/>{/if}
+  </div>
+  <div class="col-md-8">
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">{$lieu.nom}</h5>
@@ -135,14 +165,47 @@
           {$lieu.coordonnees}
         </p>
       </div>
+      {if $lieu.coordonnees}
+      <div id="map" class="card-img-bottom" style="width: 100%; height: 400px;"></div>
+      {/if}
     </div>
   </div>
 </div>
+
+{if $lieu.coordonnees}
+<script src="/assets/leaflet/leaflet.js"></script>
+<script type="text/javascript">
+var coordonnees = "{$lieu.coordonnees}".split("/");
+var nom = "{$lieu.nom}";
+var adresse = "{$lieu.adresse}";
+{literal}
+var map = L.map('map').setView([coordonnees[1], coordonnees[2]], coordonnees[0]);
+var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+var marker = L.marker([coordonnees[1], coordonnees[2]]).addTo(map);
+marker.bindPopup("<b>"+nom+"</b><br />" + adresse).openPopup();
+{/literal}
+</script>
+{/if}
 {/if}
 
 {if $action == "editer" or $action == "creer"}
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-4">
+    {if $lieu.photo}<img src="{$lieu.photo}" class="img-fluid shadow mb-3" alt="{$lieu.nom}"/>{/if}
+    {if $lieu.id}
+    <form action="?p=admin_lieux" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="modifierphoto" />
+    <input type="hidden" name="id" value="{$lieu.id}" />
+    <div class="alert alert-info mb-3">Photo au format JPG et moins de 1 Mo.</div>
+    <input class="form-control mb-3" type="file" id="photo" name="photo">
+    <input type="submit" value="Modifier la photo" class="btn btn-success mb-3">
+    </form>
+    {/if}
+  </div>
+  <div class="col-md-8">
     <div class="card shadow">
       <div class="card-body">
       <form method="post" action="index.php?p=admin_lieux&action=enregistrer&id={$lieu.id}">
