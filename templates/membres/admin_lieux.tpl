@@ -83,7 +83,7 @@
 </div>
 {if count($lieux)}
 <div class="table-responsive">
-<table class="table table-sm table-striped table-hover">
+<table class="table table-sm table-striped table-hover" id="table-lieux">
   <thead>
     <tr>
       <th>ID</th>
@@ -142,6 +142,13 @@
   </div>
 </div>
 {/for}
+<link rel="stylesheet" type="text/css" href="/vendor/datatables/datatables/media/css/jquery.dataTables.min.css" />
+<script src="/vendor/datatables/datatables/media/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#table-lieux').DataTable();
+});
+</script>
 {/if}
 {/if}
 

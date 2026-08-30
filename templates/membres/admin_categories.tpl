@@ -67,7 +67,7 @@
 </div>
 {if count($categories)}
 <div class="table-responsive">
-<table class="table table-sm table-striped table-hover">
+<table class="table table-sm table-striped table-hover" id="table-categories">
   <thead>
     <tr>
       <th>ID</th>
@@ -126,6 +126,13 @@
   </tbody>
 </table>
 </div>
+<link rel="stylesheet" type="text/css" href="/vendor/datatables/datatables/media/css/jquery.dataTables.min.css" />
+<script src="/vendor/datatables/datatables/media/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#table-categories').DataTable();
+});
+</script>
 {/if}
 {/if}
 
