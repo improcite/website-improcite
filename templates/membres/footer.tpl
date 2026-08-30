@@ -7,7 +7,10 @@
 <script>
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-$('[id^="table-"]').DataTable();
+$('[id^="table-"]').DataTable({
+  language: { url: '//cdn.datatables.net/plug-ins/2.3.8/i18n/fr-FR.json' },
+  order: [[0, 'desc']]
+});
 </script>
 </body>
 </html>
