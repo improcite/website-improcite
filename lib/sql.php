@@ -160,6 +160,24 @@ function deleteObject($mysqli, $table, $id) {
     return $query;
 }
 
+function updateLieu($mysqli, $table, $data) {
+    $replace = "REPLACE INTO $table (id, nom, adresse, adresse2, coordonnees) VALUES (?,?,?,?,?)";
+    $query = $mysqli->execute_query($replace, array($data["id"], $data["nom"], $data["adresse"], $data["adresse2"], $data["coordonnees"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
+function createLieu($mysqli, $table, $data) {
+    $insert = "INSERT INTO $table (nom, adresse, adresse2, coordonnees) VALUES (?,?,?,?)";
+    $query = $mysqli->execute_query($insert, array($data["nom"], $data["adresse"], $data["adresse2"], $data["coordonnees"]));
+    if (!$query && $debug) {
+        die($mysqli->sqlstate);
+    }
+    return $query;
+}
+
 function updateCategorie($mysqli, $table, $data) {
     $replace = "REPLACE INTO $table (id, nom, description, publique, interne) VALUES (?,?,?,?,?)";
     $query = $mysqli->execute_query($replace, array($data["id"], $data["nom"], $data["description"], $data["publique"], $data["interne"]));
