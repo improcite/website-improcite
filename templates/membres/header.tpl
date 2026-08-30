@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/vendor/fortawesome/font-awesome/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="/assets/leaflet/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/membres.css" />
-    <link rel="stylesheet" type="text/css" href="/vendor/datatables/datatables/media/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/datatables.net/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
 	<link rel="icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
 	<link rel="shortcut icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
 </head>
