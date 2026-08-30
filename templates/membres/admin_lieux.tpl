@@ -83,7 +83,7 @@
 </div>
 {if count($lieux)}
 <div class="table-responsive">
-<table class="table table-sm table-striped table-hover">
+<table class="table table-sm table-striped table-hover" id="table-lieux">
   <thead>
     <tr>
       <th>ID</th>

@@ -67,7 +67,7 @@
 </div>
 {if count($categories)}
 <div class="table-responsive">
-<table class="table table-sm table-striped table-hover">
+<table class="table table-sm table-striped table-hover" id="table-categories">
   <thead>
     <tr>
       <th>ID</th>

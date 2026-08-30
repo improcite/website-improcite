@@ -67,7 +67,7 @@
 </div>
 {if count($users)}
 <div class="table-responsive">
-<table class="table table-sm table-striped table-hover">
+<table class="table table-sm table-striped table-hover" id="table-users">
   <thead>
     <tr>
       <th>ID</th>
