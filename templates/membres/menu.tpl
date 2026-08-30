@@ -49,6 +49,7 @@
                     <a href="index.php?p=admin_users" class="dashboard-nav-dropdown-item"><i class="fas fa-users me-2"></i>Membres</a>
                     <a href="index.php?p=admin_evenements" class="dashboard-nav-dropdown-item"><i class="fas fa-calendar me-2"></i>Événements</a>
                     <a href="index.php?p=admin_categories" class="dashboard-nav-dropdown-item"><i class="fas fa-tag me-2"></i>Catégories</a>
+                    <a href="index.php?p=admin_lieux" class="dashboard-nav-dropdown-item"><i class="fas fa-map-marker-alt me-2"></i>Lieux</a>
                 </div>
             </div>
 {/if}
