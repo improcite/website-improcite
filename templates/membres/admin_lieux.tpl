@@ -235,33 +235,5 @@ marker.bindPopup("<b>"+nom+"</b><br />" + adresse).openPopup();
     </div>
   </div>
 </div>
-<script type="text/javascript">
-document.getElementById('btnGeocode').addEventListener('click', function() {
-    var adresse = document.getElementById('inputAdresse').value.trim();
-    var adresse2 = document.getElementById('inputAdresse2').value.trim();
-    var query = adresse + (adresse2 ? ' ' + adresse2 : '');
-    if (!query) {
-        document.getElementById('geocodeResult').innerHTML = '<span class="text-danger">Veuillez saisir une adresse.</span>';
-        return;
-    }
-    var resultDiv = document.getElementById('geocodeResult');
-    resultDiv.innerHTML = '<span class="text-secondary"><i class="fa fa-spinner fa-spin me-1"></i>Recherche en cours…</span>';
-    var url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(query);
-    fetch(url, { headers: { 'Accept-Language': 'fr' } })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-            if (data && data.length > 0) {
-                var lat = parseFloat(data[0].lat).toFixed(6);
-                var lon = parseFloat(data[0].lon).toFixed(6);
-                document.getElementById('inputCoordonnees').value = '15/' + lat + '/' + lon;
-                resultDiv.innerHTML = '<span class="text-success"><i class="fa fa-check me-1"></i>Coordonnées trouvées : ' + lat + ', ' + lon + '</span>';
-            } else {
-                resultDiv.innerHTML = '<span class="text-warning"><i class="fa fa-triangle-exclamation me-1"></i>Adresse introuvable. Veuillez saisir les coordonnées manuellement.</span>';
-            }
-        })
-        .catch(function() {
-            resultDiv.innerHTML = '<span class="text-danger"><i class="fa fa-circle-exclamation me-1"></i>Erreur lors de la requête. Veuillez réessayer.</span>';
-        });
-});
-</script>
+<script src="/assets/js/geolocalisation.js"></script>
 {/if}
