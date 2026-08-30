@@ -7,7 +7,6 @@
         "guzzlehttp/guzzle": "6.*",
         "firebase/php-jwt": "^6.0.0",
         "gregwar/captcha": "1.*",
-        "datatables/datatables": "1.10.*",
         "datatables.net/datatables.net-bs5": "2.3.*"
     }
 }
