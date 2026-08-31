@@ -17,4 +17,3 @@
 	<link rel="shortcut icon" type="image/png" href="/assets/images/favicon-improcite-fond.png">
 </head>
 <body>
-<div class='dashboard'>
