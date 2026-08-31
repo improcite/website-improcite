@@ -288,6 +288,10 @@
           <label for="inputTarif" class="form-label">Tarif</label>
           <input class="form-control" id="inputTarif" name="tarif" type="text" value="{$evenement.tarif}" />
         </div>
+        <div class="mb-3">
+          <label for="inputLienFacebook" class="form-label">Lien Facebook</label>
+          <input class="form-control" id="inputLienFacebook" name="lien_facebook" type="url" value="{$evenement.lien_facebook}" />
+        </div>
         <div class="mb-3 row">
           <label class="form-label">Joueurs</label>
           {for $i=1 to 6}
