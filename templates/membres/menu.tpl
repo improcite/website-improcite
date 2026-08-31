@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php"><i class="fas fa-carrot me-2"></i>Improcité</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMembres" aria-controls="navbarMembres" aria-expanded="false" aria-label="Ouvrir le menu">
