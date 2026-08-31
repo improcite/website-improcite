@@ -23,6 +23,9 @@
           <i class="fa fa-coins"></i> Tarif : {$infos.tarif}
         </p>
         {/if}
+        {if $infos.lien_facebook}
+        <a href="{$infos.lien_facebook}" class="btn btn-outline-primary my-2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook me-2"></i>Voir l'événement sur Facebook</a>
+        {/if}
       </div>
         {if $infos.joueurs || $infos.mc || $infos.arbitre || $infos.animateurs}
       <div class="card-header">

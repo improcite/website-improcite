@@ -19,6 +19,9 @@
         {if $date.tarif}
         <p class="card-text"><small class="text-body-secondary"><i class="fa fa-coins"></i> Tarif : {$date.tarif}</small></p>
         {/if}
+        {if $date.lien_facebook}
+        <a href="{$date.lien_facebook}" class="btn btn-sm btn-outline-primary my-2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook me-2"></i>Voir l'événement sur Facebook</a>
+        {/if}
         </div>
       </div>
       </div>
