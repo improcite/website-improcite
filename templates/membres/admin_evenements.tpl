@@ -292,6 +292,10 @@
           <label for="inputLienFacebook" class="form-label">Lien Facebook</label>
           <input class="form-control" id="inputLienFacebook" name="lien_facebook" type="url" value="{$evenement.lien_facebook}" />
         </div>
+        <div class="mb-3">
+          <label for="inputLienMobilizon" class="form-label">Lien Mobilizon</label>
+          <input class="form-control" id="inputLienMobilizon" name="lien_mobilizon" type="url" value="{$evenement.lien_mobilizon}" />
+        </div>
         <div class="mb-3 row">
           <label class="form-label">Joueurs</label>
           {for $i=1 to 6}
