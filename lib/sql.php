@@ -205,8 +205,8 @@ function deleteDispoEvenement($mysqli, $table, $id) {
 }
 
 function updateEvenement($mysqli, $table, $data) {
-    $update = "UPDATE $table SET categorie=?, date=?, commentaire=?, lieu=?, tarif=?, places=?, joueurs=?, coach=?, mc=?, arbitre=?, regisseur=?, caisse=?, animateurs=?, lien_facebook=?, lien_mobilizon=? WHERE id=?";
-    $query = $mysqli->execute_query($update, array($data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"], $data["lien_mobilizon"], $data["id"]));
+    $update = "UPDATE $table SET categorie=?, date=?, commentaire=?, lieu=?, tarif=?, places=?, joueurs=?, coach=?, mc=?, arbitre=?, regisseur=?, caisse=?, animateurs=?, ovs=?, lien_facebook=?, lien_mobilizon=? WHERE id=?";
+    $query = $mysqli->execute_query($update, array($data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["ovs"], $data["lien_facebook"], $data["lien_mobilizon"], $data["id"]));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }

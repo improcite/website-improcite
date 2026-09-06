@@ -135,6 +135,8 @@ if ($action == "enregistrer") {
     if(!$_REQUEST["id"]) {
         createEvenement($mysqli, $t_eve, $data);
     } else {
+        $evenement = getEventInfos($mysqli, $t_eve, $t_cat, $t_lieu, $_REQUEST["id"]);
+        $data["ovs"] = $evenement["ovs"];
         $data["id"] = $_REQUEST["id"];
         updateEvenement($mysqli, $t_eve, $data);
     }
