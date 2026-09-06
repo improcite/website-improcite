@@ -48,7 +48,7 @@ $sPhotoEvenement = "photos/evenements/";
 $sPhotoCategorie = "photos/categories/";
 
 /* Afficher la page recrutement sur la partie publique */
-$display_recrutement_public = 0;
+$display_recrutement_public = 1;
 /* Afficher la page recrutement sur la partie privée */
 $display_recrutement_private = 1;
 /* Saison concernée par le recrutement et dates */
