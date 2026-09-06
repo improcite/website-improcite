@@ -45,7 +45,7 @@ function getUsersWithRights($mysqli, $table, $right, $id_saison) {
 
 function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $only_public=false, $month=0, $year=0, $asc=false) {
     $values = array();
-    $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs, e.places as places, e.tarif as tarif, c.interne as interne, e.lien_facebook as lien_facebook"
+    $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs, e.places as places, e.tarif as tarif, c.interne as interne, e.lien_facebook as lien_facebook, e.lien_mobilizon as lien_mobilizon"
         ." FROM $t_eve e, $t_cat c, $t_lieu l "
         ." WHERE e.categorie=c.id AND e.lieu=l.id";
     if ($month and $year) {
@@ -74,7 +74,7 @@ function getNextEventsQuery($mysqli, $t_eve, $t_cat, $t_lieu, $date, $limit=0, $
 }
 
 function getEventInfos($mysqli, $t_eve, $t_cat, $t_lieu, $id_eve) {
-    $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, l.adresse as ladresse, l.adresse2 as ladresse2, l.coordonnees as lcoordonnees, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs, e.places as places, e.tarif as tarif, c.interne as interne, e.lien_facebook as lien_facebook"
+    $recherche = "SELECT e.id as id, e.lieu as lieu, l.nom as lnom, l.adresse as ladresse, l.adresse2 as ladresse2, l.coordonnees as lcoordonnees, c.nom as nom, c.description as description, e.date as date, UNIX_TIMESTAMP(e.date) as unixdate, e.joueurs as joueurs, e.mc as mc, e.arbitre as arbitre, e.coach as coach, e.commentaire as ecommentaire, e.categorie as categorie, e.regisseur as regisseur, e.caisse as caisse, e.animateurs as animateurs, e.ovs as ovs, e.places as places, e.tarif as tarif, c.interne as interne, e.lien_facebook as lien_facebook, e.lien_mobilizon as lien_mobilizon"
         ." FROM $t_eve e, $t_cat c, $t_lieu l "
         ." WHERE e.categorie=c.id AND e.lieu=l.id AND e.id=?";
     $query = $mysqli->execute_query($recherche, array($id_eve));
@@ -205,8 +205,9 @@ function deleteDispoEvenement($mysqli, $table, $id) {
 }
 
 function updateEvenement($mysqli, $table, $data) {
-    $replace = "REPLACE INTO $table (id, categorie, date, commentaire, lieu, tarif, places, joueurs, coach, mc, arbitre, regisseur, caisse, animateurs, lien_facebook) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $query = $mysqli->execute_query($replace, array($data["id"], $data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"]));
+    $upsert = "INSERT INTO $table (id, categorie, date, commentaire, lieu, tarif, places, joueurs, coach, mc, arbitre, regisseur, caisse, animateurs, lien_facebook, lien_mobilizon) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        ." ON DUPLICATE KEY UPDATE categorie=VALUES(categorie), date=VALUES(date), commentaire=VALUES(commentaire), lieu=VALUES(lieu), tarif=VALUES(tarif), places=VALUES(places), joueurs=VALUES(joueurs), coach=VALUES(coach), mc=VALUES(mc), arbitre=VALUES(arbitre), regisseur=VALUES(regisseur), caisse=VALUES(caisse), animateurs=VALUES(animateurs), lien_facebook=VALUES(lien_facebook), lien_mobilizon=VALUES(lien_mobilizon)";
+    $query = $mysqli->execute_query($upsert, array($data["id"], $data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"], $data["lien_mobilizon"]));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
@@ -214,8 +215,8 @@ function updateEvenement($mysqli, $table, $data) {
 }
 
 function createEvenement($mysqli, $table, $data) {
-    $insert = "INSERT INTO $table (categorie, date, commentaire, lieu, tarif, places, joueurs, coach, mc, arbitre, regisseur, caisse, animateurs, lien_facebook) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $query = $mysqli->execute_query($insert, array($data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"]));
+    $insert = "INSERT INTO $table (categorie, date, commentaire, lieu, tarif, places, joueurs, coach, mc, arbitre, regisseur, caisse, animateurs, lien_facebook, lien_mobilizon) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $query = $mysqli->execute_query($insert, array($data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"], $data["lien_mobilizon"]));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }

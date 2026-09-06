@@ -23,6 +23,9 @@
           <i class="fa fa-coins"></i> Tarif : {$infos.tarif}
         </p>
         {/if}
+        {if $infos.lien_mobilizon}
+        <a href="{$infos.lien_mobilizon}" class="btn btn-outline-primary my-2" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-link me-2"></i>Voir l'événement sur Improvizon</a>
+        {/if}
         {if $infos.lien_facebook}
         <a href="{$infos.lien_facebook}" class="btn btn-outline-primary my-2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook me-2"></i>Voir l'événement sur Facebook</a>
         {/if}

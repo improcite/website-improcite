@@ -129,7 +129,8 @@ if ($action == "enregistrer") {
         "regisseur" => $_REQUEST["regisseur"],
         "caisse" => $_REQUEST["caisse"],
         "animateurs" => implode(";", array($_REQUEST["animateur1"], $_REQUEST["animateur2"], $_REQUEST["animateur3"], $_REQUEST["animateur4"], $_REQUEST["animateur5"], $_REQUEST["animateur6"])),
-        "lien_facebook" => $_REQUEST["lien_facebook"]
+        "lien_facebook" => $_REQUEST["lien_facebook"],
+        "lien_mobilizon" => $_REQUEST["lien_mobilizon"]
     );
     if(!$_REQUEST["id"]) {
         createEvenement($mysqli, $t_eve, $data);
