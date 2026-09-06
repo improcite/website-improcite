@@ -205,8 +205,9 @@ function deleteDispoEvenement($mysqli, $table, $id) {
 }
 
 function updateEvenement($mysqli, $table, $data) {
-    $update = "UPDATE $table SET categorie=?, date=?, commentaire=?, lieu=?, tarif=?, places=?, joueurs=?, coach=?, mc=?, arbitre=?, regisseur=?, caisse=?, animateurs=?, lien_facebook=?, lien_mobilizon=? WHERE id=?";
-    $query = $mysqli->execute_query($update, array($data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"], $data["lien_mobilizon"], $data["id"]));
+    $upsert = "INSERT INTO $table (id, categorie, date, commentaire, lieu, tarif, places, joueurs, coach, mc, arbitre, regisseur, caisse, animateurs, lien_facebook, lien_mobilizon) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        ." ON DUPLICATE KEY UPDATE categorie=VALUES(categorie), date=VALUES(date), commentaire=VALUES(commentaire), lieu=VALUES(lieu), tarif=VALUES(tarif), places=VALUES(places), joueurs=VALUES(joueurs), coach=VALUES(coach), mc=VALUES(mc), arbitre=VALUES(arbitre), regisseur=VALUES(regisseur), caisse=VALUES(caisse), animateurs=VALUES(animateurs), lien_facebook=VALUES(lien_facebook), lien_mobilizon=VALUES(lien_mobilizon)";
+    $query = $mysqli->execute_query($upsert, array($data["id"], $data["categorie"], $data["date"], $data["commentaire"], $data["lieu"], $data["tarif"], $data["places"], $data["joueurs"], $data["coach"], $data["mc"], $data["arbitre"], $data["regisseur"], $data["caisse"], $data["animateurs"], $data["lien_facebook"], $data["lien_mobilizon"]));
     if (!$query && $debug) {
         die($mysqli->sqlstate);
     }
